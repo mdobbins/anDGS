@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+<ScrollView 
+	android:layout_height="fill_parent" 
+	android:layout_width="fill_parent"
+	style="?colorStyle"
+	android:layout_above="@+id/commentSaveLayout"
+	>
+<EditText
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:inputType="textMultiLine"
+    android:hint="@string/EditComment"
+    android:background="?colorBackground"
+    android:textColor="?colorText"
+    android:id="@+id/commentEditView"
+    />
+</ScrollView>
+
+<LinearLayout 
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:layout_alignParentBottom="true"
+	android:layout_marginBottom="1dp"
+	android:background="?colorDivider" 
+	android:id="@+id/commentSaveLayout" >
+<TextView 
+	android:layout_height="wrap_content"
+	android:layout_width="fill_parent"
+	android:gravity="center"
+	android:textStyle="bold"
+    android:textSize="17sp"
+	android:layout_margin="1dp"
+	android:paddingTop="6dp"
+	android:paddingBottom="6dp"
+	style="?colorStyle" 
+	android:clickable="true"
+	android:text="@string/save" 
+	android:id="@+id/commentSaveButton"
+	/>
+</LinearLayout>	
+
+</RelativeLayout>

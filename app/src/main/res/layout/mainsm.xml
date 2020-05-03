@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    style="?colorStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    
+<TableLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/mainTopMenuSM" 
+    android:stretchColumns="*">
+<TableRow>
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".23"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="center"
+    android:id="@+id/mainTMPrefsSM"
+    android:text="@string/prefsButton"
+    />
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".23"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="center"
+    android:id="@+id/mainTMCreditsSM"
+    android:text="@string/Credits"
+    /> 
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".23"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="center"
+    android:id="@+id/mainTMStartNotifierSM"
+    android:text="@string/StartNotifier"
+    /> 
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".23"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="center"
+    android:id="@+id/mainTMTutorialSM"
+    android:text="@string/Tutorial"
+    />
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".08"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="center"
+    android:id="@+id/mainTMHelpSM"
+    android:text="@string/QMark"
+    />
+</TableRow>
+</TableLayout>
+
+<TextView  
+    style="?colorStyle"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_below="@+id/mainTopMenuSM" 
+    android:text="@string/help"
+    android:id="@+id/mainDescSM"
+    />
+<TextView
+	style="?colorStyle"
+	android:textSize="18sp"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:text="@string/LoggingOn"
+	android:id="@+id/mainStatusSM"
+	/>
+
+<ListView 
+	style="?colorStyle"
+	android:divider="?colorDivider"
+	android:layout_above="@+id/mainBottomBoxSM"
+	android:layout_below="@+id/mainDescSM"
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent" 
+	android:fastScrollEnabled="true"
+	android:id="@+id/mainButtonsSM"
+	/>
+
+<LinearLayout 
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content" 
+	android:orientation="vertical"
+	android:layout_alignParentBottom="true"
+	android:id="@+id/mainBottomBoxSM"
+	>
+<LinearLayout 
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent" 
+	android:layout_marginTop="6dp"
+	android:layout_marginBottom="6dp"
+	android:orientation="horizontal"
+	android:fastScrollEnabled="true"
+	>
+<TextView 
+	style="?colorStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="10sp"
+	android:text="@string/author"
+	/> 
+<TextView 
+	style="?colorStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="10sp"
+	android:text="Michael Dobbins     "
+	/>
+<TextView 
+	style="?colorStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="10sp"
+	android:text="@string/version"
+	/> 
+<TextView 
+	style="?colorStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="10sp"
+    android:text="@string/blank5"
+    android:id="@+id/versionTxtSM"
+	/> 
+</LinearLayout>
+
+</LinearLayout>
+</RelativeLayout>
+

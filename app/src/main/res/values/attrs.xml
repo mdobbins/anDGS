@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <resources>
+        <attr name="colorStyle" />
+        <attr name="colorDivider" format="color" />
+        <attr name="colorText" format="color" />
+        <attr name="colorBackground" format="color" />
+        
+        <declare-styleable name="AmbilWarnaPreference">
+        	<attr name="supportsAlpha"
+              format="boolean"/>
+    	</declare-styleable>
+        
+    </resources>

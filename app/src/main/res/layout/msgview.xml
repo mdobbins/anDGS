@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+<TableLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/msgViewTopMenu" 
+    android:stretchColumns="*">
+<TableRow>
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".92"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="left"
+    android:textSize="18sp"
+    android:id="@+id/msgViewTitle"
+    />
+
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".08"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="center"
+    android:id="@+id/msgViewTMHelp"
+    android:text="@string/QMark"
+    />
+</TableRow>
+</TableLayout>
+
+<ScrollView 
+	android:layout_height="fill_parent" 
+	android:layout_width="fill_parent"
+	android:layout_below="@+id/msgViewTopMenu"
+	android:layout_above="@+id/msgButtonsLayout"
+	style="?colorStyle"
+    >		
+<TextView
+    style="?colorStyle"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:id="@+id/msgTextView"
+    />
+</ScrollView>
+
+<LinearLayout 
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:layout_alignParentBottom="true"
+	android:layout_marginBottom="1dp"
+	android:background="?colorDivider" 
+	android:id="@+id/msgButtonsLayout" >
+<TableRow
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="1dp"
+	android:paddingTop="4dp"
+	android:paddingBottom="4dp"
+    android:id="@+id/msgButtonsRow" 
+    android:stretchColumns="*"> 
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".20"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="2dp"
+    android:gravity="center"
+    android:textSize="17sp"
+    android:tag="0"
+    android:clickable="true"
+    android:onClick="buttonClick"
+    />
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".20"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="2dp"
+    android:gravity="center"
+    android:textSize="17sp"
+    android:tag="1"
+    android:clickable="true"
+    android:onClick="buttonClick"
+    />
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".20"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="2dp"
+    android:gravity="center"
+    android:textSize="17sp"
+    android:tag="2"
+    android:clickable="true"
+    android:onClick="buttonClick"
+    />  
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".20"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="2dp"
+    android:gravity="center"
+    android:textSize="17sp"
+    android:tag="3"
+    android:clickable="true"
+    android:onClick="buttonClick"
+    />
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".20"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="2dp"
+    android:gravity="center"
+    android:textSize="17sp"
+    android:tag="4"
+    android:clickable="true"
+    android:onClick="buttonClick"
+    />
+</TableRow>
+</LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="?colorStyle"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+<TableLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/newGameTopMenu" 
+    android:stretchColumns="*">
+<TableRow>
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".92"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="left"
+    android:textSize="18sp"
+    android:text="@string/newGame"
+    />
+
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".08"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="center"
+    android:id="@+id/newGameTMHelp"
+    android:text="@string/QMark"
+    />
+</TableRow>
+</TableLayout>
+
+<ScrollView 
+	android:layout_height="wrap_content" 
+	android:layout_width="fill_parent">
+<LinearLayout 
+	android:layout_height="wrap_content" 
+	android:layout_width="fill_parent"
+	style="?colorStyle" 
+	android:orientation="vertical">	
+<TextView 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content"
+	style="?colorStyle" 
+	android:textSize="16sp"
+	android:text="@string/GameSize" 
+	android:id="@+id/size_label"
+	android:layout_margin="6dp"
+	/>
+<SeekBar 
+	android:layout_height="wrap_content" 
+	android:layout_width="fill_parent" 
+	style="?colorStyle"
+	android:layout_marginLeft="7pt" 
+	android:layout_marginRight="7pt" 
+	android:id="@+id/size_slider"
+	android:max="25"
+	android:paddingBottom="7pt"
+	/>
+<LinearLayout 
+	android:layout_height="wrap_content" 
+	android:layout_width="fill_parent"
+	style="?colorStyle" 
+	android:gravity="center_vertical"
+    android:orientation="horizontal">
+<TextView 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content" 
+	style="?colorStyle"
+	android:textSize="16sp"
+	android:text="@string/Handicap"
+	android:id="@+id/handicap_label"
+	android:layout_margin="6dp"
+	/>
+<CheckBox
+   	android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+  	style="?colorStyle"
+  	android:textSize="16sp"
+    android:text="@string/blankButton"
+    android:id="@+id/handicap_free"
+    android:layout_marginLeft="6dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="6dp"
+    android:layout_marginRight="1dp"
+    />
+ <TextView 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content" 
+	style="?colorStyle"
+	android:textSize="16sp"
+	 android:ellipsize="end"
+    android:text="@string/HandicapFree"
+	android:layout_marginLeft="1dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="6dp"
+    android:layout_marginRight="6dp"
+	 android:maxLines="1" />
+</LinearLayout> 
+<SeekBar 
+	android:layout_height="wrap_content" 
+	android:layout_width="fill_parent"
+	style="?colorStyle" 
+	android:paddingLeft="7pt" 
+	android:paddingRight="7pt" 
+	android:id="@+id/handicap_slider" 
+	android:max="9" 
+	android:paddingBottom="7pt"
+	/>
+
+<TextView 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content" 
+	style="?colorStyle"
+	android:textSize="16sp"
+	android:text="@string/Komi" 
+	android:id="@+id/komi_label"
+	android:layout_margin="5dp"
+	/>
+<SeekBar 
+	android:layout_height="wrap_content" 
+	android:layout_width="fill_parent"
+	style="?colorStyle" 
+	android:paddingLeft="7pt" 
+	android:paddingRight="7pt" 
+	android:id="@+id/komi_slider" 
+	android:max="38" 
+	android:paddingBottom="7pt"
+	/>  
+
+<LinearLayout 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content"
+	style="?colorStyle" 
+	android:orientation="horizontal"
+	>
+<TextView 
+	style="?colorStyle"
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content" 
+	android:text="@string/WhitePlayerName"
+	android:id="@+id/WhiteNameButton"
+	android:textSize="18sp"
+	android:layout_margin="6dp"
+	/>
+<TextView 
+	style="?colorStyle" 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content" 
+	android:text="@string/white"
+	android:id="@+id/WhiteNameLabel" 
+	android:textSize="16sp"
+	android:gravity="center_vertical"
+	android:layout_margin="6dp"
+	/>
+</LinearLayout>
+
+<LinearLayout 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content" 
+	style="?colorStyle"
+	android:orientation="horizontal"
+	>
+<TextView
+	style="?colorStyle" 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content" 
+	android:text="@string/BlackPlayerName"
+	android:id="@+id/BlackNameButton" 
+	android:textSize="18sp"
+	android:layout_margin="6dp"
+	/>
+<TextView
+	style="?colorStyle" 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content" 
+	android:text="@string/black" 
+	android:id="@+id/BlackNameLabel" 
+	android:textSize="16sp"
+	android:gravity="center_vertical"
+	android:layout_margin="6dp"
+	/>
+</LinearLayout>
+
+<LinearLayout
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content" 
+	style="?colorStyle"
+	android:orientation="horizontal"
+	>
+<TextView 
+	style="?colorStyle"
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content" 
+	android:text="@string/SGFSaveFileName"
+	android:id="@+id/SGFFileButton"
+	android:textSize="18sp"
+	android:layout_margin="6dp"
+	/>
+<TextView
+	style="?colorStyle"
+    android:layout_width="wrap_content" 
+	android:layout_height="wrap_content" 
+	android:text="@string/blank5" 
+	android:id="@+id/SGFFileLabel" 
+	android:textSize="16sp"
+	android:gravity="center_vertical"
+	android:layout_margin="6dp"
+	/>
+</LinearLayout>
+
+<LinearLayout 
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:layout_marginBottom="1dp"
+	android:background="?colorDivider" 
+	 >
+<TextView 
+	android:layout_height="wrap_content"
+	android:layout_width="fill_parent"
+	android:gravity="center"
+	android:textStyle="bold"
+    android:textSize="17sp"
+	android:layout_margin="1dp"
+	android:paddingTop="6dp"
+	android:paddingBottom="6dp"
+	style="?colorStyle" 
+	android:clickable="true"
+	android:text="@string/CreateGame"
+    android:id="@+id/newGameButton"
+	/>
+</LinearLayout>
+
+</LinearLayout>
+</ScrollView>
+</LinearLayout>

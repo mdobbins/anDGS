@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	style="?colorStyle"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+    
+<TableLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/mainTopMenu" 
+    android:stretchColumns="*">
+<TableRow>
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".23"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="center"
+    android:id="@+id/mainTMPrefs"
+    android:text="@string/prefsButton"
+    />
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".23"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="center"
+    android:id="@+id/mainTMCredits"
+    android:text="@string/Credits"
+    /> 
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".23"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="center"
+    android:id="@+id/mainTMToggleNotifier"
+    android:text="@string/StartNotifier"
+    /> 
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".23"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="center"
+    android:id="@+id/mainTMTutorial"
+    android:text="@string/Tutorial"
+    />
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".08"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="center"
+    android:id="@+id/mainTMHelp"
+    android:text="@string/QMark"
+    />
+</TableRow>
+</TableLayout>
+    
+<LinearLayout 
+    style="?colorStyle"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_below="@+id/mainTopMenu"
+    android:id="@+id/mainTitleBox"
+    >
+<ImageView 
+    android:background="#fff6f4ff"
+    android:layout_width="fill_parent"
+    android:layout_gravity="center_horizontal"
+    android:layout_height="wrap_content"
+	android:src="@drawable/dragonlogo_bl"
+	android:contentDescription="@string/blank5"
+	/> 
+<TextView  
+    style="?colorStyle"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:id="@+id/mainDesc"
+    android:text="@string/help"
+    />
+<TextView
+    style="?colorStyle"
+    android:textSize="18sp"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/LoggingOn"
+    android:id="@+id/mainStatus"
+    />
+</LinearLayout>
+    
+<ListView 
+	style="?colorStyle"
+	android:divider="?colorDivider"
+	android:layout_above="@+id/mainBottomBox"
+	android:layout_below="@+id/mainTitleBox"
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent" 
+	android:fastScrollEnabled="true"
+	android:id="@+id/mainButtons"
+	/>
+
+<LinearLayout 
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content" 
+	android:orientation="vertical"
+	android:layout_alignParentBottom="true"
+	android:id="@+id/mainBottomBox"
+	>
+<LinearLayout 
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content"
+	android:layout_marginTop="6dp" 
+	android:layout_marginBottom="6dp"
+	android:orientation="horizontal"
+	>
+<TextView 
+	style="?colorStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="10sp"
+	android:text="@string/author"
+	/> 
+<TextView
+	style="?colorStyle" 
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="10sp"
+	android:text="Michael Dobbins     "
+	/>
+<TextView 
+	style="?colorStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="10sp"
+	android:text="@string/version"
+	/> 
+<TextView 
+	style="?colorStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="10sp"
+    android:text="@string/blank5"
+    android:id="@+id/versionTxt"
+	/> 
+</LinearLayout>
+
+</LinearLayout>
+</RelativeLayout>
+

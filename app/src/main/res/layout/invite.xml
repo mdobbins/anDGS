@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    
+    <TableLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/inviteTopMenu" 
+    android:stretchColumns="*">
+<TableRow>
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".92"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="left"
+    android:textSize="18sp"
+    android:text="@string/inviteTitle"
+    />
+
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".08"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="center"
+    android:id="@+id/inviteTMHelp"
+    android:text="@string/QMark"
+    />
+</TableRow>
+</TableLayout>
+
+<ScrollView 
+	android:layout_height="fill_parent" 
+	android:layout_width="fill_parent"
+	android:layout_below="@+id/inviteTopMenu"
+	android:layout_above="@+id/inviteSubmitLayout"
+	>  
+<LinearLayout 
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content" 
+	android:background="?colorDivider"
+	android:orientation="vertical">  	    
+
+<LinearLayout 
+    style="?colorStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/inviteToUserIdLabel"
+    android:layout_margin="1dp">	
+ <TextView
+    style="?colorStyle"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:text="@string/UserId"
+    android:layout_margin="5dp"
+    />	
+ <TextView
+    style="?colorStyle"
+    android:textSize="18sp"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:text=""
+    android:id="@+id/inviteToUserIdEdit"
+    android:layout_margin="5dp"
+    />
+</LinearLayout>
+	<LinearLayout
+		style="?colorStyle"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/inviteRulesLabel"
+		android:layout_margin="1dp">
+		<Spinner
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:prompt="@string/selectBoardSize"
+			android:id="@+id/inviteRulesSpinner"
+			android:layout_margin="5dp"
+			/>
+		<TextView
+			style="?colorStyle"
+			android:textStyle="bold"
+			android:textSize="18sp"
+			android:layout_height="wrap_content"
+			android:text="@string/selectRules"
+			android:layout_width="wrap_content"
+			android:layout_margin="5dp"
+			/>
+	</LinearLayout>
+<LinearLayout
+    style="?colorStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/inviteBoardSizeLabel"
+    android:layout_margin="1dp">
+ <Spinner
+	android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:prompt="@string/selectBoardSize"
+    android:id="@+id/inviteBoardSizeSpinner"
+    android:layout_margin="5dp"
+    />
+ <TextView
+    style="?colorStyle"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_height="wrap_content"
+    android:text="@string/selectBoardSize"
+    android:layout_width="wrap_content"
+    android:layout_margin="5dp"
+    />
+</LinearLayout>
+
+<LinearLayout 
+	style="?colorStyle" 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/inviteGameTypeLabel"
+    android:layout_margin="1dp">
+ <Spinner 
+	android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:prompt="@string/selectGameType"
+    android:id="@+id/inviteGameTypeSpinner"
+    android:layout_margin="5dp"
+    />
+ <TextView
+    style="?colorStyle"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:text="@string/selectGameType"
+    android:layout_margin="5dp"
+    />
+</LinearLayout>
+<LinearLayout 
+	style="?colorStyle" 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/inviteColorLabel"
+    android:layout_margin="1dp">
+ <Spinner 
+	android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:prompt="@string/selectYourColor"
+    android:id="@+id/inviteColorSpinner"
+    android:layout_margin="5dp"
+    />
+ <TextView
+    style="?colorStyle"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:text="@string/selectYourColor"
+    android:layout_margin="5dp"
+    />
+</LinearLayout>
+<LinearLayout 
+	style="?colorStyle" 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/inviteHandicapLabel"
+    android:layout_margin="1dp">
+ <Spinner 
+	android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:prompt="@string/selectHandicap"
+    android:id="@+id/inviteHandicapSpinner"
+    android:layout_margin="5dp"
+    />
+ <TextView
+    style="?colorStyle"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:text="@string/selectHandicap"
+    android:layout_margin="5dp"
+    />
+</LinearLayout>
+<LinearLayout 
+	style="?colorStyle" 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/inviteKomiLabel"
+    android:layout_margin="1dp">
+<TextView
+    style="?colorStyle"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:text="@string/specifyKomi"
+    android:layout_margin="5dp"
+    />	
+<TextView
+    style="?colorStyle"
+    android:textSize="20sp"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:text="@string/blank5"
+    android:id="@+id/inviteKomiEdit"
+    android:layout_margin="5dp"
+    />
+</LinearLayout>
+<LinearLayout 
+	style="?colorStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/inviteMainTimeLabel"
+    android:layout_margin="1dp">
+<TextView
+    style="?colorStyle"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:text="@string/specifyMainTime"
+    android:layout_margin="5dp"
+    />	
+<TextView
+    style="?colorStyle"
+    android:textSize="20sp"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:text="@string/blank5"
+    android:id="@+id/inviteMainTimeEdit"
+    android:layout_margin="5dp"
+    />
+</LinearLayout>
+<LinearLayout  
+	style="?colorStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/inviteMainTimeUnitsLabel"
+    android:layout_margin="1dp">
+ <Spinner 
+	android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:prompt="@string/selectMainTimeUnits"
+    android:id="@+id/inviteMainTimeUnitsSpinner"
+    android:layout_margin="5dp"
+    />
+ <TextView
+    style="?colorStyle"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:text="@string/selectMainTimeUnits"
+    android:layout_margin="4dp"
+    />  
+</LinearLayout>
+<LinearLayout  
+	style="?colorStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/inviteFischerTimeLabel"
+    android:layout_margin="1dp">
+<TextView
+    style="?colorStyle"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:text="@string/specifyFischerTime"
+    android:layout_margin="5dp"
+    />	
+ <TextView
+    style="?colorStyle"
+    android:textSize="18sp"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:text="@string/blank5"
+    android:id="@+id/inviteFischerTimeEdit"
+    android:layout_margin="5dp"
+    />
+</LinearLayout>
+<LinearLayout 
+	style="?colorStyle" 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/inviteFischerTimeUnitsLabel"
+    android:layout_margin="1dp">
+ <Spinner 
+	android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:prompt="@string/selectFisherTimeUnits"
+    android:id="@+id/inviteFisherTimeUnitsSpinner"
+    android:layout_margin="5dp"
+    />
+ <TextView
+    style="?colorStyle"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:text="@string/selectFisherTimeUnits"
+    android:layout_margin="5dp"
+    /> 
+</LinearLayout>
+<LinearLayout 
+	style="?colorStyle" 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/inviteWeekendClockLabel"
+    android:layout_margin="1dp">
+ <CheckBox
+ 	style="?colorStyle"
+ 	android:textSize="18sp"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:text=""
+    android:id="@+id/inviteWeekendClock"
+    android:clickable="false"
+    android:layout_margin="5dp"
+    />
+ <TextView
+    style="?colorStyle"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:text="@string/weekendClock"
+    android:layout_margin="5dp"
+    /> 
+</LinearLayout>
+<LinearLayout  
+	style="?colorStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/inviteRatedGameLabel"
+    android:layout_margin="1dp">
+ <CheckBox
+ 	style="?colorStyle"
+ 	android:textSize="18sp"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:text=""
+    android:id="@+id/inviteRatedGame"
+    android:clickable="false"
+    android:layout_margin="5dp"
+    />
+ <TextView
+    style="?colorStyle"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:text="@string/ratedGame"
+    android:layout_margin="5dp"
+    /> 
+</LinearLayout>
+<LinearLayout 
+    style="?colorStyle"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/inviteMessageLabel"
+    >	
+<TextView
+    style="?colorStyle"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:text="@string/message"
+    android:padding="5dp"
+    android:layout_marginTop="1dp"/>	
+ <TextView
+    style="?colorStyle"
+    android:textSize="18sp"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:text=""
+    android:id="@+id/inviteMessageEdit"
+    android:padding="5dp"
+    />
+</LinearLayout> 
+</LinearLayout>
+</ScrollView>
+<LinearLayout 
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:layout_alignParentBottom="true"
+	android:layout_marginBottom="1dp"
+	android:background="?colorDivider" 
+	android:id="@+id/inviteSubmitLayout" >
+<TextView 
+	android:layout_height="wrap_content"
+	android:layout_width="fill_parent"
+	android:gravity="center"
+	android:textStyle="bold"
+    android:textSize="17sp"
+	android:layout_margin="1dp"
+	android:paddingTop="6dp"
+	android:paddingBottom="6dp"
+	style="?colorStyle" 
+	android:clickable="true"
+	android:text="@string/submit"
+    android:id="@+id/inviteSubmitButton"
+	/>
+</LinearLayout>
+	          
+</RelativeLayout>

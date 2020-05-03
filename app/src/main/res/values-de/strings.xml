@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+  <string name="Custom">Anwender</string>
+  <string name="monochrome">Einfarbig</string>
+  <string name="clamshell">Muschel</string>
+  <string name="prefsScaleLines">Linienbreite</string>
+  <string name="version">Version:</string>
+  <string name="author">Autor:</string>
+  <string name="help">anDGS ist ein Client, um Go (Igo, Weiqi, Baduk) auf der Website DragonGoServer.net zu spielen, und ein lokaler Spiel-Editor. Jede Ansicht hat Kontexthilfe über die Android-Menü-Taste.</string>
+  <string name="prefsButton">Einstellungen</string>
+  <string name="playButton">Auf neue Züge überprüfen</string>
+  <string name="prefsTitle">Bitte geben Sie Ihre DGS Nutzer-ID und das Passwort ein.</string>
+  <string name="prefsUser">Nutzer-ID:</string>
+  <string name="prefsServerURL">Server URL: </string>
+  <string name="prefsPassword">Passwort:</string>
+  <string name="doneButton">Fertig</string>
+  <string name="cancelButton">Abbrechen</string>
+  <string name="playTitle">Einen Zug machen</string>
+  <string name="blankButton"></string>
+  <string name="skipAllButton">Alle überspringen</string>
+  <string name="skipButton">Überspringen</string>
+  <string name="unzoomButton">&lt;&gt;</string>
+  <string name="undoButton">Rückgängig</string>
+  <string name="okButton">Absenden</string>
+  <string name="LoggingOn">Einloggen auf DGS läuft&#8230;</string>
+  <string name="GettingGame">Lade Partiedaten&#8230;</string>
+  <string name="NoGamesWaiting">Keine wartenden Partien</string>
+  <string name="SelectCancel">&quot;Abbrechen&quot; wählen</string>
+  <string name="back">&lt;</string>
+  <string name="forward">&gt;</string>
+  <string name="first">&lt;&lt;</string>
+  <string name="last">&gt;&gt;</string>
+  <string name="down">V</string>
+  <string name="up">A</string>
+  <string name="blank5">     </string>
+  <string name="home">Übersicht</string>
+  <string name="save">Speichern</string>
+  <string name="savedGame">Gespeicherte Partien</string>
+  <string name="newGame">Neue Partie</string>
+  <string name="Handicap">Vorgabe</string>
+  <string name="Komi">Komi</string>
+  <string name="GameSize">Brettgröße</string>
+  <string name="WhitePlayerName">Weißer Spieler:</string>
+  <string name="white">Weiß</string>
+  <string name="BlackPlayerName">Schwarzer Spieler:</string>
+  <string name="black">Schwarz</string>
+  <string name="game">Partie</string>
+  <string name="SGFSaveFileName">Partie speichern unter:</string>
+  <string name="CreateGame">Partie erstellen</string>
+  <string name="SetSGFFile">SGF-Datei wählen</string>
+  <string name="EnterFile">Bitte wählen Sie die Datei zum Speichern der SGF aus</string>
+  <string name="Ok">Ok</string>
+  <string name="SetWhitePlayerName">Name des weißen Spielers</string>
+  <string name="SetBlackPlayerName">Name des schwarzen Spielers</string>
+  <string name="EnterName">Bitte geben sie einen Namen ein</string>
+  <string name="SetDGSGameNumber">DGS Partienummer</string>
+  <string name="EnterNumber">Bitte geben Sie eine Nummer ein</string>
+  <string name="FileExists">Datei bereits vorhanden</string>
+  <string name="OpenFile">Möchten sie diese Datei öffnen?</string>
+  <string name="UseOldorNew">Alte Datei nutzen oder neue anlegen?</string>
+  <string name="SaveChangeCancel">Speichern, ändern und dann speichern, oder abbrechen</string>
+  <string name="UnsavedChanges">Ungespeicherte Änderungen</string>
+  <string name="RecoverOrNew">Ungespeicherte Partie wiederherstellen oder eine neue anlegen?</string>
+  <string name="Old">Alte</string>
+  <string name="New">Neue</string>
+  <string name="Recover">Wiederherstellen</string>
+  <string name="Save">Speichern</string>
+  <string name="Cancel">Abbrechen</string>
+  <string name="downLoadGame">Partie herunterladen</string>
+  <string name="up_one_level">..</string>
+  <string name="current_dir">.</string>
+  <string name="sgf_root_dir">sgfs</string>
+  <string name="recover_game">Partie wiederherstellen</string>
+  <string name="selectlayout">Layout auswählen</string>
+  <string name="MakeDirectoryFailed">Erstellen des Ordners fehlgeschlagen</string>
+  <string name="SaveRecoveryFailed">Speichern der Wiederherstellung fehlgeschlagen</string>
+  <string name="RecoveryNotDeleted">Wiederhergestellte Datei nicht gelöscht</string>
+  <string name="CloseFailed">Fehler beim Schließen der Datei</string>
+  <string name="SaveSGFFailed">SGF Speichervorgang fehlgeschlagen</string>
+  <string name="NotFound">nicht gefunden</string>
+  <string name="Help">Hilfe</string>
+  <string name="Pass">Passen</string>
+  <string name="Preferences">Einstellungen</string>
+  <string name="Credits">Danksagung</string>
+  <string name="playOptsTitle">Optionen für Spiel-Editor</string>
+  <string name="selectPlayMode">Modus</string>
+  <string name="Options">Optionen</string>
+  <string name="markUpTitle">Markierung für diesen Knoten setzen.</string>
+  <string name="NoFiles">Keine Dateien im Verzeichnis</string>
+  <string name="dcTitle">Dragon Go Server Client</string>
+  <string name="Status">Status</string>
+  <string name="DGSClient">DGS-Client</string>
+  <string name="AutoPlay">Autoplay</string>
+  <string name="prefsNotifierInterval">Benachrichtigungs-Intervall:  (in Sekunden)</string>
+  <string name="NotifierSound">Benachrichtigungs-Sound</string>
+  <string name="StartNotifier">Benachrichtigung starten</string>
+  <string name="StopNotifier">Benachrichtigung stoppen</string>
+  <string name="Games">Partien</string>
+  <string name="Messages">Nachrichten</string>
+  <string name="Waiting">Wartend</string>
+  <string name="GettingMsg">Lade Nachricht&#8230;</string>
+  <string name="GettingStatus">Statusinformationen&#8230;</string>
+  <string name="Resign">Aufgeben</string>
+  <string name="GameInfo">Spiel Information</string>
+  <string name="NotifierVibrate">Vibrieren bei Benachrichtigung</string>
+  <string name="TwoPasses">Zweimal passen, dann im Browser auszählen</string>
+  <string name="WhitePlayer">Weißer Spieler</string>
+  <string name="BlackPlayer">Schwarzer Spieler</string>
+  <string name="Rules">Regeln</string>
+  <string name="Date">Datum</string>
+  <string name="Overtime">Byoyomi</string>
+  <string name="TimeLeft">Restzeit</string>
+  <string name="Result">Ergebnis</string>
+  <string name="Nothing">Nichts</string>
+  <string name="portrait">Hochformat</string>
+  <string name="landscape">Querformat</string>
+  <string name="none">Nichts</string>
+  <string name="deflt">Standard</string>
+  <string name="stone">Stein</string>
+  <string name="NotifyAllDetails">Alle Details benachrichtigen</string>
+  <string name="NotifyPermanent">Permanent Notification</string>
+  <string name="dynamic">Dynamisch</string>
+  <string name="LogonFailed">Fehler bei der Anmeldung</string>
+  <string name="autoPlayInterval">Autoplay Intervall:</string>
+  <string name="autoplay">Autoplay</string>
+  <string name="AutoPlayPause">Autoplay Pause</string>
+  <string name="AutoPlaySound">Autoplay Sound</string>
+  <string name="browse">Blättern</string>
+  <string name="edit">Bearbeiten</string>
+  <string name="markup">Markierung</string>
+  <string name="stop">X</string>
+  <string name="go">O</string>
+  <string name="retrn">#</string>
+  <string name="AutoClient">Auto-Client</string>
+  <string name="grinderTitle">Nachspielen</string>
+  <string name="browseButton">Durchsuchen</string>
+  <string name="selectDirOrFile">Verzeichnis oder Datei auswählen:</string>
+  <string name="selectOrEnterDir">Verzeichnis auswählen oder eingeben</string>
+  <string name="select">Wählen Sie</string>
+  <string name="enter">Eingabe</string>
+  <string name="BadGameInfo">Ungültige Partie-Informationen!</string>
+  <string name="markUpLabel">Beschriftung:</string>
+  <string name="None">Nichts:</string>
+  <string name="Mark">Marke (X):</string>
+  <string name="Triangle">Dreieck:</string>
+  <string name="Circle">Kreis:</string>
+  <string name="Square">Quadrat:</string>
+  <string name="WhiteTerritory">Weißes Gebiet:</string>
+  <string name="BlackTerritory">Schwarzes Gebiet:</string>
+  <string name="AddEmpty">Stein entfernen:</string>
+  <string name="AddWhite">Weißen Stein setzen:</string>
+  <string name="AddBlack">Schwarzen Stein setzen:</string>
+  <string name="SetHandicap">Vorgabe mit Browser einstellen</string>
+  <string name="IllegalMove">Illegaler Zug</string>
+  <string name="CreateVariation">Variante erstellen</string>
+  <string name="ReplaceOneMove">Einen Zug ersetzen</string>
+  <string name="ReplaceAllMoves">Alle Züge ersetzen</string>
+  <string name="MoveControl">Zug-Eingabe</string>
+  <string name="Zoom7x7">Zoom 7x7</string>
+  <string name="Zoom9x9">Zoom 9x9</string>
+  <string name="Zoom11x11">Zoom 11x11</string>
+  <string name="Zoom13x13">Zoom 13x13</string>
+  <string name="Dpad">D-Pad</string>
+  <string name="yes">Ja</string>
+  <string name="no">Nein</string>
+  <string name="Tutorial">Tutorial</string>
+  <string name="GoToTutorial">Eine Go-Spielanleitung gibt es auf der Website PlayGo.to (Flash Player erforderlich).\n 
+Möchten Sie einen Browser starten und dorthin gehen.</string>
+  <string name="SupportApp">anDGS unterstützen</string>
+  <string name="SetPreference">Einstellung vornehmen</string>
+  <string name="guessmove">Zug erraten</string>
+  <string name="correct">korrekt</string>
+  <string name="incorrect">falsch</string>
+  <string name="next">Weiter</string>
+  <string name="start">Start</string>
+  <string name="EmptyStatus">Keine wartenden Nachrichten oder Partien</string>
+  <string name="Failed">Verbindung fehlgeschlagen, Ergebnis:</string>
+  <string name="Comment">Kommentar</string>
+  <string name="EditComment">Kommentar eingeben oder bearbeiten</string>
+  <string name="inviteTitle">Benutzer zu einer Partie einladen</string>
+  <string name="DownloadOrInvite">Downloaden oder Einladen</string>
+  <string name="InviteUser">Benutzer einladen</string>
+  <string name="MessageUser">Nachricht für Benutzer</string>
+  <string name="runningGames">Laufende Partien</string>
+  <string name="teamGames">Team Spiele</string>
+  <string name="finishedGames">Beendete Partien</string>
+  <string name="NoGames">Keine Partien in der Liste</string>
+  <string name="selectBoardSize">Brettgröße:</string>
+  <string name="selectGameType">Partie-Typ:</string>
+  <string name="selectYourColor">Ihre Farbe:</string>
+  <string name="selectHandicap">Vorgabe:</string>
+  <string name="specifyKomi">Komi:</string>
+  <string name="specifyMainTime">Grundbedenkzeit:</string>
+  <string name="selectMainTimeUnits">Grund-Zeiteinheit:</string>
+  <string name="specifyFischerTime">Fischerzeit:</string>
+  <string name="selectFisherTimeUnits">Fischerzeit-Einheit:</string>
+  <string name="weekendClock">Uhr läuft am Wochenende:</string>
+  <string name="ratedGame">Gewertete Partie:</string>
+  <string name="UserId">Nutzer-ID:</string>
+  <string name="Uid">Uid:</string>
+  <string name="findUserTitle">Suchen Sie einen Benutzer nach UserId oder Benutzername</string>
+  <string name="Japanese">Japanese</string>
+  <string name="Chinese">Chinese</string>
+  <string name="selectRules">Regeln:</string>
+  <string name="messageId">Nachricht Id:</string>
+  <string name="message">Nachricht:</string>
+  <string name="conventionalGame">Konventionell</string>
+  <string name="properGame">Passend</string>
+  <string name="manualGame">Manuell</string>
+  <string name="doubleGame">Doppelt</string>
+  <string name="evenGame">Gleichauf</string>
+  <string name="hours">Stunden</string>
+  <string name="days">Tage</string>
+  <string name="months">Monate</string>
+  <string name="submit">Absenden</string>
+  <string name="messageTitle">Senden Sie eine Nachricht an einen Benutzer</string>
+  <string name="Subject">Betreff:</string>
+  <string name="From">From:</string>
+  <string name="send">senden</string>
+  <string name="sending">Senden&#8230;</string>
+  <string name="oneTouch">Ein-Klick</string>
+  <string name="BoardCoordinates">Brettkoordinaten</string>
+  <string name="defaultEditMode">Standard-Editiermodus</string>
+  <string name="observedGames">Beobachtete Partien</string>
+  <string name="captured">Gefangen</string>
+  <string name="KeepScreenOn">Bildschirm anlassen</string>
+  <string name="DefaultDir">Standard SGF-Verzeichnis</string>
+  <string name="selectTheme">Wählen Sie Theme</string>
+  <string name="BlackOnWhite">Schwarz auf Weiß</string>
+  <string name="WhiteOnBlack">Weiß auf Schwarz</string>
+  <string name="BlueOnWhite">Blau auf Weiß</string>
+  <string name="MetallicGrey">Metallic Grau</string>
+  <string name="play">spielen</string>
+  <string name="all">alle</string>
+  <string name="SetValue">Wert eingeben</string>
+  <string name="prefsEditNumPrev">Beim Ändern: Ändern des Zählers für Anzahl vorhergehender Züge</string>
+  <string name="prefsPlayNumPrev">Beim Blättern: Ändern des Zählers für Anzahl vorhergehender Züge</string>
+  <string name="reply">Antworten</string>
+  <string name="Info">Info</string>
+  <string name="DeleteCurrentMove">Löscht den aktuellen Zug</string>
+  <string name="InsertBlackMove">Zug von Schwarz einfügen</string>
+  <string name="InsertWhiteMove">Zug von Weiß einfügen</string>
+  <string name="Warning">Warnung</string>
+  <string name="DeleteManyBranches">Es gibt andere Zweige, die auch verloren gehen! Fortsetzen?</string>
+  <string name="BoardBackground">Brett Hintergrund</string>
+  <string name="Plain">Einfarbig</string>
+  <string name="Wood">Holz</string>
+  <string name="prefsSkipMoves">Schrittweite beim Blättern</string>
+  <string name="EditDisplayTopMenu">Anzeige Top Menü beim Bearbeiten</string>
+  <string name="PlayDisplayTopMenu">Anzeige Top Menü beim Blättern</string>
+  <string name="QMark">"?"</string>
+  <string name="selectLocale">Sprache</string>
+  
+	<string name="HandicapToSet">Handicap auf</string>
+	<string name="HandicapFree">Freie Platzierung</string>
+	<string name="EndGame">Spiel beenden</string>
+	<string name="gameListOrder">Spielliste Reihenfolge</string>
+	<string name="statusPage">Statusseite</string>
+	<string name="noOrder">Ohne Reihenfolge</string>
+	<string name="lastMoved">Letzte Verschobene</string>
+	<string name="moves">Züge</string>
+	<string name="priority">Priorität</string>
+	<string name="timeLeft">Restzeit</string>
+	<string name="Browser">Benutze Browser</string>
+	<string name="GameNotes">Spiel Hinweise</string>
+	<string name="Score">Auszählen</string>
+	<string name="FinishScore">Auszählen beenden</string>
+	<string name="MarkScore">Auszählung markieren</string>
+	<string name="AcceptScore">Auszählung akzeptieren</string>
+	<string name="ResumePlaying">Wiedergabe fortsetzen</string>
+	<string name="Delete">Löschen</string>
+	<string name="ResignDelete">Aufgeben Löschen</string>
+	<string name="GettingList">Lade Liste&#8230;</string>
+	<string name="JoiningGame">Spiel beitreten&#8230;</string>
+	<string name="waitingRoom">Warteraum</string>
+	<string name="JoinGame">Spiel beitreten</string>
+	<string name="accept">Akzeptieren</string>
+	<string name="decline">Ablehnen</string>
+	<string name="Logon">Melden Sie sich an</string>
+	<string name="WhiteOnGreen">Weiß auf Grün</string>
+	<string name="Slide">Verschiebe Stein</string>
+    <string name="PredictedMoves">Prognostizierte verschieben</string>
+    <string name="noPredictedMoves">Prognostizierte Moves sind nicht gefunden</string>
+    <string name="AutoStartNotifier">Auto Start Notifier</string>
+  <string name="gameLists">Spielelisten</string>
+  <string name="utilities">Dienstprogramme</string>
+  <string name="findUser">Einen Benutzer finden</string>
+  <string name="GetUserGraph">Bewertungsgraph anzeigen</string>
+  <string name="startDate">Start Date: Month / Year</string>
+  <string name="endDate">End Date: Month / Year</string>
+  <string name="UnsupportedGameAction">Unsupported game action, user browser to resolve</string>
+  <string name="ErrorHistory">Fehlerhistorie</string>
+  <string name="noErrors">Keine Fehler</string>
+  <string name="deleteAll">Alles löschen</string>
+
+    <string name="HelpMain">DGS-Client - Melden Sie sich bei DGS auf der Website DragonGoServer.net an, um zu spielen oder Partien herunterzuladen.\n 
+\n 
+Gespeicherte Partien - aus einer Liste von lokal gespeicherten Partien zum Anzeigen oder Bearbeiten auswählen.\n 
+\n 
+Neue Partie - Neue lokale Partie erstellen.\n 
+\n 
+Nachspielen - Lokale Partien durchlaufen (einzelne Datei oder ein Verzeichnis von Dateien) und entweder automatisch abspielen oder den nächsten Zug erraten.\n 
+\n 
+Partie wiederherstellen - erscheint, wenn eine lokale Partie ungespeicherte Änderungen hat.\n 
+\n 
+Einstellungen - (Android-Menü) Festlegen von DGS Nutzer-ID und Passwort sowie anderer Parameter und Einstellungen.\n 
+\n 
+Benachrichtigung starten/stoppen - (Android-Menü) Starten oder stoppen des DGS-Benachrichtigungs-Diensts.\n 
+\n 
+Tutorial - (Android-Menü) Go Spielen für Anfänger. Verlinkt zu PlayGo.to, was einen installierten Flash Player benötigt.\n
+\n
+Open/Download - (Extern) Öffne eine SGF Datei in einem externen Dateimanager öffnet sie im Spiel Editor. Ein SGF link in einem Webbrowser speichert die Datei durch den Browser, wo man sie mit Spiel Editor öffnen kann, oder öffnet sie direkt in Spiel Editor, abhängig von der Web Browser und der Konfiguration der Web Seite.  \n 
+</string>
+
+  <string name="HelpPrefs">Parameter und Einstellungen für anDGS ändern. Taste &quot;Speichern&quot; verwenden, um die Änderungen zu speichern, oder Standard-Taste &quot;Zurück&quot;, um die Änderungen zu verwerfen.\n
+\n
+Nutzer-ID und Passwort - Verwendet zur Anmeldung an DragonGoServer.net.\n
+\n
+Auto-Client - Automatische Anmeldung und Abruf der wartenden Partien.\n
+\n
+Auto Start Notifier - enable DGS App to automatically start the notifier. This helps to process predicted move sequences. \n
+\n
+Bildschirm anlassen - Schaltet den Bildschirm nicht aus solange ein Spiel angezeigt wird. \n
+\n 
+Layout auswählen - Bildschirm-Layout Hoch- oder Querformat. Beendet anDGS, weil  Änderung erst nach Neustart wirksam wird.\n
+ - Portrait \n
+ - Landschaft \n 
+
+Zug-Eingabe - Steuert, wie Züge gemacht werden. Entweder Zoom 7x7 oder 9x9, D-Pad (Steuerkreuz) oder durch einen einzigen Klick.\n
+ - 7x7 zoom \n
+ - 9x9 zoom \n
+ - 11x11 zoom \n
+ - 13x13 zoom \n
+ - D-Pad (directional key pad) \n
+ - Ein Druck \n 
+\n
+Wähle Theme - Wähle der Farbeinstellungen der app. \n 
+\n
+Sprache - Wähle die Sprache für die app. \n 
+\n
+Brettkoordinaten - Steuert die Anzeige der Koordinaten am Rand des Bretts.\n
+\n
+Brett Hintergrund- Setzt den Hintergrund des Brettes für Edit/Play, Optionen: \n
+ - "Weiß" Farbe \n
+ - "Einfarbig" Farbe \n
+ - "Wood" Textur \n
+ - "Anwender" anwenderdefinierte Farbe \n
+\n 
+Linienbreite - Stellt die Linenbreite auf dem Brett ein. 1.0 ist Standard, 2.0 is doppelte Breite, 0.5 ist  halbe Breite. \n 
+\n 
+Stein - Setzt die Art der Steine für Edit/Play. Optionen: \n
+ - "Einfarbig", einfach schwarz und weiß \n
+ - "Clam Shell", Schiefer oder Muschel Textur \n
+\n 
+Standard-Editiermodus - Steuert den anfänglichen Editiermodus für Partien, die über die Ansicht &quot;Gespeicherte Partien&quot; aufgerufen werden.\n
+\n
+Reihenfolge der Spielliste - Erlaubt das Sortieren der Spiele in der Stautsliste, kontrolliert die Reihenfolge, in  der die Spiele dargestellt werden durch  Auto Client of Check for Moves. \n 
+ - Status Seite - Die Reihenfolge für deine Status Seite bei der Benutzung des Browsers. \n
+ - Keine Reihenfolge - der effektivste Zugriff auf die DGS Datenbasis, keine vorhersagbare Reihenfolge. \n
+ - Letzter Zug - sortiert nach der Zeit des letzten Zuges des Gegners. \n
+ - Anzahl der Züge - sortiert nach der Anzahl der Züge im Spiel. \n
+ - Priorität - sortiert nach einer anwenderdefinierten Priorität. \n
+ - Restzeit - sortiert nach der verbleibenden Restzeit des  Spiels. \n
+\n
+Sprungzahl - Im Editor setzt die die Anzahl der Züge zum Vorwärts/Rückwärtsblättern mit einem kurzen Tastendruck auf die FF/Rew Tasten. Minimum ist 2. \n
+\n 
+Edit/Play, Anzahl für letzte Züge - Im Editor oder DGS player setzt dies die Anzahl markierten letzten Züge. Werte zwischen  -9 bis  99 erlaubt. 0 bedeutet keine Nummerierung.  Bei negativen Werten startet die Nummerierung mit -1 beim letzten Zug und zählt weiter nach unten bis zur spezifizierten Anzahl.  Für positive Werte startet die Nummerierung mit der spezifizierten Anzahl (oder der Nummer vorheriger Züge, wenn das kleiner ist als die spezifizierte Anzahl beim vorigen Zug geht dann runter bis 1. Die Nummerierung wird beendet bei Passen Ko oder dem Beginn des Spiels. \n
+\n 
+Spiel Notizen - erlaubt die Darstellung von Spielnotizen im aktiven Spiel auf DGS ,wenn du ziehst. \n
+\n
+Benachrichtigungs-Sound - Sound bei Benachrichtigung einstellen. \n
+
+
+
+\n
+Benachrichtigungsintervall - Der initiale Zeitabstand in Sekunden, in dem auf DGS nach Partien und Nachrichten gesucht wird. Der kleinste Wert ist 30 Sekunden. In Zeiten ohne Aktivitität wird der Wert bis auf 15 Minuten ausgedehnt, um die Serverbelastung gering zu halten. Einstellungen größer als 15 Minuten bleiben unverändert. \n
+\n
+Vibrieren bei Benachrichtigung - Vibration bei eingehender Benachrichtigung. \n
+\n
+Nachricht bei Fehlern - Benachrichtigung über Kommunikationsfehler im Benachrichtigungs-Dienst an- oder abstellen.\n
+\n
+Autoplay Intervall - Anzahl der Sekunden zwischen Zügen im Autoplay-Modus.\n
+\n
+Autoplay Pause - Autoplay pausiert, wenn eine Partie im Autoplay-Modus startet oder in einer Partie in den Autoplay-Modus gewechselt wird.\n
+\n
+Auto Play Ton - spielt einen Ton im Auto Play Modus, wenn ein Zug auf dem Brett gesetzt wird. \n 
+\n
+Standard SGF Verzeichnis - das Standardverzeichnis wo SGF Dateien gespeichert werden und der Startpunkt zum Suchen nach einer SGF Datei zum Öffnen. Ein einfacher Name (z.B. sgfs) ist das Verzeichnis im Standarderzeichnis des Systems. Ein Wert,der mit einem "/" ermöglicht das Spezifizieren eines vollständigen Pfads vom Root Verzeichnis des Systems. \n 
+\n
+Server URL - the URL for the DGS server. Useful to connect to the development server or your own private DGS implementation. \n 
+\n
+</string>
+  
+  <string name="HelpPlay">Überspringen - Diese Partie überspringen und zur nächsten gehen.\n
+\n
+Alle überspringen - Alle verbleibenden Partien überspringen und zurück zur Hauptansicht (wie die Zurück-Taste).\n
+\n
+Rückgängig - Gewählten Zug rückgängig machen und noch einmal versuchen.\n
+\n
+Absenden - Zug an den Server senden.\n
+\n
+Im Zoom-Modus das Brett berühren, um diesen Bereich zu vergrößern, dann nochmals berühren, um einen Zug zu machen.\n
+Im D-Pad-Modus das Brett berühren, um diesen Bereich zu wählen, dann das Steuerkreuz benutzen, um die Auswahl verfeinern und den Zug zu machen.\n
+Im Ein-Klick-Modus das Brett einmal berühren, um dort einen Zug zu machen.\n
+\n
+&lt;&gt; - Zurück zur Gesamtansicht des Bretts, um ein anderes Gebiet zu wählen.\n
+\n
+Kommentare werden unterhalb der Tasten angezeigt. Nachdem ein Zug gemacht wurde, kann mit der &quot;Kommentar&quot;-Taste ein Kommentar erstellt oder bearbeitet werden. Die Taste &quot;Rückgängig&quot; macht auch den Kommentar rückgängig.\n
+\n
+Wenn "SpielHinweise" aktiv ist, werden Spielhinweise zwischen dem Kommentar und den Navigationstasten. "Spielhinweise" drücken, um den kompletten Hinweis zu sehen und zu ändern. \n
+Über das Menü kann man passen oder aufgeben, statt einen Zug zu machen. Darüber hinaus können Sie die aktuelle Partie in den lokalen Editor herunterladen.\n
+\n
+Predicted Moves - You may play ahead for a single sequence of moves, no branching.  Selecting the last move in the predicted sequence will delete it.  Undo will start over at the last real opponent move.  Running the notifier will allow these predicted moves to be played in the background. Otherwise, "Check for moves" will play any correct predicted moves before opening the board for manual moves. An incorrect predicted opponent move will clear the predicted moves for that game. Playing in a game via the Status list will clear the predicted moves for that game.  A comment is only allowed on the first move of a predicted sequence. A comment from the opponent will interrupt the predicted sequence. \n
+</string>
+  
+  <string name="HelpSaved">Berühren Sie den Namen der Partie, um sie zu öffnen oder auszuwählen.\n 
+Tippen Sie auf einen Verzeichnisnamen um dorthin zu wechseln oder es auszuwählen.\n
+Die "Punkt" Eingaben sind spezielle Werte: \n
+"." - Aktualisiere die Anzeige des aktuellen Verzeichnisses. \n
+".." - Gehe ein Verzeichnis höher als das aktuelle. \n
+</string>
+
+  <string name="HelpNew"> Spielfeld-Größen reichen von 5x5 bis 19x19.\n
+\n
+Vorgabe kann 0-9 auf 11x11, 13x13, 15x15, 17x17 oder 19x19 sein, 0-5 auf 9x9 und 0-4 auf 7x7. Andere Größen haben Vorgabe 0.\n
+Es gibt ein Kästchen "frei Platzierung" das es erlaubt, die ausgewählte Anzahl von Handicap Steinen manuell z setzen. \n
+\n
+Komi kann -9,5 bis 9.5 sein, (keine ganzzahligen Werte).\n
+\n
+Spielernamen für Schwarz und Weiß können eingestellt werden.\n
+\n
+An den Partienamen wird automatisch &quot;.sgf&quot; angehängt. Die Datei wird im Verzeichnis &quot;sgfs&quot; auf dem externen Speicher des Gerätes abgelegt.\n
+</string>
+  
+  <string name="HelpEdit">Die folgenden Tasten erscheinen unter dem Brett.\n 
+  &lt;&lt; - an den Anfang gehen.\n 
+  &lt; - zum vorherigen Zug gehen.\n 
+  &gt; - zum nächsten Zug gehen.\n 
+  &gt;&gt; - bis zum letzten Zug auf dem Hauptzweig gehen.\n 
+  V - zur nächsten Variante dieses Zuges gehen.\n 
+  A - zur vorherigen Variante dieses Zuges gehen.\n 
+\n
+Unter den Steuertasten ist eine Kommentar-Taste, mit der man Kommentare eingeben oder ändern kann.\n
+\n
+Die Menü Knöpfe (sowhl oben als auch von Android) ermöglichen eine Reihe von Funktionen: \n
+ - Spielende - Passen, Aufgeben und Auszählen \n
+ - Spiel Info - Extra Informationen, die in der Spielaufzeichnung enthalten sind. \n
+ - Speichern - Speichert das Spiel auf einen externen Speicher. \n
+ - Modus - Zeigt den aktuellen Modus an und kann ihn ändern. \n
+ - ? - Diese Hilfe Seite. \n
+Das Android Menü hat eine Options Taste, um verschieden Voreinstellungen für das aktuelle Spiel zu ändern. \n
+\n
+Im Bearbeitungs-Modus:\n
+  Um einen Zug nach dem letzen Zug des Spiels oder einer Variante anzuhängen, einen leeren Punkt wählen.\n
+  Um den letzten Zug der Partie oder einer Variante zu löschen, diesen Zug wählen.\n  
+  Jeder Zug nicht am Ende der Partie oder einer Variante öffnet ein Popup-Menü um\n
+  - eine Variante zu erstellen, \n
+  - den aktuellen Zug auf einen anderen, leeren Punkt zu versetzen oder \n
+  - den aktuellen Zug auf einen anderen, leeren Punkt zu versetzen und den Rest des Zweigs zu löschen.\n
+ - Lösche aktuellen Zug.\ 
+ - Einfügen eines schwarzen Zug nach dem aktuellen an der gewählten Position. \n
+ - Einfügen eines weißen Zug nach dem aktuellen an der gewählten Position. \n 
+ "Passen" im Menü fügt "Passen-Züge ein oder löscht sie oder ersetzt einen regulären Zug durch einen "Passen"-Zug. /n 
+\n
+Im Bättern-Modus:\n
+  Auswahl eines Steins springt zum ersten Vorkommen dieses Zugs in der Partie.\n
+  Im Zug-Eingabe-Modus &quot;Zoom&quot; können die Cursortasten benutzt werden, um durch den Spielbaum zu navigieren, und die mittlere Steuertaste öffnet ein Kommentarfenster.\n
+\n
+Im Autoplay-Modus:\n
+  Die Taste &gt;&gt; ändert ihre Funktion zu Stoppen und Starten der automatischen Wiedergabe. Die anderen Tasten funktionieren wie gewohnt.\n 
+    X - Autoplay stoppen.\n 
+    O - Autoplay starten.\n 
+\n
+Im Zug-Erraten-Modus:\n
+  Die Taste &gt;&gt; ändert ihre Funktion zu Springen zur nächsten Autoplay-Partie. Die anderen Tasten funktionieren wie gewohnt.\n 
+    # - zurück, um mit nächster Partie fortzusetzen.
+    Die &quot;Zurück&quot;-Taste bricht das Nachspielen ab.\n 
+\n
+Zug-Eingabe - Zoom:\n 
+  Berührung des Bretts vergrößert den Bereich, um einen Zug zu machen.\n
+  &lt;&gt; - kehrt zur Gesamtansicht zurück.\n 
+  Brettgrößen kleiner oder gleich der gewählten Zoom-Stufe verwenden den Ein-Klick-Modus.\n
+\n
+Zug-Eingabe - D-Pad:\n
+  Berührung des Bretts fokussiert auf die Position in diesem Bereich. Mit dem Steuerkreuz kann die Position verfeinert und mit der mittleren Taste ein Zug gemacht werden.\n
+\n
+Zug-Eingabe - Ein-Klick:\n
+  Berührung des Bretts macht einen Zug an dieser Position.\n
+\n
+Modus und Autoplay-Optionen können über das Editor-Menü eingestellt werden.\n
+</string>
+  
+  <string name="HelpDownLoad">Sie können jede Partie auf DGS in den Spiel-Editor herunterladen und alle Features des Spiels-Editors damit verwenden.\n 
+\n 
+Die DGS-Partienummer ist ein erforderlicher Parameter.\n 
+Gespeichert wird in eine Datei namens &quot;Partie.sgf&quot;. Dies kann geändert werden, wenn diese bereits existiert.\n
+</string>
+  
+  <string name="HelpPlayOptions">Partieoptionen einstellen:\n 
+Änderungen dieser Optionen gelten nur für das aktuelle Spiel. 
+\n
+Modus:\n 
+ - Autoplay: um die Partie automatisch nachzuspielen.\n 
+ - Blättern: um zum Zug an der gewählten Position zu gehen.\n 
+ - Bearbeiten: um Züge zu machen oder Varianten durchzuspielen.\n 
+ - Zug erraten: um den nächsten Spielzug zu erraten, das kann jede hier beginnende Variante oder Passen sein.\n 
+ - Markierung: um Markierung und Beschriftung dieses Knotens zu bearbeiten.\n 
+Sprungzahl - Im Editor setzt die die Anzahl der Züge zum Vorwärts/Rückwärtsblättern mit einem kurzen Tastendruck auf die FF/Rew Tasten. Minimum ist 2. \n
+\n 
+Edit/Play, Anzahl für letzte Züge - Im Editor oder DGS player setzt dies die Anzahl markierten letzten Züge. Werte zwischen  -9 bis  99 erlaubt. 0 bedeutet keine Nummerierung.  Bei negativen Werten startet die Nummerierung mit -1 beim letzten Zug und zählt weiter nach unten bis zur spezifizierten Anzahl.  Für positive Werte startet die Nummerierung mit der spezifizierten Anzahl (oder der Nummer vorheriger Züge, wenn das kleiner ist als die spezifizierte Anzahl beim vorigen Zug geht dann runter bis 1. Die Nummerierung wird beendet bei Passen Ko oder dem Beginn des Spiels. \n
+\n
+Autoplay Intervall - Anzahl der Sekunden zwischen Zügen im Autoplay-Modus.\n 
+\n 
+Autoplay Pause - Autoplay pausiert, wenn in dieser Partie in den Autoplay-Modus gewechselt wird.\n 
+\n
+</string>
+  
+  <string name="HelpGrinder">Nachspielen aller Partien in einem Verzeichnis oder einer einzelnen Partie im gewählten Modus.\n 
+\n 
+Sie können den Pfad zu einem Verzeichnis oder einer Datei eingeben oder im Dateisystem auswählen.\n 
+Das Nachspielen der Liste der gewählten Dateien wird so lange wiederholt, bis mit der &quot;Zurück&quot;-Taste abgebrochen wird.\n 
+\n
+Modus:\n 
+ - Autoplay: um die Partie automatisch nachzuspielen.\n 
+- Blättern: In der Partie Auf die gewählte Brett Position zu navigieren. \n 
+- Ändern: Züge setzen oder Variationen erzeugen. \n 
+ - Zug erraten: um den nächsten Spielzug zu erraten, das kann jede hier beginnende Variante oder Passen sein.\n 
+\n 
+Autoplay Intervall - Anzahl der Sekunden zwischen Zügen im Autoplay-Modus.\n 
+Autoplay Pause - Autoplay pausiert beim Start jeder Partie in der Liste.\n 
+Start - um am Anfang der Liste der ausgewählten Dateien zu starten.\n 
+Weiter - um mit der nächsten Datei fortzufahren, wenn Sie die Partie mit der &quot;Zurück&quot;-Taste abgebrochen haben.\n 
+\n
+</string>
+  
+  <string name="HelpMarkUp">Hinzufügen oder Entfernen einer Markierung, eines Steins und/oder einer Beschriftung an einer Brettposition.\n 
+Wählen von &quot;nichts&quot; deaktiviert sowohl die Markierungs- als auch die Stein-Optionen. Beschriftungen, Markierungen und Steine können unabhängig voneinander gesetzt oder gelöscht werden.\n 
+Markierungen sind die Standard-SGF-Symbole Marke (X), Dreieck, Kreis, Quadrat, sowie weißes und schwarzes Gebiet.\n 
+Mit &quot;Stein entfernen&quot; und &quot;Weißen (bzw, Schwarzen) Stein setzen&quot; steuert man die Anzeige eines Steins. Dies wird hauptsächlich zum Erstellen von Diagrammen oder Go-Problemen verwendet.\n 
+Eine Beschriftung kann eine beliebige Folge aus Groß- und Kleinbuchstaben und Ziffern sein, allerdings werden nur die ersten beiden Zeichen angezeigt.\n
+</string>
+  
+  <string name="HelpClient">Hauptbildschirm für die Interaktion mit dem DGS-Server.\n
+\n
+Auf neue Züge überprüfen - Züge in wartenden Partien machen. Spielstart, Vorgabe-Einstellung oder Auszählen müssen über die normale Browser-Oberfläche vorgenommen werden. Die DGS-Client-Schnittstelle unterstützt derzeit nur, einen Zug auf dem Brett zu machen. Der Client implementiert auch Menü-Tasten für Passen oder Aufgeben. Alle anderen Aktionen müssen über einen Browser ausgeführt werden.\n
+\n
+Status - Alle wartenden Partien und Nachrichten anzeigen und einzeln auswählen.\n
+\n
+Laufende Partien - Eine Bildschirmseite Ihrer laufenden Partien. Die maximale Anzahl wird durch eine DGS-Einstellung für diese Seite gesteuert. Tippen Sie auf eine Partie, um sie in den lokalen Spiel-Editor herunterzuladen.\n
+\n
+Team Spiele - Zeigt die Seite deiner Spiele mit mehr als 2 Spielern. Dieselben Funktionen wie bei laufenden Spielen.  \n 
+\n 
+Beendete Partien - Eine Bildschirmseite Ihrer beendeten Partien. Die gleichen Funktionen wie &quot;Laufende Partien&quot;.\n
+\n
+Beobachtete Partien - Eine Bildschirmseite Ihrer beobachteten Partien. Die gleichen Funktionen wie &quot;Laufende Partien&quot;.\n
+\n
+Warteraum - Im Warterauem Spiele sehen, denen man beitreten kann. \n
+\n
+User Info - Zeigt Informationen eine Spielers. \n
+\n
+Spieler einladen - Führt zur Server Einladungssseite in einem Browser. \n
+\n
+Spieler Mitteilung - Schickt eine Mitteilung an einen anderen Spieler. Man muss die Spieler ID kennen. \n
+
+Partie herunterladen - Beliebige DGS-Partie in den lokalen Spiel-Editor herunterzuladen.\n
+\n
+Predicted Moves - The list of games where you have played ahead of the current move. Touch an entry to delete it. \n
+\n
+You may play ahead for a single sequence of moves, no branching.  Selecting the last move in the predicted sequence will delete it.  Undo will start over at the last real opponent move.  Running the notifier will allow these predicted moves to be played in the background. Otherwise, "Check for moves" will play any correct predicted moves before opening the board for manual moves. An incorrect predicted opponent move will clear the predicted moves for that game. Playing in a game via the Status list will clear the predicted moves for that game.  A comment is only allowed on the first move of a predicted sequence. A comment from the opponent will interrupt the predicted sequence. \n
+\n
+Benachrichtigung starten/stoppen - (Android-Menü) Starten oder stoppen des DGS-Benachrichtigungs-Diensts.\n
+\n
+</string>
+  
+  <string name="HelpStatus">Zeigt wartende Partien und Nachrichten auf dem DGS-Server an.\n 
+\n 
+Wählen Sie eine Partie aus der Liste, um einen Zug zu machen, oder wählen Sie eine Nachricht, um den Nachrichtentext zu sehen.\n
+</string>
+  
+  <string name="HelpGames">Zeigt Ihre laufenden, beendeten oder beobachteten Partien.\n 
+\n
+Nur eine Bildschirmseite mit Informationen wird angezeigt. Sie können die Anzahl der Partien durch Ändern der Optionen für Partie-Listen in Ihrem Profil auf dem DGS-Server ändern.
+\n
+Sie können eine Partie aus der Liste in den lokalen Editor herunterladen.\n 
+\n
+\n  
+oder zeigt verfügbare Warteraum Spiele an, denen man beitreten kann.
+\n 
+</string>
+
+  <string name="HelpMsg">Zeigt eine Nachricht vom DGS-Server an.\n 
+\n 
+Überspringe Alle - Wenn "Checking for Moves", Verlasse das DGS Client Hauptfenster. Sonst das gleiche wie "Fertig". \n
+\n
+Fertig - Beendet das Anschauen der Mitteilung und weiter. \n
+\n
+Antworten - Schickeneiner Antwort an einen anderne Spieler und "Weiter". \n
+\n
+Benutze Browser- Öffnet eine Mitteilung im Browser für eine bessere Formatierung und Nutzung von Links auf der Seite. \n
+\n
+</string>
+
+  <string name="HelpSendMsg">Schicke eine Nachricht an den Spieler. \n 
+\n
+Schicken - Abschicken der Nachricht und "Weiter".  \n
+</string>
+
+	<string name="HelpInvite">Einen anderen Spieler zu einem Spiel einladen. \n
+\n
+Schicken - Einladung abschicken. \n
+</string>
+
+  <string name="HelpGetGraph">Display the rating graph for a user. \n
+\n
+Submit - Get the graph in a browser. \n
+</string>
+
+  <string name="HelpFindUser">Display list of users in the prowser. \n
+\n
+Submit - Get the user list in a browser. \n
+</string>
+
+	<string name="HelpPhrases">Erzeugen oder benutzen einer anwenderdefinierten Phrase. \n 
+\n 
+Klicke auf eine Pahrase oder den "." um optional die Phrase zu ändern oder in einem Kommentar zu benutzen. Eine Phrase darf keinen Zeilenumbruch enthalten und muss aus einer einzigen zele bestehen. \n
+</string>
+  
+  <string name="HelpGameInfo">Zeigt die aktuellen Partie-Informationen.\n 
+\n
+</string>
+  
+	<string name="HelpUserInfo">Zeigt Spieler Informationen an. \n 
+\n 
+</string>
+
+  <string name="HelpLogon">Nutzer-ID- und Passwort müssen eingestellt sein, um den DGS-Client zu verwenden.\n 
+\n 
+Wenn Sie keine DGS-Nutzer-ID haben, verwenden Sie bitte einen Browser, um auf die Seite DragonGoServer.net zu gehen und ein kostenloses Benutzerkonto zu eröffnen.\n
+</string>
+  
+  <string name="HelpPredictedMoves">Zeigt Prognostizierte Moves. Format: \n
+Spiel-ID! timestamp ! bewegt ... \n
+</string>
+
+  <string name="HelpErrorHistory">Displays the last 20 communication errors or failures \n
+</string>
+
+  <string name="HelpUnknown">Unbekannter Hilfe-Typ </string>
+  <string name="HelpCredits">
+Danksagung:\n       
+Entwickler: Michael Dobbins\n
+Chinesische Übersetzung: 安卓网汉化 www.hiapk.com\n
+Deutsche Übersetzung: Jonas Sorgalla, Christian auf der Horst\n
+Italian Translation: Emanuele Cisbani \n
+Koreanische Übersetzung: Kyoungnam Ahn\n
+Russische Übersetzung: Sergy Volkov, Damir Sultanbekov\n
+</string>
+    <string name="app_name">anDGS</string>
+    <string name="WhiteOnBlue">"Weiß auf Blau "</string>
+    <string name="gameEditor">Spieleditor</string>
+    <string name="editPhrases">Sätze bearbeiten</string>
+    <string name="returnButton">Rückkehr</string>
+    <string name="MetallicGreyInverse">Metallic Grey Inverse</string>
+    <string name="GreenOnWhite">Grün auf Weiß</string>
+  <string name="userActions">Benutzeraktionen</string>
+  <string name="UserName">Nutzername:</string>
+    <string name="HelpFilePermissions">Um App-Informationen wie Spieledateien, vorhergesagte Bewegungen, Kommentarphrasen und Fehlerhistorie speichern zu können, müssen Sie die Dateispeicherberechtigung in den App-Einstellungen aktivieren.</string>
+    <string name="dbg">Debug</string>
+</resources>

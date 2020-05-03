@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>   
+    <string-array name="my_locales_array">
+        <item></item>
+        <item>en</item>
+        <item>de</item>
+        <item>it</item>
+        <item>ko</item>
+        <item>ru</item>
+        <item>zh</item>
+    </string-array>
+    <string-array name="my_languages_array">
+        <item>@string/deflt</item>
+        <item>English - en</item>
+        <item>Deutsch - de</item>
+        <item>Italiano - it</item>
+        <item>한국의 - ko</item>
+        <item>Pусский - ru</item>
+        <item>中文 - zh</item>
+    </string-array>
+</resources>

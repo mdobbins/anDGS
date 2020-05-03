@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Custom">习惯</string>
+    <string name="monochrome">单色</string>
+    <string name="clamshell">Clam Shell</string>
+    <string name="prefsScaleLines">行宽</string>
+    <string name="version">版本:</string>
+    <string name="author">作者:</string>
+    <string name="help">anDGS是在线围棋网站DragonGoServer.net的客户端，也是一个本地棋谱编辑器，在本程序的各界面可以点击安卓系统的菜单键查看使用帮助。</string>
+    <string name="prefsButton">程序设置</string>
+    <string name="playButton">检查是否有行棋</string>
+    <string name="prefsTitle">请输入您的DGS用户名和密码，并设置其它内容。</string>
+    <string name="prefsUser">用户名:</string>
+    <string name="prefsServerURL">服务器URL:</string>
+    <string name="prefsPassword">密码:</string>
+    <string name="doneButton">完成</string>
+    <string name="cancelButton">取消</string>
+    <string name="playTitle">下棋</string>
+    <string name="blankButton"> </string>
+    <string name="skipAllButton">跳过全部</string>
+    <string name="skipButton">跳过</string>
+    <string name="unzoomButton">&lt;&gt;</string>
+    <string name="undoButton">还原</string>
+    <string name="okButton">提交</string>
+    <string name="LoggingOn">正在登录DGS&#8230;</string>
+    <string name="GettingGame">正在获取棋局&#8230;</string>
+    <string name="NoGamesWaiting">没有该您下的棋局</string>
+    <string name="SelectCancel"> 选择取消</string>
+    <string name="back">&lt;</string>
+    <string name="forward">&gt;</string>
+    <string name="first">&lt;&lt;</string>
+    <string name="last">&gt;&gt;</string>
+    <string name="down">V</string>
+    <string name="up">A</string>
+    <string name="blank5"> </string>
+    <string name="home">家</string>
+    <string name="save">保存</string>
+    <string name="savedGame">本地保存的棋谱</string>
+    <string name="newGame">新建棋谱</string>
+    <string name="Handicap">让子</string>
+    <string name="Komi">帖目</string>
+    <string name="GameSize">棋盘路数</string>
+    <string name="WhitePlayerName">白方棋手:</string>
+    <string name="white">白方</string>
+    <string name="BlackPlayerName">黑方棋手:</string>
+    <string name="black">黑方</string>
+    <string name="game">棋谱</string>
+    <string name="SGFSaveFileName">保存的SGF文件名:</string>
+    <string name="CreateGame">创建棋谱</string>
+    <string name="SetSGFFile">设置SGF文件</string>
+    <string name="EnterFile">请输入文件名以保存SGF文件</string>
+    <string name="Ok">OK</string>
+    <string name="SetWhitePlayerName">白方棋手</string>
+    <string name="SetBlackPlayerName">黑方棋手</string>
+    <string name="EnterName">请输入棋手名字</string>
+    <string name="SetDGSGameNumber">DGS棋谱号</string>
+    <string name="EnterNumber">请输入一个数字</string>
+    <string name="FileExists">文件已存在</string>
+    <string name="OpenFile">打开这个文件吗？</string>
+    <string name="UseOldorNew">使用旧文件或创建新文件？</string>
+    <string name="SaveChangeCancel">覆盖保存、改名后另存、或取消</string>
+    <string name="UnsavedChanges">有未保存修改的棋谱</string>
+    <string name="RecoverOrNew">恢复未保存的棋谱或使用新棋谱？</string>
+    <string name="Old">旧棋谱</string>
+    <string name="New">新棋谱</string>
+    <string name="Recover">恢复</string>
+    <string name="Save">保存</string>
+    <string name="Cancel">取消</string>
+    <string name="downLoadGame">下载棋谱</string>
+    <string name="up_one_level">..</string>
+    <string name="current_dir">.</string>
+    <string name="sgf_root_dir">sgfs</string>
+    <string name="recover_game">恢复棋谱</string>
+    <string name="selectlayout">屏幕方向</string>
+    <string name="MakeDirectoryFailed">创建文件夹失败</string>
+    <string name="SaveRecoveryFailed">保存恢复失败</string>
+    <string name="RecoveryNotDeleted">恢复的文件未被删除</string>
+    <string name="CloseFailed">关闭文件失败</string>
+    <string name="SaveSGFFailed">保存SGF失败</string>
+    <string name="NotFound">没有找到</string>
+    <string name="Help">帮助</string>
+    <string name="Pass">虚着</string>
+    <string name="Preferences">程序设置</string>
+    <string name="Credits">感谢</string>
+    <string name="playOptsTitle">棋谱编辑器的选项</string>
+    <string name="selectPlayMode">选择模式</string>
+    <string name="Options">选项</string>
+    <string name="markUpTitle">设置此节点的标记</string>
+    <string name="NoFiles">文件夹中没有文件</string>
+    <string name="dcTitle">Dragon Go Server客户端</string>
+    <string name="Status">查看等待中的棋局和消息列表</string>
+    <string name="DGSClient">DGS客户端</string>
+    <string name="AutoPlay">自动摆棋</string>
+    <string name="prefsNotifierInterval">通知器检查间隔(秒)： </string>
+    <string name="NotifierSound">通知器声效</string>
+    <string name="StartNotifier">启动通知器</string>
+    <string name="StopNotifier">停止通知器</string>
+    <string name="Games">棋局</string>
+    <string name="Messages">消息</string>
+    <string name="Waiting">等待中</string>
+    <string name="GettingMsg">正在获取消息&#8230;</string>
+    <string name="GettingStatus">正在获取状态&#8230;</string>
+    <string name="Resign">认输</string>
+    <string name="GameInfo">棋局信息</string>
+    <string name="NotifierVibrate">通知器振动</string>
+    <string name="TwoPasses">连续两手虚着，请使用浏览器点目</string>
+    <string name="WhitePlayer">白方棋手</string>
+    <string name="BlackPlayer">黑方棋手</string>
+    <string name="Rules">规则</string>
+    <string name="Date">起止日期</string>
+    <string name="Overtime">时间设定</string>
+    <string name="TimeLeft">剩余时间</string>
+    <string name="Result">结果</string>
+    <string name="Nothing">没有</string>
+    <string name="portrait">竖屏</string>
+    <string name="landscape">横屏</string>
+    <string name="none">无</string>
+    <string name="deflt">默认</string>
+    <string name="stone">落子声</string>
+    <string name="NotifyAllDetails">通知所有细节</string>
+    <string name="NotifyPermanent">Permanent Notification</string>
+    <string name="dynamic">动态</string>
+    <string name="LogonFailed">登录失败</string>
+    <string name="autoPlayInterval">自动摆棋间隔(秒): </string>
+    <string name="autoplay">自动摆棋</string>
+    <string name="AutoPlayPause">打开棋谱时暂停自动摆棋</string>
+    <string name="AutoPlaySound">自动摆棋声效</string>
+    <string name="browse">浏览</string>
+    <string name="edit">编辑</string>
+    <string name="markup">标记</string>
+    <string name="stop">X</string>
+    <string name="go">O</string>
+    <string name="retrn">&#35;</string>
+    <string name="AutoClient">启动程序时自动检查</string>
+    <string name="grinderTitle">观看棋谱</string>
+    <string name="browseButton">浏览</string>
+    <string name="selectDirOrFile">选择文件夹或文件：</string>
+    <string name="selectOrEnterDir">选择或输入文件夹</string>
+    <string name="select">选择</string>
+    <string name="enter">输入</string>
+    <string name="BadGameInfo">棋局信息有错！</string>
+    <string name="markUpLabel">标注:</string>
+    <string name="None">无:</string>
+    <string name="Mark">标记:</string>
+    <string name="Triangle">三角:</string>
+    <string name="Circle">圆:</string>
+    <string name="Square">方块:</string>
+    <string name="WhiteTerritory">白方实空:</string>
+    <string name="BlackTerritory">黑方实空:</string>
+    <string name="AddEmpty">添加空点:</string>
+    <string name="AddWhite">添加白子:</string>
+    <string name="AddBlack">添加黑子:</string>
+    <string name="SetHandicap">请使用浏览器设置帖目</string>
+    <string name="IllegalMove">走棋不合规则</string>
+    <string name="CreateVariation">创建变化分支</string>
+    <string name="ReplaceOneMove">替换一步棋</string>
+    <string name="ReplaceAllMoves">替换所有棋</string>
+    <string name="MoveControl">下棋操作</string>
+    <string name="Zoom7x7">7x7局部放大</string>
+    <string name="Zoom9x9">9x9局部放大</string>
+    <string name="Zoom11x11">11x11局部放大</string>
+    <string name="Zoom13x13">13x13局部放大</string>
+    <string name="Dpad">使用实体方向键</string>
+    <string name="yes">Yes</string>
+    <string name="no">没有</string>
+    <string name="Tutorial">教程</string>
+    <string name="GoToTutorial">下棋的教程在PlayGo.to网站，你想打开浏览器访问吗？（非中文，需要Flash Player支持）</string>
+	<string name="SupportApp">支持anDGS</string>
+	<string name="SetPreference">程序设置</string>
+	<string name="guessmove">猜棋</string>
+	<string name="correct">猜对</string>
+	<string name="incorrect">猜错</string>
+	<string name="next">继续</string>
+	<string name="start">开始</string>
+	<string name="EmptyStatus">没有可用消息或棋局</string>
+	<string name="Failed">连接失败，结果：</string>
+	<string name="Comment">注解</string>
+	<string name="EditComment">输入或编辑注解</string>
+	<string name="inviteTitle">邀请一位棋友下棋</string>
+	<string name="DownloadOrInvite">下载、邀请、或发消息</string>
+	<string name="InviteUser">邀请棋友</string>
+	<string name="MessageUser">给棋友发消息</string>
+	<string name="runningGames">进行中的棋局</string>
+	<string name="teamGames">联棋棋局</string>
+	<string name="finishedGames">已结束的棋局</string>
+	<string name="NoGames">列表中没有棋局</string>
+	<string name="selectBoardSize">棋盘路数:</string>
+	<string name="selectGameType">棋局类型:</string>
+	<string name="selectYourColor">您的颜色:</string>
+	<string name="selectHandicap">让子:</string>
+	<string name="specifyKomi">帖目:</string>
+	<string name="specifyMainTime">主时间:</string>
+	<string name="selectMainTimeUnits">主时间单位:</string>
+	<string name="specifyFischerTime">费雪时间:</string>
+	<string name="selectFisherTimeUnits">费雪时间单位:</string>
+	<string name="weekendClock">周末计时:</string>
+	<string name="ratedGame">评等:</string>
+    <string name="Uid">我的ID:</string>
+    <string name="findUserTitle">按UserId或用户名查找用户</string>
+    <string name="Japanese">Japanese</string>
+    <string name="Chinese">Chinese</string>
+    <string name="messageId">消息ID:</string>
+	<string name="message">消息:</string>
+	<string name="conventionalGame">传统让子帖目</string>
+	<string name="properGame">系统调整让子帖目</string>
+	<string name="manualGame">手动设置让子帖目</string>
+	<string name="doubleGame">双局比赛</string>
+	<string name="evenGame">平手比赛</string>
+	<string name="hours">小时</string>
+	<string name="days">日</string>
+	<string name="months">月</string>
+	<string name="submit">提交</string>
+	<string name="messageTitle">给棋友发消息</string>
+	<string name="Subject">主题：</string>
+	<string name="From">来自：</string>
+	<string name="send">发送</string>
+	<string name="sending">发送中&#8230;</string>
+	<string name="oneTouch">不缩放直接落子</string>
+	<string name="BoardCoordinates">何时显示棋盘坐标</string>
+	<string name="defaultEditMode">编辑器默认模式</string>
+	<string name="observedGames">观看中的棋局</string>
+	<string name="captured">被提子</string>
+	<string name="KeepScreenOn">保持屏幕常亮</string>
+	<string name="DefaultDir">默认SGF文件夹</string>
+	<string name="selectTheme">程序界面风格</string>
+	<string name="BlackOnWhite">白底黑字</string>
+	<string name="WhiteOnBlack">黑底白字</string>
+	<string name="BlueOnWhite">白底蓝字</string>
+	<string name="MetallicGrey">银灰色</string>
+	<string name="play">下棋</string>
+	<string name="all">全部</string>
+	<string name="SetValue">请输入</string>
+	<string name="prefsEditNumPrev">编辑时显示最近的手数</string>
+	<string name="prefsPlayNumPrev">下棋时显示最近的手数</string>
+	<string name="reply">回复</string>
+	<string name="Info">棋友信息</string>
+	<string name="DeleteCurrentMove">删掉当前一手</string>
+	<string name="InsertBlackMove">插入黑子</string>
+	<string name="InsertWhiteMove">插入白子</string>
+	<string name="Warning">请注意</string>
+	<string name="DeleteManyBranches">还有其它分支将丢失，是否继续？</string>
+	<string name="BoardBackground">棋盘背景</string>
+	<string name="Plain">纯色</string>
+	<string name="Wood">木纹</string>
+	<string name="prefsSkipMoves">快进快退的步数</string> 
+	<string name="EditDisplayTopMenu">编辑时显示顶端菜单</string>
+	<string name="PlayDisplayTopMenu">下棋时显示顶端菜单</string>
+	<string name="QMark">"?"</string>
+	<string name="selectLocale">语</string>
+	
+	<string name="HandicapToSet">的盤口設置</string>
+	<string name="HandicapFree">位置</string>
+	<string name="EndGame">的遊戲結束</string>
+	<string name="gameListOrder">的遊戲列表訂單</string>
+	<string name="statusPage">的狀態頁</string>
+	<string name="noOrder">的</string>
+	<string name="lastMoved">最新移動</string>
+	<string name="moves">移動</string>
+	<string name="priority">優先</string>
+	<string name="timeLeft">時間左</string>
+	<string name="Browser">的使用瀏覽器</string>
+	<string name="GameNotes">遊戲說明</string>
+	<string name="Score">分數</string>
+	<string name="FinishScore">完成得分</string>
+	<string name="MarkScore">馬克分數</string>
+	<string name="AcceptScore">接受分數</string>
+	<string name="ResumePlaying">恢復播放</string>
+	<string name="Delete">刪除</string>
+	<string name="ResignDelete">辭職刪除</string>
+	<string name="GettingList">獲取列表&#8230;</string>
+	<string name="JoiningGame">加入遊戲&#8230;</string>
+	<string name="waitingRoom">候車室</string>
+	<string name="JoinGame">加入遊戲</string>
+	<string name="accept">接受</string>
+	<string name="decline">下降</string>
+	<string name="Logon">登錄</string>
+	<string name="WhiteOnGreen">綠底白字</string>
+	<string name="Slide">滑动石</string>
+    <string name="PredictedMoves">移动预测</string>
+    <string name="noPredictedMoves">预测移动未找到</string>
+    <string name="AutoStartNotifier">自动启动通知程序</string>
+    <string name="gameLists">游戏列表</string>
+    <string name="utilities">公用事业</string>
+    <string name="findUser">找一个用户</string>
+    <string name="GetUserGraph">显示评分图表</string>
+    <string name="startDate">Start Date: Month / Year</string>
+    <string name="endDate">End Date: Month / Year</string>
+    <string name="UnsupportedGameAction">Unsupported game action, user browser to resolve</string>
+    <string name="ErrorHistory">错误历史记录</string>
+    <string name="noErrors">没有错误</string>
+    <string name="deleteAll">모두 삭제</string>
+	
+    <string name="HelpMain">DGS客户端 - 记录到DGS的网站DragonGoServer.net上的播放或下载游戏。 \n
+\n
+游戏存档文件 - 打开查看或编辑从列表中保存的本地游戏。 \n
+\n
+新游戏 - 创建一个新的本地游戏。 \n
+\n
+评论游戏 - 通过游戏记录（单个文件或目录下的文件）和序列自动播放每走一步或，让猜测下一步的行动。 \n
+\n
+恢复游戏 - 本地游戏时，会出现未保存的更改。 \n
+\n
+首选项 - Android的菜单设置DGS用户名和密码，以及其他参数和喜好。 \n
+\n
+开始/停止通知 - （Android的菜单）启动或停止的DGS通知服务。 \n
+\n
+教程 - （Android的menu）如何发挥初学者。链接PlayGo.to需要安装Flash Player\n
+\n
+- 打开/下载（外部）打开一个SGF文件在一个外部文件浏览器，游戏编辑器中打开它。在Web浏览器中的一个SGF链接将下载的浏览器，在那里你可以在游戏编辑器打开它，就像其他的SGF文件或将直接在游戏编辑器打开，这取决于网站的Web浏览器和配置。 \n
+</string>
+  
+    <string name="HelpPrefs">为anDGS的参数设置和偏好，使用“保存”按钮，保存更改或标准的后退按钮忽略的变化。 \n
+\n
+用户“和”密码“ - 用于登录到DragonGoServer.net。 \n
+\n
+自动客户端 - 使DGS客户端自动登录和顺序穿插等候的游戏。 \n
+\n
+Auto Start Notifier - enable DGS App to automatically start the notifier. This helps to process predicted move sequences. \n
+\n
+保持屏幕 - 保持当游戏被显示在屏幕上。 \n
+\n
+选择“布局” - 设置屏幕布局。选项​​： \n
+  - 人像 \n
+  - 景观 \n
+\n
+移动控制 - 控制移动。选项​​： \n
+  - 7X7变焦 \n
+  - 9x9的变焦 \n
+  - 11×11变焦 \n
+  - 13X13变焦 \n
+  - D-PAD（方向键垫） \n
+  - 触摸式 \n
+\n
+选择主题 - 选择应用程序的颜色主题。 \n
+\n
+语言 - 选择使用的语言的应用程序。 \n
+\n
+坐标 - 控制周围的电路板边缘的坐标视图显示。 \n
+\n
+板背景 - 编辑设置/播放董事会背景。选项​​： \n
+  - “平原”颜色 \n
+  - “木”纹理 \n
+\n
+默认的编辑模式 - 控制初始的比赛开始保存的游戏视图编辑模式。 \n
+\n
+跳过移动数 - 在编辑器中，设置该号码，移动短按FF / REW键向前/向后跳过。最小为2。 \n
+\n
+編輯/播放，以前的移動數計數 - 在編輯器或DGS球員，以前的移動，將被標記的數量。值是-9到99。 0是沒有編號。對於負值時，編號從-1開始與在以前的移動的移動次數為指定的繼續向下。對於正值，開始計數具有指定號碼（或以前的移動的數目如果小於指定的數量）上移動，並繼續向下，直到該值1。編號將停止任何通，高的遊戲或開始。 \n
+\n
+遊戲筆記 - 使顯示在活動DGS當您移動遊戲遊戲筆記。 \n
+\n
+通知启用声音 - 声音通知事件。选项​​： \n
+  - 没有 \n
+  - 默认为 \n
+  - 石 \n
+\n
+通知时间间隔 - 秒延迟投票DGS游戏和消息的初始数量。最低值是30秒。通知采用了退避算法，以减少服务器上的负载，你有没有活动期间，约8分钟。设置大于8分钟将保持恒定。 \n
+\n
+通知振动 - 启用/禁用通知与震动。 \n
+\n
+通知失败 - 启用/禁用的通信失败响应，在发出通​​知的通知。 \n
+\n
+自动播放间隔 - 移动自动播放或研磨机模式之间的秒数。 \n
+\n
+自动播放暂停 - 开始游戏时自动播放模式或进入自动播放模式，在游戏中暂停自动播放。 \n
+\n
+自动播放声音 - 在自动播放模式播放声音时放在棋盘上的一招。 \n
+\n
+默认SGF - SGF文件保存的默认目录，你从哪里开始寻找SGF文件打开时。一个简单的名称（例如：sgfs）将系统默认的目录的目录中。以“/”开始的值允许您指定要从系统根目录的完整路径。 \n
+\n
+服务器URL - URL的DGS服务器的。可连接到开发服务器或自己的私人DGS实施。 \n
+\n
+</string>
+
+    <string name="HelpPlay">跳过 - 不玩这个游戏，在接下来的比赛。 \n
+\n
+全部跳过 - 跳过剩余的比赛，并返回到主视图（如“后退”按钮相同。） \n
+\n
+撤消 - 删除选定的举动再次尝试。 \n
+\n
+提交 - 向服务器发送的举动。 \n
+\n
+在缩放模式下，触摸电路板放大到该区域，请再次触碰，使一招。 \n
+DPAD模式，触摸板选择区域​​，使用方向键，提炼的位置和选择的位置。 \n
+在“一键式”模式，触摸一次，使一招。 \n
+\n
+&lt;&gt; - 回到大板选择的另一个领域。 \n
+\n
+评论会出现下面的控制按钮。后一招，你可以创建或编辑返回意见通过触摸的评论按钮。 “撤消”按钮也将取消注释。 \n
+\n
+从菜单中，您可以通过或辞职，而不是一招。此外，您还可以下载最新的游戏到本地编辑。 \n
+\n
+Predicted Moves - You may play ahead for a single sequence of moves, no branching.  Selecting the last move in the predicted sequence will delete it.  Undo will start over at the last real opponent move.  Running the notifier will allow these predicted moves to be played in the background. Otherwise, "Check for moves" will play any correct predicted moves before opening the board for manual moves. An incorrect predicted opponent move will clear the predicted moves for that game. Playing in a game via the Status list will clear the predicted moves for that game.  A comment is only allowed on the first move of a predicted sequence. A comment from the opponent will interrupt the predicted sequence. \n
+</string>
+
+    <string name="HelpSaved">触摸游戏的名称来打开或选择的游戏。 \n
+触摸输入或选择的目录的目录名。 \n 
+</string>
+
+    <string name="HelpNew">游戏大小可能是5X5，通过25X25 \n
+\n
+盘口在奇数尺寸为11×11或更大的可能是0-90-59X9和7X7到0-4上。其他规格有残疾为0。\n
+\n
+科米可能是-9.5 - 10.5（没有全的科米值） \n
+\n
+黑与白的球员的名字可能被设置。 \n
+\n
+A。SGF公司将被自动添加到游戏的名称。该文件将被存储在外部存储设备上的默认目录。 \n
+</string>
+
+    <string name="HelpEdit">下面的按钮出现下面的电路板。 \n
+  &lt;&lt; - 短触摸 - 跳过n步长的触摸 - 去年初。 \n
+  &lt; - 短触摸到先​​前的移动。轻触并按住：通过前面的动作步骤，在自动播放间隔率。\n
+  &gt; - 短触摸到下一步的行动。轻触并按住：通过下一步的行动步骤，在自动播放间隔率。\n
+  &gt;&gt; - 短触摸 - 跳过n步长的触摸 - 去到最后一步的主要分支或开始/停止自动播放。 \n
+  V - 去到下一个变化的这一举动。 \n
+  A - 这一举动的变化。 \n
+\n
+板控制按钮的下方是一个注释“按钮，它可能会被用于输入或编辑注释。 \n
+\n
+在编辑模式下： \n
+ 要添加一个移动结束时的游戏或更改，选择一个空白点。 \n
+ 结束时的游戏或差异是否要删除的举动，选择当前移动。 \n
+ 在任何移动，而不是在结束的比赛中，选择一个空的交集在黑板上会弹出一个菜单： \n
+  - 在选定的交叉点的变化。 \n
+  - 更换一招，将目前的移动到一个新的空白点。 \n
+  - 更换所有的移动，将移动到一个新的空白点，并删除其余的分支。 \n
+  - 删除当前的举动。\n
+  - 将黑棋后CURENT移动在选定的路口。 \n
+  - 将白色移动目前的移动后，在选择的十字路口。 \n
+ 通过按钮，在菜单允许您添加或删除通过移动或更换合格举动常规的举动。 /n
+\n
+在浏览模式： \n
+选择一块石头或通过菜单“按钮，将移动的这一举动在游戏中第一次出现。 \n
+移动控制变焦，左，右，上，下​​方向键可用于移动通过游戏树的中心键盘键后会开启一个注释窗口。 \n
+\n
+在自动播放模式： \n
+长按 &gt;&gt; 按钮被停止，并开始自动播放。其他按钮将仍然正常运行。 \n
+  X - 停止自动播放。 \n
+  O - 开始自动播放。 \n
+\n
+在猜测此举模式中：\ n
+&gt;&gt; 按钮退出，这样的评论游戏将选择下一个游戏。其他按钮将仍然正常运行。 \n
+  &#35; - 返回时，继续进行下一场比赛。 \n
+  “返回”键将返回继续。 \n
+\n
+将控制 - 缩放：\n
+  触摸董事会将放大到该地区，使一招。 \n
+  &lt;&gt; - 将一个缩小板即可缩小。 \n
+  板尺寸变焦的大小小于或等于将使用一个触摸模式。 \n
+\n
+将控制 - DPAD： \n
+触摸董事会将专注于在这一领域的位置。方向键垫可以用来提炼中心的位置和中间的按钮选择，使一招。 \n
+\n
+将控制 - 一键式： \n
+  触摸董事会将在该位置的举动。 \n
+\n
+通过“编辑器”菜单中，可以设置模式和自动播放选项。 \n
+</string>
+
+    <string name="HelpDownLoad">您可以下载任何游戏的游戏编辑器DGS的游戏编辑器中使用的所有功能。 \n
+\n
+的DGS游戏的游戏数量是必需的参数。 \n
+将保存到一个文件名为game.sgf可能改变，如果它已经存在。 \n 
+</string>
+
+    <string name="HelpPlayOptions">设置游戏选项：\n
+这些选项的变更，只适用于当前的游戏。
+\n
+模式：\n
+- 自动播放：自动步骤，通过游戏。 \n
+- 浏览：走在选定的板位置的移动。 \n
+- 编辑：放置在黑板上的移动和变化。 \n
+- 猜招：在游戏中猜测下一步的行动，可以是任何未来的变化或通过。 \n
+- 标记：编辑此节点上的标记及标签的位置。 \n \n
+跳过移动数 - 在编辑器中，设置该号码，移动短按FF / REW键向前/向后跳过。最小为2。 \n
+\n
+编辑/播放，号码走势计数 - 在编辑器或DGS播放器，以前的举动，都将被贴上人数减少，开始在-1的数量。移动的最大数量为9。编号将停止对任意通或高。 \n
+\n
+自动播放间隔 - 在自动播放模式之间移动的秒数。 \n
+\n
+- 暂停自动播放自动播放暂停时进入自动播放模式，这个游戏。 \n
+\n
+</string>
+
+    <string name="HelpGrinder">评论游戏将通过所有的游戏在一个目录或使用选定的模式只有一个单一的游戏序列。 \n
+\n
+您可以键入的路径中的目录或文件，或者你可以使用文件浏览器浏览一个文件或目录的外部存储设备。 \n
+该应用程序将通过的文件和重复的列表，直到循环逃脱的“返回”键循环。 \n
+\n
+模式： \n
+- 自动播放：自动步骤，通过游戏。 \n
+- 浏览：走在选定的板位置的移动。 \n
+- 编辑：放置在黑板上的移动和变化。 \n
+- 猜招：在游戏中猜测下一步的行动，可以是任何未来的变化或通过。 \n
+\n
+自动播放间隔 - 在自动播放模式之间移动的秒数。 \n
+自动播放暂停 - 暂停自动播放启动时自动播放模式下每一场比赛。 \n
+启动 - 启动选定的文件开始。 \n
+继续 - 继续下一个文件，如果你从游戏中逃出来的“返回”键。 \n
+\n
+</string>
+
+    <string name="HelpMarkUp">设置或删除标记，添加或删除石和/或添加或删除标签的位置在黑板上。 \n
+选择“无”，将清除的标志和附加石选项。独立的商标和石头的标签可以设置或清除。商标和石头可以单独设置。 \n
+标志是标准的SGF属性标记（X），三角形，圆形，正方形，白领土和黑色的领土。 \n
+添加空，加黑加白交互控制显示的石头。通常有用于创建图或问题。 \n
+的标签可以是任何字符串的大写或小写字母或数字，但只有前两个字符显示。 \n
+</string>
+
+    <string name="HelpClient">与DGS服务器的交互的主画面。 \n
+\n
+移动 - 移动在候场。启动，必须通过正常的浏览器界面设置障碍和得分。
+DGS客户端界面目前只支持在黑板上作出的举动。客户端还可以实现菜单按钮一通或辞职。所有其他操作，必须通过浏览器执行。 \n
+\n
+“Status”（状态） - 查看所有的游戏和信息，并等待他们的个人选择。 \n
+\n
+运行游戏 - 正在运行的游戏的一个页面。 DGS设置该页面的数量控制游戏。触摸的游戏下载到本地游戏编辑器。 \n
+\n
+团队游戏 - 一个网页游戏的至极有2个以上的球员。运行游戏的功能相同。 \n
+\n
+已完成的游戏 - 一个页面完成的游戏。运行游戏的功能相同。 \n
+\n
+观察到的游戏 - 一个页面上观察到的游戏。运行游戏的功能相同。 \n
+\n
+用户信息 - 查看用户\的信息。 \n
+\n
+消息用户 - 发送消息给其他用户。 \n
+\n
+下载游戏 - 下载任何的DGS游戏到本地编辑。 \n
+\n
+Predicted Moves - The list of games where you have played ahead of the current move. Touch an entry to delete it. \n
+\n
+You may play ahead for a single sequence of moves, no branching.  Selecting the last move in the predicted sequence will delete it.  Undo will start over at the last real opponent move.  Running the notifier will allow these predicted moves to be played in the background. Otherwise, "Check for moves" will play any correct predicted moves before opening the board for manual moves. An incorrect predicted opponent move will clear the predicted moves for that game. Playing in a game via the Status list will clear the predicted moves for that game.  A comment is only allowed on the first move of a predicted sequence. A comment from the opponent will interrupt the predicted sequence. \n
+\n
+开始/停止通知 - （Android的菜单）启动或停止的DGS通知服务。 \n
+\n
+</string>
+
+	<string name="HelpStatus">显示候场，从DGS服务器的消息。 \n
+\n
+您可以从列表中选择一个游戏，使一招，或者选择一条消息，消息文本。 \n 
+</string>
+
+	<string name="HelpGames">显示您的运行，完成或观察到的游戏。 \n
+\n
+只有一个页面的信息被显示。您可以更改显示更新的游戏列表的DGS服务器上更改选项的游戏。 /n
+\n
+您可以从列表中选择一个游戏下载到本地编辑。 \n
+</string>
+
+	<string name="HelpMsg">显示消息从DGS服务器。 \n
+\n
+跳过所有 - 当“检查”移动，逃避DGS客户端的主视图。否则，它是相同的，为完成。 \n
+\n
+完成 - 完成在此消息并继续寻找。 \n
+\n
+回复 - 向其他用户发送一个应答，并继续。 \n
+</string>
+
+	<string name="HelpSendMsg">将消息发送到用户。 \n
+\n
+发送 - 发送此消息并继续。 \n
+</string>
+
+	<string name="HelpInvite">Invite another user to a game. \n
+\n
+submit - Send this invite. \n
+</string>
+
+    <string name="HelpGetGraph">Display the rating graph for a user. \n
+\n
+Submit - Get the graph in a browser. \n
+</string>
+
+    <string name="HelpFindUser">Display list of users in the prowser. \n
+\n
+Submit - Get the user list in a browser. \n
+</string>
+	
+	<string name="HelpPhrases">创建或使用预定义的短语。 \n
+\n
+点击一个短语或“。”进入有选择地修改，并在注释中使用的短语。一个的短语可能不包含换行字符，因此必须是一个单一的线。 \n
+</string>
+
+	<string name="HelpGameInfo">显示目前的游戏信息。 \n
+\n
+</string>
+
+	<string name="HelpUserInfo">显示用户信息。 \n
+\n
+</string>
+
+		<string name="HelpLogon">必须被设置为使用的DGS客户端的用户和密码的喜好。 \n
+\n
+如果你没有一个的DGS用户/密码，请使用浏览器，去DragonGoServer.net和注册一个免费帐户。 \n
+</string>
+
+	<string name="HelpPredictedMoves">预测显示移动。 格式：\n
+游戏ID！的timeStamp！移动...\n
+</string>
+
+    <string name="HelpErrorHistory">Displays the last 20 communication errors or failures \n
+</string>
+    
+    <string name="HelpUnknown">Unknown Help type</string>
+    <string name="HelpCredits"> 
+Credits: \n 
+Developer: Michael Dobbins \n 
+Chinese Translation: 安卓网汉化 www.hiapk.com \n 
+German Translation: Jonas Sorgalla, Christian auf der Horst \n
+Italian Translation: Emanuele Cisbani \n
+Korean Translation: Kyoungnam Ahn \n
+Russian Translation: Sergy Volkov, Damir Sultanbekov \n
+</string>
+    <string name="app_name">anDGS</string>
+    <string name="WhiteOnBlue">白色蓝色</string>
+    <string name="gameEditor">游戏编辑器</string>
+    <string name="editPhrases">编辑短语</string>
+    <string name="returnButton">返回</string>
+    <string name="MetallicGreyInverse">金属灰色反向</string>
+    <string name="GreenOnWhite">绿色白色</string>
+    <string name="selectRules">规则：</string>
+    <string name="userActions">用户操作</string>
+    <string name="UserId">用户身份：</string>
+    <string name="UserName">用户名：</string>
+    <string name="HelpFilePermissions">为了能够保存游戏文件，预测动作，注释短语和错误历史记录等应用信息，您需要在应用设置中打开文件存储权限。</string>
+    <string name="dbg">Debug</string>
+</resources>

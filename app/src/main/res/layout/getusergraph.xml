@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+<TableLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/gugTopMenu"
+    android:stretchColumns="*">
+<TableRow>
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".92"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="left"
+    android:textSize="18sp"
+    android:text="@string/GetUserGraph"
+    />
+
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".08"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="center"
+    android:id="@+id/gugTMHelp"
+    android:text="@string/QMark"
+    />
+</TableRow>
+</TableLayout>
+
+<ScrollView 
+	android:layout_height="fill_parent" 
+	android:layout_width="fill_parent"
+	android:layout_below="@+id/gugTopMenu"
+	android:layout_above="@+id/gugSendLayout"
+	>  
+<LinearLayout 
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content" 
+	android:background="?colorDivider"
+	android:orientation="vertical">  	    
+
+<LinearLayout 
+	style="?colorStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/gugToLabel"
+    android:layout_margin="1dp">	
+ <TextView
+    style="?colorStyle"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:id="@+id/gugToTextLabel"
+    android:text="@string/UserId"
+    android:layout_margin="5dp"
+    />	
+ <TextView
+    style="?colorStyle"
+    android:textSize="18sp"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:text=""
+    android:id="@+id/gugUserId"
+    android:layout_margin="5dp"
+    />
+</LinearLayout> 
+
+<LinearLayout 
+	style="?colorStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+	android:id="@+id/gugStartLabel"
+    android:layout_margin="1dp">	
+ <TextView
+    style="?colorStyle"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:text="@string/startDate"
+    android:layout_margin="5dp"
+    />
+<TextView
+	style="?colorStyle"
+	android:textSize="18sp"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text=""
+	android:id="@+id/gugStartDateMonth"
+	android:layout_margin="5dp"
+	/>
+<TextView
+	style="?colorStyle"
+	android:textSize="18sp"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="@string/slsh"
+	android:layout_marginTop="5dp"
+	android:layout_marginBottom="5dp"
+	/>
+<TextView
+	style="?colorStyle"
+	android:textSize="18sp"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text=""
+	android:id="@+id/gugStartDateYear"
+	android:layout_margin="5dp"
+	/>
+</LinearLayout>
+
+<LinearLayout
+	style="?colorStyle"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:id="@+id/gugEndLabel"
+	android:layout_margin="1dp">
+<TextView
+	style="?colorStyle"
+	android:textStyle="bold"
+	android:textSize="18sp"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="@string/endDate"
+	android:layout_margin="5dp"
+	/>
+<TextView
+	style="?colorStyle"
+	android:textSize="18sp"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text=""
+	android:id="@+id/gugEndDateMonth"
+	android:layout_margin="5dp"
+	/>
+<TextView
+	style="?colorStyle"
+	android:textSize="18sp"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="@string/slsh"
+	android:layout_marginTop="5dp"
+	android:layout_marginBottom="5dp"
+	/>
+<TextView
+	style="?colorStyle"
+	android:textSize="18sp"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text=""
+	android:id="@+id/gugEndDateYear"
+	android:layout_margin="5dp"
+	/>
+</LinearLayout>
+</LinearLayout>
+</ScrollView>
+
+<LinearLayout 
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:layout_alignParentBottom="true"
+	android:layout_marginBottom="1dp"
+	android:background="?colorDivider" 
+	android:id="@+id/gugSendLayout" >
+<TextView 
+	android:layout_height="wrap_content"
+	android:layout_width="fill_parent"
+	android:gravity="center"
+	android:textStyle="bold"
+    android:textSize="17sp"
+	android:layout_margin="1dp"
+	android:paddingTop="6dp"
+	android:paddingBottom="6dp"
+	style="?colorStyle" 
+	android:clickable="true"
+	android:text="@string/submit"
+    android:id="@+id/gugSendButton"
+	/>
+</LinearLayout>
+        
+</RelativeLayout>

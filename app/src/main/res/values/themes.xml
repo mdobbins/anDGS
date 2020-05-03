@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="Theme.MyWhiteOnBlack" parent="android:Theme.Holo.Dialog">
+	    <item name="colorStyle">@style/MyWhiteOnBlackStyle</item>
+		<item name="android:alertDialogTheme">@style/MyWhiteOnBlackTheme</item>
+        <item name="android:alertDialogStyle">@style/MyWhiteOnBlackStyle</item>
+	</style>
+
+	<style name="Theme.MyWhiteOnBlue" parent="android:Theme.Holo.Dialog">
+		<item name="colorStyle">@style/MyWhiteOnBlueStyle</item>
+		<item name="android:alertDialogTheme">@style/MyWhiteOnBlueTheme</item>
+        <item name="android:alertDialogStyle">@style/MyWhiteOnBlueStyle</item>
+	</style>
+
+	<style name="Theme.MyWhiteOnGreen" parent="android:Theme.Holo.Dialog">
+	    <item name="colorStyle">@style/MyWhiteOnGreenStyle</item>
+		<item name="android:alertDialogTheme">@style/MyWhiteOnGreenTheme</item>
+        <item name="android:alertDialogStyle">@style/MyWhiteOnGreenStyle</item>
+	</style>
+
+    <style name="Theme.MyMetallicGrey" parent="android:Theme.Holo.Dialog">
+        <item name="colorStyle">@style/MyMetallicGreyStyle</item>
+        <item name="android:alertDialogTheme">@style/MyMetallicGreyTheme</item>
+        <item name="android:alertDialogStyle">@style/MyMetallicGreyStyle</item>
+    </style>
+
+    <style name="Theme.MyBlackOnWhite" parent="android:Theme.Holo.Light.Dialog">
+        <item name="colorStyle">@style/MyBlackOnWhiteStyle</item>
+        <item name="android:alertDialogTheme">@style/MyBlackOnWhiteTheme</item>
+        <item name="android:alertDialogStyle">@style/MyBlackOnWhiteStyle</item>
+    </style>
+
+    <style name="Theme.MyBlueOnWhite" parent="android:Theme.Holo.Light.Dialog">
+        <item name="colorStyle">@style/MyBlueOnWhiteStyle</item>
+        <item name="android:alertDialogTheme">@style/MyBlueOnWhiteTheme</item>
+        <item name="android:alertDialogStyle">@style/MyBlueOnWhiteStyle</item>
+    </style>
+
+    <style name="Theme.MyGreenOnWhite" parent="android:Theme.Holo.Light.Dialog">
+        <item name="colorStyle">@style/MyGreenOnWhiteStyle</item>
+        <item name="android:alertDialogTheme">@style/MyGreenOnWhiteTheme</item>
+        <item name="android:alertDialogStyle">@style/MyGreenOnWhiteStyle</item>
+    </style>
+
+    <style name="Theme.MyMetallicGreyInverse" parent="android:Theme.Holo.Light.Dialog">
+        <item name="colorStyle">@style/MyMetallicGreyInverseStyle</item>
+        <item name="android:alertDialogTheme">@style/MyMetallicGreyInverseTheme</item>
+        <item name="android:alertDialogStyle">@style/MyMetallicGreyInverseStyle</item>
+    </style>
+
+</resources>

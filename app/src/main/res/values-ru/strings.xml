@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Custom">заказы</string>
+    <string name="monochrome">одноцветный</string>
+    <string name="clamshell">грейфер</string>
+    <string name="prefsScaleLines">Ширина линии</string>
+    <string name="version">Версия: </string>
+    <string name="author">Автор:</string>
+    <string name="help">anDGS - это клиент для игры го (вейчи, бадук) на web-сайте DragonGoServer.net и локальный редактор записей партий. 
+        Каждый вид имеет контекстную справку с помощью кнопки меню Android.</string>
+    <string name="prefsButton">Настройки</string>
+    <string name="playButton">Проверить партии</string>
+    <string name="prefsTitle">Введите ваши имя пользователя и пароль на DGS и установите другие настройки.</string>
+    <string name="prefsUser">Имя пользователя: </string>
+    <string name="prefsServerURL">URL сервера: </string>
+    <string name="prefsPassword">Пароль: </string>
+    <string name="doneButton">Готово</string>
+    <string name="cancelButton">Отмена</string>
+    <string name="playTitle">Сделать ход </string>
+    <string name="blankButton"> </string>
+    <string name="skipAllButton">Пропуск всех</string>
+    <string name="skipButton">Пропуск</string>
+    <string name="unzoomButton">&lt;&gt;</string>
+    <string name="undoButton">Отмена</string>
+    <string name="okButton">Отправить</string>
+    <string name="LoggingOn">Подключение к DGS&#8230;</string>
+    <string name="GettingGame">Получение партии&#8230;</string>
+    <string name="NoGamesWaiting">Нет ожидающих партий</string>
+    <string name="SelectCancel"> выбрать Отменить</string><!-- Непонятно -->
+    <string name="back">&lt;</string>
+    <string name="forward">&gt;</string>
+    <string name="first">&lt;&lt;</string>
+    <string name="last">&gt;&gt;</string>
+    <string name="down">V</string>
+    <string name="up">A</string>
+    <string name="blank5"> </string>
+    <string name="home">Главная</string>
+    <string name="save">Сохранить</string>
+    <string name="savedGame">Сохранённые партии</string>
+    <string name="newGame">Новая партия</string>
+    <string name="Handicap">Фора</string>
+    <string name="Komi">Коми</string>
+    <string name="GameSize">Размер доски</string>
+    <string name="WhitePlayerName">Имя белых:</string>
+    <string name="white">белый</string>
+    <string name="BlackPlayerName">Имя чёрных:</string>
+    <string name="black">чёрный</string>
+    <string name="game">партия</string>
+    <string name="SGFSaveFileName">Имя sgf-файла:</string>
+    <string name="CreateGame">Создать игру</string>
+    <string name="SetSGFFile">Задать sgf-файл</string>
+    <string name="EnterFile">Введите имя файла для сохранения SGF</string>
+    <string name="Ok">Ok</string>
+    <string name="SetWhitePlayerName">Установить имя игрока белыми</string>
+    <string name="SetBlackPlayerName">Установить имя игрока чёрными</string>
+    <string name="EnterName">Пожалуйста, введите имя</string>
+    <string name="SetDGSGameNumber">Введите номер партии на DGS</string>
+    <string name="EnterNumber">Пожалуйста, введите номер</string>
+    <string name="FileExists">Файл существует</string>
+    <string name="OpenFile">Вы хотите открыть этот файл?</string>
+    <string name="UseOldorNew">Использовать старый файл или создать новый?</string>
+    <string name="SaveChangeCancel">Перезаписать, сохранить под другим именем или отменить?</string>
+    <string name="UnsavedChanges">Есть несохранённые изменения</string>
+    <string name="RecoverOrNew">Хотите восстановить несохранённую партию или создать новую?</string>
+    <string name="Old">Восстановить</string>
+    <string name="New">Создать новую</string>
+    <string name="Recover">Восстановить партию</string>
+    <string name="Save">Сохр.</string>
+    <string name="Cancel">Отмена</string>
+    <string name="downLoadGame">Скачать</string>
+    <string name="up_one_level">..</string>
+    <string name="current_dir">.</string>
+    <string name="sgf_root_dir">sgfs</string>
+    <string name="recover_game">Восстановить игру</string>
+    <string name="selectlayout">Выбрать ориентацию</string>
+    <string name="MakeDirectoryFailed">Не удалось создать каталог </string>
+    <string name="SaveRecoveryFailed">Не удалось сохранить восстановленый файл </string>
+    <string name="RecoveryNotDeleted">Не удалость удалить файл восстановления </string>
+    <string name="CloseFailed">Не удалось закрыть файл </string>
+    <string name="SaveSGFFailed">Не удалось сохранить SGF</string>
+    <string name="NotFound"> не найдено </string>
+    <string name="Help">Помощь</string>
+    <string name="Pass">Пас</string>
+    <string name="Preferences">Настройки</string>
+    <string name="Credits">О программе</string>
+
+    <string name="playOptsTitle">Настройки редактора партий</string>
+    <string name="selectPlayMode">Режим</string>
+    <string name="Options">Настройки</string>
+    <string name="markUpTitle">Установить название данного узла.</string>
+    <string name="NoFiles">Нет файлов в каталоге</string>
+    <string name="dcTitle">Клиент для Dragon Go Server</string>
+    <string name="Status">Состояние</string>
+    <string name="DGSClient">Клиент DGS</string>
+    <string name="AutoPlay">Автоматическое воспроизведение</string>
+    <string name="prefsNotifierInterval">Интервал проверки: </string>
+    <string name="NotifierSound">Звук оповещения</string>
+    <string name="StartNotifier">Запустить оповещение</string>
+    <string name="StopNotifier">Остановить оповещение</string>
+    <string name="Games">Игры</string>
+    <string name="Messages">Сообщения</string>
+    <string name="Waiting">ожидание</string>
+    <string name="GettingMsg">Получение сообщения&#8230;</string>
+    <string name="GettingStatus">Получение состояния&#8230;</string>
+    <string name="Resign">Сдаться</string>
+    <string name="GameInfo">Инфо</string>
+    <string name="NotifierVibrate">Вибрирация при оповещении</string>
+    <string name="TwoPasses">Сделано два паса подряд. Используйте браузер для подсчёта результата</string>
+    <string name="WhitePlayer">Белые</string>
+    <string name="BlackPlayer">Черные</string>
+    <string name="Rules">Правила</string>
+    <string name="Date">Дата</string>
+    <string name="Overtime">Превышение времени</string>
+    <string name="TimeLeft">Оставшееся время</string>
+    <string name="Result">Результат</string>
+    <string name="Nothing">Ничего</string><!-- Непонятно -->
+    <string name="portrait">портретная</string>
+    <string name="landscape">альбомная</string>
+    <string name="none">ничего</string>
+    <string name="deflt">по умолчанию</string>
+    <string name="stone">камень</string>
+    <string name="NotifyAllDetails">Уведомить все детали</string>
+    <string name="NotifyPermanent">Permanent Notification</string>
+    <string name="dynamic">динамический</string>
+    <string name="LogonFailed">Не удалось войти на сервер</string>
+    <string name="autoPlayInterval">Интервал авто-воспроизведения:</string>
+    <string name="autoplay">авто-воспроизведение</string>
+    <string name="AutoPlayPause">Приостановить партию</string>
+    <string name="AutoPlaySound">Приостановить звук</string>
+    <string name="browse">просмотр</string>
+    <string name="edit">редактирование</string>
+    <string name="markup">разметка</string>
+    <string name="stop">X</string>
+    <string name="go">O</string>
+    <string name="retrn">&#35;</string>
+    <string name="AutoClient">Авто-клиент</string><!-- Непонятно -->
+    <string name="grinderTitle">Авто-воспроизведение</string>
+    <string name="browseButton">Обзор</string>
+    <string name="selectDirOrFile">Выберите папку или файл:</string>
+    <string name="selectOrEnterDir">Выберите или введите Папку</string>
+    <string name="select">Выберите</string>
+    <string name="enter">Введите</string>
+    <string name="BadGameInfo">Неверная информация об игре!</string>
+    <string name="markUpLabel">Метка:</string>
+    <string name="None">Ничего:</string>
+    <string name="Mark">Значок:</string>
+    <string name="Triangle">Треугольник:</string>
+    <string name="Circle">Круг:</string>
+    <string name="Square">Квадрат:</string>
+    <string name="WhiteTerritory">Территория Белых:</string>
+    <string name="BlackTerritory">Территория Чёрных:</string>
+    <string name="AddEmpty">Добавить пустой пункт:</string>
+    <string name="AddWhite">Добавить белый:</string>
+    <string name="AddBlack">Добавить чёрный:</string>
+    <string name="SetHandicap">Используйте браузер для установки форы</string>
+    <string name="IllegalMove">Недопустимый ход</string>
+    <string name="CreateVariation">Создать вариант</string>
+    <string name="ReplaceOneMove">Заменить один ход</string>
+    <string name="ReplaceAllMoves">Заменить все ходы</string>
+    <string name="MoveControl">Управление ходами</string>
+    <string name="Zoom7x7">увеличить до 7x7</string>
+    <string name="Zoom9x9">увеличить до 9x9</string>
+    <string name="Zoom11x11">увеличить до 11x11</string>
+    <string name="Zoom13x13">увеличить до 13x13</string>
+    <string name="Dpad">D-Pad</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="Tutorial">Учебник</string>
+    <string name="GoToTutorial">Учебник по правилам игры доступен на сайте playgo.to и требует Flash Player. \n 
+Хотите открыть его в браузере?</string>
+     <string name="SupportApp">Поддержать anDGS</string>
+     <string name="SetPreference">Задать настройки</string>
+     <string name="guessmove">угадывание хода</string>
+     <string name="correct">верно</string>
+     <string name="incorrect">неверно</string>
+     <string name="next">Далее</string>
+     <string name="start">В начало</string>
+     <string name="EmptyStatus">Нет ожидающих сообщений или игр</string>
+     <string name="Failed">Не удалось установить соединение, результат операции:</string>
+     <string name="Comment">Комментарий</string>
+     <string name="EditComment">Введите или измените свой комментарий</string>
+
+	<string name="inviteTitle">Пригласить игрока в партию</string>
+	<string name="DownloadOrInvite">Скачать, пригласить или написать сообщение</string>
+	<string name="InviteUser">Пригласить пользователя</string>
+	<string name="MessageUser">Написать сообщение пользователю</string>
+	<string name="runningGames">Продолжающиеся партии</string>
+	<string name="teamGames">Командные партии</string>
+	<string name="finishedGames">Законченные партии</string>
+	<string name="NoGames">Нет партий</string>
+	<string name="selectBoardSize">Размер доски:</string>
+	<string name="selectGameType">Тип партии:</string>
+	<string name="selectYourColor">Ваш цвет:</string>
+	<string name="selectHandicap">Фора:</string>
+	<string name="specifyKomi">Коми:</string>
+	<string name="specifyMainTime">Основное время:</string>
+	<string name="selectMainTimeUnits">Единицы основного времени:</string>
+	<string name="specifyFischerTime">Контроль по Фишеру:</string>
+	<string name="selectFisherTimeUnits">Единицы контроля по Фишеру:</string>
+	<string name="weekendClock">Часы по выходным:</string>
+	<string name="ratedGame">Рейтинговая партия:</string>
+	<string name="UserId">Пользователю с Id:</string>
+	<string name="Uid">Uid:</string>
+    <string name="findUserTitle">Найти пользователя по идентификатору пользователя или имени пользователя</string>
+    <string name="Japanese">Japanese</string>
+    <string name="Chinese">Chinese</string>
+    <string name="messageId">Сообщение Id:</string>
+	<string name="message">Сообщение:</string>
+	<string name="conventionalGame">Обычная фора</string>
+	<string name="properGame">Уточнённая фора</string>
+	<string name="manualGame">Вручную</string>
+	<string name="doubleGame">Двойная игра</string>
+	<string name="evenGame">На равных</string>
+	<string name="hours">Часы</string>
+	<string name="days">Дни</string>
+	<string name="months">Месяцы</string>
+	<string name="submit">Отправить</string>
+	<string name="messageTitle">Отправить сообщение пользователю</string>
+	<string name="Subject">Тема:</string>
+	<string name="From">From:</string>
+	<string name="send">Отправить</string>
+	<string name="sending">Отправка&#8230;</string>
+	<string name="oneTouch">В одно касание</string>
+	<string name="BoardCoordinates">Координаты на доске</string>
+	<string name="defaultEditMode">Режим редактирования по-умолчанию</string>
+	<string name="observedGames">Наблюдаемые партии</string>
+	<string name="captured">захваченный</string>
+	<string name="KeepScreenOn">Держите экран</string>
+	<string name="DefaultDir">Каталог по умолчанию SGF</string>
+	<string name="selectTheme">Выберите тему</string>
+	<string name="BlackOnWhite">Черный на белом</string>
+	<string name="WhiteOnBlack">Белое на черном</string>
+	<string name="BlueOnWhite">Синий на белом</string>
+	<string name="MetallicGrey">Металлический серый</string>
+	<string name="play">играть</string>
+	<string name="all">все</string>
+	<string name="SetValue">заданное значение</string>
+	<string name="prefsEditNumPrev">Изменить, номер предыдущего кол-ва движения</string>
+	<string name="prefsPlayNumPrev">Play, номер предыдущего кол-ва движения</string>
+	<string name="reply">ответ</string>
+	<string name="Info">сообщения</string>
+	<string name="DeleteCurrentMove">Удалить последний ход</string>
+  	<string name="InsertBlackMove">Вставить ход чёрных</string>
+  	<string name="InsertWhiteMove">Вставить ход белых</string>
+	<string name="Warning">Предупреждение</string>
+	<string name="DeleteManyBranches">Есть и другие отрасли, которые будут потеряны, дальше?</string>	
+	<string name="BoardBackground">Совет фона</string>
+	<string name="Plain">невзрачный</string>
+	<string name="Wood">древесина</string>
+	<string name="prefsSkipMoves">Пропустить количество ходов</string>
+	<string name="EditDisplayTopMenu">отредактировать, Отображение верхнего меню</string>
+	<string name="PlayDisplayTopMenu">Играть, дисплей Главное меню</string>
+	<string name="QMark">"?"</string>
+	<string name="selectLocale">язык</string>
+	
+	<string name="HandicapToSet">Фора установить</string>
+	<string name="HandicapFree">Свободное размещение</string>
+	<string name="EndGame">Конец игры</string>
+	<string name="gameListOrder">Список заказов игры</string>
+	<string name="statusPage">Страница состояния</string>
+	<string name="noOrder">никакого порядка</string>
+	<string name="lastMoved">Последний Перемещенные</string>
+	<string name="moves">количество ходов</string>
+	<string name="priority">Приоритет </string>
+	<string name="timeLeft">Оставшееся время </string>
+	<string name="Browser">использование браузеров</string>
+	<string name="GameNotes">игры заметки </string>
+	<string name="Score">Оценка</string>
+	<string name="FinishScore">Готово Заброшенные</string>
+	<string name="MarkScore">надреза</string>
+	<string name="AcceptScore">Примите Оценка</string>
+	<string name="ResumePlaying">возобновления воспроизведения</string>
+	<string name="Delete">Удалить</string>
+	<string name="ResignDelete">отставку Удалить</string>
+	<string name="GettingList">Просмотр списка&#8230;</string>
+	<string name="JoiningGame">Присоединение игре&#8230;</string>
+	<string name="waitingRoom">зал ожидания</string>
+	<string name="JoinGame">Регистрация игры</string>
+	<string name="accept">принимать</string>
+	<string name="decline">Отклонить</string>
+	<string name="Logon">Войдите на</string>
+	<string name="WhiteOnGreen">Белый на зеленом</string>
+	<string name="Slide">Оденьте камень</string>
+    <string name="PredictedMoves">Прогнозируемая Переместить</string>
+    <string name="noPredictedMoves">Прогнозируемые Ходы не найдены</string>
+    <string name="AutoStartNotifier">Автозапуск Notifier</string>
+    <string name="gameLists">Списки игр</string>
+    <string name="findUser">Найти пользователя</string>
+    <string name="GetUserGraph">Показать график рейтинга</string>
+    <string name="startDate">Start Date: Month / Year</string>
+    <string name="endDate">End Date: Month / Year</string>
+    <string name="UnsupportedGameAction">Unsupported game action, user browser to resolve</string>
+    <string name="ErrorHistory">История ошибок</string>
+    <string name="noErrors">Ошибок нет</string>
+    <string name="deleteAll">Удалить все</string>
+	
+    <string name="HelpMain"> 
+DGS клиент - подключиться к DragonGoServer.net, чтобы играть, или скачивать партии. \n 
+\n 
+Сохранённые партии - открыть список сохранённых локально партий для просмотра или редактирования. \n 
+\n 
+Новая партия - создать новую партию. \n 
+\n 
+Автоматическое воспроизведение - проход по сохранённым записям партий (один или несколько файлов) в режиме автоматического воспроизведения или угадывания очередного хода. \n
+\n 
+Восстановить партию - появляется, когда есть несохранённые изменения в записи партии. \n 
+\n 
+Настройки - (меню Android) установка имени пользователя и пароля на DGS, и прочие параметры и настройки. \n 
+\n 
+Запустить/Остановить оповещение - (меню Android) запускает или останавливает службу оповещений DGS. \n 
+\n 
+Учебник - (меню Android) Учебник по игре для новичков. Направляет на playgo.to (требуется Flash Player). \n 
+</string>
+  
+    <string name="HelpPrefs"> 
+Устанавливает параметры и настройки anDGS, используйте кнопку "Сохранить", чтобы сохранить изменения, или кнопку "Назад", чтобы отменить изменения. \n 
+\n 
+Имя пользователя и Пароль - используются для входа на DragonGoServer.net. \n 
+\n 
+Авто-клиент - позволяет DGS-клиенту автоматически заходить на сервер для прохода по всем ожидающим партиям. \n 
+\n 
+Auto Start Notifier - enable DGS App to automatically start the notifier. This helps to process predicted move sequences. \n
+\n
+Выбрать ориентацию - варианты ориентации экрана: портретная или альбомная. Для активации потребуется перезапуск anDGS. \n
+\n 
+Управление ходами - как выполнять ход: увеличить до 7x7, увеличить до 9x9, D-Pad (кнопки со стрелочками), либо в одно касание. \n 
+\n
+Координаты на доске - управляет отображением координат по краям доски. \n 
+\n 
+Режим редактирования по-умолчанию - задаёт начальный режим редактирования, при открытии сохранённых партий. \n 
+\n
+Интервал проверки - задаёт начальное значение интервала в секундах между отправками запросов к DGS. Минимальное значение - 30 секунд. Служба оповещния использует алгоритм отсрочки (до десяти минут), чтобы снизить нагрузку на сервер, когда вы не проявляете активности. Устанавка значения выше 15 минут не приведёт к изменениям\n
+\n 
+Звук оповещения - разрешает воспроизведение звука при оповещении \n 
+\n 
+Оповещать об ошибках - оповещять/не оповещять об ошибках связи при работе службы оповещения. \n 
+\n 
+Интервал авто-воспроизведения - количество секунд между ходами при авто-вопроизведении или в режиме угадывания хода. \n 
+\n 
+Приостановить партию - приостановить авто-воспроизведение партии. \n 
+\n
+</string>
+
+    <string name="HelpPlay"> 
+\'Пропуск\' - не делать ход в текущей партии и перейти к следующей. \n 
+\n 
+\'Пропуск всех\' - пропустить все оставшиеся партии и вернуться в главное меню (работает как кнопка \'Назад\'). \n 
+\n 
+\'Отмена\' - убрать сделанный ход и попробовать снова. \n 
+\n 
+\'Отправить\' - отправить ход на сервер. \n 
+\n 
+В режиме увеличения: прикоснитесь к доске, чтобы увеличить данный участок доски, прикоснитесь второй раз, чтобы сделать ход. \n 
+В режиме D-Pad: прикоснитесь к доске, чтобы выбрать участок доски, используйте курсорные кнопки, чтобы точно выбрать место на доске. \n 
+В режиме одного касания: прикоснитесь к доске, чтобы сделать ход. \n
+\n 
+&lt;&gt; - вернуться к просмотру доски целиком, чтобы выбрать другой участок. \n 
+\n 
+Комментарии отображаются под управляющими кнопками. После выполнения хода вы можете ввести или изменить комментарий к ходу, нажав кнопку "Комментарий". Кнопка "Взять назад" уничтожит комментарий вместе с ходом. \n 
+\n 
+Вместо выполнения хода вы можете сделать пас или сдаться, через соответствующие пункты меню. Через меню вы также можете скачать текущую партию. \n 
+\n
+Predicted Moves - You may play ahead for a single sequence of moves, no branching.  Selecting the last move in the predicted sequence will delete it.  Undo will start over at the last real opponent move.  Running the notifier will allow these predicted moves to be played in the background. Otherwise, "Check for moves" will play any correct predicted moves before opening the board for manual moves. An incorrect predicted opponent move will clear the predicted moves for that game. Playing in a game via the Status list will clear the predicted moves for that game.  A comment is only allowed on the first move of a predicted sequence. A comment from the opponent will interrupt the predicted sequence. \n
+</string>
+    <string name="HelpSaved">Нажмите на имя партии, чтобы открыть или выбрать партию. \n 
+Нажмите на имя каталога, чтобы войти в каталог или выбрать его. \n 
+</string>
+    <string name="HelpNew"> 
+Размер доски может быть от 5x5 до 19x19 \n 
+\n 
+Фора должна быть в следующих пределах:\n
+  0-9 - для досок 11x11, 13x13, 15x15, 17x17 и 19x19;\n
+  0-5 - для досок 9x9;\n
+  0-4 - для досок 7x7;\n
+  на досках других размеров фора не поддерживается. \n 
+\n 
+Коми должно лежать в пределах от -9.5 до 9.5, (коми не может быть целым) \n 
+\n 
+Имена чёрных и белых должны быть указаны. \n 
+\n 
+Расширение \'.sgf\' будет автоматически добавлено к имени файла партии. Файл будет сохранён в папке sgfs на внешнем запоминающем устройстве. \n
+</string>
+    <string name="HelpEdit"> 
+Следуюшие кнопки могут отображаться внизу доски, при выполнении определённых условий. \n 
+  &lt;&lt; - перейти в начало. \n 
+  &lt; - перейти к предыдущему ходу. \n 
+  &gt; - перейти к следующему ходу. \n 
+  &gt;&gt; - перейти к последнему ходу основной ветви. \n 
+  V - перейти к следующему варианту текущего хода. \n 
+  A - перейти к предыдущему варианту текущего хода. \n \n 
+В режиме авто-воспроизведения кнопка &gt;&gt; будет использоваться для остановки и запуска авто-воспроизведения. Другие кнопки будут работать как обычно. \n 
+  X - оставновить авто-воспроизведение. \n 
+  O - запустить авто-воспроизведение. \n \n 
+В режиме угадывания хода кнопка &gt;&gt; будет использоваться для выхода из режима, и авто-воспроизведение перейдёт к следующей партии. Другие кнопки будут работать как обычно. \n 
+  &#35; - выйти из режима и перейти к следующей партии. Кнопка \'назад\' выйдет без дальнейшего продолжения. \n 
+\n
+Управление ходами - уведичение: \n 
+  Прикосновение к доске увеличивает выбранный участок доски, чтобы можно было сделать ход. \n 
+  &lt;&gt; - возвращает к просмотру целой доски. \n 
+  Если размер доски меньше либо равен, чем размер до которого производится увеличение, будет использован режим \'В одно касание\'. \n
+\n 
+Управление ходами - D-Pad: \n 
+  Прикосновение к доске установит фокус на выбранном участке доски. Для более точного наведения можно использовать курсорные кнопки, выполнение хода осуществляется нажатием на центральную кнопку. \n 
+  \n 
+Управление ходами - в одно касание: \n 
+  Ход осуществляется единственным прикосновением к нужному пункту доски. \n 
+  \n  
+На последнем узле варианта выбор пустого пункта создаст новый ход, а выбор текущего хода удалит его. \n
+На других узлах высплывающее меню спросит вас, хотите ли вы создать новый вариант, перенести текущий ход в новую позицию, или перенести текущий ход в новую позицию и удалить все последующие ходы варианта. \n 
+\n 
+Внизу доски, под управляющими кнопками, находится кнопка комментариев, которая используется для ввода или редактирования комментариев. \n 
+\n 
+При просмотре партии со включенным режимом ходов \'Увеличение\', кнопки \'влево\', \'вправо\', \'вверх\', \'вниз\' используются для перемещения по дереву вариантов партии, а центральная кнопка открывает окно комментариев. \n 
+\n 
+Режимы и параметры авто-воспроизведения могут быть изменены через меню. \n 
+</string>
+    <string name="HelpDownLoad"> 
+Вы можете загрузить и отредактировать любую партию с DGS. \n 
+\n  
+Для загрузки необходимо знать номер партии на DGS. \n 
+Сохранение будет произведено в файл с названием game.sgf, которое можно будет изменить, если файл с таким названием уже существует.\n 
+</string>
+    <string name="HelpPlayOptions"> 
+Установка параметров партии: \n 
+\n 
+Режим: \n 
+- авто-воспроизведение: просмотр партии в автоматическом режиме. \n 
+- просмотр: переход к ходу, сделанному в выбранный пункт доски. \n 
+- редактирование: для добавления ходов и вариантов в партию. \n 
+- угадывание хода: угадывание следующего хода в партии: любого из существующих вариантов, либо пас. \n 
+- разметка: для редактирования меток в выбранном узле. \n \n 
+Интервал авто-воспроизведения - количество секунд между ходами в режиме авто-воспроизведения. \n 
+\n 
+Приостановить партию - приостановить авто-воспроизведение, когда новая партия открывается в режиме авто-воспроизведения. \n 
+\n 
+</string>
+    <string name="HelpGrinder"> 
+Авто-воспроизведение - автоматический проход по всем файлам партий в каталоге, либо по одной выбранной партии. \n 
+\n 
+Вы можете ввести путь к каталогу с файлами, либо к конкретному файлу, либо вы можете выбрать их при помощи обозревателя файлов. \n 
+Авто-воспроизведение будет повторять проход по кругу до тех пор, пока вы не выйдете из режима, нажам кнопку \'Назад\'. \n 
+\n 
+Режимы: \n 
+- авто-воспроизведение: автоматический проход по партии. \n 
+- угадывание хода: угадывание следующего хода в партии (любого из вариантов, либо пас) \n 
+\n 
+Интервал авто-воспроизведения - количество секунд между ходами в режиме авто-воспроизведения. \n 
+Приостановить партию - приостановить авто-воспроизведение, когда новая партия открывается в режиме авто-воспроизведения. \n 
+В начало - открыть файл в начальной позиции. \n 
+Продолжить - перейти к следующему файлу, если вы вышли из партии, нажав кнопку \'Назад\'. \n 
+\n 
+</string>
+    <string name="HelpMarkUp"> 
+Добавть или удалить значок, камень или метку в указанном пункте доски. \n 
+Выбор \'Ничего\' снимет выбор с камней и отметок. \n 
+Значки - это стандартные средства sgf: крест, треугольник, круг, квадрат, территория белых и территория чёрных. \n 
+\'Добавить пустой пункт\', \'добавить чёрный\' и \'добавить белый\' используются для снятия и установки камней. Обычно используются для создания диаграмм или задач. \n 
+Для буквенных меток можно использовать любую строку, содержащую буквы или цифры, но на доске будут показаны только первые два символа. \n 
+</string>
+    <string name="HelpClient"> 
+Основной эран для работы с сервером DGS. \n 
+\n 
+\'Проверить партии\' - переход к партиям где ваша очередь хода. Начало партии, установка форы и подсчёт очков должны осуществляться через обычный браузер. 
+Клиент DGS пока поддерживает только выполнение ходов, пасов и сдачу. Прочие действия должны выполняться через интернет-браузер. \n 
+\n 
+\'Состояние\' - отображает ваши ожидающие партии и непрочитанные сообщения, позволяет выборочно открывать их. \n 
+\n 
+\'Продолжающиеся партии\' - отображает список ваших незавершённых партий (первую страницу). Количество партий на странице управляется вашими настройками на сервере DGS. Нажатие на партию выполняет её загрузку во внутренний редактор. \n 
+\n 
+\'Законченные партии\' - отображает список ваших завершённых партий, аналогично списку \'Продолжающиеся партии\'. \n
+\n
+\'Наблюдаемые партии\' - отображает одну страницу списка партий, которые вы наблюдаете, аналогично списку \'Продолжающиеся партии\'. \n
+\n
+\'Скачать партию\' - позволяет загрузить произвольную партию с DGS в локальный редактор. \n 
+\n
+Predicted Moves - The list of games where you have played ahead of the current move. Touch an entry to delete it. \n
+\n
+You may play ahead for a single sequence of moves, no branching.  Selecting the last move in the predicted sequence will delete it.  Undo will start over at the last real opponent move.  Running the notifier will allow these predicted moves to be played in the background. Otherwise, "Check for moves" will play any correct predicted moves before opening the board for manual moves. An incorrect predicted opponent move will clear the predicted moves for that game. Playing in a game via the Status list will clear the predicted moves for that game.  A comment is only allowed on the first move of a predicted sequence. A comment from the opponent will interrupt the predicted sequence. \n
+\n
+\'Запустить/Остановить оповещение\' (меню Android) - запускает или останавливает службу оповещений. \n 
+\n 
+</string>
+	<string name="HelpStatus"> 
+Отображает ожидающие партии и сообщения на сервере DGS. \n 
+\n 
+Вы можете выбрать партию в списке, чтобы сделать ход, либо выбрать сообщение, чтобы прочитать его текст. \n 
+</string>
+	<string name="HelpGames"> 
+Отображает список ваших продолжающихся, законченных и наблюдаемых партий. \n 
+\n
+Отображается только одна страница списка. Вы можете изменить количество показываемых записей изменив настройки просмотра списка партий в вашем профиле на DGS.
+\n 
+Вы можете выбрать партию из списка и загрузить её в локальный редактор. \n 
+</string>
+	<string name="HelpMsg"> 
+Отображает сообщения с сервера DGS \n 
+\n 
+В режиме авто-клиента, кнопка \'Пропустить все\' вернёт вас в главное меню. \n 
+</string>
+	<string name="HelpSendMsg">Send a message to a User. \n 
+\n
+Submit - Send this message and continue. \n
+</string>
+	<string name="HelpInvite">Invite another user to a game. \n
+\n
+Submit - Send this invite. \n
+</string>
+    <string name="HelpGetGraph">Display the rating graph for a user. \n
+\n
+Submit - Get the graph in a browser. \n
+</string>
+    <string name="HelpFindUser">Display list of users in the prowser. \n
+\n
+Submit - Get the user list in a browser. \n
+</string>
+	<string name="HelpPhrases">Create or use predefined Phrases. \n 
+\n 
+Click on a phrase or the "." entry to optionally modify and use the phrase in a comment. A phrase may not contain a newline character, thus must be a single line. \n
+</string>
+	<string name="HelpGameInfo"> 
+Отображет информацию о текущей партии. \n 
+\n 
+</string>
+	<string name="HelpUserInfo">Displays the User information. \n 
+\n 
+</string>
+	<string name="HelpLogon"> 
+Для использования клиента DGS, необходимо ввести имя пользователя и пароль. \n 
+\n 
+Если вы не зарегистрированы на сервере, откройте в браузере страницу DragonGoServer.net и зарегистрируйтесь там (это бесплатно). \n  
+</string>
+
+    <string name="HelpPredictedMoves">DДисплеи Прогнозируемая Moves. Формат: \n
+GameID! TimeStamp! движется ... \n
+</string>
+
+    <string name="HelpErrorHistory">Displays the last 20 communication errors or failures \n
+</string>
+    
+    <string name="HelpUnknown">Неизвестный тип справки</string>
+    <string name="HelpCredits"> 
+О программе: \n 
+Разработка: Michael Dobbins \n 
+Перевод на китайский: 安卓网汉化 www.hiapk.com \n 
+Перевод на немецкий: Jonas Sorgalla \n
+Italian Translation: Emanuele Cisbani \n
+Перевод на корейский: Kyoungnam Ahn \n
+Перевод на русский: Сергей Волков, Дамир Султанбеков \n
+</string>
+    <string name="app_name">anDGS</string>
+    <string name="WhiteOnBlue">белом на Синий</string>
+    <string name="gameEditor">Редактор игр</string>
+    <string name="editPhrases">Редактировать фразы</string>
+    <string name="returnButton">Вернуть</string>
+    <string name="MetallicGreyInverse">Серый металлик обратный</string>
+    <string name="GreenOnWhite">Зеленый на белом</string>
+    <string name="selectRules">Правила:</string>
+    <string name="userActions">Действия пользователя</string>
+    <string name="UserName">Имя пользователя:</string>
+    <string name="utilities">коммунальные услуги</string>
+    <string name="HelpFilePermissions">Чтобы иметь возможность сохранять информацию о приложении, такую как игровые файлы, прогнозируемые ходы, фразы для комментариев и историю ошибок, вам необходимо включить разрешение на хранение файлов в настройках приложения.</string>
+    <string name="dbg">Debug</string>
+</resources>

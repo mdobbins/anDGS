@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	style="?colorStyle"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+    
+<TableLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/dcTopMenu" 
+    android:stretchColumns="*">
+<TableRow>
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".69"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="left"
+    android:textSize="18sp"
+    android:text="@string/dcTitle"
+    />
+
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".23"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="center"
+    android:id="@+id/dcTMToggleNotifier"
+    android:text="@string/StartNotifier"
+    /> 
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".08"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="center"
+    android:id="@+id/dcTMHelp"
+    android:text="@string/QMark"
+    />
+</TableRow>
+</TableLayout>
+    
+<LinearLayout 
+    style="?colorStyle"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_below="@+id/dcTopMenu"
+    android:id="@+id/dcTitleBox"
+    >
+<TextView  
+    style="?colorStyle"
+    android:textSize="18sp"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="@string/LoggingOn"
+    android:id="@+id/dcStatus"
+    /> 
+</LinearLayout>
+
+<ListView 
+	style="?colorStyle"
+	android:divider="?colorDivider"
+	android:layout_above="@+id/adClientBox"
+	android:layout_below="@+id/dcTitleBox"
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent" 
+	android:fastScrollEnabled="true"
+	android:id="@+id/dcButtons"
+	/>	
+
+<LinearLayout 
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content" 
+	android:orientation="vertical"
+	android:layout_marginTop="10dp"
+	android:layout_alignParentBottom="true"
+	android:id="@+id/adClientBox"
+	>
+<LinearLayout 
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content" 
+	android:gravity="center_horizontal"
+	android:orientation="vertical"
+	android:id="@+id/adClient"
+	>
+
+</LinearLayout>
+</LinearLayout>		     
+</RelativeLayout>

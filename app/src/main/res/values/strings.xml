@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    <string name="Custom">Custom</string>
+    <string name="monochrome">Monochrome</string>
+    <string name="clamshell">Clam Shell</string>
+    <string name="prefsScaleLines">Line Width</string>
+    <string name="version">Version: </string>
+    <string name="author">Author:</string>
+    <string name="help">anDGS is a client to play Go (Igo, Weiqi, Baduk) on the web site DragonGoServer.net and a local game editor. Every view has context help via the Android menu button.</string>
+    <string name="prefsButton">Prefs</string>
+    <string name="playButton">Check for moves</string>
+    <string name="prefsTitle">Please enter your DGS user name and password, and set other preferences.</string>
+    <string name="prefsUser">User Name: </string>
+    <string name="prefsServerURL">Server URL: </string>
+    <string name="prefsPassword">Password: </string>
+    <string name="doneButton">Done</string>
+    <string name="returnButton">Return</string>
+    <string name="cancelButton">Cancel</string>
+    <string name="playTitle">Make a move </string>
+    <string name="blankButton" translatable="false"> </string>
+    <string name="skipAllButton">Skip All</string>
+    <string name="skipButton">Skip</string>
+    <string name="unzoomButton">&lt;&gt;</string>
+    <string name="undoButton">Undo</string>
+    <string name="okButton">Submit</string>
+    <string name="LoggingOn">Logging on to DGS&#8230;</string>
+    <string name="GettingGame">Getting Game&#8230;</string>
+    <string name="NoGamesWaiting">No Games waiting</string>
+    <string name="SelectCancel"> select Cancel</string>
+    <string name="back">&lt;</string>
+    <string name="forward">&gt;</string>
+    <string name="first">&lt;&lt;</string>
+    <string name="last">&gt;&gt;</string>
+    <string name="down">V</string>
+    <string name="up">A</string>
+    <string name="blank5" translatable="false"> </string>
+    <string name="home">Home</string>
+    <string name="save">Save</string>
+    <string name="savedGame">Saved Game Files</string>
+    <string name="newGame">New Game</string>
+    <string name="Handicap">Handicap</string>
+    <string name="Komi">Komi</string>
+    <string name="GameSize">Game Size</string>
+    <string name="WhitePlayerName">White Player Name:</string>
+    <string name="white">white</string>
+    <string name="BlackPlayerName">Black Player Name:</string>
+    <string name="black">black</string>
+    <string name="game">game</string>
+    <string name="SGFSaveFileName">SGF Save File Name:</string>
+    <string name="CreateGame">Create Game</string>
+    <string name="SetSGFFile">Set SGF File</string>
+    <string name="EnterFile">Please Enter the file to save SGF</string>
+    <string name="Ok">OK</string>
+    <string name="SetWhitePlayerName">Set White Player Name</string>
+    <string name="SetBlackPlayerName">Set Black Player Name</string>
+    <string name="EnterName">Please Enter a name</string>
+    <string name="SetDGSGameNumber">Set DGS Game Number</string>
+    <string name="EnterNumber">Please Enter a number</string>
+    <string name="FileExists">File Exists</string>
+    <string name="OpenFile">Do you want to open that file?</string>
+    <string name="UseOldorNew">Use old file or create a new file?</string>
+    <string name="SaveChangeCancel">Save, Change then Save, or Cancel</string>
+    <string name="UnsavedChanges">Unsaved Changes</string>
+    <string name="RecoverOrNew">Do you want to recover unsaved game or continue with new?</string>
+    <string name="Old">Old</string>
+    <string name="New">New</string>
+    <string name="Recover">Recover</string>
+    <string name="Save">Save</string>
+    <string name="Cancel">Cancel</string>
+    <string name="downLoadGame">Download Game</string>
+    <string name="up_one_level">..</string>
+    <string name="current_dir">.</string>
+    <string name="sgf_root_dir">sgfs</string>
+    <string name="recover_game">Recover Game</string>
+    <string name="selectlayout">Select Layout</string>
+    <string name="MakeDirectoryFailed">Make directory failed </string>
+    <string name="SaveRecoveryFailed">Save recovery failed </string>
+    <string name="RecoveryNotDeleted">Recovery file not deleted </string>
+    <string name="CloseFailed">Close file failed </string>
+    <string name="SaveSGFFailed">Save SGF failed </string>
+    <string name="NotFound"> not found </string>
+    <string name="Help">Help</string>
+    <string name="Pass">Pass</string>
+    <string name="Preferences">Preferences</string>
+    <string name="Credits">Credits</string>
+    <string name="playOptsTitle">Options for the game editor</string>
+    <string name="selectPlayMode">Mode</string>
+    <string name="Options">Options</string>
+    <string name="markUpTitle">Set Markup value for this node.</string>
+    <string name="NoFiles">No files in directory</string>
+    <string name="dcTitle">Dragon Go Server Client</string>
+    <string name="Status">Status</string>
+    <string name="DGSClient">DGS Client</string>
+    <string name="AutoPlay">autoplay</string>
+    <string name="prefsNotifierInterval">Notifier Interval:\n(seconds) </string>
+    <string name="NotifierSound">Notifier Sound</string>
+    <string name="StartNotifier">Start Notifier</string>
+    <string name="StopNotifier">Stop Notifier</string>
+    <string name="Games">Games</string>
+    <string name="Messages">Messages</string>
+    <string name="Waiting">Waiting</string>
+    <string name="GettingMsg">Getting Message&#8230;</string>
+    <string name="GettingStatus">Getting Status&#8230;</string>
+    <string name="Resign">Resign</string>
+    <string name="GameInfo">Game Info</string>
+    <string name="NotifierVibrate">Notifier Vibrate</string>
+    <string name="TwoPasses">2 Pass moves, Use browser to score</string>
+    <string name="WhitePlayer">White Player</string>
+    <string name="BlackPlayer">Black Player</string>
+    <string name="Rules">Rules</string>
+    <string name="Date">Date</string>
+    <string name="Overtime">Overtime</string>
+    <string name="TimeLeft">Time Left</string>
+    <string name="Result">Result</string>
+    <string name="Nothing">Nothing</string>
+    <string name="portrait">portrait</string>
+    <string name="landscape">landscape</string>
+    <string name="none">none</string>
+    <string name="deflt">Default</string>
+    <string name="stone">Stone</string>
+    <string name="NotifyAllDetails">Notify All Details</string>
+    <string name="NotifyPermanent">Permanent Notification</string>
+	<string name="dynamic">Dynamic</string>
+    <string name="LogonFailed">Logon Failed</string>
+    <string name="autoPlayInterval">Auto Play Interval: </string>
+    <string name="autoplay">auto play</string>
+    <string name="AutoPlayPause">Auto Play Pause</string>
+    <string name="AutoPlaySound">Auto Play Sound</string>
+    <string name="browse">browse</string>
+    <string name="edit">edit</string>
+    <string name="markup">markup</string>
+    <string name="stop">X</string>
+    <string name="go">O</string>
+    <string name="retrn">&#35;</string>
+    <string name="AutoClient">Auto Client</string>
+    <string name="grinderTitle">Review Games</string>
+    <string name="browseButton">Browse</string>
+    <string name="selectDirOrFile">Select Directory or File:</string>
+    <string name="selectOrEnterDir">Select or Enter Directory</string>
+    <string name="select">Select</string>
+    <string name="enter">Enter</string>
+    <string name="BadGameInfo">Bad Game Information!</string>
+    <string name="markUpLabel">Label:</string>
+    <string name="None">None:</string>
+    <string name="Mark">Mark:</string>
+    <string name="Triangle">Triangle:</string>
+    <string name="Circle">Circle:</string>
+    <string name="Square">Square:</string>
+    <string name="WhiteTerritory">White Territory:</string>
+    <string name="BlackTerritory">Black Territory:</string>
+    <string name="AddEmpty">Add Empty:</string>
+    <string name="AddWhite">Add White:</string>
+    <string name="AddBlack">Add Black:</string>
+    <string name="SetHandicap">Use browser to set Handicap</string>
+    <string name="IllegalMove">Illegal Move</string>
+    <string name="CreateVariation">Create variation</string>
+    <string name="ReplaceOneMove">Replace one move</string>
+    <string name="ReplaceAllMoves">Replace all moves</string>
+    <string name="MoveControl">Move Control</string>
+    <string name="Zoom7x7">Zoom 7x7</string>
+    <string name="Zoom9x9">Zoom 9x9</string>
+    <string name="Zoom11x11">Zoom 11x11</string>
+    <string name="Zoom13x13">Zoom 13x13</string>
+    <string name="Dpad">D-Pad</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="Tutorial">Tutorial</string>
+    <string name="GoToTutorial">The tutorial on how to play is on the website PlayGo.to and requires a flash player. \n 
+Do you want to start a browser and go there.</string>
+	<string name="SupportApp">Support anDGS</string>
+	<string name="SetPreference">Set Preference</string>
+	<string name="guessmove">guess move</string>
+	<string name="correct">correct</string>
+	<string name="incorrect">incorrect</string>
+	<string name="next">Continue</string>
+	<string name="start">Start</string>
+	<string name="EmptyStatus">No waiting messages or games</string>
+	<string name="Failed">Connection Failed, result:</string>
+	<string name="Comment">Comment</string>
+	<string name="EditComment">Enter or edit your comment</string>
+	<string name="inviteTitle">Invite a user to a game</string>
+	<string name="DownloadOrInvite">Download, Invite or Message</string>
+	<string name="InviteUser">Invite User</string>
+	<string name="MessageUser">Message User</string>
+	<string name="runningGames">Running Games</string>
+	<string name="teamGames">Team Games</string>
+	<string name="finishedGames">Finished Games</string>
+	<string name="NoGames">No Games in list</string>
+	<string name="selectBoardSize">Board Size:</string>
+	<string name="selectGameType">Game Type:</string>
+	<string name="selectYourColor">Your Color:</string>
+	<string name="selectHandicap">Handicap:</string>
+	<string name="specifyKomi">Komi:</string>
+	<string name="specifyMainTime">Main Time:</string>
+	<string name="selectMainTimeUnits">Main Time Units:</string>
+	<string name="specifyFischerTime">Fischer Time:</string>
+	<string name="selectFisherTimeUnits">Fisher Time Units:</string>
+	<string name="weekendClock">Weekend Clock:</string>
+	<string name="ratedGame">Rated Game:</string>
+	<string name="UserId">UserId:</string>
+	<string name="Uid">Uid:</string>
+    <string name="UserName">User Name:</string>
+    <string name="findUserTitle">Find a user by UserId or User Name</string>
+    <string name="Japanese">Japanese</string>
+    <string name="Chinese">Chinese</string>
+    <string name="selectRules">Rules:</string>
+	<string name="messageId">Message Id:</string>
+	<string name="message">Message:</string>
+	<string name="conventionalGame">Conventional</string>
+	<string name="properGame">Proper</string>
+	<string name="manualGame">Manual</string>
+	<string name="doubleGame">Double</string>
+	<string name="evenGame">Even</string>
+	<string name="hours">Hours</string>
+	<string name="days">Days</string>
+	<string name="months">Months</string>
+	<string name="submit">Submit</string>
+	<string name="messageTitle">Send a message to a user</string>
+	<string name="Subject">Subject:</string>
+	<string name="From">From:</string>
+	<string name="send">Send</string>
+	<string name="sending">Sending&#8230;</string>
+	<string name="oneTouch">One Touch</string>
+	<string name="BoardCoordinates">Coordinates</string>
+	<string name="defaultEditMode">Default Edit Mode</string>
+	<string name="observedGames">Observed Games</string>
+	<string name="captured">Captured</string>
+	<string name="KeepScreenOn">Keep Screen On</string>
+	<string name="DefaultDir">Default SGF Directory</string>
+	<string name="selectTheme">Select Theme</string>
+	<string name="BlackOnWhite">Black on White</string>
+	<string name="WhiteOnBlack">White on Black</string>
+	<string name="BlueOnWhite">Blue on White</string>
+    <string name="WhiteOnBlue">White on Blue</string>
+	<string name="MetallicGrey">Metallic Grey</string>
+    <string name="MetallicGreyInverse">Metallic Grey Inverse</string>
+    <string name="GreenOnWhite">Green on White</string>
+	<string name="play">play</string>
+	<string name="all">all</string>
+	<string name="SetValue">Set Value</string>
+	<string name="prefsEditNumPrev">Edit, \nnumber previous moves count</string>
+	<string name="prefsPlayNumPrev">Play, \nnumber previous moves count</string>
+	<string name="reply">Reply</string>
+	<string name="Info">User Info</string>
+	<string name="DeleteCurrentMove">Delete current move</string>
+	<string name="InsertBlackMove">Insert Black move</string>
+	<string name="InsertWhiteMove">Insert White move</string>
+	<string name="Warning">Warning</string>
+	<string name="DeleteManyBranches">There are other branches that will be lost, continue?</string>
+	<string name="BoardBackground">Board Background</string>
+	<string name="Plain">Plain</string>
+	<string name="Wood">Wood</string>
+	<string name="prefsSkipMoves">Skip moves count</string> 
+	<string name="EditDisplayTopMenu">Edit, Display Top Menu</string>
+	<string name="PlayDisplayTopMenu">Play, Display Top Menu</string>
+	<string name="QMark">"?"</string>
+	<string name="selectLocale">Language</string>
+	
+	<string name="HandicapToSet">Handicap to set</string>
+	<string name="HandicapFree">Free placement</string>
+	<string name="EndGame">End Game</string>
+	<string name="gameListOrder">Game List Order</string>
+	<string name="statusPage">Status Page</string>
+	<string name="noOrder">No Order</string>
+	<string name="lastMoved">Last Moved</string>
+	<string name="moves">Number of Moves</string>
+	<string name="priority">Priority</string>
+	<string name="timeLeft">Time Left</string>
+	<string name="Browser">Use Browser</string>
+	<string name="GameNotes">Game Notes</string>
+	<string name="Score">Score</string>
+	<string name="FinishScore">Finish Scoring</string>
+	<string name="MarkScore">Mark Score</string>
+	<string name="AcceptScore">Accept Score</string>
+	<string name="ResumePlaying">Resume Playing</string>
+	<string name="Delete">Delete</string>
+	<string name="ResignDelete">Resign Delete</string>
+	<string name="GettingList">Getting List&#8230;</string>
+	<string name="JoiningGame">Joining Game&#8230;</string>
+	<string name="waitingRoom">Waiting Room</string>
+	<string name="JoinGame">Join Game</string>
+	<string name="accept">Accept</string>
+	<string name="decline">Decline</string>
+	<string name="Logon">Log on</string>
+	<string name="WhiteOnGreen">White on Green</string>
+	<string name="Slide">Slide Stone</string>
+    <string name="PredictedMoves">Predicted Moves</string>
+    <string name="noPredictedMoves">Predicted Moves are not found</string>
+    <string name="AutoStartNotifier">Auto Start Notifier</string>
+    <string name="gameLists">Game Lists</string>
+    <string name="userActions">User Actions</string>
+    <string name="utilities">Utilities</string>
+    <string name="findUser">Find a user</string>
+    <string name="GetUserGraph">Show rating graph</string>
+    <string name="startDate">Start Date: Month / Year</string>
+    <string name="endDate">End Date: Month / Year</string>
+    <string name="slsh" translatable="false">/</string>
+    <string name="UnsupportedGameAction">Unsupported game action, user browser to resolve</string>
+    <string name="ErrorHistory">Error History</string>
+    <string name="noErrors">No Errors</string>
+    <string name="deleteAll">Delete All</string>
+    <string name="gameEditor">Game Editor</string>
+    <string name="editPhrases">Edit Phrases</string>
+	
+    <string name="HelpMain">DGS Client - log on to DGS on the website DragonGoServer.net and play or download games. \n 
+\n 
+Saved Game Files - open for view or edit from a list of saved local games. \n 
+\n 
+New Game - create a new local game. \n 
+\n 
+Review Games - sequence through game records (single file or a directory of files) and either automatically play each move or allow guessing of the next move. \n 
+\n 
+Recover Game - appears when a local game has unsaved changes. \n 
+\n 
+Preferences - (Android menu) set the DGS user and password as well as other parameters and preferences. \n 
+\n 
+Start/Stop Notifier - (Android menu) start or stop the DGS Notifier service. \n 
+\n 
+Tutorial - (Android menu) How to play for beginners. Links to PlayGo.to which requires an installed flash player \n 
+\n 
+Open/Download - (External) Opening a SGF file in an external file browser will open it in the game editor. An SGF link in a web browser will either be downloaded by the browser where you may open it in the game editor, just like other SGF files or it will open directly in the game editor, depending on the web browser and configuration of the web site.  \n 
+</string>
+  
+    <string name="HelpPrefs">Set the parameters and preferences for anDGS, use the Save button to save changes or the standard back button to ignore changes. \n 
+\n 
+User and Password - used to login to DragonGoServer.net. \n 
+\n 
+Auto Client - enable DGS Client to automatically logon and sequence through the waiting games. \n 
+\n 
+Auto Start Notifier - enable DGS App to automatically start the notifier. This helps to process predicted move sequences. \n
+\n
+Keep Screen On - Keep the screen on while a game is being displayed. \n
+\n 
+Select Layout - Set screen layout. Options: \n
+ - Portrait \n
+ - Landscape \n 
+\n 
+Move Control - Controls making moves. Options: \n
+ - 7x7 zoom \n
+ - 9x9 zoom \n
+ - 11x11 zoom \n
+ - 13x13 zoom \n
+ - D-Pad (directional key pad) \n
+ - One touch \n 
+\n
+Select Theme - Select the color theme for the app. \n 
+\n
+Language - Select the Language used for the app. \n 
+\n
+Coordinates - Controls which views display coordinates around the edge of the board. \n 
+\n 
+Board Background - Sets the Edit/Play Board background. Options: \n
+ - "White" color \n
+ - "Plain" color \n
+ - "Wood" texture \n
+ - "Custom" user setable color \n
+\n 
+Line Width - Adjust the line with on the board. 1.0 is default, 2.0 is double width, 0.5 is half width. \n 
+\n 
+Stone - Sets the Edit/Play Board stone type. Options: \n
+ - "Monochrome", simple black and white \n
+ - "Clam Shell", slate and clam shell texture \n
+\n 
+Default Edit Mode - Controls the initial edit mode for games started by the Saved Games view. \n 
+\n
+Game List Order - Allows sorting of the games in the status list which will also control the order games are presented by Auto Client of Check for Moves. \n 
+ - Status Page - the order selected for your Status page using a Browser. \n
+ - No Order - the most efficient access to the DGS database, no predictable order. \n
+ - Last Moved - sorted by opponents last moved times. \n
+ - Number of Moves - sorted by number of moves in the game. \n
+ - Priority - sorted by user defined priority. \n
+ - Time Left - sorted by the time remaining in the game. \n
+\n
+Skip moves count - In the editor, set the number moves to skip forward/backward for a short press of the FF/Rew buttons. Minimum is 2. \n
+\n 
+Edit/Play, number previous moves count - In the editor or DGS player, set the number of previous moves that will be labeled. Values are -9 through 99. 0 is for no numbering.  For negative values, the numbering starts with -1 at the previous move and continues down for the specified number of moves.  For positive values, the numbering starts with the specified number (or the number of previous moves if that is less that the specified number) at the previous move and continues down until the value 1. Numbering will stop on any stone label, pass, ko or the beginning of the game. \n
+\n 
+Game Notes - enables the display of game notes in the active games on DGS when you move. \n
+\n
+Notifier Sound - enable sound on notification event. Options: \n
+ - none \n
+ - default \n
+ - stone \n 
+\n 
+Notifier Interval - the initial number of seconds delay polling DGS for games and messages. The minimum set able value is 30 seconds, but the server will start sending stale information if the value is 60 seconds or below. 120 seconds is a good balance point. The notifier uses a back off algorithm up to about 15 minutes to cut the load on the server during periods where you have no activity. Settings greater than 15 minutes will remain constant. \n
+\n 
+Notifier Vibrate - enable/disable notification with vibrate. \n 
+\n 
+Notify Failure - enable/disable notification of a communication failure response in the notifier. \n 
+\n 
+Auto Play Interval - the number of seconds between moves in auto play or grinder mode. \n 
+\n 
+Auto Play Pause - pause auto play when starting a game in auto play mode or entering auto play mode in a game. \n 
+\n 
+Auto Play Sound - play a sound in auto play mode when a move is placed on the board. \n 
+\n
+Default SGF Directory - the default directory where SGF files are saved and where you start when looking for an SGF file to open. A simple name (ex: sgfs) will be the directory in the system default directory. A value starting with a "/" allows you to specifiy the entire path from the system root directory. \n 
+\n
+Server URL - the URL for the DGS server. Useful to connect to the development server or your own private DGS implementation. \n 
+\n
+</string>
+
+    <string name="HelpPlay">Skip - to not play in this game and go to the next game. \n 
+\n 
+Skip All - skip the remaining games and return to the main view (same as the Back button.) \n 
+\n 
+Undo - remove the selected move to try again. \n 
+\n 
+Submit - send the move to the server. \n 
+\n 
+In zoom mode, Touch the board to zoom to that area, touch again to make a move. \n 
+In dpad mode, Touch the board to select that area, use the directional pad to refine the location and select the position. \n 
+In one touch mode, Touch once to make a move. \n
+\n 
+&lt;&gt; - to go back to the large board to select another area. \n 
+\n 
+Comments will appear below the control buttons.  After making a move you may create or edit a return comment by touching the comment button. The Undo button will also undo the comment. \n 
+\n
+If the Game Notes preference is enabled, Game note will be displayed between the Comments and the control buttons. Touch the Game Note to see the full note and to edit it. \n
+\n 
+From the menu (top or Android), you may make a pass, resign, score or delete a game. Also, you may download the current game to the local editor. \n
+\n
+Predicted Moves - You may play ahead for a single sequence of moves, no branching.  Selecting the last move in the predicted sequence will delete it.  Undo will start over at the last real opponent move.  Running the notifier will allow these predicted moves to be played in the background. Otherwise, "Check for moves" will play any correct predicted moves before opening the board for manual moves. An incorrect predicted opponent move will clear the predicted moves for that game. Playing in a game via the Status list will clear the predicted moves for that game.  A comment is only allowed on the first move of a predicted sequence. A comment from the opponent will interrupt the predicted sequence. \n
+</string>
+
+    <string name="HelpSaved">Touch the game name to open or select the game. \n 
+Touch the directory name to enter or select the directory. \n 
+The dot entries are special values: \n
+"." - refresh the current directory values. \n
+".." - go up one directory level to the parent of the current directory. \n
+</string>
+
+    <string name="HelpNew">Game sizes may be 5x5, through 25x25 \n 
+\n 
+Handicap may be 0-9 on odd sizes 11x11 or larger; 0-5 on 9x9 and 0-4 on 7x7.  All other sizes have handicap of 0.\n 
+There is a Free Placement check box that will allow manual entry of the number of stones selected at the beginning of the game. \n
+\n 
+Komi may be -9.5 - 10.5, (including whole number komi values) \n 
+\n 
+Black and White player names may be set. \n 
+\n 
+A .sgf will be automatically added to the game name. The file will be stored in the default directory on the external storage of the device. \n
+</string>
+
+    <string name="HelpEdit">The following buttons appear below the board. \n 
+  &lt;&lt; - short touch - skip n moves, long touch - go to the beginning. \n 
+  &lt; - short touch: go to the previous move. touch and hold: step through previous moves at Auto Play Interval rate.\n 
+  &gt; - short touch: go to the next move. touch and hold: step through next moves at Auto Play Interval rate.\n 
+  &gt;&gt; - short touch - skip n moves, long touch - go to the last move on the main branch or start/stop auto play. \n 
+  V - go to the next variation of this move. \n 
+  A - go to the previous variation of this move. \n 
+\n 
+Below the board control buttons is a comment button, which may be used to enter or edit a comment. \n
+\n 
+The menu buttons (top and Android) support a number of off board functions: \n
+ - End Game - Pass, Resign, Score \n
+ - Game Info - extra information contained in the game record. \n
+ - Save - save the game record to external storage. \n
+ - .modes. - display the current mode and change the mode. \n
+ - ? - this help page. \n
+The Android menu has an options button to change various Preferences just for this game. \n
+\n
+In edit mode:
+ To add a move at the end of the game or variation, select an empty point. \n
+ To delete a move at the end of the game or variation, select the current move. \n
+ At any move, not at the end of the game, selecting an empty intersection on the board will popup a menu to: \n
+ - Create a variation at the selected intersection. \n
+ - Replace one move; Move the current move to a new empty spot. \n
+ - Replace all moves; Move the current move to a new empty spot and delete the rest of the branch. \n
+ - Delete current move.\ 
+ - Insert Black Move after current move at the selected intersection. \n
+ - Insert White move after current move at the selected intersection. \n 
+ The pass button in the menu will allow you to add or remove pass moves or replace a regular move with a pass move. /n 
+\n
+In browse mode: \n
+Selecting a stone or the pass menu button will move to the first occurrence of that move in the game. \n
+With move control zoom, the left, right, up, down directional keys can be used to move through the games tree and the center keypad key will open a comment window. \n 
+\n 
+In auto play mode: \n
+The long press &gt;&gt; button is used to stop and start auto play. The other buttons will still function as normal. \n 
+  X - stop auto play. \n 
+  O - start auto play. \n 
+\n 
+In guess move mode: \n
+The &gt;&gt; button is used to exit such that the Review Games will select the next game. The other buttons will still function as normal. \n 
+  &#35; - return to continue with next game. \n
+  The "back" key will return without continuing. \n 
+\n
+Move control - zoom: \n 
+  Touching the board will zoom to that area to make a move. \n 
+  &lt;&gt; - will unzoom a zoomed board. \n 
+  Board sizes less than or equal to the zoom size will use the one touch mode. \n
+\n 
+Move control - dpad: \n 
+Touching the board will focus on a position in that area. The directional key pad may be used to refine the focused position and the center button will select to make a move. \n 
+\n 
+Move control - one touch: \n 
+  Touching the board will make a move at that location. \n 
+\n  
+Mode and auto play options may be set via the editor menu. \n 
+</string>
+
+    <string name="HelpDownLoad">You may download any game on DGS to the game editor and use all the features of the game editor. \n 
+\n  
+The game number of the DGS game is a required parameters. \n 
+Saving will be done to a file named game.sgf which may be changed if it already exists. \n 
+</string>
+
+    <string name="HelpPlayOptions">Set game options: \n
+Changes to these options only apply to the current game. 
+\n 
+Mode: \n 
+- auto play: to automatically step through the game. \n 
+- browse: to go to the move at the selected board position. \n 
+- edit: to place moves and variations on the board. \n 
+- guess move: to guess the next move in the game, can be any next variation or pass. \n 
+- markup: to edit the marked and labeled positions on this node. \n \n 
+Skip moves count - In the editor, set the number moves to skip forward/backward for a short press of the FF/Rew buttons. Minimum is 2. \n
+\n 
+Edit/Play, number previous moves count - In the editor or DGS player, set the number of previous moves that will be labeled with a decreasing number starting at -1. Maximum number of moves is 9.  Numbering will stop on any pass or ko. \n
+\n
+Auto Play Interval - the number of seconds between moves in auto play mode. \n 
+\n 
+Auto Play Pause - pause auto play when entering auto play mode in this game. \n 
+\n 
+</string>
+
+    <string name="HelpGrinder">Review games will sequence through all the games in a directory or only a single game using the selected mode. \n 
+\n 
+You may type in a path to a directory or file; or you may use the file browser to browse the external storage for a file or directory. \n 
+The app will cycle through the files and repeating the list until the cycle is escaped with the "back" key. \n 
+\n 
+Mode: \n 
+- auto play: to automatically step through the game. \n 
+- browse: to go to the move at the selected board position. \n 
+- edit: to place moves and variations on the board. \n 
+- guess move: to guess the next move in the game, can be any next variation or pass. \n 
+\n 
+Auto Play Interval - the number of seconds between moves in auto play mode. \n 
+Auto Play Pause - pause auto play when starting each game in auto play mode. \n 
+Start - to start at the beginning of the selected files. \n 
+Continue - to continue with the next file, if you escaped from the game with the "back" key. \n 
+\n 
+</string>
+
+    <string name="HelpMarkUp">Set or remove a mark, add or remove a stone and/or add or remove a label at a position on the board. \n 
+Selecting "None" will clear both the mark and the add stone options.  Labels can be set or cleared independently of marks and stones. Marks and stones may be set independently. \n 
+Marks are the standard sgf properties of mark (X), triangle, circle, square, white territory and black territory. \n 
+Add empty, add black and add white interact to control the stone displayed.  There are typically used to create diagrams or problems. \n 
+A label may be any string of upper or lower case letters or numbers, but only the first two characters are displayed. \n 
+</string>
+
+    <string name="HelpClient">Main screen for interaction with the DGS Server. \n 
+\n 
+Check For Moves - Display waiting games and messages one at a time for user action. Initiating a new game on DGS or negotiating a new game settings must be done via the normal browser interface. All other game functions are supported by anDGS. \n 
+\n 
+Status - See all your waiting games and messages and select them individually. \n 
+\n 
+Running Games - See one page of your running games. The number of games is controlled by your DGS setting for that page. Touch a game to download to the local games editor. \n 
+\n
+Team Games - See one page of your games with more than 2 players. Same features as Running Games.  \n 
+\n 
+Finished Games - See one page of your Finished games. Same features as Running Games. \n
+\n
+Observed Games - See one page of your Observed games. Same features as Running Games. \n
+\n
+Waiting Room - See Waiting Room game offers that you may join. \n
+\n
+User Info - See a user\'s info. \n
+\n
+Invite User - Currently takes you to the server invitation page in a browser. \n
+\n
+Message User - Send a message to another user. Must know the user\'s userid. \n
+\n
+Download Game - download any DGS game to the local editor via the gameid. \n 
+\n
+Predicted Moves - The list of games where you have played ahead of the current move. Touch an entry to delete it. \n
+\n
+You may play ahead for a single sequence of moves, no branching.  Selecting the last move in the predicted sequence will delete it.  Undo will start over at the last real opponent move.  Running the notifier will allow these predicted moves to be played in the background. Otherwise, "Check for moves" will play any correct predicted moves before opening the board for manual moves. An incorrect predicted opponent move will clear the predicted moves for that game. Playing in a game via the Status list will clear the predicted moves for that game.  A comment is only allowed on the first move of a predicted sequence. A comment from the opponent will interrupt the predicted sequence. \n
+\n
+Start/Stop Notifier - (Android menu) start or stop the DGS Notifier service. \n 
+\n 
+</string>
+
+     <string name="HelpStatus">Displays waiting games and messages from the DGS Server. \n 
+\n 
+You may select a game from the list to make a move, or select a message to see the message text. \n 
+</string>
+
+    <string name="HelpGames">Displaying your running, team, finished or observed games.  \n 
+\n
+Only one page of information is displayed.  You may change the number of games displayed by changing the options in your profile for game lists on the DGS server.
+\n 
+You may select a game from the list to download to the local editor. \n 
+\n
+\n
+Or displays available Waiting Room games which you my select to join.
+\n 
+</string>
+
+    <string name="HelpMsg">Displays a message from the DGS Server. \n 
+\n 
+Skip All - When "Checking for Moves", escape to the DGS Client main view. Otherwise, it is the same as Done. \n
+\n
+Done - Finish looking at this message and continue. \n
+\n
+Reply - Send a reply to the other user and continue. \n
+\n
+Use Browser - open a message in the browser to allow better formatting and using links on the page. \n
+\n
+</string>
+
+    <string name="HelpSendMsg">Send a message to a User. \n 
+\n
+Submit - Send this message and continue. \n
+</string>
+
+    <string name="HelpInvite">Invite another user to a game. \n 
+\n 
+options tbs \n
+\n
+Submit - Send this invite. \n
+</string>
+
+     <string name="HelpGetGraph">Display the rating graph for a user. \n
+\n
+Submit - Get the graph in a browser. \n
+</string>
+
+     <string name="HelpFindUser">Display list of users in the browser. \n
+\n
+Submit - Get the user list in a browser. \n
+</string>
+	
+    <string name="HelpPhrases">Create or use predefined Phrases. \n 
+\n 
+Click on a phrase or the "." entry to optionally modify and use the phrase in a comment. A phrase may not contain a newline character, thus must be a single line. \n
+</string>
+
+    <string name="HelpGameInfo">Displays the current game information. \n 
+\n 
+</string>
+
+    <string name="HelpUserInfo">Displays the User information. \n 
+\n 
+</string>
+
+    <string name="HelpLogon">The User and Password preferences must be set to use the DGS Client. \n 
+\n 
+If you do not have a DGS User/Password, please use a browser to go to DragonGoServer.net and register a free account. \n  
+</string>
+
+    <string name="HelpPredictedMoves">Displays Predicted Moves. Format: \n
+gameId! timeStamp! moves... \n
+</string>
+
+    <string name="HelpErrorHistory">Displays the last 20 communication errors or failures \n
+</string>
+
+    <string name="HelpFilePermissions">To be able to save app information like game files, predicted moves, comment phrases and error history, you will need to turn on the file storage permission in the app settings.
+</string>
+    
+    <string name="HelpUnknown">Unknown Help type</string>
+    <string name="HelpCredits"> 
+Credits: \n 
+Developer: Michael Dobbins \n 
+Chinese Translation: 安卓网汉化 www.hiapk.com \n 
+German Translation: Jonas Sorgalla, Christian auf der Horst \n
+Italian Translation: Emanuele Cisbani \n
+Korean Translation: Kyoungnam Ahn \n
+Russian Translation: Sergy Volkov, Damir Sultanbekov \n
+</string>
+    <string name="app_name">anDGS</string>
+    <string name="dbg">Debug</string>
+</resources>

@@ -1,0 +1,1013 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	style="?colorStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+<TableRow 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="?colorDivider"
+    android:id="@+id/prefsTopMenu" 
+    android:stretchColumns="*">
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".92"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:layout_margin="1dp"
+    android:gravity="left"
+    android:textSize="18sp"
+    android:text="@string/prefsTitle"
+    />
+
+<TextView
+    android:layout_width="0dp"
+    android:layout_height="fill_parent"
+    android:layout_weight=".08"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:layout_margin="1dp"
+    android:gravity="center"
+    android:id="@+id/prefsTMHelp"
+    android:text="@string/QMark"
+    />
+</TableRow>
+
+	<ScrollView
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_above="@+id/prefsDoneLayout"
+		android:layout_below="@+id/prefsTopMenu"
+		android:layout_alignParentStart="true"
+		android:layout_alignParentLeft="true">
+
+		<LinearLayout
+			style="?colorStyle"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+
+			<LinearLayout
+				android:id="@+id/prefsDGSUserLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<TextView
+					android:id="@+id/prefsDGSUserFlash"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:paddingRight="4dp"
+					android:text="@string/prefsUser"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+
+				<TextView
+					android:id="@+id/prefsDGSUser"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:text="@string/blank5"
+					android:textSize="18sp" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsDGSPasswordLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<TextView
+					android:id="@+id/prefsDGSPasswordFlash"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:paddingRight="4dp"
+					android:text="@string/prefsPassword"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+
+				<TextView
+					android:id="@+id/prefsDGSPassword"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:clickable="false"
+					android:paddingLeft="4dp"
+					android:text="@string/blank5"
+					android:textSize="18sp" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsAutoClientLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<CheckBox
+					android:id="@+id/prefsAutoClientCheckBox"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:clickable="false"
+					android:text=""
+                    android:textSize="18sp"
+					/>
+
+				<TextView
+					android:id="@+id/prefsAutoClientFlash"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:paddingLeft="4dp"
+					android:text="@string/AutoClient"
+					android:textStyle="bold"
+                    android:textSize="18sp"/>
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsAutoStartNotifierLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<CheckBox
+					android:id="@+id/prefsAutoStartNotifierCheckBox"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:clickable="false"
+					android:text=""
+					android:textSize="18sp" />
+
+				<TextView
+					android:id="@+id/prefsAutoStartNotifierFlash"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:paddingLeft="4dp"
+					android:text="@string/AutoStartNotifier"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsKeepScreenOnLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<CheckBox
+					android:id="@+id/prefsKeepScreenOnCheckBox"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:clickable="false"
+					android:text=""
+					android:textSize="18sp" />
+
+				<TextView
+					android:id="@+id/prefsKeepScreenOnFlash"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:paddingLeft="4dp"
+					android:text="@string/KeepScreenOn"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsLayoutLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<TextView
+					android:id="@+id/prefsLayoutText"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="fill_parent"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:paddingRight="4dp"
+					android:textSize="18sp"
+					/>
+
+				<TextView
+					android:id="@+id/prefsLayoutFlash"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:text="@string/selectlayout"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsMoveControlLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<TextView
+					android:id="@+id/prefsMoveControlText"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="fill_parent"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:paddingRight="4dp"
+					android:textSize="18sp"
+					/>
+
+				<TextView
+					android:id="@+id/prefsMoveControlFlash"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:text="@string/MoveControl"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsThemeLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<TextView
+					android:id="@+id/prefsThemeText"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="fill_parent"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:paddingRight="4dp"
+					android:textSize="18sp"
+					/>
+
+				<TextView
+					android:id="@+id/prefsThemeFlash"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:text="@string/selectTheme"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsLocaleLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<TextView
+					android:id="@+id/prefsLocaleText"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="fill_parent"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:paddingRight="4dp"
+					android:textSize="18sp"
+					/>
+
+				<TextView
+					android:id="@+id/prefsLocaleFlash"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:text="@string/selectLocale"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsBoardCoordLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<TextView
+					android:id="@+id/prefsBoardCoordText"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="fill_parent"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:paddingRight="4dp"
+					android:textSize="18sp"
+					/>
+
+				<TextView
+					android:id="@+id/prefsBoardCoordFlash"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:text="@string/BoardCoordinates"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsBoardBGLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<LinearLayout
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+                    android:layout_margin="1dp">
+
+					<ImageView
+						android:id="@+id/prefsBoardBGImage"
+						style="?colorStyle"
+						android:layout_width="24sp"
+						android:layout_height="24sp"
+						android:contentDescription="@string/blank5" />
+
+					<TextView
+						android:id="@+id/prefsBoardBGText"
+						style="?colorStyle"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:paddingLeft="4dp"
+						android:paddingRight="4dp"
+						android:textSize="18sp"
+						/>
+				</LinearLayout>
+
+				<TextView
+					android:id="@+id/prefsBoardBGFlash"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:text="@string/BoardBackground"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsScaleLinesLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<TextView
+					android:id="@+id/prefsScaleLinesFlash"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:paddingRight="4dp"
+					android:text="@string/prefsScaleLines"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+
+				<TextView
+					android:id="@+id/prefsScaleLines"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:text="@string/blank5"
+					android:textSize="18sp" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsBoardStoneLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<LinearLayout
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+                    android:layout_margin="1dp">
+
+					<ImageView
+						android:id="@+id/prefsBoardStoneWhiteImage"
+						style="?colorStyle"
+						android:layout_width="24sp"
+						android:layout_height="24sp"
+						android:contentDescription="@string/blank5" />
+
+					<ImageView
+						android:id="@+id/prefsBoardStoneBlackImage"
+						style="?colorStyle"
+						android:layout_width="24dp"
+						android:layout_height="24sp"
+						android:contentDescription="@string/blank5" />
+
+					<TextView
+						android:id="@+id/prefsBoardStoneText"
+						style="?colorStyle"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:paddingLeft="4dp"
+						android:paddingRight="4dp"
+						android:textSize="18sp"
+						/>
+				</LinearLayout>
+
+				<TextView
+					android:id="@+id/prefsBoardStoneFlash"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:text="@string/stone"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsEditModeLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<TextView
+					android:id="@+id/prefsEditModeText"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="fill_parent"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:paddingRight="4dp"
+					android:textSize="18sp"
+					/>
+
+				<TextView
+					android:id="@+id/prefsEditModeFlash"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:text="@string/defaultEditMode"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsGameOrderLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<TextView
+					android:id="@+id/prefsGameOrderText"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="fill_parent"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:paddingRight="4dp"
+					android:textSize="18sp"
+					/>
+
+				<TextView
+					android:id="@+id/prefsGameOrderFlash"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:text="@string/gameListOrder"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsDGSSkipMovesLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<TextView
+					android:id="@+id/prefsDGSSkipMovesFlash"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:paddingRight="4dp"
+					android:text="@string/prefsSkipMoves"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+
+				<TextView
+					android:id="@+id/prefsDGSSkipMoves"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:text="@string/blank5"
+					android:textSize="18sp" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsDGSEditNumPrevLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<TextView
+					android:id="@+id/prefsDGSEditNumPrevFlash"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:paddingRight="4dp"
+					android:text="@string/prefsEditNumPrev"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+
+				<TextView
+					android:id="@+id/prefsDGSEditNumPrev"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:text="@string/blank5"
+					android:textSize="18sp" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsDGSPlayNumPrevLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<TextView
+					android:id="@+id/prefsDGSPlayNumPrevFlash"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:paddingRight="4dp"
+					android:text="@string/prefsPlayNumPrev"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+
+				<TextView
+					android:id="@+id/prefsDGSPlayNumPrev"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:paddingRight="4dp"
+					android:text="@string/blank5"
+					android:textSize="18sp" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsEditDisplayTopMenuLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<CheckBox
+					android:id="@+id/prefsEditDisplayTopMenuCheckBox"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:clickable="false"
+					android:text=""
+					android:textSize="18sp" />
+
+				<TextView
+					android:id="@+id/prefsEditDisplayTopMenuFlash"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:paddingLeft="4dp"
+					android:text="@string/EditDisplayTopMenu"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsPlayDisplayTopMenuLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<CheckBox
+					android:id="@+id/prefsPlayDisplayTopMenuCheckBox"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:clickable="false"
+					android:text=""
+					android:textSize="18sp" />
+
+				<TextView
+					android:id="@+id/prefsPlayDisplayTopMenuFlash"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:paddingLeft="4dp"
+					android:text="@string/PlayDisplayTopMenu"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsPlayGameNotesLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<CheckBox
+					android:id="@+id/prefsPlayGameNotesCheckBox"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:clickable="false"
+					android:text=""
+					android:textSize="18sp" />
+
+				<TextView
+					android:id="@+id/prefsPlayGameNotesFlash"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:paddingLeft="4dp"
+					android:text="@string/GameNotes"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsSoundLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<TextView
+					android:id="@+id/prefsSoundText"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="fill_parent"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:paddingRight="4dp"
+					android:textSize="18sp"
+					/>
+
+				<TextView
+					android:id="@+id/prefsSoundFlash"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:text="@string/NotifierSound"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsDGSNotifierIntervalLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<TextView
+					android:id="@+id/prefsDGSNotifierIntervalFlash"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:paddingRight="4dp"
+					android:text="@string/prefsNotifierInterval"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+
+				<TextView
+					android:id="@+id/prefsDGSNotifierInterval"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:text="@string/blank5"
+					android:textSize="18sp" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsDGSNotifierVibrateLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<CheckBox
+					android:id="@+id/prefsDGSNotifierVibrate"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:clickable="false"
+					android:text=""
+					android:textSize="18sp" />
+
+				<TextView
+					android:id="@+id/prefsDGSNotifierVibrateFlash"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:paddingLeft="4dp"
+					android:text="@string/NotifierVibrate"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsDGSNotifyAllDetailsLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<CheckBox
+					android:id="@+id/prefsDGSNotifyAllDetails"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:clickable="false"
+					android:text=""
+					android:textSize="18sp" />
+
+				<TextView
+					android:id="@+id/prefsDGSNotifyAllDetailsFlash"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:paddingLeft="4dp"
+					android:text="@string/NotifyAllDetails"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsAutoPlayIntervalLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<TextView
+					android:id="@+id/prefsAutoPlayIntervalFlash"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:paddingRight="4dp"
+					android:text="@string/autoPlayInterval"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+
+				<TextView
+					android:id="@+id/prefsAutoPlayInterval"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:text="@string/blank5"
+					android:textSize="18sp" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsAutoPlayPauseLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<CheckBox
+					android:id="@+id/prefsAutoPlayPauseCheckBox"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:clickable="false"
+					android:text=""
+					android:textSize="18sp" />
+
+				<TextView
+					android:id="@+id/prefsAutoPlayPauseFlash"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:paddingLeft="4dp"
+					android:text="@string/AutoPlayPause"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsAutoPlaySoundLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<CheckBox
+					android:id="@+id/prefsAutoPlaySoundCheckBox"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:clickable="false"
+					android:text=""
+					android:textSize="18sp" />
+
+				<TextView
+					android:id="@+id/prefsAutoPlaySoundFlash"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:paddingLeft="4dp"
+					android:text="@string/AutoPlaySound"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+
+			<LinearLayout
+				android:id="@+id/prefsDGSdbgLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<TextView
+					android:id="@+id/prefsDGSdbgFlash"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:paddingRight="4dp"
+					android:text="@string/dbg"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+
+				<TextView
+					android:id="@+id/prefsDGSdbg"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:text="@string/blank5"
+					android:textSize="18sp" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsDefaultDirLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<TextView
+					android:id="@+id/prefsDefaultDirFlash"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:paddingRight="4dp"
+					android:text="@string/DefaultDir"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+
+				<TextView
+					android:id="@+id/prefsDefaultDir"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:text="@string/blank5"
+					android:textSize="18sp" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/prefsDGSServerURLLabel"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="1dp"
+				android:background="?colorDivider">
+
+				<TextView
+					android:id="@+id/prefsDGSServerURLFlash"
+					style="?colorStyle"
+					android:layout_width="wrap_content"
+					android:layout_height="fill_parent"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:paddingRight="4dp"
+					android:text="@string/prefsServerURL"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+
+				<TextView
+					android:id="@+id/prefsDGSServerURL"
+					style="?colorStyle"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="1dp"
+					android:paddingLeft="4dp"
+					android:text="@string/blank5"
+					android:textSize="18sp" />
+			</LinearLayout>
+
+		</LinearLayout>
+	</ScrollView>
+
+<LinearLayout 
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:layout_alignParentBottom="true"
+	android:layout_marginBottom="1dp"
+    android:background="?colorDivider"
+	android:id="@+id/prefsDoneLayout" >
+<TextView 
+	android:layout_height="wrap_content"
+	android:layout_width="fill_parent"
+	android:gravity="center"
+	android:textStyle="bold"
+    android:textSize="17sp"
+	android:layout_margin="1dp"
+	style="?colorStyle" 
+	android:clickable="true"
+	android:text="@string/Save"
+    android:id="@+id/prefsDoneButton"
+    android:focusable="true" />
+</LinearLayout>
+          
+</RelativeLayout>

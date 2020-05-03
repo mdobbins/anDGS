@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+<TableLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/messageTopMenu" 
+    android:stretchColumns="*">
+<TableRow>
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".92"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="left"
+    android:textSize="18sp"
+    android:text="@string/messageTitle"
+    />
+
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".08"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="center"
+    android:id="@+id/messageTMHelp"
+    android:text="@string/QMark"
+    />
+</TableRow>
+</TableLayout>
+
+<ScrollView 
+	android:layout_height="fill_parent" 
+	android:layout_width="fill_parent"
+	android:layout_below="@+id/messageTopMenu"
+	android:layout_above="@+id/messageSendLayout"
+	>  
+<LinearLayout 
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content" 
+	android:background="?colorDivider"
+	android:orientation="vertical">  	    
+
+<LinearLayout 
+	style="?colorStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/messageToLabel"
+    android:layout_margin="1dp">	
+ <TextView
+    style="?colorStyle"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:id="@+id/messageToTextLabel"
+    android:text="@string/UserId"
+    android:layout_margin="5dp"
+    />	
+ <TextView
+    style="?colorStyle"
+    android:textSize="18sp"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:text=""
+    android:id="@+id/messageToEdit"
+    android:layout_margin="5dp"
+    />
+</LinearLayout> 
+
+<LinearLayout 
+	style="?colorStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/messageSubjectLabel"
+    android:layout_margin="1dp">	
+ <TextView
+    style="?colorStyle"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:text="@string/Subject"
+    android:layout_margin="5dp"
+    />	
+ <TextView
+    style="?colorStyle"
+    android:textSize="18sp"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:text=""
+    android:id="@+id/messageSubjectEdit"
+    android:layout_margin="5dp"
+    />
+</LinearLayout> 
+<LinearLayout 
+    style="?colorStyle"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/messageMessageLabel"
+    >	
+<TextView
+    style="?colorStyle"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:text="@string/message"
+    android:padding="5dp"
+    android:layout_marginTop="1dp"/>	
+ <TextView
+    style="?colorStyle"
+    android:textSize="18sp"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:text=""
+    android:id="@+id/messageMessageEdit"
+    android:padding="5dp"
+    />
+</LinearLayout> 
+</LinearLayout>
+</ScrollView>
+
+<LinearLayout 
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:layout_alignParentBottom="true"
+	android:layout_marginBottom="1dp"
+	android:background="?colorDivider" 
+	android:id="@+id/messageSendLayout" >
+<TextView 
+	android:layout_height="wrap_content"
+	android:layout_width="fill_parent"
+	android:gravity="center"
+	android:textStyle="bold"
+    android:textSize="17sp"
+	android:layout_margin="1dp"
+	android:paddingTop="6dp"
+	android:paddingBottom="6dp"
+	style="?colorStyle" 
+	android:clickable="true"
+	android:text="@string/send"
+    android:id="@+id/messageSendButton"
+	/>
+</LinearLayout>
+        
+</RelativeLayout>

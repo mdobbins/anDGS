@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.hg.anDGS"
+    android:installLocation="auto"
+    android:grantUriPermissions="true"
+    tools:ignore="UnusedAttribute">
+
+    <uses-feature android:name="android.hardware.wifi" android:required="true" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="Manifest.permission.FOREGROUND_SERVICE" />
+    <supports-screens
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true" />
+
+    <application
+        android:label="@string/app_name"
+        android:icon="@drawable/dragon_icon"
+        android:persistent="true"
+        android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor">
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+        <activity
+            android:label="@string/app_name"
+            android:name="MainDGS"
+            android:configChanges="orientation|locale">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.EDIT" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="http"
+                    tools:ignore="AppLinkUrlError" />
+                <data android:scheme="https" />
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <data android:mimeType="application/x-go-sgf" />
+                <data android:pathPattern=".*\\.sgf" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="https"
+                    android:host="www.dragongoserver.net" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="http"
+                    android:host="www.dragongoserver.net" />
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name="PrefsDGS"
+            android:configChanges="orientation|locale" />
+        <activity
+            android:name="PlayDGS"
+            android:configChanges="keyboardHidden|orientation|locale" />
+        <activity
+            android:name="SavedGames"
+            android:configChanges="orientation|locale" />
+        <activity
+            android:name="NewGame"
+            android:configChanges="orientation|locale" />
+        <activity
+            android:name="GameBoard"
+            android:configChanges="keyboardHidden|orientation|locale" />
+        <activity
+            android:name="CommentView"
+            android:configChanges="orientation|locale" />
+        <activity
+            android:name="GameBoardOptions"
+            android:configChanges="orientation|locale" />
+        <activity
+            android:name="MarkUpView"
+            android:configChanges="orientation|locale" />
+        <activity
+            android:name="MsgView"
+            android:configChanges="orientation|locale" />
+        <activity
+            android:name="StatusView"
+            android:configChanges="orientation|locale" />
+        <activity
+            android:name="GrinderMain"
+            android:configChanges="orientation|locale" />
+        <activity
+            android:name="InviteUserView"
+            android:configChanges="orientation|locale" />
+        <activity
+            android:name="FindUserView"
+            android:configChanges="orientation|locale" />
+        <activity
+            android:name="MessageUserView"
+            android:configChanges="orientation|locale" />
+        <activity
+            android:name="PhraseView"
+            android:configChanges="orientation|locale" />
+        <activity
+            android:name="GetUserGraphView"
+            android:configChanges="orientation|locale" />
+
+        <service
+            android:name="com.hg.anDGS.DGSNotifier"
+            android:enabled="true" />
+
+        <receiver
+            android:name="com.hg.anDGS.DGSNotifierRestart"
+            android:enabled="true"
+            android:exported="true"
+            android:label="RestartServiceWhenStopped"
+            android:permission="">
+            <intent-filter>
+                <action android:name="com.hg.anDGS.DGSNotifierRestart" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

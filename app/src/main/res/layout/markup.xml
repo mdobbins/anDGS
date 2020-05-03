@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    
+<TableLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/markUpTopMenu" 
+    android:stretchColumns="*">
+<TableRow>
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".92"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="left"
+    android:textSize="18sp"
+    android:text="@string/markUpTitle"
+    />
+
+<TextView
+    android:layout_width="0dp"
+    android:layout_weight=".08"
+    android:maxLines="2"
+    style="?colorStyle"
+    android:padding="4dp"
+    android:gravity="center"
+    android:id="@+id/markUpTMHelp"
+    android:text="@string/QMark"
+    />
+</TableRow>
+</TableLayout>
+
+<ScrollView 
+	android:layout_height="wrap_content" 
+	android:layout_width="fill_parent"
+	>  
+
+<LinearLayout 
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content" 
+	style="?colorStyle" 
+	android:orientation="vertical">  	    
+
+<TableLayout  
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content"
+	android:background="#00000000">
+<TableRow 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content">
+<TextView 
+    style="?colorStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_margin="5dp"
+	android:text="@string/None"
+	android:id="@+id/markNoneT"
+	/> 
+<ImageView 
+    style="?colorStyle"
+    android:layout_width="28dp"
+    android:layout_height="28dp"
+    android:gravity="center" 
+    android:layout_margin="4dp"
+    android:contentDescription="@string/blank5"
+	android:id="@+id/markNoneV"
+	/>
+</TableRow>
+<TableRow 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content">
+<TextView 
+    style="?colorStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_margin="5dp"
+	android:text="@string/Mark"
+	android:id="@+id/markMarkT"
+	/> 
+<ImageView 
+    style="?colorStyle"
+    android:layout_width="28dp"
+    android:layout_height="28dp"
+    android:gravity="center" 
+    android:layout_margin="4dp"
+    android:contentDescription="@string/blank5"
+	android:id="@+id/markMarkV"
+	/> 
+</TableRow>
+<TableRow 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content"> 
+<TextView 
+    style="?colorStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_margin="5dp"
+	android:text="@string/Triangle"
+	android:id="@+id/markTriangleT"
+	/> 
+<ImageView 
+    style="?colorStyle"
+    android:layout_width="28dp"
+    android:layout_height="28dp"
+    android:gravity="center" 
+    android:layout_margin="4dp"
+    android:contentDescription="@string/blank5"
+	android:id="@+id/markTriangleV"
+	/> 
+</TableRow>
+<TableRow 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content">
+<TextView 
+    style="?colorStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_margin="5dp"
+	android:text="@string/Circle"
+	android:id="@+id/markCircleT"
+	/> 
+<ImageView 
+    style="?colorStyle"
+    android:layout_width="28dp"
+    android:layout_height="28dp"
+    android:gravity="center" 
+    android:layout_margin="4dp"
+    android:contentDescription="@string/blank5"
+	android:id="@+id/markCircleV"
+	/> 
+</TableRow>
+<TableRow 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content"> 
+<TextView 
+    style="?colorStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_margin="5dp"
+	android:text="@string/Square"
+	android:id="@+id/markSquareT"
+	/> 
+<ImageView 
+    style="?colorStyle"
+    android:layout_width="28dp"
+    android:layout_height="28dp"
+    android:gravity="center" 
+    android:layout_margin="4dp"
+    android:contentDescription="@string/blank5"
+	android:id="@+id/markSquareV"
+	/> 
+</TableRow>
+<TableRow 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content">
+<TextView 
+    style="?colorStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_margin="5dp"
+	android:text="@string/WhiteTerritory"
+	android:id="@+id/markTerrWT"
+	/> 
+<ImageView 
+    style="?colorStyle"
+    android:layout_width="28dp"
+    android:layout_height="28dp"
+    android:gravity="center" 
+    android:layout_margin="4dp"
+    android:contentDescription="@string/blank5"
+	android:id="@+id/markTerrWV"
+	/> 
+</TableRow>
+<TableRow 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content">
+<TextView 
+    style="?colorStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_margin="5dp"
+	android:text="@string/BlackTerritory"
+	android:id="@+id/markTerrBT"
+	/> 
+<ImageView 
+    style="?colorStyle"
+    android:layout_width="28dp"
+    android:layout_height="28dp"
+    android:gravity="center" 
+    android:layout_margin="4dp"
+    android:contentDescription="@string/blank5"
+	android:id="@+id/markTerrBV"
+	/> 
+</TableRow>
+<TableRow 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content">
+<TextView 
+    style="?colorStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_margin="5dp"
+	android:text="@string/AddEmpty"
+	android:id="@+id/markAddEmptyT"
+	/> 
+<ImageView 
+    style="?colorStyle"
+    android:layout_width="28dp"
+    android:layout_height="28dp"
+    android:gravity="center" 
+    android:layout_margin="4dp"
+    android:contentDescription="@string/blank5"
+	android:id="@+id/markAddEmptyV"
+	/> 
+</TableRow>
+<TableRow 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content"> 
+<TextView 
+    style="?colorStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_margin="5dp"
+	android:text="@string/AddWhite"
+	android:id="@+id/markAddWT"
+	/> 
+<ImageView 
+    style="?colorStyle"
+    android:layout_width="28dp"
+    android:layout_height="28dp"
+    android:gravity="center" 
+    android:layout_margin="4dp"
+    android:contentDescription="@string/blank5"
+	android:id="@+id/markAddWV"
+	/> 
+</TableRow>
+<TableRow 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content">
+<TextView 
+    style="?colorStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_margin="5dp"
+	android:text="@string/AddBlack"
+	android:id="@+id/markAddBT"
+	/> 
+<ImageView 
+    style="?colorStyle"
+    android:layout_width="28dp"
+    android:layout_height="28dp"
+    android:gravity="center" 
+    android:layout_margin="4dp"
+    android:contentDescription="@string/blank5"
+	android:id="@+id/markAddBV"
+	/> 
+</TableRow>
+</TableLayout>
+<LinearLayout 
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content" 
+	android:orientation="horizontal">  
+<TextView  
+    style="?colorStyle"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content" 
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_margin="5dp"
+    android:text="@string/markUpLabel"
+    /> 
+<EditText  
+    style="?colorStyle"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:layout_margin="5dp"
+    android:inputType="text"
+    android:hint="@string/markUpLabel"
+    android:id="@+id/markUpLabelValue"
+    /> 
+</LinearLayout>	
+
+<LinearLayout 
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:layout_marginBottom="1dp"
+	android:background="?colorDivider" 
+	android:id="@+id/markUpDoneLayout" >
+<TextView 
+	android:layout_height="wrap_content"
+	android:layout_width="fill_parent"
+	android:gravity="center"
+	android:textStyle="bold"
+    android:textSize="17sp"
+	android:layout_margin="1dp"
+	android:paddingTop="6dp"
+	android:paddingBottom="6dp"
+	style="?colorStyle" 
+	android:clickable="true"
+	android:text="@string/doneButton" 
+	android:id="@+id/markUpDoneButton"
+	/>
+</LinearLayout> 
+	          
+</LinearLayout>    
+</ScrollView>
+</LinearLayout>
