@@ -71,7 +71,7 @@ public class DGSNotifier extends Service {
         mThread = new DGSNotifierThread(this, serverURL, DGSUser, DGSPass, make_sound, notifierVibrate, notifyAllDetails, update_interval);
         String nText = mThread.notificationText(-1, -1, -1);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Notification notification = mThread.makeNotification(this, nText, mThread.notify_waiting, "startForeground", make_sound, false);
+            Notification notification = mThread.makeNotification(this, true, nText, mThread.notify_waiting, "startForeground", make_sound, false);
             if (notification == null) {
                 errHist.writeErrorHistory("DGSNotifier.onCreate, failed to make notification ");
             } else {
@@ -119,12 +119,21 @@ public class DGSNotifier extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
-        Bundle extras = intent.getExtras();
+        Bundle extras;
+        try {
+            extras = intent.getExtras();
+        } catch (Exception e) {
+            extras = null;
+        }
         boolean resetIt = false;
         if (extras != null) {
             startIt = extras.getBoolean("Start", true);
             restartIt = extras.getBoolean("Restart", true);
             resetIt = extras.getBoolean("Reset", false);
+        } else {
+            startIt = true;
+            restartIt = true;
+            resetIt = false;
         }
         if (MainDGS.dbgNotifier) {
             errHist.writeErrorHistory("DGSNotifier.onStartCommand, Restart: " + restartIt

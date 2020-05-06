@@ -270,6 +270,7 @@ public class MainDGS extends DGSActivity {
 		if (boardLayout == null) {
 			boardLayout = PrefsDGS.DYNAMIC; 
 		}
+		if (!ServerURL.endsWith("/")) ServerURL += "/";
 		loginURL = ServerURL + "login.php";
 
         oneShot = false;
@@ -641,6 +642,30 @@ public class MainDGS extends DGSActivity {
 			dbgStdMov = dbgRem>0;
 		}
 	}
+
+	 private void restartApp() {
+		 Intent i = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
+		 assert i != null;
+		 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+		 startActivity(i);
+	 }
+
+	 private void ValidateDGSthreadRunning () {
+		 if (mThread == null) {
+			 mThread = new DGSThread(this,ServerURL, myUserId, DGSPass, mHandler, (oneShot || autoClient));
+			 mThread.start();
+		 } else if (!mThread.isAlive()) {
+			 mThread.start();
+		 }
+	 }
+
+	 private int getStatusListLength() {
+		if (statusList == null) {
+			return 0;
+		} else {
+			return statusList.length;
+		}
+	 }
     
     @SuppressLint("SourceLockedOrientationActivity")
 	private void setOrientationViews() {
@@ -1006,19 +1031,14 @@ public class MainDGS extends DGSActivity {
                     + ", notifierRunning:" + notifierRunning);
             */
 
-			if (mThread == null) {
-				mThread = new DGSThread(this,ServerURL, myUserId, DGSPass, mHandler, (oneShot || autoClient));
-				mThread.start();
-			} else if (!mThread.isAlive()) {
-				mThread.start();
-			} else {
+			ValidateDGSthreadRunning();
+			needToStartClient = false;
+            if (autoClient || oneShot) {
+				displayButtons(BUTTONS_CLIENT);
+                CheckForMovesClick();
+            } else {
 				restoreStatus(true, true, false, BUTTONS_CLIENT);
 			}
-			needToStartClient = false;
-            displayButtons(BUTTONS_CLIENT);
-            if (autoClient || oneShot) {
-                CheckForMovesClick();
-            }
             // TODO handle oneShot
 		}
 	}
@@ -1211,11 +1231,11 @@ public class MainDGS extends DGSActivity {
             statusList[0] = getString(R.string.noPredictedMoves);
         } else {
             statusList = storMov.getAllStoredMoves();
-            if (statusList.length < 1) {
+            if (getStatusListLength() < 1) {
                 statusList = new String [1];
                 statusList[0] = getString(R.string.NoGames);
             } else {
-                for (int i = 0; i < statusList.length; i++) {
+                for (int i = 0; i < getStatusListLength(); i++) {
                     String[] e = statusList[i].split("!");
                     if (e.length == 3) {
                         long timeStamp;
@@ -1242,11 +1262,11 @@ public class MainDGS extends DGSActivity {
     private void ErrorHistoryDataClick() {
         errHist.checkLoadErrorHistoryData();
         statusList = errHist.getCompressAllErrorHistoryData();
-        if (statusList.length < 1) {
+        if (getStatusListLength() < 1) {
             statusList = new String [1];
             statusList[0] = getString(R.string.noErrors);
         } else {
-            for (int i = 0; i < statusList.length; i++) {  //Make timestamp printable
+            for (int i = 0; i < getStatusListLength(); i++) {  //Make timestamp printable
                 long timeStamp = 0;
                 int p = 0;
                 if (statusList[i].length() > 0) {
@@ -1288,6 +1308,7 @@ public class MainDGS extends DGSActivity {
                         public void onClick(DialogInterface dialog, int whichButton) {
                             gameId = input.getText().toString();
                             connState = DOWNLOAD_SGF;
+							ValidateDGSthreadRunning();
                             mThread.getGame(gameId,"0","0","0","0","0",false);
                         }
                     }).show();
@@ -1361,6 +1382,7 @@ public class MainDGS extends DGSActivity {
 						public void onClick(DialogInterface dialog, int whichButton) {
 							connState = GET_INFO;
 							String s = input.getText().toString().trim();
+							ValidateDGSthreadRunning();
 							if (myUserId.contentEquals(s) || s.contentEquals("")) {
 								lastUserId = myUserId;
 								mThread.getInfoMyUser();
@@ -1398,6 +1420,7 @@ public class MainDGS extends DGSActivity {
             returnToStatus = false;
             movePlayed = false;
             connState = GET_OBSERVED_GAME_LIST;
+			ValidateDGSthreadRunning();
             mThread.getShowGamesList(DGSThread.GAMES_OBSERVED);
         }
     }
@@ -1408,6 +1431,7 @@ public class MainDGS extends DGSActivity {
             returnToStatus = false;
             movePlayed = false;
             connState = GET_FINISHED_GAME_LIST;
+			ValidateDGSthreadRunning();
             mThread.getShowGamesList(DGSThread.GAMES_FINISHED);
         }
     }
@@ -1418,6 +1442,7 @@ public class MainDGS extends DGSActivity {
             returnToStatus = false;
             movePlayed = false;
             connState = GET_RUNNING_GAME_LIST;
+			ValidateDGSthreadRunning();
             mThread.getShowGamesList(DGSThread.GAMES_RUNNING);
         }
     }
@@ -1428,6 +1453,7 @@ public class MainDGS extends DGSActivity {
             returnToStatus = false;
             movePlayed = false;
             connState = GET_TEAM_GAME_LIST;
+			ValidateDGSthreadRunning();
             mThread.getShowGamesList(DGSThread.GAMES_MULTIPLAYER);
         }
     }
@@ -1447,6 +1473,7 @@ public class MainDGS extends DGSActivity {
             returnToStatus = false;
             movePlayed = false;
             connState = GET_WROOM_LIST;
+			ValidateDGSthreadRunning();
             mThread.getWroomList();
         }
     }
@@ -1546,10 +1573,10 @@ public class MainDGS extends DGSActivity {
     private Boolean gotoNextGame() {
         if (gameIndex < 0)
             return false;
-		if (gameIndex < statusList.length) {
+		if (gameIndex < getStatusListLength()) {
 			while (!statusList[gameIndex].startsWith("G")) {
 				gameIndex++;
-				if (gameIndex >= statusList.length)
+				if (gameIndex >= getStatusListLength())
 					return false;
 			}
 			statusResult = statusList[gameIndex];
@@ -1589,6 +1616,7 @@ public class MainDGS extends DGSActivity {
         handicap = elements[14].trim();
         if (!gameId.contentEquals("0")) {
             connState = GET_SGF;
+			ValidateDGSthreadRunning();
             mThread.getGame(gameId, moveId, game_action, game_status, handicap, timeLeft, gameNotes);
             return true;
         }
@@ -1598,10 +1626,10 @@ public class MainDGS extends DGSActivity {
     private boolean gotoNextMsg() {
         if (msgIndex < 0)
             return false;
-        while (msgIndex < statusList.length
+        while (msgIndex < getStatusListLength()
                 && (!statusList[msgIndex].startsWith("M") && !statusList[msgIndex].startsWith("MPG")))
             msgIndex++;
-        if (msgIndex >= statusList.length)
+        if (msgIndex >= getStatusListLength())
             return false;
         statusResult = statusList[msgIndex];
         msgIndex++;
@@ -1633,6 +1661,7 @@ public class MainDGS extends DGSActivity {
         if (!msgId.contentEquals("0")) {
             connState = GET_MSG;
             msgString = " id=" + msgId;
+			ValidateDGSthreadRunning();
             mThread.getMSG(msgId, msgType, "1");  // get and move to read
             return true;
         }
@@ -1642,9 +1671,9 @@ public class MainDGS extends DGSActivity {
     private boolean gotoNextBulletin() {
         if (bulletinIndex < 0)
             return false;
-        while (bulletinIndex < statusList.length && !statusList[bulletinIndex].startsWith("B"))
+        while (bulletinIndex < getStatusListLength() && !statusList[bulletinIndex].startsWith("B"))
             bulletinIndex++;
-        if (bulletinIndex >= statusList.length)
+        if (bulletinIndex >= getStatusListLength())
             return false;
         statusResult = statusList[bulletinIndex];
         bulletinIndex++;
@@ -1668,6 +1697,7 @@ public class MainDGS extends DGSActivity {
         if (!bulletinId.contentEquals("0")) {
             connState = GET_BULLETIN;
             msgString = " id=" + bulletinId;
+			ValidateDGSthreadRunning();
             mThread.getBulletin(bulletinId);
             return true;
         }
@@ -1678,9 +1708,9 @@ public class MainDGS extends DGSActivity {
         mpgIndex = -1;  // TODO for it to fail
         if (mpgIndex < 0)
             return false;
-        while (mpgIndex < statusList.length && !statusList[mpgIndex].startsWith("MPG"))
+        while (mpgIndex < getStatusListLength() && !statusList[mpgIndex].startsWith("MPG"))
             mpgIndex++;
-        if (mpgIndex >= statusList.length)
+        if (mpgIndex >= getStatusListLength())
             return false;
         statusResult = statusList[mpgIndex];
         mpgIndex++;
@@ -1705,6 +1735,7 @@ public class MainDGS extends DGSActivity {
         if (!mpgId.contentEquals("0")) {
             connState = GET_MSG;
             msgString = " id=" + mpgId;
+			ValidateDGSthreadRunning();
             mThread.getMSG(mpgId, mpgType, "1");  // get and move to read  // a different get...
             return true;
         }
@@ -1715,6 +1746,7 @@ public class MainDGS extends DGSActivity {
         movePlayed = true;
         connState = SEND_MOVE;
         moveString = "H["+mov+"]";
+		ValidateDGSthreadRunning();
         mThread.sendHandicap(gid, mov, msg, gameNotes, note);
     }
 
@@ -1722,6 +1754,7 @@ public class MainDGS extends DGSActivity {
         movePlayed = true;
         connState = SEND_MOVE;
         moveString = colr+" "+getString(R.string.Resign)+" ";
+		ValidateDGSthreadRunning();
         mThread.sendResign(gid, movid, msg, gameNotes, note);
     }
 
@@ -1729,6 +1762,7 @@ public class MainDGS extends DGSActivity {
         movePlayed = true;
         connState = SEND_MOVE;
         moveString = colr+"["+mov+"]";
+		ValidateDGSthreadRunning();
         if (mov.contentEquals("")) {
             mThread.sendPass(gid, movid, msg, gameNotes, note);
         } else {
@@ -1739,18 +1773,21 @@ public class MainDGS extends DGSActivity {
     private void sendDGSscore(String gid, String movid, String mov, String msg) {
         movePlayed = true;
         connState = SEND_MOVE;
+		ValidateDGSthreadRunning();
         mThread.sendScore(gid, movid, mov, msg);
     }
 
     private void acceptDGSscore(String gid, String movid, String msg) {
         movePlayed = true;
         connState = SEND_MOVE;
+		ValidateDGSthreadRunning();
         mThread.sendAcceptScore(gid, movid, msg);
     }
 
     private void deleteDGSgame(String gid, String movid, String msg) {
         movePlayed = true;
         connState = SEND_MOVE;
+		ValidateDGSthreadRunning();
         mThread.deleteDGSgame(gid, movid, msg);
     }
 
@@ -1758,6 +1795,7 @@ public class MainDGS extends DGSActivity {
         movePlayed = true;
         connState = SEND_MOVE;
         moveString = "";
+		ValidateDGSthreadRunning();
         mThread.sendGameNote(gid, note);
     }
 
@@ -1781,6 +1819,7 @@ public class MainDGS extends DGSActivity {
                 .setPositiveButton(R.string.Ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         connState = SEND_MSG;
+						ValidateDGSthreadRunning();
                         mThread.sendAcceptInvitation(msgId,utilityCommentEditText.getText().toString().trim());
                     }
                 }).show();
@@ -1833,6 +1872,7 @@ public class MainDGS extends DGSActivity {
                 .setPositiveButton(R.string.Ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         connState = SEND_MSG;
+						ValidateDGSthreadRunning();
                         mThread.sendDeclineInvitation(msgId,utilityCommentEditText.getText().toString().trim());
                     }
                 }).show();
@@ -2015,6 +2055,7 @@ public class MainDGS extends DGSActivity {
         msgIntent.putExtra("BOARDLAYOUT", currentBoardLayout);
         startActivityForResult(msgIntent, DISPLAY_MSG_VIEW);
         //if (m_type.contentEquals("NORMAL"))
+		// ValidateDGSthreadRunning();
         //	mThread.moveMSG(m_mid, "1");
     }
 
@@ -2083,6 +2124,7 @@ public class MainDGS extends DGSActivity {
     private void getStatus() {
         movePlayed = false;
         connState = GET_STATUS_LIST;
+		ValidateDGSthreadRunning();
         mThread.getStatusList(gameOrder);
     }
 
@@ -2442,11 +2484,13 @@ public class MainDGS extends DGSActivity {
                 .setNeutralButton(R.string.Info, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         connState = GET_INFO;
+						ValidateDGSthreadRunning();
                         mThread.getInfoUser(m_handle);
                     }})
                 .setPositiveButton(R.string.JoinGame, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         connState = JOIN_WROOM_GAME;
+						ValidateDGSthreadRunning();
                         mThread.joinWroomGame(m_wrid);
                     }
                 })
@@ -2495,7 +2539,7 @@ public class MainDGS extends DGSActivity {
                     if (s == null) s = "";
                     statusList = s.split("\n");
                     boolean statusData = false;
-                    for (int i = statusList.length - 1; i > -1; i--) {
+                    for (int i = getStatusListLength() - 1; i > -1; i--) {
                         if (statusList[i].startsWith("#") || statusList[i].startsWith(" ")) {  // remove all comments and empty lines
                             statusList = removeStringElement(statusList,i);
                         } else {
@@ -2931,10 +2975,7 @@ public class MainDGS extends DGSActivity {
                 boardLayout = bl;
                 if (restartit) {
                     finish();
-                    Intent i = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
-					assert i != null;
-					i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(i);
+                    restartApp();
                 }
                 break;
             case FWD_PREFS:
@@ -3183,6 +3224,7 @@ public class MainDGS extends DGSActivity {
                             default:
                             case 0:  // done
                                 if (!msgId.contentEquals("0")) {
+									ValidateDGSthreadRunning();
                                     mThread.markReadBulletin(msgId);
                                 } else {
                                     doNextAction();
@@ -3210,7 +3252,7 @@ public class MainDGS extends DGSActivity {
                         inx = -1;
                     }
                 }
-                if (inx < 0 || inx >= statusList.length) {
+                if (inx < 0 || inx >= getStatusListLength()) {
                     restoreStatus(true, true, false, BUTTONS_GAMELISTS);
                 } else {
                     statusResult = statusList[inx];
@@ -3224,6 +3266,7 @@ public class MainDGS extends DGSActivity {
                         if (elements.length > 0) {
                             gameId = elements[0].trim();
                             connState = GET_WROOM_INFO;
+							ValidateDGSthreadRunning();
                             mThread.getWroomInfo(gameId);
                         }
                         break;
@@ -3249,6 +3292,7 @@ public class MainDGS extends DGSActivity {
                 .setNegativeButton(R.string.Info, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         connState = GET_INFO;
+                        ValidateDGSthreadRunning();
                         mThread.getInfoUid(lastUId);
                         }})
                 .setNeutralButton(R.string.Resign, new DialogInterface.OnClickListener() {
@@ -3258,6 +3302,7 @@ public class MainDGS extends DGSActivity {
                 .setPositiveButton(R.string.downLoadGame, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         connState = DOWNLOAD_SGF;
+                        ValidateDGSthreadRunning();
                         mThread.getGame(gameId,"0","0","0","0","0",false);
                     }
                     }).show();
@@ -3269,12 +3314,14 @@ public class MainDGS extends DGSActivity {
                             .setNegativeButton(R.string.Info, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int whichButton) {
                                     connState = GET_INFO;
+									ValidateDGSthreadRunning();
                                     mThread.getInfoUid(lastUId);
                                 }
                             })
                             .setPositiveButton(R.string.downLoadGame, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int whichButton) {
                                     connState = DOWNLOAD_SGF;
+									ValidateDGSthreadRunning();
                                     mThread.getGame(gameId, "0", "0", "0", "0", "0", false);
                                 }
                             }).show();
@@ -3291,7 +3338,7 @@ public class MainDGS extends DGSActivity {
                         inx = -1;
                     }
                 }
-                if (inx < 0 || inx >= statusList.length) {
+                if (inx < 0 || inx >= getStatusListLength()) {
                     restoreStatus(true, true, false, BUTTONS_CLIENT);
                 } else {
                     gotoStatusLine(inx);
@@ -3342,6 +3389,7 @@ public class MainDGS extends DGSActivity {
 					assert inviteString != null;
 					if (!inviteString.equals("")) {
                         connState = SEND_MSG;
+						ValidateDGSthreadRunning();
                         mThread.sendInvitation(inviteString);  // TODO is this right
                         break;
                     }
@@ -3361,6 +3409,7 @@ public class MainDGS extends DGSActivity {
 					assert msgString != null;
 					if (!msgString.equals("")) {
                         connState = SEND_MSG;
+						ValidateDGSthreadRunning();
                         mThread.sendMSG(msgString);
                         break;
                     }
@@ -3396,7 +3445,7 @@ public class MainDGS extends DGSActivity {
                     } catch (Exception e) {
                         inx = -1;
                     }
-                    if (inx >= 0 && inx < statusList.length) {
+                    if (inx >= 0 && inx < getStatusListLength()) {
                         String[] e = statusList[inx].split("!");
                         if (e.length > 1) {
                             gameId = e[0];

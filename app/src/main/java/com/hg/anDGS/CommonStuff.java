@@ -70,7 +70,12 @@ public class CommonStuff {
 		if (MainDGS.okHTTPclient == null) {
 			MainDGS.okHTTPclient = getNewOkHttpClient();
 		}
-		HttpUrl.Builder urlBuilder = HttpUrl.parse(baseURL).newBuilder();
+		HttpUrl.Builder urlBuilder = null;
+		try {
+			urlBuilder = HttpUrl.parse(baseURL).newBuilder();
+		} catch (Exception e) {
+			return "#Failed: " + e.toString();
+		}
 		Map<String,String> params = new HashMap<String, String>();
 		params.putAll(httpParams);
 		Set<String> setCodes = params.keySet();

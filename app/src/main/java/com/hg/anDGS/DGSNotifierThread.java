@@ -394,7 +394,7 @@ class DGSNotifierThread extends Thread {
     }
 
     void showNotification(Context ctx, String notify_txt, int notify_type, String log_txt) {
-        Notification notification = makeNotification(ctx, notify_txt, notify_type, log_txt, make_sound, notifierVibrate);
+        Notification notification = makeNotification(ctx, false, notify_txt, notify_type, log_txt, make_sound, notifierVibrate);
         // Send the notification.
         // We use a unique number.  We use it later to cancel.
         if (notification != null) {
@@ -402,7 +402,7 @@ class DGSNotifierThread extends Thread {
         }
     }
 
-    Notification makeNotification(Context ctx, String notify_txt, int notify_type, String log_txt, String make_sound, boolean notifierVibrate) {
+    Notification makeNotification(Context ctx, boolean forceIt, String notify_txt, int notify_type, String log_txt, String make_sound, boolean notifierVibrate) {
         if (MainDGS.dbgNotifier) {
             errHist.writeErrorHistory("DGSNotifierThread.makeNotification: " + notify_txt
                     + ", " + notify_type
@@ -430,7 +430,7 @@ class DGSNotifierThread extends Thread {
                     break;
             }
         }
-        if (!showIt) return null;
+        if (!showIt && !forceIt) return null;
 
         // In this sample, we'll use the same text for the ticker and the expanded notification
         //  | Notification.FLAG_ONLY_ALERT_ONCE
