@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.ContextThemeWrapper;
@@ -81,7 +80,7 @@ public class GetUserGraphView extends DGSActivity {
         setContentView(R.layout.getusergraph);
 		ctw = new ContextThemeWrapper(this, commonStuff.getCommonTheme(theme));
         
-		tmHelp = (TextView) findViewById(R.id.gugTMHelp);
+		tmHelp = findViewById(R.id.gugTMHelp);
 		tmHelp.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				final Handler handler = new Handler();
@@ -93,38 +92,38 @@ public class GetUserGraphView extends DGSActivity {
 			}
 		});
 
-		toTextEdit = (TextView) findViewById(R.id.gugToTextLabel);
-		toUserIDedit = (TextView) findViewById(R.id.gugUserId);
-    	toLabel = (LinearLayout) findViewById(R.id.gugToLabel);
+		toTextEdit = findViewById(R.id.gugToTextLabel);
+		toUserIDedit = findViewById(R.id.gugUserId);
+    	toLabel = findViewById(R.id.gugToLabel);
     	toLabel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	doSetTo();
             }
         });
 
-		startLabel = (LinearLayout) findViewById(R.id.gugStartLabel);
+		startLabel = findViewById(R.id.gugStartLabel);
 		startLabel.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				doSetStartMonth();
 			}
 		});
     	
-    	startMonth = (TextView) findViewById(R.id.gugStartDateMonth);
+    	startMonth = findViewById(R.id.gugStartDateMonth);
 
-		startYear = (TextView) findViewById(R.id.gugStartDateYear);
+		startYear = findViewById(R.id.gugStartDateYear);
 
-		endLabel = (LinearLayout) findViewById(R.id.gugEndLabel);
+		endLabel = findViewById(R.id.gugEndLabel);
 		endLabel.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				doSetEndMonth();
 			}
 		});
 
-		endMonth = (TextView) findViewById(R.id.gugEndDateMonth);
+		endMonth = findViewById(R.id.gugEndDateMonth);
 
-		endYear = (TextView) findViewById(R.id.gugEndDateYear);
+		endYear = findViewById(R.id.gugEndDateYear);
 
-    	send_button = (TextView) findViewById(R.id.gugSendButton);
+    	send_button = findViewById(R.id.gugSendButton);
     	send_button.setOnClickListener(new View.OnClickListener() {
              public void onClick(View v) {
             	StringBuilder sb = new StringBuilder();
@@ -135,15 +134,14 @@ public class GetUserGraphView extends DGSActivity {
 						Toast.makeText(ctw, "Need To field!", Toast.LENGTH_LONG).show();
 						return;
 					} else {
-						sb.append("uid=").append(commonStuff.encodeIt(toField));
+						sb.append("uid=").append(toField);
 					}
 				} else {
-					sb.append("user=").append(commonStuff.encodeIt(toField));
+					sb.append("user=").append(toField);
 				}
-                sb.append("&startyear=").append(commonStuff.encodeIt(startYear.getText().toString().trim()));
-                sb.append("&startmonth=").append(commonStuff.encodeIt(startMonth.getText().toString().trim()));
-                sb.append("&endyear=").append(commonStuff.encodeIt(endYear.getText().toString().trim()));
-                sb.append("&endmonth=").append(commonStuff.encodeIt(endMonth.getText().toString().trim()));
+                sb.append("&startyear=").append(startYear.getText().toString().trim());
+               sb.append("&endyear=").append(endYear.getText().toString().trim());
+                sb.append("&endmonth=").append(endMonth.getText().toString().trim());
              	Bundle rslts = new Bundle();
              	rslts.putString("MessageString",sb.toString()); 
              	Intent mIntent = new Intent();
@@ -300,13 +298,8 @@ public class GetUserGraphView extends DGSActivity {
 		 }
 	 
 	 public boolean onOptionsItemSelected(MenuItem item) {
-		 
-		 switch (item.getItemId()) {
-		 case MENU_HELP:
+		 if (item.getItemId() == MENU_HELP) {
 			 doHelp();
-			break;
-		 default:
-				// nothing 
 		 }
 		 return false;
 	 }

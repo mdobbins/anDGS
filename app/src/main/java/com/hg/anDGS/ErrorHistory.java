@@ -23,8 +23,7 @@ public class ErrorHistory {
         return instance;
     }
 
-    private ErrorHistory() {
-    }
+    private ErrorHistory() { }
 
     private static String [] errorHistoryData = new String [0];
     private static boolean errorHistoryLoaded = false;
@@ -42,7 +41,7 @@ public class ErrorHistory {
         checkSaveErrorHistoryData();
     }
 
-    void loadErrorHistoryData() {
+    private void loadErrorHistoryData() {
         synchronized(lockIt) {
             String stmv = readErrorHistoryData();
             String [] stmvLines;
@@ -63,7 +62,7 @@ public class ErrorHistory {
         }
     }
 
-    boolean isErrorHistoryDataLoaded () {
+    private boolean isErrorHistoryDataLoaded() {
         synchronized(lockIt) {
             return errorHistoryLoaded;
         }
@@ -116,10 +115,10 @@ public class ErrorHistory {
         }
     }
 
-    void pushNewErrorHistoryData(String dataIn) {
+    private void pushNewErrorHistoryData(String dataIn) {
         int len = maxErrLen;
         if (dataIn.length() < len) len = dataIn.length();
-        String data = Long.toString(System.currentTimeMillis()) + "!" + dataIn.substring(0,len);
+        String data = System.currentTimeMillis() + "!" + dataIn.substring(0,len);
         // move old down 1
         int inx = -1;
         int i = 0;
@@ -166,7 +165,7 @@ public class ErrorHistory {
         }
     }
 
-    String stripNL(String data) {
+    private String stripNL(String data) {
         return data.replace('\n', (char) 135);
     }
 
@@ -190,12 +189,12 @@ public class ErrorHistory {
             String fName = commonFileStuff.getFullFileName(commonFileStuff.ANDGS_DIR, commonFileStuff.HDFILENAME);
             File aFile = new File(fName);
             File dir = aFile.getParentFile();
-            if (!dir.isDirectory()) commonFileStuff.makeDirectory (dir);
+            if (dir != null && !dir.isDirectory()) commonFileStuff.makeDirectory(dir);
             FileOutputStream fos = new FileOutputStream(aFile);
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
             try {
-                for (int i=0; i < strehd.length; i++)  {
-                    bw.write(strehd[i]);
+                for (String s : strehd) {
+                    bw.write(s);
                     bw.newLine();
                 }
             } catch (IOException e) {
@@ -227,12 +226,12 @@ public class ErrorHistory {
         String [] errorHistoryList = new String [cntLines];
         int inx = 0;
         if (errorHistoryData.length>0) {
-            for (int i = 0; i < errorHistoryData.length; i++) {
-                if (!errorHistoryData[i].equals("")) {
+            for (String errorHistoryDatum : errorHistoryData) {
+                if (!errorHistoryDatum.equals("")) {
                     if (inx >= errorHistoryList.length) {
                         break;
                     } else {
-                        errorHistoryList[inx] = errorHistoryData[i];
+                        errorHistoryList[inx] = errorHistoryDatum;
                     }
                     inx++;
                 }

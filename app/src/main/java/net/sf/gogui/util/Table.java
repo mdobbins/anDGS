@@ -172,7 +172,7 @@ public class Table
         return m_properties.containsKey(key);
     }
 
-    public void read(File file) throws FileNotFoundException, IOException,
+    public void read(File file) throws IOException,
                                        InvalidFormat
     {
         read(new FileReader(file));

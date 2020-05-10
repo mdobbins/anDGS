@@ -1,32 +1,21 @@
 package com.hg.anDGS;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.support.v4.app.NotificationCompat;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.net.Uri;
+import android.os.Build;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 
-import com.squareup.okhttp.HttpUrl;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import java.io.IOException;
-import java.net.CookieManager;
-import java.net.CookiePolicy;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 class DGSNotifierThread extends Thread {
     private final int DO_NOTHING = 0;
@@ -37,11 +26,9 @@ class DGSNotifierThread extends Thread {
     private final long idle_limit_millis = idle_limit*second;  //close connection if idle for more than 2 minutes
     private long targetTime;
     private int doEvt = DO_NOTHING;
-    private OkHttpClient okHTTPclient = null;
     private Map<String,String> HTTPparams = new HashMap<>();
     private Map<String,String> QuickStatusParams = new HashMap<String, String>();
     private String dgsURL;
-    private String loginURL;
     private String qsURL;
     private String sgfURL;
     private String qdURL;
@@ -50,7 +37,6 @@ class DGSNotifierThread extends Thread {
     private String make_sound;
     private boolean notifierVibrate;
     private boolean notifyAllDetails;
-    private TextHelper th = new TextHelper();
     private volatile boolean mStopped = false;
     private volatile boolean mLoggedOn = false;
     private Context ctxt;
@@ -84,9 +70,8 @@ class DGSNotifierThread extends Thread {
         QuickStatusParams.put("version","2");
         QuickStatusParams.put("no_cache","0");
         QuickStatusParams.put("order","0");
-        QuickStatusParams.put("userid",commonStuff.encodeIt(mUser));
-        QuickStatusParams.put("passwd",commonStuff.encodeIt(mPass));
-        loginURL = dgsURL + "login.php";
+        QuickStatusParams.put("userid",mUser);
+        QuickStatusParams.put("passwd",mPass);
         qsURL = dgsURL + "quick_status.php";
         sgfURL = dgsURL + "sgf.php";
         qdURL = dgsURL + "quick_do.php";
@@ -294,10 +279,10 @@ class DGSNotifierThread extends Thread {
         if (!storMov.areStoredMovesLoaded()) {
             storMov.loadStoredMoves();
         }
-        for (int i=0; i<statusList.length; i++) {
-            if (statusList[i].startsWith("G")) {
-                String [] elements;
-                elements = statusList[i].split(",");
+        for (String s : statusList) {
+            if (s.startsWith("G")) {
+                String[] elements;
+                elements = s.split(",");
                 if (elements.length > 9) {
                     String current_color;
                     String gameId = elements[1].trim();
@@ -306,27 +291,27 @@ class DGSNotifierThread extends Thread {
                     String game_status = elements[7].trim();   // PLAY
                     String moveId = elements[8].trim();
                     if (player_color.contentEquals("B")) {  // player to move
-                        current_color="W";
+                        current_color = "W";
                     } else {
                         current_color = "B";
                     }
                     if (!gameId.contentEquals("0") && game_action.contentEquals("2") && game_status.contentEquals("PLAY")) {
                         if (storMov.isStoredMove(gameId, moveId, current_color, "")) {
                             HTTPparams.clear();
-                            HTTPparams.put("gid",gameId);
-                            HTTPparams.put("owned_comments","1");
-                            HTTPparams.put("quick_mode","1");
+                            HTTPparams.put("gid", gameId);
+                            HTTPparams.put("owned_comments", "1");
+                            HTTPparams.put("quick_mode", "1");
                             String sgf = doHTTPreq(sgfURL);
 
-                            String [] nextMov = storMov.findTakeStoredMove(gameId, moveId, sgf);
+                            String[] nextMov = storMov.findTakeStoredMove(gameId, moveId, sgf);
                             if (nextMov != null) {
                                 // (nextMov[0].contentEquals(cMovID) && nextMov[1].contentEquals(cClr) && nextMov[2].contentEquals(cMov)
                                 HTTPparams.clear();
-                                HTTPparams.put("obj","game");
-                                HTTPparams.put("cmd","move");
-                                HTTPparams.put("gid",gameId);
-                                HTTPparams.put("move_id",nextMov[0]);
-                                HTTPparams.put("move",nextMov[2]);
+                                HTTPparams.put("obj", "game");
+                                HTTPparams.put("cmd", "move");
+                                HTTPparams.put("gid", gameId);
+                                HTTPparams.put("move_id", nextMov[0]);
+                                HTTPparams.put("move", nextMov[2]);
                                 String rslt = doHTTPreq(qdURL);
                                 if (MainDGS.dbgStdMov) {
                                     errHist.writeErrorHistory("DGSNotifierThread.respondToGames: " + rslt);
@@ -354,8 +339,8 @@ class DGSNotifierThread extends Thread {
 
     private int countGames(String[] statusList) {
         int count = 0;
-        for (int i=0; i<statusList.length; i++) {
-            if (statusList[i].startsWith("G")) {
+        for (String s : statusList) {
+            if (s.startsWith("G")) {
                 count++;
             }
         }
@@ -364,8 +349,8 @@ class DGSNotifierThread extends Thread {
 
     private int countMsgs(String[] statusList) {
         int count = 0;
-        for (int i=0; i<statusList.length; i++) {
-            if (statusList[i].startsWith("M")) {
+        for (String s : statusList) {
+            if (s.startsWith("M")) {
                 count++;
             }
         }
@@ -471,10 +456,13 @@ class DGSNotifierThread extends Thread {
             case notify_stuff_to_do:
                 last_notify = notify_stuff_to_do;
                 smallIcon=R.drawable.y;    // yin/yang
-                if (make_sound.contentEquals(PrefsDGS.DEFAULTSOUND)) {
-                    ndefaults |= Notification.DEFAULT_SOUND;
-                } else if (make_sound.contentEquals(PrefsDGS.STONESOUND)) {
-                    notifyBuilder.setSound(Uri.parse("android.resource://com.hg.anDGS/raw/stone"),AudioManager.STREAM_NOTIFICATION);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+                    if (make_sound.contentEquals(PrefsDGS.DEFAULTSOUND)) {
+                        ndefaults |= Notification.DEFAULT_SOUND;
+                    } else if (make_sound.contentEquals(PrefsDGS.STONESOUND)) {
+                        //notifyBuilder.setSound(Uri.parse("android.resource://com.hg.anDGS/raw/stone"),AudioManager.STREAM_NOTIFICATION);
+                        notifyBuilder.setSound(Uri.parse("android.resource://" + ctx.getPackageName() + "/" + R.raw.stone), AudioManager.STREAM_NOTIFICATION);
+                    }
                 }
                 if (notifierVibrate) {
                     ndefaults |= Notification.DEFAULT_VIBRATE;

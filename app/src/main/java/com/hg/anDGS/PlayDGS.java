@@ -1,12 +1,9 @@
 package com.hg.anDGS;
 
-import net.sf.gogui.go.GoColor;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,6 +21,8 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
+
+import net.sf.gogui.go.GoColor;
 
 public class PlayDGS extends DGSActivity implements BoardUpdate{
 	// play states left button right button
@@ -158,8 +157,8 @@ public class PlayDGS extends DGSActivity implements BoardUpdate{
 
 		DisplayMetrics metrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(metrics);
-		display_width = (metrics.heightPixels < metrics.widthPixels) ? metrics.heightPixels : metrics.widthPixels;
-		display_length = (metrics.heightPixels > metrics.widthPixels) ? metrics.heightPixels : metrics.widthPixels;
+		display_width = Math.min(metrics.heightPixels, metrics.widthPixels);
+		display_length = Math.max(metrics.heightPixels, metrics.widthPixels);
 		display_scale = metrics.density;
 		
 		this.setTheme(commonStuff.getCommonStyle(theme));
@@ -168,37 +167,37 @@ public class PlayDGS extends DGSActivity implements BoardUpdate{
 		if (boardLayout.contains("landscape")) {
 			//setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 			setContentView(R.layout.playls);
-			play_left_button = (TextView) findViewById(R.id.playLeftButtonLS);
-			play_right_button = (TextView) findViewById(R.id.playRightButtonLS);
-			playerComment = (TextView) findViewById(R.id.playerCommentLS);
-			playerNoteLayout = (LinearLayout) findViewById(R.id.playerNoteLSLayout);
-			playerNote = (TextView) findViewById(R.id.playerNoteLS);
-			playerInfo = (TextView) findViewById(R.id.playerInfoLS);
-			moveInfo = (TextView) findViewById(R.id.playMoveInfoLS);
-			boardSwitcher = (FrameLayout) findViewById(R.id.boardGridLS);
-			topMenuLayout = (TableLayout) findViewById(R.id.playTopMenuLS) ;
-			tmPassAccept = (TextView) findViewById(R.id.playTMPassLS);
-			tmResign = (TextView) findViewById(R.id.playTMResignLS);
-			tmInfo = (TextView) findViewById(R.id.playTMInfoLS);
-			tmDownLoad = (TextView) findViewById(R.id.playTMDownLoadLS);
-			tmHelp = (TextView) findViewById(R.id.playTMHelpLS);
+			play_left_button = findViewById(R.id.playLeftButtonLS);
+			play_right_button = findViewById(R.id.playRightButtonLS);
+			playerComment = findViewById(R.id.playerCommentLS);
+			playerNoteLayout = findViewById(R.id.playerNoteLSLayout);
+			playerNote = findViewById(R.id.playerNoteLS);
+			playerInfo = findViewById(R.id.playerInfoLS);
+			moveInfo = findViewById(R.id.playMoveInfoLS);
+			boardSwitcher = findViewById(R.id.boardGridLS);
+			topMenuLayout = findViewById(R.id.playTopMenuLS);
+			tmPassAccept = findViewById(R.id.playTMPassLS);
+			tmResign = findViewById(R.id.playTMResignLS);
+			tmInfo = findViewById(R.id.playTMInfoLS);
+			tmDownLoad = findViewById(R.id.playTMDownLoadLS);
+			tmHelp = findViewById(R.id.playTMHelpLS);
 		} else {
 			//setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 			setContentView(R.layout.play);
-			play_left_button = (TextView) findViewById(R.id.playLeftButton);
-			play_right_button = (TextView) findViewById(R.id.playRightButton);
-			playerComment = (TextView) findViewById(R.id.playerComment);
-			playerNoteLayout = (LinearLayout) findViewById(R.id.playerNoteLayout);
-			playerNote = (TextView) findViewById(R.id.playerNote);
-			playerInfo = (TextView) findViewById(R.id.playerInfo);
-			moveInfo = (TextView) findViewById(R.id.playMoveInfo);
-			boardSwitcher = (FrameLayout) findViewById(R.id.boardGrid);
-			topMenuLayout = (TableLayout) findViewById(R.id.playTopMenu) ;
-			tmPassAccept = (TextView) findViewById(R.id.playTMPass);
-			tmResign = (TextView) findViewById(R.id.playTMResign);
-			tmInfo = (TextView) findViewById(R.id.playTMInfo);
-			tmDownLoad = (TextView) findViewById(R.id.playTMDownLoad);
-			tmHelp = (TextView) findViewById(R.id.playTMHelp);
+			play_left_button = findViewById(R.id.playLeftButton);
+			play_right_button = findViewById(R.id.playRightButton);
+			playerComment = findViewById(R.id.playerComment);
+			playerNoteLayout = findViewById(R.id.playerNoteLayout);
+			playerNote = findViewById(R.id.playerNote);
+			playerInfo = findViewById(R.id.playerInfo);
+			moveInfo = findViewById(R.id.playMoveInfo);
+			boardSwitcher = findViewById(R.id.boardGrid);
+			topMenuLayout = findViewById(R.id.playTopMenu);
+			tmPassAccept = findViewById(R.id.playTMPass);
+			tmResign = findViewById(R.id.playTMResign);
+			tmInfo = findViewById(R.id.playTMInfo);
+			tmDownLoad = findViewById(R.id.playTMDownLoad);
+			tmHelp = findViewById(R.id.playTMHelp);
 		}
 		
 		tmPassAccept.setOnClickListener(new View.OnClickListener() {
@@ -424,31 +423,27 @@ public class PlayDGS extends DGSActivity implements BoardUpdate{
 	}
 	
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		switch  (keyCode) {
-		 case KeyEvent.KEYCODE_BACK: 
-			 return true;
-		 default:
-		 }
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			return true;
+		}
 		return super.onKeyDown(keyCode, event);
 	}
 	
 	public boolean onKeyUp (int keyCode, KeyEvent event) {
-		switch  (keyCode) {
-		 case KeyEvent.KEYCODE_BACK: 
-			 if (playState == BoardManager.ZOOM_BOARD) { // Unzoom
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			if (playState == BoardManager.ZOOM_BOARD) { // Unzoom
 				// unzoom board
 				try {
 					bm.unzoom();
-				} catch (Exception e) {	
+				} catch (Exception e) {
 					cleanUpAndReturn("SKIPALL");
 				}
 				return true;
-			 } else {
+			} else {
 				cleanUpAndReturn("SKIPALL");
 				return true;
-			 }
-		 default:
-		 }
+			}
+		}
 		return super.onKeyUp(keyCode, event);
 	}
 
@@ -634,7 +629,11 @@ public class PlayDGS extends DGSActivity implements BoardUpdate{
     		if (resultCode == RESULT_OK) {
 				try {
 					extras = data.getExtras();
-					s = extras.getString("PHRASE");
+					if (extras != null) {
+						s = extras.getString("PHRASE");
+					} else {
+						s = "";
+					}
 					setPlayerComment(s);
 				} catch (Exception ignored) {
 				}

@@ -3,9 +3,7 @@ package com.hg.anDGS;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
-import android.app.NotificationManager;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -218,7 +216,6 @@ public class MainDGS extends DGSActivity {
     private Uri fileData;
 	private DownloadFile dlThread = null;
 	ActivityManager am;
-    private NotificationManager mNM;
 	private ContextThemeWrapper ctw;
     private CommonStuff commonStuff = new CommonStuff();
     private CommonFileStuff commonFileStuff = new CommonFileStuff();
@@ -285,9 +282,13 @@ public class MainDGS extends DGSActivity {
 		needToOpenFile = fileData != null;
 		if (needToOpenFile) {
 			oneShot = true;
-			localFile = !fileData.getScheme().startsWith("http");
-            //Toast.makeText(this, "Uri:" + fileData.toString(), Toast.LENGTH_LONG).show();
-            // Toast.makeText(this, "localFile:" + localFile + "Scheme:" + fileData.getScheme(), Toast.LENGTH_LONG).show();
+			try {
+				localFile = !fileData.getScheme().startsWith("http");
+				//Toast.makeText(this, "Uri:" + fileData.toString(), Toast.LENGTH_LONG).show();
+				// Toast.makeText(this, "localFile:" + localFile + "Scheme:" + fileData.getScheme(), Toast.LENGTH_LONG).show();
+			} catch (Exception e) {
+				localFile = false;
+			}
 			if (localFile) {
 				inFileName = fileData.getPath();
 				assert inFileName != null;
@@ -358,7 +359,6 @@ public class MainDGS extends DGSActivity {
 		});
 
         am = (ActivityManager) this.getSystemService( ACTIVITY_SERVICE );
-        mNM = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
 		ctw = new ContextThemeWrapper(this, commonStuff.getCommonTheme(theme));
 		
 		//boolean bError = false;
@@ -443,17 +443,12 @@ public class MainDGS extends DGSActivity {
 	protected void onStart(){
 	    super.onStart();
 	    setDebugFlags();
-        if(!commonFileStuff.isDirectory(commonFileStuff.ANDGS_DIR)) {
-            if (commonFileStuff.makeDirectory (commonFileStuff.getFullDirName(commonFileStuff.ANDGS_DIR))) {
-				commonFileStuff.migrateFile(commonFileStuff.RECOVERYFILE, defaultDir, commonFileStuff.ANDGS_DIR);
-				commonFileStuff.migrateFile(commonFileStuff.SMFILENAME, defaultDir, commonFileStuff.ANDGS_DIR);
-			} else {
-            	if (!checkedFileSystem) {
-					checkedFileSystem = true;
-					final Intent helpIntent = commonStuff.helpDGS (commonStuff.HELP_FILE_PERMISSIONS, this);
-					helpIntent.putExtra("BOARDLAYOUT", currentBoardLayout);
-					startActivityForResult(helpIntent, HELP_VIEW);
-				}
+        if(!commonFileStuff.isSetupDirectory(defaultDir)) {
+			if (!checkedFileSystem) {
+				checkedFileSystem = true;
+				final Intent helpIntent = commonStuff.helpDGS (commonStuff.HELP_FILE_PERMISSIONS, this);
+				helpIntent.putExtra("BOARDLAYOUT", currentBoardLayout);
+				startActivityForResult(helpIntent, HELP_VIEW);
 			}
         }
 		if (!storMov.areStoredMovesLoaded()) {
@@ -594,26 +589,22 @@ public class MainDGS extends DGSActivity {
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        switch  (keyCode) {
-            case KeyEvent.KEYCODE_BACK:
-                return true;
-            default:
-        }
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			return true;
+		}
         return super.onKeyDown(keyCode, event);
     }
 
     public boolean onKeyUp (int keyCode, KeyEvent event) {
-        switch  (keyCode) {
-            case KeyEvent.KEYCODE_BACK:
-                if (buttonsType == BUTTONS_HOME) {
-					moveTaskToBack(true);
-                    return true;
-                } else {
-					displayParentButtons(buttonsType);
-                    return true;
-                }
-            default:
-        }
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			if (buttonsType == BUTTONS_HOME) {
+				moveTaskToBack(true);
+				return true;
+			} else {
+				displayParentButtons(buttonsType);
+				return true;
+			}
+		}
         return super.onKeyUp(keyCode, event);
     }
 
@@ -689,45 +680,45 @@ public class MainDGS extends DGSActivity {
 		currentBoardLayout = PrefsDGS.PORTRAIT;
 		DisplayMetrics metrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(metrics);
-		int display_width = (metrics.heightPixels < metrics.widthPixels) ? metrics.heightPixels : metrics.widthPixels;
+		int display_width = Math.min(metrics.heightPixels, metrics.widthPixels);
 		if (display_width > 300) {
 			setContentView(R.layout.main);
-			tmPrefs = (TextView) findViewById(R.id.mainTMPrefs);
-			tmCredits = (TextView) findViewById(R.id.mainTMCredits);
-			tmToggleNotifier = (TextView) findViewById(R.id.mainTMToggleNotifier);
-			tmTutorial = (TextView) findViewById(R.id.mainTMTutorial);
-			tmHelp = (TextView) findViewById(R.id.mainTMHelp);
-			mainDesc = (TextView) findViewById(R.id.mainDesc);
-			connStatus = (TextView) findViewById(R.id.mainStatus);
-			client_buttons = (ListView) findViewById(R.id.mainButtons);
-			version_txt = (TextView) findViewById(R.id.versionTxt);
+			tmPrefs = findViewById(R.id.mainTMPrefs);
+			tmCredits = findViewById(R.id.mainTMCredits);
+			tmToggleNotifier = findViewById(R.id.mainTMToggleNotifier);
+			tmTutorial = findViewById(R.id.mainTMTutorial);
+			tmHelp = findViewById(R.id.mainTMHelp);
+			mainDesc = findViewById(R.id.mainDesc);
+			connStatus = findViewById(R.id.mainStatus);
+			client_buttons = findViewById(R.id.mainButtons);
+			version_txt = findViewById(R.id.versionTxt);
 			
 		} else {
 			setContentView(R.layout.mainsm);
-			tmPrefs = (TextView) findViewById(R.id.mainTMPrefsSM);
-			tmCredits = (TextView) findViewById(R.id.mainTMCreditsSM);
-			tmToggleNotifier = (TextView) findViewById(R.id.mainTMStartNotifierSM);
-			tmTutorial = (TextView) findViewById(R.id.mainTMTutorialSM);
-			tmHelp = (TextView) findViewById(R.id.mainTMHelpSM);
-			mainDesc = (TextView) findViewById(R.id.mainDescSM);
-			connStatus = (TextView) findViewById(R.id.mainStatusSM);
-			client_buttons = (ListView) findViewById(R.id.mainButtonsSM);
-			version_txt = (TextView) findViewById(R.id.versionTxtSM);
+			tmPrefs = findViewById(R.id.mainTMPrefsSM);
+			tmCredits = findViewById(R.id.mainTMCreditsSM);
+			tmToggleNotifier = findViewById(R.id.mainTMStartNotifierSM);
+			tmTutorial = findViewById(R.id.mainTMTutorialSM);
+			tmHelp = findViewById(R.id.mainTMHelpSM);
+			mainDesc = findViewById(R.id.mainDescSM);
+			connStatus = findViewById(R.id.mainStatusSM);
+			client_buttons = findViewById(R.id.mainButtonsSM);
+			version_txt = findViewById(R.id.versionTxtSM);
 		}
     }
     
     private void setLandscapeViews () {
 		currentBoardLayout = PrefsDGS.LANDSCAPE;
 		setContentView(R.layout.mainsm);
-		tmPrefs = (TextView) findViewById(R.id.mainTMPrefsSM);
-		tmCredits = (TextView) findViewById(R.id.mainTMCreditsSM);
-		tmToggleNotifier = (TextView) findViewById(R.id.mainTMStartNotifierSM);
-		tmTutorial = (TextView) findViewById(R.id.mainTMTutorialSM);
-		tmHelp = (TextView) findViewById(R.id.mainTMHelpSM);
-		mainDesc = (TextView) findViewById(R.id.mainDescSM);
-		connStatus = (TextView) findViewById(R.id.mainStatusSM);
-		client_buttons = (ListView) findViewById(R.id.mainButtonsSM);
-		version_txt = (TextView) findViewById(R.id.versionTxtSM);
+		tmPrefs = findViewById(R.id.mainTMPrefsSM);
+		tmCredits = findViewById(R.id.mainTMCreditsSM);
+		tmToggleNotifier = findViewById(R.id.mainTMStartNotifierSM);
+		tmTutorial = findViewById(R.id.mainTMTutorialSM);
+		tmHelp = findViewById(R.id.mainTMHelpSM);
+		mainDesc = findViewById(R.id.mainDescSM);
+		connStatus = findViewById(R.id.mainStatusSM);
+		client_buttons = findViewById(R.id.mainButtonsSM);
+		version_txt = findViewById(R.id.versionTxtSM);
     }
 
 	private void displayButtons (int buttType) {
@@ -1022,8 +1013,8 @@ public class MainDGS extends DGSActivity {
 			helpIntent.putExtra("BOARDLAYOUT", currentBoardLayout);
 			startActivityForResult(helpIntent, FWD_PREFS);
 		} else {
+			/*
             boolean notifierRunning = commonStuff.isNotifierRunning(am);
-            /*
             errHist.writeErrorHistory("MainDGS.startClient, startedByNotifier:" + startedByNotifier
                     + ", oneShot:" + oneShot
                     + ", autoClient:" + autoClient
@@ -1225,8 +1216,7 @@ public class MainDGS extends DGSActivity {
     }
 
     private void StoredMovesClick() {
-        String [] sm;
-        if (!storMov.areStoredMovesLoaded()) {
+		if (!storMov.areStoredMovesLoaded()) {
             statusList = new String [1];
             statusList[0] = getString(R.string.noPredictedMoves);
         } else {
@@ -1486,7 +1476,7 @@ public class MainDGS extends DGSActivity {
                 storMov.loadStoredMoves();
             }
             returnToStatus = false;
-            msgsSeen = new StringBuilder("");
+            msgsSeen = new StringBuilder();
             getStatus();
         }
     }
@@ -1720,7 +1710,7 @@ public class MainDGS extends DGSActivity {
     // ## MPG,game_id,game_type,ruleset,size,lastchanged_date,ready_to_start
 
     private boolean gotoMpg() {  // TODO  These are mpg negotiations
-        String mpgId = "0";
+        String mpgId;
         String [] elements;
         elements = statusResult.split(",");
         if (elements.length < 7)
@@ -2002,7 +1992,7 @@ public class MainDGS extends DGSActivity {
 
 
     private void displayMsg(String mid, String s, String [] buttonTexts, String title) {
-        StringBuilder msg = new StringBuilder("");
+        StringBuilder msg = new StringBuilder();
         msgId = mid;
         JSONObject jo;
         try {
@@ -2357,8 +2347,8 @@ public class MainDGS extends DGSActivity {
             joinErr = gameOffer.getString("join_err");
         } catch (JSONException ignored) {  }
         try {
-            calcType = gameOffer.getString("calc_type");;
-        } catch (JSONException ignored) {  }
+            calcType = gameOffer.getString("calc_type");
+		} catch (JSONException ignored) {  }
         try {
             calcColor = gameOffer.getString("calc_color");
         } catch (JSONException ignored) {  }
@@ -2422,7 +2412,7 @@ public class MainDGS extends DGSActivity {
 
     private void processWroomList(String s) {
         JSONObject joWroomList = null;
-        StringBuilder glmsg = new StringBuilder("");
+        StringBuilder glmsg = new StringBuilder();
         try {
             joWroomList = new JSONObject(s);
         } catch (JSONException e) {
@@ -2468,7 +2458,8 @@ public class MainDGS extends DGSActivity {
         if (!errString.contentEquals("")) {
             rslt = s;
         } else {
-            rslt = parseWroomEntry(joWroomInfo, false);
+			assert joWroomInfo != null;
+			rslt = parseWroomEntry(joWroomInfo, false);
         }
         String [] elements = statusResult.split(",");
         final String m_wrid = elements[0].trim();
@@ -2497,7 +2488,6 @@ public class MainDGS extends DGSActivity {
                 .show();
     }
 
-
     private final MsgHandler mHandler = new MsgHandler()
     {
         private String s;
@@ -2515,7 +2505,7 @@ public class MainDGS extends DGSActivity {
                     if (s.contentEquals("Ok")) {
                         if (connState == LOGON_DGS) {
                             if (autoClient) {
-                                msgsSeen = new StringBuilder("");
+                                msgsSeen = new StringBuilder();
                                 getStatus();
                             } else {
                                 restoreStatus(true, true, false, BUTTONS_CLIENT);
@@ -3441,7 +3431,8 @@ public class MainDGS extends DGSActivity {
                 if (resultCode == RESULT_OK) {
                     try {
                         extras = data.getExtras();
-                        inx = extras.getInt("ITEM", -1);
+						assert extras != null;
+						inx = extras.getInt("ITEM", -1);
                     } catch (Exception e) {
                         inx = -1;
                     }
@@ -3473,7 +3464,8 @@ public class MainDGS extends DGSActivity {
                 if (resultCode == RESULT_OK) {
                     try {
                         extras = data.getExtras();
-                        inx = extras.getInt("ITEM", -1);
+						assert extras != null;
+						inx = extras.getInt("ITEM", -1);
                     } catch (Exception e) {
                         inx = -1;
                     }
@@ -3502,6 +3494,7 @@ public class MainDGS extends DGSActivity {
 				if (resultCode == RESULT_OK) {
 					try {
 						extras = data.getExtras();
+						assert extras != null;
 						rslt = extras.getString("RESULT");
 						msgId = extras.getString("MsgId");
 					} catch (Exception ignored) {
@@ -3528,11 +3521,13 @@ public class MainDGS extends DGSActivity {
                     String msgString;
                     try {
                         extras = data.getExtras();
-                        msgString = extras.getString("MessageString");
+						assert extras != null;
+						msgString = extras.getString("MessageString");
                     } catch (Exception e) {
                         msgString = "";
                     }
-                    if (!msgString.equals("")) {
+					assert msgString != null;
+					if (!msgString.equals("")) {
                         sendToDGS(msgString);
                         break;
                     }
@@ -3544,11 +3539,13 @@ public class MainDGS extends DGSActivity {
                     String msgString;
                     try {
                         extras = data.getExtras();
-                        msgString = extras.getString("FindString");
+						assert extras != null;
+						msgString = extras.getString("FindString");
                     } catch (Exception e) {
                         msgString = "";
                     }
-                    if (!msgString.equals("")) {
+					assert msgString != null;
+					if (!msgString.equals("")) {
                         sendToDGS(msgString);
                         break;
                     }
@@ -3560,8 +3557,10 @@ public class MainDGS extends DGSActivity {
                 if (resultCode == RESULT_OK) {
                     try {
                         extras = data.getExtras();
-                        s = extras.getString("PHRASE");
-                        if (!s.contentEquals("")) {
+						assert extras != null;
+						s = extras.getString("PHRASE");
+						assert s != null;
+						if (!s.contentEquals("")) {
                             EditPhrasesClick();
                             break;
                         }
@@ -3574,6 +3573,7 @@ public class MainDGS extends DGSActivity {
 				if (resultCode == RESULT_OK) {
 					try {
 						extras = data.getExtras();
+						assert extras != null;
 						s = extras.getString("PHRASE");
 						utilityCommentEditText.setText(s);
 					} catch (Exception ignored) {

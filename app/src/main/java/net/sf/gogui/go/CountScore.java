@@ -245,7 +245,7 @@ public class CountScore
     
     private Marker m_dame;   // new anDGS
 
-    private GoColor m_score[][];
+    private GoColor[][] m_score;
 
     private ConstBoard m_board;
     

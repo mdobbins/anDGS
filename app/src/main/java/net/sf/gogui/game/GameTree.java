@@ -145,7 +145,7 @@ public class GameTree
         DecimalFormat format = new DecimalFormat("00");
         GameInfo info = m_root.getGameInfo();
         info.set(StringInfo.DATE,
-                 Integer.toString(year) + "-" + format.format(month) + "-"
+                year + "-" + format.format(month) + "-"
                  + format.format(day));
     }
 }

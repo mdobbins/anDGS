@@ -1,16 +1,5 @@
 package com.hg.anDGS;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.CookieManager;
-import java.net.CookiePolicy;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
@@ -27,6 +16,14 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
+
+import java.io.IOException;
+import java.net.CookieManager;
+import java.net.CookiePolicy;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class CommonStuff {
 
@@ -70,19 +67,16 @@ public class CommonStuff {
 		if (MainDGS.okHTTPclient == null) {
 			MainDGS.okHTTPclient = getNewOkHttpClient();
 		}
-		HttpUrl.Builder urlBuilder = null;
+		HttpUrl.Builder urlBuilder;
 		try {
 			urlBuilder = HttpUrl.parse(baseURL).newBuilder();
 		} catch (Exception e) {
 			return "#Failed: " + e.toString();
 		}
-		Map<String,String> params = new HashMap<String, String>();
-		params.putAll(httpParams);
+		Map<String, String> params = new HashMap<String, String>(httpParams);
 		Set<String> setCodes = params.keySet();
-		Iterator<String> iterator = setCodes.iterator();
 
-		while (iterator.hasNext()) {
-			String code = iterator.next();
+		for (String code : setCodes) {
 			String val = params.get(code);
 			urlBuilder.addQueryParameter(code, val);
 		}
@@ -93,8 +87,8 @@ public class CommonStuff {
 				.url(url)
 				.post(body)
 				.build();
-		Response response = null;
-		String rsp = null;
+		Response response;
+		String rsp;
 		try {
 			response = MainDGS.okHTTPclient.newCall(request).execute();
 			try {
@@ -115,8 +109,8 @@ public class CommonStuff {
 		Map<String,String> HTTPparamsLogin = new HashMap<String, String>();
 		HTTPparamsLogin.clear();
 		HTTPparamsLogin.put("quick_mode","1");
-		HTTPparamsLogin.put("userid", encodeIt(DGSUser));
-		HTTPparamsLogin.put("passwd", encodeIt(DGSPass));
+		HTTPparamsLogin.put("userid", DGSUser);
+		HTTPparamsLogin.put("passwd", DGSPass);
 		String rslt = executeHTTPreq(MainDGS.loginURL, HTTPparamsLogin);
 		return rslt;
 	}
@@ -175,18 +169,7 @@ public class CommonStuff {
             return Configuration.ORIENTATION_LANDSCAPE;
         }
 	}
-	
-	String encodeIt(String s) {
-		if (s == null) return "";
-		String url;
-		try {
-			url = URLEncoder.encode(s,"UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			url = s;
-		}
-		return url;
-	}
-	
+
 	float convertFromDp(float input, Context ctx) {
 	    final float scale = ctx.getResources().getDisplayMetrics().density;
 	    return ((input - 0.5f) / scale);

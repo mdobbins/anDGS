@@ -1,17 +1,9 @@
 package com.hg.anDGS;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,6 +19,12 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class GrinderMain extends DGSActivity {
 
@@ -111,7 +109,7 @@ public class GrinderMain extends DGSActivity {
         setContentView(R.layout.grinder);
         ctw = new ContextThemeWrapper(this, commonStuff.getCommonTheme(theme));
 
-		tmHelp = (TextView) findViewById(R.id.grinderTMHelp);
+		tmHelp = findViewById(R.id.grinderTMHelp);
 		tmHelp.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				final Handler handler = new Handler();
@@ -123,7 +121,7 @@ public class GrinderMain extends DGSActivity {
 			}
 		});
 
-        grinder_browse_button = (TextView) findViewById(R.id.grinderBrowseButton);
+        grinder_browse_button = findViewById(R.id.grinderBrowseButton);
         grinder_browse_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent mIntent = new Intent(GrinderMain.this, SavedGames.class);
@@ -135,14 +133,14 @@ public class GrinderMain extends DGSActivity {
             }
         });
         
-        grinder_go_button = (TextView) findViewById(R.id.grinderGoButton);
+        grinder_go_button = findViewById(R.id.grinderGoButton);
         grinder_go_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	doStartBeginning();
             }
         });
         
-        grinder_cont_button = (TextView) findViewById(R.id.grinderNextButton);
+        grinder_cont_button = findViewById(R.id.grinderNextButton);
         grinder_cont_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	if (gameList.size() > 0) {
@@ -153,9 +151,9 @@ public class GrinderMain extends DGSActivity {
             }
         });
         
-        target = (TextView) findViewById(R.id.grinderTargetEdit);
-        vTargetFlash = (TextView) findViewById(R.id.grinderTargetFlash);
-        targetLabel = (LinearLayout) findViewById(R.id.grinderTargetLabel);
+        target = findViewById(R.id.grinderTargetEdit);
+        vTargetFlash = findViewById(R.id.grinderTargetFlash);
+        targetLabel = findViewById(R.id.grinderTargetLabel);
        	targetLabel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	flashButton(vTargetFlash);
@@ -164,13 +162,13 @@ public class GrinderMain extends DGSActivity {
         });
        	
         String[] items = new String[] {getString(R.string.autoplay), getString(R.string.browse), getString(R.string.edit), getString(R.string.guessmove)};
-        mode_spinner = (Spinner) findViewById(R.id.grinderModeSpinner);
-        vModeFlash = (TextView) findViewById(R.id.grinderModeFlash);
+        mode_spinner = findViewById(R.id.grinderModeSpinner);
+        vModeFlash = findViewById(R.id.grinderModeFlash);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, items);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mode_spinner.setAdapter(adapter);
-       	mode_label = (LinearLayout) findViewById(R.id.grinderModeLabel);
+       	mode_label = findViewById(R.id.grinderModeLabel);
        	mode_label.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	flashButton(vModeFlash);
@@ -178,9 +176,9 @@ public class GrinderMain extends DGSActivity {
             }
         });
         
-        autoPlayPauseCB = (CheckBox) findViewById(R.id.grinderAutoPlayPauseCheckBox);
-        vAutoPlayPauseFlash = (TextView) findViewById(R.id.grinderAutoPlayPauseFlash);
-        autoPlayPauseLabel = (LinearLayout) findViewById(R.id.grinderAutoPlayPauseLabel);
+        autoPlayPauseCB = findViewById(R.id.grinderAutoPlayPauseCheckBox);
+        vAutoPlayPauseFlash = findViewById(R.id.grinderAutoPlayPauseFlash);
+        autoPlayPauseLabel = findViewById(R.id.grinderAutoPlayPauseLabel);
         autoPlayPauseLabel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	flashButton(vAutoPlayPauseFlash);
@@ -188,9 +186,9 @@ public class GrinderMain extends DGSActivity {
             }
         });
         
-        autoPlaySoundCB = (CheckBox) findViewById(R.id.grinderAutoPlaySoundCheckBox);
-        vAutoPlaySoundFlash = (TextView) findViewById(R.id.grinderAutoPlaySoundFlash);
-        autoPlaySoundLabel = (LinearLayout) findViewById(R.id.grinderAutoPlaySoundLabel);
+        autoPlaySoundCB = findViewById(R.id.grinderAutoPlaySoundCheckBox);
+        vAutoPlaySoundFlash = findViewById(R.id.grinderAutoPlaySoundFlash);
+        autoPlaySoundLabel = findViewById(R.id.grinderAutoPlaySoundLabel);
         autoPlaySoundLabel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	flashButton(vAutoPlaySoundFlash);
@@ -198,9 +196,9 @@ public class GrinderMain extends DGSActivity {
             }
         });
         
-        autoPlayInterval = (TextView) findViewById(R.id.grinderAutoPlayIntervalEdit);
-        vAutoPlayIntervalFlash = (TextView) findViewById(R.id.grinderAutoPlayIntervalFlash);
-        autoPlayIntervalLabel = (LinearLayout) findViewById(R.id.grinderAutoPlayIntervalLabel);
+        autoPlayInterval = findViewById(R.id.grinderAutoPlayIntervalEdit);
+        vAutoPlayIntervalFlash = findViewById(R.id.grinderAutoPlayIntervalFlash);
+        autoPlayIntervalLabel = findViewById(R.id.grinderAutoPlayIntervalLabel);
         autoPlayIntervalLabel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	flashButton(vAutoPlayIntervalFlash);
@@ -322,7 +320,7 @@ public class GrinderMain extends DGSActivity {
             	for (File f : path.listFiles()){
             		if (f.isFile()) {
             			String fName = f.getName();
-            			String end = fName.substring(fName.lastIndexOf(".")+1, fName.length()).toLowerCase(getResources().getConfiguration().locale);
+            			String end = fName.substring(fName.lastIndexOf(".")+1).toLowerCase(getResources().getConfiguration().locale);
             	    	if(end.equals("sgf")) {
             	    		gameList.add(f.getAbsolutePath());
             	    	}
@@ -416,13 +414,8 @@ public class GrinderMain extends DGSActivity {
 		 }
 	 
 	 public boolean onOptionsItemSelected(MenuItem item) {
-		 
-		 switch (item.getItemId()) {
-		 case MENU_HELP:
+		 if (item.getItemId() == MENU_HELP) {
 			 doHelp();
-			 break;
-		 default:
-				// nothing 
 		 }
 		 return false;
 	 }

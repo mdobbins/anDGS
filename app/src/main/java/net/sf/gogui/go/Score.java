@@ -52,7 +52,7 @@ public class Score
         if (intResult % 2 == 0)
             strResult = Long.toString(intResult / 2);
         else
-            strResult = Long.toString(intResult / 2) + ".5";
+            strResult = intResult / 2 + ".5";
         if (intResult > 0)
             return "B+" + strResult;
         else if (intResult < 0)

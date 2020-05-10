@@ -1,5 +1,25 @@
 package com.hg.anDGS;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.ContextThemeWrapper;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -7,28 +27,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-
-
-import android.app.AlertDialog; 
-import android.os.Bundle;
-import android.os.Handler;
-import android.content.Intent;
-import android.content.DialogInterface; 
-import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
-import android.view.ContextThemeWrapper;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 
 public class SavedGames extends DGSActivity implements OnClickListener {
@@ -88,7 +86,7 @@ public class SavedGames extends DGSActivity implements OnClickListener {
  		setContentView(R.layout.statusview);
 		ctw = new ContextThemeWrapper(this, commonStuff.getCommonTheme(theme));
 
-		TextView tmHelp = (TextView) findViewById(R.id.statusTMHelp);
+		TextView tmHelp = findViewById(R.id.statusTMHelp);
 		tmHelp.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				final Handler handler = new Handler();
@@ -100,8 +98,8 @@ public class SavedGames extends DGSActivity implements OnClickListener {
 			}
 		});
 
-		statusTitleView = (TextView) findViewById(R.id.statusTitle);
-		statusListView = (ListView) findViewById(R.id.statusList);
+		statusTitleView = findViewById(R.id.statusTitle);
+		statusListView = findViewById(R.id.statusList);
         statusListView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> av, View v, int position, long id) {
 				String selectedFileString = av.getItemAtPosition(position).toString();
@@ -257,7 +255,7 @@ public class SavedGames extends DGSActivity implements OnClickListener {
     	String fName = f.getAbsolutePath();
     	switch (mode) {
     	case PLAY: 
-			String end = fName.substring(fName.lastIndexOf(".")+1, fName.length()).toLowerCase(getResources().getConfiguration().locale);
+			String end = fName.substring(fName.lastIndexOf(".")+1).toLowerCase(getResources().getConfiguration().locale);
 	    	if(end.equals("sgf")) {
 	    		try {
 					in = new FileInputStream(f);
@@ -315,13 +313,8 @@ public class SavedGames extends DGSActivity implements OnClickListener {
 		 }
 	 
 	 public boolean onOptionsItemSelected(MenuItem item) {
-		 
-		 switch (item.getItemId()) {
-		 case MENU_HELP:
+		 if (item.getItemId() == MENU_HELP) {
 			 doHelp();
-			 break;
-		 default:
-				// nothing 
 		 }
 		 return false;
 	 }

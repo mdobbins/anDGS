@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.ContextThemeWrapper;
@@ -82,7 +81,7 @@ public class MessageUserView extends DGSActivity {
         setContentView(R.layout.message);
 		ctw = new ContextThemeWrapper(this, commonStuff.getCommonTheme(theme));
         
-		tmHelp = (TextView) findViewById(R.id.messageTMHelp);
+		tmHelp = findViewById(R.id.messageTMHelp);
 		tmHelp.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				final Handler handler = new Handler();
@@ -94,32 +93,32 @@ public class MessageUserView extends DGSActivity {
 			}
 		});
 
-        toTextEdit = (TextView) findViewById(R.id.messageToTextLabel);
-    	toEdit = (TextView) findViewById(R.id.messageToEdit);
-    	toLabel = (LinearLayout) findViewById(R.id.messageToLabel);
+        toTextEdit = findViewById(R.id.messageToTextLabel);
+    	toEdit = findViewById(R.id.messageToEdit);
+    	toLabel = findViewById(R.id.messageToLabel);
     	toLabel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	doSetTo();
             }
         });
     	
-    	subjectEdit = (TextView) findViewById(R.id.messageSubjectEdit);
-    	subjectLabel = (LinearLayout) findViewById(R.id.messageSubjectLabel);
+    	subjectEdit = findViewById(R.id.messageSubjectEdit);
+    	subjectLabel = findViewById(R.id.messageSubjectLabel);
     	subjectLabel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	doSetSubject();
             }
         });
     	
-    	messageEdit = (TextView) findViewById(R.id.messageMessageEdit);
-    	messageLabel = (LinearLayout) findViewById(R.id.messageMessageLabel);
+    	messageEdit = findViewById(R.id.messageMessageEdit);
+    	messageLabel = findViewById(R.id.messageMessageLabel);
     	messageLabel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	doSetMessage();
             }
         });
     	
-    	send_button = (TextView) findViewById(R.id.messageSendButton);
+    	send_button = findViewById(R.id.messageSendButton);
     	send_button.setOnClickListener(new View.OnClickListener() {
              public void onClick(View v) {
             	StringBuilder sb = new StringBuilder();
@@ -130,17 +129,17 @@ public class MessageUserView extends DGSActivity {
             				Toast.makeText(ctw, "Need To field!", Toast.LENGTH_LONG).show();
             				return;
             			} else {
-            				sb.append("&ouid=").append(commonStuff.encodeIt(toField));
+            				sb.append("&ouid=").append(toField);
             			}
     				} else {
-    					sb.append("&ouser=").append(commonStuff.encodeIt(toField));
+    					sb.append("&ouser=").append(toField);
     				}
             	} else {
             		sb.append("&mid=").append(forMsgId.trim());
             		}
  
-            	sb.append("&subj=").append(commonStuff.encodeIt(subjectEdit.getText().toString().trim()));
-            	sb.append("&msg=").append(commonStuff.encodeIt(messageEdit.getText().toString().trim()));
+            	sb.append("&subj=").append(subjectEdit.getText().toString().trim());
+            	sb.append("&msg=").append(messageEdit.getText().toString().trim());
              	Bundle rslts = new Bundle();
              	rslts.putString("MessageString",sb.toString()); 
              	Intent mIntent = new Intent();
@@ -248,13 +247,8 @@ public class MessageUserView extends DGSActivity {
 		 }
 	 
 	 public boolean onOptionsItemSelected(MenuItem item) {
-		 
-		 switch (item.getItemId()) {
-		 case MENU_HELP:
+		 if (item.getItemId() == MENU_HELP) {
 			 doHelp();
-			break;
-		 default:
-				// nothing 
 		 }
 		 return false;
 	 }

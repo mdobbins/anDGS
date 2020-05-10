@@ -21,7 +21,7 @@ public class StreamDiscard
     {
         try
         {
-            byte buffer[] = new byte[1024];
+            byte[] buffer = new byte[1024];
             while (true)
             {
                 int n = m_src.read(buffer);

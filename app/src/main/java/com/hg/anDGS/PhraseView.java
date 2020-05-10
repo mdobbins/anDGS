@@ -1,31 +1,29 @@
 package com.hg.anDGS;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.ContextThemeWrapper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class PhraseView extends DGSActivity implements OnClickListener {
 
@@ -40,6 +38,7 @@ public class PhraseView extends DGSActivity implements OnClickListener {
 	private ContextThemeWrapper ctw;
 	private String theme;
 	private CommonStuff commonStuff = new CommonStuff();
+	private CommonFileStuff commonFileStuff = new CommonFileStuff();
 
     /** Called when the activity is first created. */
     public void onCreate(Bundle icicle) {
@@ -55,6 +54,14 @@ public class PhraseView extends DGSActivity implements OnClickListener {
   		SharedPreferences prefs = getSharedPreferences("MainDGS", 0);
 		theme = prefs.getString("com.hg.anDGS.Theme", PrefsDGS.DEFAULT_THEME);
 		phrases = prefs.getString("com.hg.anDGS.Phrases", EMPTY_PHRASE);
+		if (!phrases.contentEquals(EMPTY_PHRASE)) {  // migrate to files
+			commonFileStuff.writePhrasesData(phrases);
+			SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+			editor.putString("com.hg.anDGS.Phrases", EMPTY_PHRASE);
+			editor.commit();
+		} else {
+			phrases = commonFileStuff.readPhrasesData();
+		}
 
 		if (boardLayout == null) {
 			boardLayout = PrefsDGS.PORTRAIT;
@@ -70,7 +77,7 @@ public class PhraseView extends DGSActivity implements OnClickListener {
  		setContentView(R.layout.statusview);
 		ctw = new ContextThemeWrapper(this, commonStuff.getCommonTheme(theme));
 
-		TextView tmHelp = (TextView) findViewById(R.id.statusTMHelp);
+		TextView tmHelp = findViewById(R.id.statusTMHelp);
 		tmHelp.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				final Handler handler = new Handler();
@@ -82,9 +89,9 @@ public class PhraseView extends DGSActivity implements OnClickListener {
 			}
 		});
 
-		TextView statusTitleView = (TextView) findViewById(R.id.statusTitle);
+		TextView statusTitleView = findViewById(R.id.statusTitle);
 		statusTitleView.setText(R.string.Comment);
-		ListView statusListView = (ListView) findViewById(R.id.statusList);
+		ListView statusListView = findViewById(R.id.statusList);
 		
  		listEntries.clear();
         
@@ -94,9 +101,9 @@ public class PhraseView extends DGSActivity implements OnClickListener {
         }
         if (phrases == null) phrases = EMPTY_PHRASE;
     	phraseList = phrases.split("\n");
-    	for (int i=0; i<phraseList.length; i++) {
-    		listEntries.add(phraseList[i].trim());  
-    	}
+		for (String s : phraseList) {
+			listEntries.add(s.trim());
+		}
 
         ArrayAdapter<String> displayList = new ArrayAdapter<String>(this,
                   R.layout.file_row, listEntries); 
@@ -131,15 +138,13 @@ public class PhraseView extends DGSActivity implements OnClickListener {
 			    	phraseList[indx] = input.getText().toString();
 			    	if (!s.contentEquals(phraseList[indx])) {
 			    		phrases = "";
-			    		for (int i = 0; i<phraseList.length; i++) {
-			    			if (!phraseList[i].contentEquals(""))     // remove any empty phrases
-			    				phrases = phrases + phraseList[i] + "\n";
-			    		}
+						for (String value : phraseList) {
+							if (!value.contentEquals(""))     // remove any empty phrases
+								phrases = phrases + value + "\n";
+						}
 			    		if (!phraseList[phraseList.length-1].contentEquals(EMPTY_PHRASE))
 			    			phrases = phrases + EMPTY_PHRASE;
-		            	SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
-		            	editor.putString("com.hg.anDGS.Phrases", phrases);
-		            	editor.commit();
+						commonFileStuff.writePhrasesData(phrases);
 			    	}
 			        Bundle rslts = new Bundle();
 			     	rslts.putString("PHRASE",phraseList[indx]); 
@@ -174,13 +179,8 @@ public class PhraseView extends DGSActivity implements OnClickListener {
 		 }
 	 
 	 public boolean onOptionsItemSelected(MenuItem item) {
-		 
-		 switch (item.getItemId()) {
-		 case MENU_HELP:
-			doHelp();
-			break;
-		 default:
-				// nothing 
+		 if (item.getItemId() == MENU_HELP) {
+			 doHelp();
 		 }
 		 return false;
 	 }

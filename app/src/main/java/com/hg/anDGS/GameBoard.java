@@ -1,20 +1,10 @@
 package com.hg.anDGS;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-
-import net.sf.gogui.go.GoColor;
-
 import android.app.AlertDialog;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
@@ -36,6 +26,14 @@ import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import net.sf.gogui.go.GoColor;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class GameBoard extends DGSActivity implements BoardUpdate {
 	protected static final int HELP_VIEW = 1;
@@ -178,9 +176,9 @@ public class GameBoard extends DGSActivity implements BoardUpdate {
 		
 		DisplayMetrics metrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(metrics);
-		display_width = (metrics.heightPixels < metrics.widthPixels) ? metrics.heightPixels : metrics.widthPixels;
+		display_width = Math.min(metrics.heightPixels, metrics.widthPixels);
 		Log.w("GameBoard", "display_width="+display_width);
-		display_length = (metrics.heightPixels > metrics.widthPixels) ? metrics.heightPixels : metrics.widthPixels;
+		display_length = Math.max(metrics.heightPixels, metrics.widthPixels);
 		display_scale = metrics.density;
 		
 		this.setTheme(commonStuff.getCommonStyle(theme));
@@ -190,78 +188,78 @@ public class GameBoard extends DGSActivity implements BoardUpdate {
 			//setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 			if ((display_length - display_width) < 4*48) {
 				setContentView(R.layout.gameboardlssm);
-				rec_far_left_button = (ImageView) findViewById(R.id.recFarLeftButtonLSsm);
-				rec_left_button = (ImageView) findViewById(R.id.recLeftButtonLSsm);
-				rec_mid_left_button = (ImageView) findViewById(R.id.recMidLeftButtonLSsm);
-				rec_mid_right_button = (ImageView) findViewById(R.id.recMidRightButtonLSsm);
-				rec_right_button = (ImageView) findViewById(R.id.recRightButtonLSsm);
-				rec_far_right_button = (ImageView) findViewById(R.id.recFarRightButtonLSsm);
-				recComment = (TextView) findViewById(R.id.recCommentLSsm);
-				recInfo = (TextView) findViewById(R.id.recInfoLSsm);
-				moveInfo = (TextView) findViewById(R.id.recMoveInfoLSsm);
-				boardSwitcher = (FrameLayout) findViewById(R.id.recBoardGridLSsm);
-				topMenuLayout = (TableLayout) findViewById(R.id.recTopMenuLSsm) ;
-				tmEndGame = (TextView) findViewById(R.id.recTMPassLSsm);
-				tmInfo = (TextView) findViewById(R.id.recTMInfoLSsm);
-				tmSave = (TextView) findViewById(R.id.recTMSaveLSsm);
-				tmMode = (TextView) findViewById(R.id.recTMModeLSsm);
-				tmHelp = (TextView) findViewById(R.id.recTMHelpLSsm);
+				rec_far_left_button = findViewById(R.id.recFarLeftButtonLSsm);
+				rec_left_button = findViewById(R.id.recLeftButtonLSsm);
+				rec_mid_left_button = findViewById(R.id.recMidLeftButtonLSsm);
+				rec_mid_right_button = findViewById(R.id.recMidRightButtonLSsm);
+				rec_right_button = findViewById(R.id.recRightButtonLSsm);
+				rec_far_right_button = findViewById(R.id.recFarRightButtonLSsm);
+				recComment = findViewById(R.id.recCommentLSsm);
+				recInfo = findViewById(R.id.recInfoLSsm);
+				moveInfo = findViewById(R.id.recMoveInfoLSsm);
+				boardSwitcher = findViewById(R.id.recBoardGridLSsm);
+				topMenuLayout = findViewById(R.id.recTopMenuLSsm);
+				tmEndGame = findViewById(R.id.recTMPassLSsm);
+				tmInfo = findViewById(R.id.recTMInfoLSsm);
+				tmSave = findViewById(R.id.recTMSaveLSsm);
+				tmMode = findViewById(R.id.recTMModeLSsm);
+				tmHelp = findViewById(R.id.recTMHelpLSsm);
 			} else if ((display_length - display_width) < 6*48) {
 				setContentView(R.layout.gameboardls);
-				rec_far_left_button = (ImageView) findViewById(R.id.recFarLeftButtonLS);
-				rec_left_button = (ImageView) findViewById(R.id.recLeftButtonLS);
-				rec_mid_left_button = (ImageView) findViewById(R.id.recMidLeftButtonLS);
-				rec_mid_right_button = (ImageView) findViewById(R.id.recMidRightButtonLS);
-				rec_right_button = (ImageView) findViewById(R.id.recRightButtonLS);
-				rec_far_right_button = (ImageView) findViewById(R.id.recFarRightButtonLS);
-				recComment = (TextView) findViewById(R.id.recCommentLS);
-				recInfo = (TextView) findViewById(R.id.recInfoLS);
-				moveInfo = (TextView) findViewById(R.id.recMoveInfoLS);
-				boardSwitcher = (FrameLayout) findViewById(R.id.recBoardGridLS);
-				topMenuLayout = (TableLayout) findViewById(R.id.recTopMenuLS) ;
-				tmEndGame = (TextView) findViewById(R.id.recTMPassLS);
-				tmInfo = (TextView) findViewById(R.id.recTMInfoLS);
-				tmSave = (TextView) findViewById(R.id.recTMSaveLS);
-				tmMode = (TextView) findViewById(R.id.recTMModeLS);
-				tmHelp = (TextView) findViewById(R.id.recTMHelpLS);
+				rec_far_left_button = findViewById(R.id.recFarLeftButtonLS);
+				rec_left_button = findViewById(R.id.recLeftButtonLS);
+				rec_mid_left_button = findViewById(R.id.recMidLeftButtonLS);
+				rec_mid_right_button = findViewById(R.id.recMidRightButtonLS);
+				rec_right_button = findViewById(R.id.recRightButtonLS);
+				rec_far_right_button = findViewById(R.id.recFarRightButtonLS);
+				recComment = findViewById(R.id.recCommentLS);
+				recInfo = findViewById(R.id.recInfoLS);
+				moveInfo = findViewById(R.id.recMoveInfoLS);
+				boardSwitcher = findViewById(R.id.recBoardGridLS);
+				topMenuLayout = findViewById(R.id.recTopMenuLS);
+				tmEndGame = findViewById(R.id.recTMPassLS);
+				tmInfo = findViewById(R.id.recTMInfoLS);
+				tmSave = findViewById(R.id.recTMSaveLS);
+				tmMode = findViewById(R.id.recTMModeLS);
+				tmHelp = findViewById(R.id.recTMHelpLS);
 			} else {
 				setContentView(R.layout.gameboardlstb);
-				rec_far_left_button = (ImageView) findViewById(R.id.recFarLeftButtonLStb);
-				rec_left_button = (ImageView) findViewById(R.id.recLeftButtonLStb);
-				rec_mid_left_button = (ImageView) findViewById(R.id.recMidLeftButtonLStb);
-				rec_mid_right_button = (ImageView) findViewById(R.id.recMidRightButtonLStb);
-				rec_right_button = (ImageView) findViewById(R.id.recRightButtonLStb);
-				rec_far_right_button = (ImageView) findViewById(R.id.recFarRightButtonLStb);
-				recComment = (TextView) findViewById(R.id.recCommentLStb);
-				recInfo = (TextView) findViewById(R.id.recInfoLStb);
-				moveInfo = (TextView) findViewById(R.id.recMoveInfoLStb);
-				boardSwitcher = (FrameLayout) findViewById(R.id.recBoardGridLStb);
-				topMenuLayout = (TableLayout) findViewById(R.id.recTopMenuLStb) ;
-				tmEndGame = (TextView) findViewById(R.id.recTMPassLStb);
-				tmInfo = (TextView) findViewById(R.id.recTMInfoLStb);
-				tmSave = (TextView) findViewById(R.id.recTMSaveLStb);
-				tmMode = (TextView) findViewById(R.id.recTMModeLStb);
-				tmHelp = (TextView) findViewById(R.id.recTMHelpLStb);
+				rec_far_left_button = findViewById(R.id.recFarLeftButtonLStb);
+				rec_left_button = findViewById(R.id.recLeftButtonLStb);
+				rec_mid_left_button = findViewById(R.id.recMidLeftButtonLStb);
+				rec_mid_right_button = findViewById(R.id.recMidRightButtonLStb);
+				rec_right_button = findViewById(R.id.recRightButtonLStb);
+				rec_far_right_button = findViewById(R.id.recFarRightButtonLStb);
+				recComment = findViewById(R.id.recCommentLStb);
+				recInfo = findViewById(R.id.recInfoLStb);
+				moveInfo = findViewById(R.id.recMoveInfoLStb);
+				boardSwitcher = findViewById(R.id.recBoardGridLStb);
+				topMenuLayout = findViewById(R.id.recTopMenuLStb);
+				tmEndGame = findViewById(R.id.recTMPassLStb);
+				tmInfo = findViewById(R.id.recTMInfoLStb);
+				tmSave = findViewById(R.id.recTMSaveLStb);
+				tmMode = findViewById(R.id.recTMModeLStb);
+				tmHelp = findViewById(R.id.recTMHelpLStb);
 			}
 		} else {
 			//setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 			setContentView(R.layout.gameboard);
-			rec_far_left_button = (ImageView) findViewById(R.id.recFarLeftButton);
-			rec_left_button = (ImageView) findViewById(R.id.recLeftButton);
-			rec_mid_left_button = (ImageView) findViewById(R.id.recMidLeftButton);
-			rec_mid_right_button = (ImageView) findViewById(R.id.recMidRightButton);
-			rec_right_button = (ImageView) findViewById(R.id.recRightButton);
-			rec_far_right_button = (ImageView) findViewById(R.id.recFarRightButton);
-			recComment = (TextView) findViewById(R.id.recComment);
-			recInfo = (TextView) findViewById(R.id.recInfo);
-			moveInfo = (TextView) findViewById(R.id.recMoveInfo);
-			boardSwitcher = (FrameLayout) findViewById(R.id.recBoardGrid);
-			topMenuLayout = (TableLayout) findViewById(R.id.recTopMenu) ;
-			tmEndGame = (TextView) findViewById(R.id.recTMPass);
-			tmInfo = (TextView) findViewById(R.id.recTMInfo);
-			tmSave = (TextView) findViewById(R.id.recTMSave);
-			tmMode = (TextView) findViewById(R.id.recTMMode);
-			tmHelp = (TextView) findViewById(R.id.recTMHelp);
+			rec_far_left_button = findViewById(R.id.recFarLeftButton);
+			rec_left_button = findViewById(R.id.recLeftButton);
+			rec_mid_left_button = findViewById(R.id.recMidLeftButton);
+			rec_mid_right_button = findViewById(R.id.recMidRightButton);
+			rec_right_button = findViewById(R.id.recRightButton);
+			rec_far_right_button = findViewById(R.id.recFarRightButton);
+			recComment = findViewById(R.id.recComment);
+			recInfo = findViewById(R.id.recInfo);
+			moveInfo = findViewById(R.id.recMoveInfo);
+			boardSwitcher = findViewById(R.id.recBoardGrid);
+			topMenuLayout = findViewById(R.id.recTopMenu);
+			tmEndGame = findViewById(R.id.recTMPass);
+			tmInfo = findViewById(R.id.recTMInfo);
+			tmSave = findViewById(R.id.recTMSave);
+			tmMode = findViewById(R.id.recTMMode);
+			tmHelp = findViewById(R.id.recTMHelp);
 		}
 		
 		tmEndGame.setOnClickListener(new View.OnClickListener() {
@@ -519,7 +517,7 @@ public class GameBoard extends DGSActivity implements BoardUpdate {
 			ComponentName comp = new ComponentName(this, this.getClass());
 			PackageInfo pinfo;
 			pinfo = this.getPackageManager().getPackageInfo(comp.getPackageName(), 0);
-			version_text = "v" + String.valueOf(pinfo.versionCode);
+			version_text = "v" + pinfo.versionCode;
 		} catch (NameNotFoundException e) {
 			version_text = "Unknown";
 		}
@@ -642,11 +640,12 @@ public class GameBoard extends DGSActivity implements BoardUpdate {
 
 	@Override
 	public void onUserLeaveHint(){
-		if (bm != null) 
+		if (bm != null) {
 			try {
 				bm.saveChanges();
 			} catch (Exception ignore) {
 			}
+		}
 		super.onUserLeaveHint();
 	}
 	
@@ -670,31 +669,27 @@ public class GameBoard extends DGSActivity implements BoardUpdate {
 	}
 	
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		switch  (keyCode) {
-		 case KeyEvent.KEYCODE_BACK: 
-			 return true;
-		 default:
-		 }
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			return true;
+		}
 		return super.onKeyDown(keyCode, event);
 	}
 	
 	public boolean onKeyUp (int keyCode, KeyEvent event) {
-		switch  (keyCode) {
-		 case KeyEvent.KEYCODE_BACK: 
-			 if (playState == BoardManager.ZOOM_BOARD) { // Unzoom
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			if (playState == BoardManager.ZOOM_BOARD) { // Unzoom
 				// unzoom board
 				try {
 					bm.unzoom();
-				} catch (Exception e) {	
+				} catch (Exception e) {
 					cleanUpAndReturn();
 				}
 				return true;
-			 } else {
+			} else {
 				cleanUpAndReturn();
 				return true;
-			 }
-		 default:
-		 }
+			}
+		}
 		return super.onKeyUp(keyCode, event);
 	}
 	
@@ -1032,7 +1027,11 @@ public class GameBoard extends DGSActivity implements BoardUpdate {
 		case COMMENT_VIEW:
 			if (resultCode == RESULT_OK) {
 				extras = data.getExtras();
-				s = extras.getString("CommentText");
+				if (extras != null) {
+					s = extras.getString("CommentText");
+				} else {
+					s = null;
+				}
 				if (s != null) {
 					bm.set_comment(s);
 			    	recComment.setText(s);
@@ -1041,17 +1040,27 @@ public class GameBoard extends DGSActivity implements BoardUpdate {
 			break;
 		case GET_OPTS:
 			if (resultCode == RESULT_OK) {
+				int editNumPrev;
 				extras = data.getExtras();
-				numMovesToSkip = extras.getInt("SKIPMOVES", GameBoardOptions.DEFAULTSKIPMOVES);
-	        	int editNumPrev = extras.getInt("NUMPREV", GameBoardOptions.DEFAULTMINNUMPREV);
+				if (extras != null) {
+					numMovesToSkip = extras.getInt("SKIPMOVES", GameBoardOptions.DEFAULTSKIPMOVES);
+					editNumPrev = extras.getInt("NUMPREV", GameBoardOptions.DEFAULTMINNUMPREV);
+					autoPlayInterval = extras.getLong("AUTOPLAYINTERVAL", GameBoardOptions.DEFAUTOPLAYINTERVAL);
+					autoPlayPause = extras.getBoolean("AUTOPLAYPAUSE", true);
+					autoPlaySound = extras.getBoolean("AUTOPLAYSOUND", false);
+					s = extras.getString("MODE");
+				} else {
+					numMovesToSkip = GameBoardOptions.DEFAULTSKIPMOVES;
+					editNumPrev = GameBoardOptions.DEFAULTMINNUMPREV;
+					autoPlayInterval = GameBoardOptions.DEFAUTOPLAYINTERVAL;
+					autoPlayPause = true;
+					autoPlaySound = false;
+					s = null;
+				}
 				if (editNumPrev != numPrev) {
 					numPrev = editNumPrev;
 					bm.updateNumPrev(numPrev); 
 				}
-				autoPlayInterval = extras.getLong("AUTOPLAYINTERVAL", GameBoardOptions.DEFAUTOPLAYINTERVAL);
-				autoPlayPause = extras.getBoolean("AUTOPLAYPAUSE", true);
-				autoPlaySound = extras.getBoolean("AUTOPLAYSOUND", false);
-				s = extras.getString("MODE");
 				doMode(s);
 				doSetModeSelected();
 			}
@@ -1059,9 +1068,18 @@ public class GameBoard extends DGSActivity implements BoardUpdate {
 		case MARKUP_OPTS:
 			if (resultCode == RESULT_OK) {
 				extras = data.getExtras();
-				int markIndicator = extras.getInt("MARKTYPE", BoardManager.M_NONE);
-				int addIndicator = extras.getInt("ADDTYPE", BoardManager.M_NONE);
-				String p_label = extras.getString("POINTLABEL");
+				int markIndicator;
+				int addIndicator;
+				String p_label;
+				if (extras != null) {
+					markIndicator = extras.getInt("MARKTYPE", BoardManager.M_NONE);
+					addIndicator = extras.getInt("ADDTYPE", BoardManager.M_NONE);
+					p_label = extras.getString("POINTLABEL");
+				} else {
+					markIndicator = BoardManager.M_NONE;
+					addIndicator = BoardManager.M_NONE;
+					p_label = "";
+				}
 				bm.set_markup(markIndicator, addIndicator, p_label);
 			}
 			break;

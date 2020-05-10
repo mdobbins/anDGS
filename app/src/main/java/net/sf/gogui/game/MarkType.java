@@ -22,5 +22,5 @@ public enum MarkType
 
     TERRITORY_BLACK,
 
-    TERRITORY_WHITE;
+    TERRITORY_WHITE
 }

@@ -1,17 +1,19 @@
 package com.hg.anDGS;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.AudioAttributes;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class DGSNotifier extends Service {
     public static final long DEFNOTIFIERINTERVAL = 63;  // seconds
@@ -25,6 +27,7 @@ public class DGSNotifier extends Service {
     private long update_interval;
     private Timer timer = new Timer();
     String make_sound;
+    boolean notifierVibrate;
     private DGSNotifierThread mThread = null;
     private boolean startIt = true;
     private boolean restartIt = true;
@@ -58,7 +61,7 @@ public class DGSNotifier extends Service {
         String serverURL = prefs.getString("com.hg.anDGS.ServerURL", PrefsDGS.DGS_URL);
         update_interval = prefs.getLong("com.hg.anDGS.Interval", DEFNOTIFIERINTERVAL);
         make_sound = prefs.getString("com.hg.anDGS.Sound", PrefsDGS.NOSOUND);
-        boolean notifierVibrate = prefs.getBoolean("com.hg.anDGS.Vibrate", false);
+        notifierVibrate = prefs.getBoolean("com.hg.anDGS.Vibrate", false);
         boolean notifyAllDetails = prefs.getBoolean("com.hg.anDGS.NotifyFailure", false);
         CHAN_ID = getString(R.string.DGSClient);
 
@@ -125,7 +128,7 @@ public class DGSNotifier extends Service {
         } catch (Exception e) {
             extras = null;
         }
-        boolean resetIt = false;
+        boolean resetIt;
         if (extras != null) {
             startIt = extras.getBoolean("Start", true);
             restartIt = extras.getBoolean("Restart", true);
@@ -188,6 +191,21 @@ public class DGSNotifier extends Service {
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel(CHAN_ID, name, importance);
             channel.setDescription(description);
+            /*
+            if (make_sound.contentEquals(PrefsDGS.DEFAULTSOUND)) {
+                // do nothing?
+            } else
+            */
+            if (make_sound.contentEquals(PrefsDGS.STONESOUND)) {
+                AudioAttributes aa = new AudioAttributes.Builder()
+                        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                        .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+                        .build();
+                channel.setSound(Uri.parse("android.resource://" + this.getPackageName() + "/" + R.raw.stone), aa);
+            } else if (make_sound.contentEquals(PrefsDGS.NOSOUND)) {
+                channel.setSound(null,null);
+            }
+            channel.enableVibration(notifierVibrate);
             // Register the channel with the system; you can't change the importance
             // or other notification behaviors after this
             NotificationManager notificationManager = getSystemService(NotificationManager.class);

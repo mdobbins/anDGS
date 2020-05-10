@@ -184,7 +184,7 @@ public final class Clock
     */
     public static long parseTimeString(String s)
     {
-        String a[] = s.split(":");
+        String[] a = s.split(":");
         if (a.length == 0 || a.length > 3)
             return -1;
         int hours = 0;

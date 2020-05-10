@@ -1,12 +1,9 @@
 package com.hg.anDGS;
 
-import java.io.File;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.InputType;
@@ -17,8 +14,10 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.SeekBar;
-import android.widget.TextView;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+
+import java.io.File;
 
 public class NewGame extends DGSActivity implements OnSeekBarChangeListener{
 	 protected static final int SGF_GAMES = 2;
@@ -94,7 +93,7 @@ public class NewGame extends DGSActivity implements OnSeekBarChangeListener{
         setContentView(R.layout.newgame);
         ctw = new ContextThemeWrapper(this, commonStuff.getCommonTheme(theme));
         
-		tmHelp = (TextView) findViewById(R.id.newGameTMHelp);
+		tmHelp = findViewById(R.id.newGameTMHelp);
 		tmHelp.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				final Handler handler = new Handler();
@@ -110,65 +109,65 @@ public class NewGame extends DGSActivity implements OnSeekBarChangeListener{
 	    m_black_name = getString(R.string.black);
 	    m_sgf_file = getString(R.string.game);
 
-        newGame_button = (TextView) findViewById(R.id.newGameButton);
+        newGame_button = findViewById(R.id.newGameButton);
         newGame_button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				do_newGame();
 		}});
         
-        size_bar=(SeekBar)this.findViewById(R.id.size_slider);
+        size_bar= this.findViewById(R.id.size_slider);
         size_bar.setOnSeekBarChangeListener(this);
-        size_text=(TextView)this.findViewById(R.id.size_label);
+        size_text= this.findViewById(R.id.size_label);
         size_text.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				do_size();
 		}});
         
-        handicap_bar=(SeekBar)this.findViewById(R.id.handicap_slider);
+        handicap_bar= this.findViewById(R.id.handicap_slider);
         handicap_bar.setOnSeekBarChangeListener(this);
-        handicap_text=(TextView)this.findViewById(R.id.handicap_label);
+        handicap_text= this.findViewById(R.id.handicap_label);
         handicap_text.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				do_handicap();
 		}});
-        handicap_free=(CheckBox)this.findViewById(R.id.handicap_free);
+        handicap_free= this.findViewById(R.id.handicap_free);
 
-        komi_bar=(SeekBar)this.findViewById(R.id.komi_slider);
+        komi_bar= this.findViewById(R.id.komi_slider);
         komi_bar.setOnSeekBarChangeListener(this);
-        komi_text=(TextView)this.findViewById(R.id.komi_label);
+        komi_text= this.findViewById(R.id.komi_label);
         komi_text.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				do_komi();
 		}});
         
-        white_name_button=(TextView)findViewById(R.id.WhiteNameButton);
+        white_name_button= findViewById(R.id.WhiteNameButton);
         white_name_button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				do_white_name();
 		}});
-        white_name_label=(TextView)this.findViewById(R.id.WhiteNameLabel);
+        white_name_label= this.findViewById(R.id.WhiteNameLabel);
         white_name_label.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				do_white_name();
 		}});
         
-        black_name_button=(TextView)findViewById(R.id.BlackNameButton);
+        black_name_button= findViewById(R.id.BlackNameButton);
         black_name_button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				do_black_name();
 		}});
-        black_name_label=(TextView)this.findViewById(R.id.BlackNameLabel);
+        black_name_label= this.findViewById(R.id.BlackNameLabel);
         black_name_label.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				do_black_name();
 		}});
         
-        sgf_file_button=(TextView)findViewById(R.id.SGFFileButton);
+        sgf_file_button= findViewById(R.id.SGFFileButton);
         sgf_file_button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				do_sgf_file();
 		}});
-        sgf_file_label=(TextView)this.findViewById(R.id.SGFFileLabel);
+        sgf_file_label= this.findViewById(R.id.SGFFileLabel);
         sgf_file_label.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				do_sgf_file();
@@ -600,13 +599,8 @@ public class NewGame extends DGSActivity implements OnSeekBarChangeListener{
 		 }
 	 
 	 public boolean onOptionsItemSelected(MenuItem item) {
-		 
-		 switch (item.getItemId()) {
-		 case MENU_HELP:
+		 if (item.getItemId() == MENU_HELP) {
 			 doHelp();
-			 break;
-		 default:
-				// nothing 
 		 }
 		 return false;
 	 }

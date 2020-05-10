@@ -311,7 +311,7 @@ public class Options
                 && spec.substring(spec.length() - 1).equals(":"));
     }
 
-    private void parseArgs(String args[]) throws ErrorMessage
+    private void parseArgs(String[] args) throws ErrorMessage
     {
         boolean stopParse = false;
         int n = 0;

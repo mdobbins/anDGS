@@ -116,15 +116,13 @@ public class Platform
         if (isMac())
         {
             String[] cmd = { "/usr/bin/open", url.toString() };
-            if (runProcess(cmd))
-                return true;
+            return runProcess(cmd);
         }
         else if (isWindows())
         {
             String[] cmd = { "rundll32", "url.dll,FileProtocolHandler",
                              url.toString() };
-            if (runProcess(cmd))
-                return true;
+            return runProcess(cmd);
         }
         else if (isUnix())
         {
@@ -151,8 +149,7 @@ public class Platform
             }
             {
                 String[] cmd = { "opera", url.toString() };
-                if (runProcess(cmd))
-                    return true;
+                return runProcess(cmd);
             }
         }
         return false;

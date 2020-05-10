@@ -1,23 +1,21 @@
 package com.hg.anDGS;
 
-import static net.sf.gogui.go.GoColor.BLACK;
-import static net.sf.gogui.go.GoColor.WHITE;
-
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.Map.Entry;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.media.MediaPlayer;
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
+import android.view.ContextThemeWrapper;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.TableLayout;
+import android.widget.Toast;
 
 import net.sf.gogui.game.ConstGameInfo;
 import net.sf.gogui.game.ConstNode;
@@ -43,22 +41,25 @@ import net.sf.gogui.sgf.SgfError;
 import net.sf.gogui.sgf.SgfReader;
 import net.sf.gogui.sgf.SgfWriter;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.media.MediaPlayer;
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import android.view.ContextThemeWrapper;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.TableLayout;
-import android.widget.Toast;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import static net.sf.gogui.go.GoColor.BLACK;
+import static net.sf.gogui.go.GoColor.WHITE;
 
 public class BoardManager implements BoardClick{
 	// play states left button right button
@@ -752,7 +753,6 @@ public class BoardManager implements BoardClick{
 			redisplayFullBoard();
 			break;
 		default:
-			;
 		}
 	}
 
@@ -765,9 +765,8 @@ public class BoardManager implements BoardClick{
 		 		int h = info.getHandicap();
 		 		if (h > 0) {
 		 			ConstPointList pl = node.getSetup(GoColor.BLACK);
-		 			if (pl.isEmpty()) return false;
-		 			return true;
-		 		}
+					return !pl.isEmpty();
+				}
 	 		}
 		}
  		return true;
@@ -1413,7 +1412,12 @@ public class BoardManager implements BoardClick{
 			OutputStream out = new FileOutputStream(recovery);
 			try {
 				String s = mFileName + ":" + game_mode + '\n';
-				byte[] ba = s.getBytes("UTF-8");
+				byte[] ba = new byte[0];
+				if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+					ba = s.getBytes(StandardCharsets.UTF_8);
+				} else {
+					ba = s.getBytes(Charset.forName("UTF-8"));
+				}
 				out.write(ba);
 			} catch (IOException e) {
                 errHist.writeErrorHistory("BoardManager IOException:" + e.toString());
@@ -1459,7 +1463,7 @@ public class BoardManager implements BoardClick{
               	   saveTheGame(inputd.getText().toString());  }})
             .setNegativeButton(R.string.Cancel, new DialogInterface.OnClickListener(){
                  public void onClick(DialogInterface arg0, int arg1) {
-                     ; }})
+				 }})
             .show(); 
            return;
 		}
@@ -1477,7 +1481,7 @@ public class BoardManager implements BoardClick{
               	   saveTheGameNow(f);  }})
             .setNegativeButton(R.string.Cancel, new DialogInterface.OnClickListener(){
                  public void onClick(DialogInterface arg0, int arg1) {
-                     ; }})
+				 }})
             .show(); 
 		} else {
 			 saveTheGameNow(f);
@@ -1736,7 +1740,7 @@ public class BoardManager implements BoardClick{
 		    // Schedules a repaint.
 		    //invalidate();
 		    return true;
-		};
+		}
 	};
 	
 	private Move getMoveOffFather() {
@@ -1867,7 +1871,7 @@ public class BoardManager implements BoardClick{
 				    		break;
 				    	
 				    	default: // cancel
-				    		;  // do nothing
+							// do nothing
 				    	}
 					}
 				});
@@ -1948,7 +1952,7 @@ public class BoardManager implements BoardClick{
                 	   removeCurrNodeInTree();  }})
               .setNegativeButton(R.string.Cancel, new DialogInterface.OnClickListener(){
                    public void onClick(DialogInterface arg0, int arg1) {
-                       ; }})
+				   }})
               .show(); 
 		} else {
 			removeCurrNodeInTree();
@@ -1999,7 +2003,7 @@ public class BoardManager implements BoardClick{
 				    		}
 				    		break;
 				    	default: // cancel
-				    		;  // do nothing
+							// do nothing
 				    	}
 					}
 				});
@@ -2041,7 +2045,7 @@ public class BoardManager implements BoardClick{
 				    		doDeleteCurrentMove();
 				    		break;
 				    	default: // cancel
-				    		;  // do nothing
+							// do nothing
 				    	}
 					}
 				});
@@ -2355,12 +2359,10 @@ public class BoardManager implements BoardClick{
 	private void sgfToBoard(String sgf) {
 		byte[] bytes;
 
-		try {
-			bytes = sgf.getBytes("UTF-8");
-		} catch (UnsupportedEncodingException e1) {
-            errHist.writeErrorHistory("BoardManager UnsupportedEncodingException:" + e1.toString());
-			Toast.makeText(ctw, "EncodingError:" + e1.getMessage(), Toast.LENGTH_LONG).show();
-			return;
+		if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+			bytes = sgf.getBytes(StandardCharsets.UTF_8);
+		} else {
+			bytes = sgf.getBytes(Charset.forName("UTF-8"));
 		}
 		ByteArrayInputStream in = new ByteArrayInputStream(bytes);
 
@@ -2751,7 +2753,6 @@ public class BoardManager implements BoardClick{
 					go_prev_node();
 					break;
 				default:
-					;
 				}
 			}
 		};
@@ -2958,9 +2959,7 @@ public class BoardManager implements BoardClick{
 			return false;
 		if (brd.isSuicide(playerColorToMove, p))
 			return false;
-		if (brd.isKo(p))
-			return false;
-		return true;
+		return !brd.isKo(p);
 	}
 
 	private void initZoomBoard(int mX, int mY) {  // display coord
@@ -3016,7 +3015,7 @@ public class BoardManager implements BoardClick{
 	}
 	
 	public String getScoreDifference() {
-		StringBuilder new_marked_state = new StringBuilder("");
+		StringBuilder new_marked_state = new StringBuilder();
 		for (GoPoint stone : gogui_board) {
 			String coord = getCoord(stone);
 			GoColor c = scoreCounter.getColor(stone, m_rules); 
@@ -3043,7 +3042,7 @@ public class BoardManager implements BoardClick{
 		int x, y;
 		x = 'a' + p.getX();
 		y = 'a' + fullGridBrdSize - p.getY() - 1;
-		return Character.toString((char)x) + Character.toString((char)y);
+		return Character.toString((char)x) + (char) y;
 	}
 	
 	// return the coords not in both strings
@@ -3056,7 +3055,7 @@ public class BoardManager implements BoardClick{
 	// return the coords in A that are also in B
 	@SuppressWarnings("unused")
 	private String getCoordsAinB(String a, String b){
-		StringBuilder s = new StringBuilder("");
+		StringBuilder s = new StringBuilder();
 		for (int i=0; i < a.length()-1; i +=2) {
 			String p = a.substring(i, i+2);
 			if (isCoordAinB(p,b)) s.append(p);
@@ -3075,7 +3074,7 @@ public class BoardManager implements BoardClick{
 	
 	// return the coords in A that are not in B
 	private String getCoordsAnotInB(String a, String b){
-		StringBuilder s = new StringBuilder("");
+		StringBuilder s = new StringBuilder();
 		for (int i=0; i < a.length()-1; i +=2) {
 			String p = a.substring(i, i+2);
 			if (!isCoordAinB(p,b)) s.append(p);
@@ -3223,7 +3222,7 @@ public class BoardManager implements BoardClick{
 	 * sgf coordinates
 	 */
 	private String getHandicapStones() {
-		StringBuilder moves = new StringBuilder("");
+		StringBuilder moves = new StringBuilder();
 		ConstPointList pl;
 		Iterator<GoPoint> i;
 		GoPoint p;

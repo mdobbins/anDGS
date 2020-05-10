@@ -2,23 +2,26 @@
 
 package net.sf.gogui.game;
 
-import java.io.UnsupportedEncodingException;
+import net.sf.gogui.go.BlackWhiteEmptySet;
+import net.sf.gogui.go.BlackWhiteSet;
+import net.sf.gogui.go.ConstPointList;
+import net.sf.gogui.go.GoColor;
+import net.sf.gogui.go.GoPoint;
+import net.sf.gogui.go.Move;
+import net.sf.gogui.go.PointList;
+import net.sf.gogui.util.StringUtil;
+
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
-import net.sf.gogui.go.BlackWhiteSet;
-import net.sf.gogui.go.BlackWhiteEmptySet;
-import net.sf.gogui.go.ConstPointList;
-import net.sf.gogui.go.GoColor;
+
 import static net.sf.gogui.go.GoColor.BLACK;
-import static net.sf.gogui.go.GoColor.WHITE;
-import static net.sf.gogui.go.GoColor.EMPTY;
 import static net.sf.gogui.go.GoColor.BLACK_WHITE_EMPTY;
-import net.sf.gogui.go.Move;
-import net.sf.gogui.go.PointList;
-import net.sf.gogui.go.GoPoint;
-import net.sf.gogui.util.StringUtil;
+import static net.sf.gogui.go.GoColor.EMPTY;
+import static net.sf.gogui.go.GoColor.WHITE;
 
 /** Extended info.
     Contains markups and value, because these are used in the large SGF
@@ -277,7 +280,7 @@ public final class Node
         return -1;
     }
 
-    /** Get index of child node.
+    /* Get index of child node.
     @param child The child.
     @return Index of child or -1, if node is not a child of this node.
      */
@@ -290,7 +293,7 @@ public final class Node
         }
         else
         {
-        	Node oldNode = null;
+        	Node oldNode;
             if (m_children instanceof Node)
             {
             	oldNode = (Node) m_children;
@@ -317,14 +320,13 @@ public final class Node
     {
         if (m_comment == null)
             return null;
-        try
-        {
-            return new String(m_comment, "UTF-8");
+        String comment;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+            comment = new String(m_comment,StandardCharsets.UTF_8);
+        } else {
+            comment = new String (m_comment,Charset.forName("UTF-8"));
         }
-        catch (UnsupportedEncodingException e)
-        {
-            return new String(m_comment);
-        }
+        return comment;
     }
 
     /** Get father node.
@@ -421,7 +423,8 @@ public final class Node
     */
     public int getMovesLeft(GoColor c)
     {
-        assert c.isBlackWhite();
+        if (!c.isBlackWhite())
+            return -1;
         TimeInfo timeInfo = getTimeInfo();
         if (timeInfo == null)
             return -1;
@@ -493,7 +496,8 @@ public final class Node
     */
     public double getTimeLeft(GoColor c)
     {
-        assert c.isBlackWhite();
+        if (!c.isBlackWhite())
+            return Double.NaN;
         TimeInfo timeInfo = getTimeInfo();
         if (timeInfo == null)
             return Double.NaN;
@@ -580,7 +584,8 @@ public final class Node
     @SuppressWarnings("unchecked")
     public void makeMainVariation(Node child)
     {
-        assert child.isChildOf(this);
+        if (!child.isChildOf(this))
+            return;
         if (getNumberChildren() <= 1)
             return;
         ArrayList<Node> list = (ArrayList<Node>)m_children;
@@ -594,7 +599,8 @@ public final class Node
     @SuppressWarnings("rawtypes")
 	public void removeChild(Node child)
     {
-        assert child.isChildOf(this);
+        if (!child.isChildOf(this))
+            return;
         int numberChildren = getNumberChildren();
         if (numberChildren == 1)
             m_children = null;
@@ -606,7 +612,7 @@ public final class Node
                 m_children = list.get(0);
         }
         else
-            assert false;
+            return;
         child.m_father = null;
     }
 
@@ -642,8 +648,7 @@ public final class Node
     {
         if (getNumberChildren() <= 1)
             return;
-        Node child = getChild(0);
-        m_children = child;
+        m_children = getChild(0);
     }
 
     /** Store comment in this node.
@@ -658,13 +663,10 @@ public final class Node
             m_comment = null;
             return;
         }
-        try
-        {
-            m_comment = comment.getBytes("UTF-8");
-        }
-        catch (UnsupportedEncodingException e)
-        {
-            m_comment = comment.getBytes();
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+            m_comment = comment.getBytes(StandardCharsets.UTF_8);
+        } else {
+            m_comment = comment.getBytes(Charset.forName("UTF-8"));
         }
     }
 
@@ -709,7 +711,7 @@ public final class Node
     */
     public void setMovesLeft(GoColor c, int n)
     {
-        assert c.isBlackWhite();
+        if (!c.isBlackWhite()) return;
         createTimeInfo().m_movesLeft.set(c, n);
     }
 
@@ -719,7 +721,7 @@ public final class Node
     */
     public void setTimeLeft(GoColor c, double seconds)
     {
-        assert c.isBlackWhite();
+        if (!c.isBlackWhite()) return;
         createTimeInfo().m_timeLeft.set(c, seconds);
     }
 
@@ -728,7 +730,7 @@ public final class Node
     */
     public void setPlayer(GoColor color)
     {
-        assert color.isBlackWhite();
+        if (!color.isBlackWhite()) return;
         createSetupInfo().m_player = color;
     }
 
@@ -750,7 +752,9 @@ public final class Node
     {
         for (GoColor c : BLACK_WHITE_EMPTY)
             if (getSetup(c).size() > 0)
-                Collections.sort(getSetupInfo().m_stones.get(c));
+                if (getSetupInfo() != null) {
+                    Collections.sort(getSetupInfo().m_stones.get(c));
+                }
     }
 
     /** Return next child after a given child.

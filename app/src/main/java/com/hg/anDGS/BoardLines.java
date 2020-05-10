@@ -1,9 +1,5 @@
 package com.hg.anDGS;
 
-import java.util.Iterator;
-
-import net.sf.gogui.go.ConstPointList;
-import net.sf.gogui.go.GoPoint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -11,6 +7,9 @@ import android.graphics.Paint;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
+
+import net.sf.gogui.go.ConstPointList;
+import net.sf.gogui.go.GoPoint;
 
 public class BoardLines extends View {
 	int boardSize;
@@ -60,9 +59,7 @@ public class BoardLines extends View {
 		}
 		// draw hoshi
 		if (hoshiList == null) return;
-		Iterator<GoPoint> i = hoshiList.iterator();
-		while (i.hasNext()) {
-			GoPoint p = i.next();
+		for (GoPoint p : hoshiList) {
 			float nX = nMin + (p.getX() * stoneSize);
 			float nY = nMin + (p.getY() * stoneSize);
 			canvas.drawCircle(nX, nY, circleRadius, paint);

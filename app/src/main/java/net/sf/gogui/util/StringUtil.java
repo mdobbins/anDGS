@@ -174,7 +174,7 @@ public final class StringUtil
         int pos = -1;
         while ((pos = s.indexOf(separator, pos + 1)) >= 0)
             ++count;
-        String result[] = new String[count];
+        String[] result = new String[count];
         pos = 0;
         int newPos;
         int i = 0;

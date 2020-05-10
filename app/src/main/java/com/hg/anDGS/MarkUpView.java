@@ -2,7 +2,6 @@ package com.hg.anDGS;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -103,7 +102,7 @@ public class MarkUpView extends DGSActivity {
         this.setTheme(commonStuff.getCommonStyle(theme));
         setContentView(R.layout.markup);
         
-		tmHelp = (TextView) findViewById(R.id.markUpTMHelp);
+		tmHelp = findViewById(R.id.markUpTMHelp);
 		tmHelp.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				final Handler handler = new Handler();
@@ -115,149 +114,149 @@ public class MarkUpView extends DGSActivity {
 			}
 		});
                 
-        markNone = (ImageView) findViewById(R.id.markNoneV);
+        markNone = findViewById(R.id.markNoneV);
         markNone.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	markNoneClick();
             }
         });
         
-        markNoneT = (TextView) findViewById(R.id.markNoneT);
+        markNoneT = findViewById(R.id.markNoneT);
         markNoneT.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	markNoneClick();
             }
         });
                 
-        markMark = (ImageView) findViewById(R.id.markMarkV);
+        markMark = findViewById(R.id.markMarkV);
     	markMark.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	markMarkClick();
             }
         });
     	
-    	markMarkT = (TextView) findViewById(R.id.markMarkT);
+    	markMarkT = findViewById(R.id.markMarkT);
     	markMarkT.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	markMarkClick();
             }
         });
         
-        markTriangle = (ImageView) findViewById(R.id.markTriangleV);
+        markTriangle = findViewById(R.id.markTriangleV);
         markTriangle.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	markTriangleClick();
             }
         });
         
-        markTriangleT = (TextView) findViewById(R.id.markTriangleT);
+        markTriangleT = findViewById(R.id.markTriangleT);
         markTriangleT.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	markTriangleClick();
             }
         });
         
-        markCircle = (ImageView) findViewById(R.id.markCircleV);
+        markCircle = findViewById(R.id.markCircleV);
         markCircle.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	markCircleClick();
             }
         });
         
-        markCircleT = (TextView) findViewById(R.id.markCircleT);
+        markCircleT = findViewById(R.id.markCircleT);
         markCircleT.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	markCircleClick();
             }
         });
         
-        markSquare = (ImageView) findViewById(R.id.markSquareV);
+        markSquare = findViewById(R.id.markSquareV);
         markSquare.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	markSquareClick();
             }
         });
         
-        markSquareT = (TextView) findViewById(R.id.markSquareT);
+        markSquareT = findViewById(R.id.markSquareT);
         markSquareT.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	markSquareClick();
             }
         });
         
-        markTerrW = (ImageView) findViewById(R.id.markTerrWV);
+        markTerrW = findViewById(R.id.markTerrWV);
         markTerrW.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	markTerrWClick();
             }
         });
         
-        markTerrWT = (TextView) findViewById(R.id.markTerrWT);
+        markTerrWT = findViewById(R.id.markTerrWT);
         markTerrWT.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	markTerrWClick();
             }
         });
         
-        markTerrB = (ImageView) findViewById(R.id.markTerrBV);
+        markTerrB = findViewById(R.id.markTerrBV);
         markTerrB.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	markTerrBClick();
             }
         });
         
-        markTerrBT = (TextView) findViewById(R.id.markTerrBT);
+        markTerrBT = findViewById(R.id.markTerrBT);
         markTerrBT.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	markTerrBClick();
             }
         });
         
-        markAddEmpty = (ImageView) findViewById(R.id.markAddEmptyV);
+        markAddEmpty = findViewById(R.id.markAddEmptyV);
         markAddEmpty.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	markAddEmptyClick();
             }
         });
         
-        markAddEmptyT = (TextView) findViewById(R.id.markAddEmptyT);
+        markAddEmptyT = findViewById(R.id.markAddEmptyT);
         markAddEmptyT.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	markAddEmptyClick();
             }
         });
         
-        markAddW = (ImageView) findViewById(R.id.markAddWV);
+        markAddW = findViewById(R.id.markAddWV);
         markAddW.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	markAddWClick();
             }
         });
         
-        markAddWT = (TextView) findViewById(R.id.markAddWT);
+        markAddWT = findViewById(R.id.markAddWT);
         markAddWT.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	markAddWClick();
             }
         });
         
-        markAddB = (ImageView) findViewById(R.id.markAddBV);
+        markAddB = findViewById(R.id.markAddBV);
         markAddB.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	markAddBClick();
             }
         });
         
-        markAddBT = (TextView) findViewById(R.id.markAddBT);
+        markAddBT = findViewById(R.id.markAddBT);
         markAddBT.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	markAddBClick();
             }
         });
         
-        labelText = (EditText) findViewById(R.id.markUpLabelValue);
+        labelText = findViewById(R.id.markUpLabelValue);
         
-        done_button = (TextView) findViewById(R.id.markUpDoneButton);
+        done_button = findViewById(R.id.markUpDoneButton);
         done_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	label = labelText.getText().toString();
@@ -484,13 +483,8 @@ public class MarkUpView extends DGSActivity {
 		 }
 	 
 	 public boolean onOptionsItemSelected(MenuItem item) {
-		 
-		 switch (item.getItemId()) {
-		 case MENU_HELP:
+		 if (item.getItemId() == MENU_HELP) {
 			 doHelp();
-			 break;
-		 default:
-				// nothing 
 		 }
 		 return false;
 	 }

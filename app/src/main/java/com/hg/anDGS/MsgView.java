@@ -2,7 +2,6 @@ package com.hg.anDGS;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
@@ -73,7 +72,7 @@ public class MsgView extends DGSActivity {
 		this.setTheme(commonStuff.getCommonStyle(theme));
 		setContentView(R.layout.msgview);
         
-		tmHelp = (TextView) findViewById(R.id.msgViewTMHelp);
+		tmHelp = findViewById(R.id.msgViewTMHelp);
 		if (msgHelpType == commonStuff.HELP_HELP) {
 			tmHelp.setText(" ");  // we don't have help for help!!
 		} else {
@@ -89,17 +88,17 @@ public class MsgView extends DGSActivity {
 			});
 		}
 		
-		msgTitleView = (TextView) findViewById(R.id.msgViewTitle);
+		msgTitleView = findViewById(R.id.msgViewTitle);
 		msgTitleView.setText(msgTitle);
 		
-		msg_text_view = (TextView) findViewById(R.id.msgTextView);
+		msg_text_view = findViewById(R.id.msgTextView);
 		if (msgTitle.contentEquals("RESULT")) {
 			original_text = formatResultMsg(original_text);
 			//msg_text_view.setAutoLinkMask(Linkify.WEB_URLS);  // do I need to add some conditions?? Maybe WebView will fix it all
 		}
 		msg_text_view.setText(original_text);
 		
-		buttonsRow = (TableRow) findViewById(R.id.msgButtonsRow);
+		buttonsRow = findViewById(R.id.msgButtonsRow);
 		int n = buttonsRow.getChildCount() - 1;
 		for (int i=n; i >= 0; i--) {
 			TextView tv = (TextView) buttonsRow.getChildAt(i);
@@ -124,26 +123,22 @@ public class MsgView extends DGSActivity {
 	}
 	
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		switch  (keyCode) {
-		 case KeyEvent.KEYCODE_BACK: 
-			 return true;
-		 default:
-		 }
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			return true;
+		}
 		return super.onKeyDown(keyCode, event);
 	}
 	
 	public boolean onKeyUp (int keyCode, KeyEvent event) {
-		switch  (keyCode) {
-		 case KeyEvent.KEYCODE_BACK: 
-		 	Bundle rslts = new Bundle();
-		 	rslts.putString("RESULT", "0");  
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			Bundle rslts = new Bundle();
+			rslts.putString("RESULT", "0");
 			Intent mIntent = new Intent();
 			mIntent.putExtras(rslts);
 			setResult(RESULT_OK, mIntent);
 			finish();
 			return true;
-		 default:
-		 }
+		}
 		return super.onKeyUp(keyCode, event);
 	}
 	
@@ -159,13 +154,8 @@ public class MsgView extends DGSActivity {
 	}
 	 
 	 public boolean onOptionsItemSelected(MenuItem item) {
-		 
-		 switch (item.getItemId()) {
-		 case MENU_HELP:
-			 doHelp();  
-			break;
-		 default:
-				// nothing 
+		 if (item.getItemId() == MENU_HELP) {
+			 doHelp();
 		 }
 		 return false;
 	 }
@@ -195,7 +185,7 @@ public class MsgView extends DGSActivity {
 				 s2 = "";
 			 }
 			 else {
-				 s2 =  s.substring(j, s.length());
+				 s2 =  s.substring(j);
 			 }
 			 s = s1 + s2;
 		 }

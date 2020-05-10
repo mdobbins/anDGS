@@ -1,13 +1,9 @@
 package com.hg.anDGS;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,6 +19,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class GameBoardOptions extends DGSActivity {
 	
@@ -112,7 +111,7 @@ public class GameBoardOptions extends DGSActivity {
         setContentView(R.layout.playoptions);		
         ctw = new ContextThemeWrapper(this, commonStuff.getCommonTheme(theme));
         
-		tmHelp = (TextView) findViewById(R.id.playOptsTMHelp);
+		tmHelp = findViewById(R.id.playOptsTMHelp);
 		tmHelp.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				final Handler handler = new Handler();
@@ -124,7 +123,7 @@ public class GameBoardOptions extends DGSActivity {
 			}
 		});
         
-        playopts_done_button = (TextView) findViewById(R.id.playOptsDoneButton);
+        playopts_done_button = findViewById(R.id.playOptsDoneButton);
         playopts_done_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
              	Bundle rslts = new Bundle();
@@ -173,13 +172,13 @@ public class GameBoardOptions extends DGSActivity {
         });
         
         String[] items = new String[] {getString(R.string.autoplay), getString(R.string.browse), getString(R.string.edit), getString(R.string.guessmove), getString(R.string.markup)};
-        play_mode_spinner = (Spinner) findViewById(R.id.playModeSpinner);
-        vPlayModeFlash = (TextView) findViewById(R.id.PlayModeFlash);
+        play_mode_spinner = findViewById(R.id.playModeSpinner);
+        vPlayModeFlash = findViewById(R.id.PlayModeFlash);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, items);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         play_mode_spinner.setAdapter(adapter);
-        play_mode_label = (LinearLayout) findViewById(R.id.playModeLabel);
+        play_mode_label = findViewById(R.id.playModeLabel);
         play_mode_label.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	flashButton(vPlayModeFlash);
@@ -187,9 +186,9 @@ public class GameBoardOptions extends DGSActivity {
             }
         });
         
-        vSkipMoves = (TextView) findViewById(R.id.playSkipMoves);
-        vSkipMovesFlash = (TextView) findViewById(R.id.playSkipMovesFlash);
-        vSkipMovesLabel = (LinearLayout) findViewById(R.id.playSkipMovesLabel);
+        vSkipMoves = findViewById(R.id.playSkipMoves);
+        vSkipMovesFlash = findViewById(R.id.playSkipMovesFlash);
+        vSkipMovesLabel = findViewById(R.id.playSkipMovesLabel);
         vSkipMovesLabel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	flashButton(vSkipMovesFlash);
@@ -197,9 +196,9 @@ public class GameBoardOptions extends DGSActivity {
             }
         });
         
-        vEditNumPrev = (TextView) findViewById(R.id.playEditNumPrev);
-        vEditNumPrevFlash = (TextView) findViewById(R.id.playEditNumPrevFlash);
-        vEditNumPrevLabel = (LinearLayout) findViewById(R.id.playEditNumPrevLabel);
+        vEditNumPrev = findViewById(R.id.playEditNumPrev);
+        vEditNumPrevFlash = findViewById(R.id.playEditNumPrevFlash);
+        vEditNumPrevLabel = findViewById(R.id.playEditNumPrevLabel);
         vEditNumPrevLabel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	flashButton(vEditNumPrevFlash);
@@ -208,9 +207,9 @@ public class GameBoardOptions extends DGSActivity {
         });
 
 
-        vAutoPlayInterval = (EditText) findViewById(R.id.playOptsAutoPlayInterval);
-        vAutoPlayIntervalFlash = (TextView) findViewById(R.id.playOptsAutoPlayIntervalFlash);
-        vAutoPlayIntervalLabel = (LinearLayout) findViewById(R.id.playOptsAutoPlayIntervalLabel);
+        vAutoPlayInterval = findViewById(R.id.playOptsAutoPlayInterval);
+        vAutoPlayIntervalFlash = findViewById(R.id.playOptsAutoPlayIntervalFlash);
+        vAutoPlayIntervalLabel = findViewById(R.id.playOptsAutoPlayIntervalLabel);
         vAutoPlayIntervalLabel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	flashButton(vAutoPlayIntervalFlash);
@@ -218,9 +217,9 @@ public class GameBoardOptions extends DGSActivity {
             }
         });
         
-        autoPlayPauseCB = (CheckBox) findViewById(R.id.playOptsAutoPlayPauseCheckBox);
-        vAutoPlayPauseFlash = (TextView) findViewById(R.id.playOptsAutoPlayPauseFlash);
-        autoPlayPauseLabel = (LinearLayout) findViewById(R.id.playOptsAutoPlayPauseLabel);
+        autoPlayPauseCB = findViewById(R.id.playOptsAutoPlayPauseCheckBox);
+        vAutoPlayPauseFlash = findViewById(R.id.playOptsAutoPlayPauseFlash);
+        autoPlayPauseLabel = findViewById(R.id.playOptsAutoPlayPauseLabel);
         autoPlayPauseLabel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	flashButton(vAutoPlayPauseFlash);
@@ -228,9 +227,9 @@ public class GameBoardOptions extends DGSActivity {
             }
         });
         
-        autoPlaySoundCB = (CheckBox) findViewById(R.id.playOptsAutoPlaySoundCheckBox);
-        vAutoPlaySoundFlash = (TextView) findViewById(R.id.playOptsAutoPlaySoundFlash);
-        autoPlaySoundLabel = (LinearLayout) findViewById(R.id.playOptsAutoPlaySoundLabel);
+        autoPlaySoundCB = findViewById(R.id.playOptsAutoPlaySoundCheckBox);
+        vAutoPlaySoundFlash = findViewById(R.id.playOptsAutoPlaySoundFlash);
+        autoPlaySoundLabel = findViewById(R.id.playOptsAutoPlaySoundLabel);
         autoPlaySoundLabel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	flashButton(vAutoPlaySoundFlash);
@@ -366,20 +365,14 @@ public class GameBoardOptions extends DGSActivity {
 	}
     
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		switch  (keyCode) {
-		 case KeyEvent.KEYCODE_BACK: {
-			 return true;
-		 	}
-		 default: {
-			 //
-		 	}
-		 }
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			return true;
+		}
 		return super.onKeyDown(keyCode, event);
 	}
 	
 	public boolean onKeyUp (int keyCode, KeyEvent event) {
-		switch  (keyCode) {
-		 case KeyEvent.KEYCODE_BACK: {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			if (event.getKeyCode() == KeyEvent.FLAG_EDITOR_ACTION) return true;
 			Bundle rslts = new Bundle();
 			// no results
@@ -388,11 +381,7 @@ public class GameBoardOptions extends DGSActivity {
 			setResult(RESULT_OK, mIntent);
 			finish();
 			return true;
-		 	}
-		 default: {
-			 //
-		 	}
-		 }
+		}
 		return super.onKeyUp(keyCode, event);
 	}
    
@@ -413,13 +402,8 @@ public class GameBoardOptions extends DGSActivity {
 		 }
 	 
 	 public boolean onOptionsItemSelected(MenuItem item) {
-		 
-		 switch (item.getItemId()) {
-		 case MENU_HELP:
+		 if (item.getItemId() == MENU_HELP) {
 			 doHelp();
-			 break;
-		 default:
-				// nothing 
 		 }
 		 return false;
 	 }

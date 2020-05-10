@@ -1,13 +1,7 @@
 package com.hg.anDGS;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -17,10 +11,15 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class StatusView extends DGSActivity implements OnClickListener {
     private List<String> listEntries = new ArrayList<String>();
@@ -63,7 +62,7 @@ public class StatusView extends DGSActivity implements OnClickListener {
 			setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		}
 */
-		TextView tmHelp = (TextView) findViewById(R.id.statusTMHelp);
+		TextView tmHelp = findViewById(R.id.statusTMHelp);
 		tmHelp.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				final Handler handler = new Handler();
@@ -75,19 +74,19 @@ public class StatusView extends DGSActivity implements OnClickListener {
 			}
 		});
 
-		TextView statusTitleView = (TextView) findViewById(R.id.statusTitle);
+		TextView statusTitleView = findViewById(R.id.statusTitle);
 		statusTitleView.setText(statusTitle);
 
-		ListView statusListView = (ListView) findViewById(R.id.statusList);
+		ListView statusListView = findViewById(R.id.statusList);
  		listEntries.clear();     
         try {
              Thread.sleep(10);
         } catch (InterruptedException ignore) {
         }
        if (statusList != null) {
-        	for (int i=0; i<statusList.length; i++) {
-        		listEntries.add(statusList[i].replaceAll("'", ""));  
-        	}
+		   for (String s : statusList) {
+			   listEntries.add(s.replaceAll("'", ""));
+		   }
         }
         ArrayAdapter<String> directoryList = new ArrayAdapter<String>(this,
                   R.layout.file_row, listEntries);        
@@ -134,13 +133,8 @@ public class StatusView extends DGSActivity implements OnClickListener {
 		 }
 	 
 	 public boolean onOptionsItemSelected(MenuItem item) {
-		 
-		 switch (item.getItemId()) {
-		 case MENU_HELP:
-			doHelp();  
-			break;
-		 default:
-				// nothing 
+		 if (item.getItemId() == MENU_HELP) {
+			 doHelp();
 		 }
 		 return false;
 	 }

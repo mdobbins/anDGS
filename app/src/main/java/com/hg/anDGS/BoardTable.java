@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 class BoardTable {
 
-	private TableLayout tableView = null;
+	private TableLayout tableView;
 	private int label_gravity = Gravity.TOP|Gravity.CENTER_HORIZONTAL;
 	private TableLayout.LayoutParams tableRowParams;
 	private TableRow.LayoutParams tableRowViewParams;
@@ -27,7 +27,7 @@ class BoardTable {
 	private boolean fullBoard;
 	private boolean boardCoord;
 	private int controlType;
-	private ContextThemeWrapper ctw = null;
+	private ContextThemeWrapper ctw;
 	private CommonStuff commonStuff = new CommonStuff();
 
 	private BoardClick bClick;

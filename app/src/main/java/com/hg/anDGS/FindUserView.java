@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.ContextThemeWrapper;
@@ -58,7 +57,7 @@ public class FindUserView extends DGSActivity {
         setContentView(R.layout.finduser);
         ctw = new ContextThemeWrapper(this, commonStuff.getCommonTheme(theme));
 
-        tmHelp = (TextView) findViewById(R.id.finduserTMHelp);
+        tmHelp = findViewById(R.id.finduserTMHelp);
         tmHelp.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 final Handler handler = new Handler();
@@ -70,34 +69,34 @@ public class FindUserView extends DGSActivity {
             }
         });
 
-        toUserIdEdit = (TextView) findViewById(R.id.finduserToUserIdEdit);
-        toUserIdLabel = (LinearLayout) findViewById(R.id.finduserToUserIdLabel);
+        toUserIdEdit = findViewById(R.id.finduserToUserIdEdit);
+        toUserIdLabel = findViewById(R.id.finduserToUserIdLabel);
         toUserIdLabel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 doSetToUserId();
             }
         });
 
-        toUserNameEdit = (TextView) findViewById(R.id.finduserToUserNameEdit);
-        toUserNameLabel = (LinearLayout) findViewById(R.id.finduserToUserNameLabel);
+        toUserNameEdit = findViewById(R.id.finduserToUserNameEdit);
+        toUserNameLabel = findViewById(R.id.finduserToUserNameLabel);
         toUserNameLabel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 doSetToUserName();
             }
         });
 
-        send_button = (TextView) findViewById(R.id.finduserSendButton);
+        send_button = findViewById(R.id.finduserSendButton);
         send_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 StringBuilder sb = new StringBuilder();
                 sb.append("users.php");
                 String toField = toUserIdEdit.getText().toString().trim();
                 if (!toField.contentEquals("")) {
-                    sb.append("?user=").append(commonStuff.encodeIt(toField));
+                    sb.append("?user=").append(toField);
                 } else {
                     toField = toUserNameEdit.getText().toString().trim();
                     if (!toField.contentEquals("")) {
-                        sb.append("?name=").append(commonStuff.encodeIt(toField));
+                        sb.append("?name=").append(toField);
                     }  // otherwise all users
                 }
 
@@ -158,12 +157,8 @@ public class FindUserView extends DGSActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case MENU_HELP:
-                doHelp();
-                break;
-            default:
-                // nothing
+        if (item.getItemId() == MENU_HELP) {
+            doHelp();
         }
         return false;
     }

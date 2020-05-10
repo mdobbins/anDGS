@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.InputType;
@@ -102,7 +101,7 @@ public class InviteUserView extends DGSActivity {
         setContentView(R.layout.invite);
 		ctw = new ContextThemeWrapper(this, commonStuff.getCommonTheme(theme));
         
-		tmHelp = (TextView) findViewById(R.id.inviteTMHelp);
+		tmHelp = findViewById(R.id.inviteTMHelp);
 		tmHelp.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				final Handler handler = new Handler();
@@ -115,12 +114,12 @@ public class InviteUserView extends DGSActivity {
 		});
 
 		String[] rules_items = new String[] {getString(R.string.Japanese), getString(R.string.Chinese)};
-		rules_spinner = (Spinner) findViewById(R.id.inviteRulesSpinner);
+		rules_spinner = findViewById(R.id.inviteRulesSpinner);
 		ArrayAdapter<String> rules_adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, rules_items);
 		rules_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		rules_spinner.setAdapter(rules_adapter);
-		rules_label = (LinearLayout) findViewById(R.id.inviteRulesLabel);
+		rules_label = findViewById(R.id.inviteRulesLabel);
 		rules_label.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				doSetRules();
@@ -128,12 +127,12 @@ public class InviteUserView extends DGSActivity {
 		});
 
         String[] boardsize_items = new String[] {"7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25"};
-        board_size_spinner = (Spinner) findViewById(R.id.inviteBoardSizeSpinner);
+        board_size_spinner = findViewById(R.id.inviteBoardSizeSpinner);
         ArrayAdapter<String> boardsize_adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, boardsize_items);
         boardsize_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         board_size_spinner.setAdapter(boardsize_adapter);
-        board_size_label = (LinearLayout) findViewById(R.id.inviteBoardSizeLabel);
+        board_size_label = findViewById(R.id.inviteBoardSizeLabel);
         board_size_label.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	doSetBoardSize();
@@ -141,12 +140,12 @@ public class InviteUserView extends DGSActivity {
         });
         
     	String[] gametype_items = new String[] {getString(R.string.conventionalGame), getString(R.string.properGame), getString(R.string.manualGame)};
-    	game_type_spinner = (Spinner) findViewById(R.id.inviteGameTypeSpinner);
+    	game_type_spinner = findViewById(R.id.inviteGameTypeSpinner);
         ArrayAdapter<String> gametype_adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, gametype_items);
         gametype_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         game_type_spinner.setAdapter(gametype_adapter);
-        game_type_label = (LinearLayout) findViewById(R.id.inviteGameTypeLabel);
+        game_type_label = findViewById(R.id.inviteGameTypeLabel);
         game_type_label.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	doSetGameType();
@@ -154,12 +153,12 @@ public class InviteUserView extends DGSActivity {
         });
     	
         String[] color_items = new String[] {getString(R.string.evenGame), getString(R.string.doubleGame), getString(R.string.white), getString(R.string.black)};
-    	color_spinner = (Spinner) findViewById(R.id.inviteColorSpinner);
+    	color_spinner = findViewById(R.id.inviteColorSpinner);
         ArrayAdapter<String> color_adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, color_items);
         color_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         color_spinner.setAdapter(color_adapter);
-        color_label = (LinearLayout) findViewById(R.id.inviteColorLabel);
+        color_label = findViewById(R.id.inviteColorLabel);
         color_label.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	doSetColor();
@@ -167,28 +166,28 @@ public class InviteUserView extends DGSActivity {
         });
     	
     	String[] handicap_items = new String[] {"0","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21"};
-    	handicap_spinner = (Spinner) findViewById(R.id.inviteHandicapSpinner);
+    	handicap_spinner = findViewById(R.id.inviteHandicapSpinner);
         ArrayAdapter<String> handicap_adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, handicap_items);
         handicap_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         handicap_spinner.setAdapter(handicap_adapter);
-        handicap_label = (LinearLayout) findViewById(R.id.inviteHandicapLabel);
+        handicap_label = findViewById(R.id.inviteHandicapLabel);
         handicap_label.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	doSetHandicap();
             }
         });
     	
-    	komiEdit = (TextView) findViewById(R.id.inviteKomiEdit);
-    	komiLabel = (LinearLayout) findViewById(R.id.inviteKomiLabel);
+    	komiEdit = findViewById(R.id.inviteKomiEdit);
+    	komiLabel = findViewById(R.id.inviteKomiLabel);
     	komiLabel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	doSetKomi();
             }
         });
     	
-    	mainTimeEdit = (TextView) findViewById(R.id.inviteMainTimeEdit);
-    	mainTimeLabel = (LinearLayout) findViewById(R.id.inviteMainTimeLabel);
+    	mainTimeEdit = findViewById(R.id.inviteMainTimeEdit);
+    	mainTimeLabel = findViewById(R.id.inviteMainTimeLabel);
     	mainTimeLabel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	doSetMainTime();
@@ -196,20 +195,20 @@ public class InviteUserView extends DGSActivity {
         });
     	
     	String[] maintime_units_items = new String[] {getString(R.string.hours), getString(R.string.days), getString(R.string.months)};
-    	maintime_units_spinner = (Spinner) findViewById(R.id.inviteMainTimeUnitsSpinner);
+    	maintime_units_spinner = findViewById(R.id.inviteMainTimeUnitsSpinner);
         ArrayAdapter<String> maintime_units_adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, maintime_units_items);
         maintime_units_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         maintime_units_spinner.setAdapter(maintime_units_adapter);
-        maintime_units_label = (LinearLayout) findViewById(R.id.inviteMainTimeUnitsLabel);
+        maintime_units_label = findViewById(R.id.inviteMainTimeUnitsLabel);
         maintime_units_label.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	doSetMainTimeUnits();
             }
         });
     	
-    	fischerTimeEdit = (TextView) findViewById(R.id.inviteFischerTimeEdit);
-    	fischerTimeLabel = (LinearLayout) findViewById(R.id.inviteFischerTimeLabel);
+    	fischerTimeEdit = findViewById(R.id.inviteFischerTimeEdit);
+    	fischerTimeLabel = findViewById(R.id.inviteFischerTimeLabel);
     	fischerTimeLabel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	doSetFischerTime();
@@ -217,51 +216,51 @@ public class InviteUserView extends DGSActivity {
         });
     	
     	String[] fischertime_units_items = new String[] {getString(R.string.hours), getString(R.string.days), getString(R.string.months)};
-    	fischertime_units_spinner = (Spinner) findViewById(R.id.inviteFisherTimeUnitsSpinner);
+    	fischertime_units_spinner = findViewById(R.id.inviteFisherTimeUnitsSpinner);
         ArrayAdapter<String> fischertime_units_adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, fischertime_units_items);
         fischertime_units_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         fischertime_units_spinner.setAdapter(fischertime_units_adapter);
-        fischertime_units_label = (LinearLayout) findViewById(R.id.inviteFischerTimeUnitsLabel);
+        fischertime_units_label = findViewById(R.id.inviteFischerTimeUnitsLabel);
         fischertime_units_label.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	doSetFischerTimeUnits();
             }
         });
     	
-    	weekendClockCB = (CheckBox) findViewById(R.id.inviteWeekendClock);
-    	weekendClock_label = (LinearLayout) findViewById(R.id.inviteWeekendClockLabel);
+    	weekendClockCB = findViewById(R.id.inviteWeekendClock);
+    	weekendClock_label = findViewById(R.id.inviteWeekendClockLabel);
     	weekendClock_label.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	doSetWeekendClock();
             }
         });
     	
-    	ratedGameCB = (CheckBox) findViewById(R.id.inviteRatedGame);
-    	ratedGame_label = (LinearLayout) findViewById(R.id.inviteRatedGameLabel);
+    	ratedGameCB = findViewById(R.id.inviteRatedGame);
+    	ratedGame_label = findViewById(R.id.inviteRatedGameLabel);
     	ratedGame_label.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	doSetRatedGame();
             }
         });
     	
-    	toUserIdEdit = (TextView) findViewById(R.id.inviteToUserIdEdit);
-    	toUserIdLabel = (LinearLayout) findViewById(R.id.inviteToUserIdLabel);
+    	toUserIdEdit = findViewById(R.id.inviteToUserIdEdit);
+    	toUserIdLabel = findViewById(R.id.inviteToUserIdLabel);
     	toUserIdLabel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	doSetToUserId();
             }
         });
     	
-    	messageEdit = (TextView) findViewById(R.id.inviteMessageEdit);
-    	messageLabel = (LinearLayout) findViewById(R.id.inviteMessageLabel);
+    	messageEdit = findViewById(R.id.inviteMessageEdit);
+    	messageLabel = findViewById(R.id.inviteMessageLabel);
     	messageLabel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	doSetMessage();
             }
         });
     	
-    	submit_button = (TextView) findViewById(R.id.inviteSubmitButton);
+    	submit_button = findViewById(R.id.inviteSubmitButton);
     	submit_button.setOnClickListener(new View.OnClickListener() {
              public void onClick(View v) {
             	int i;
@@ -280,7 +279,7 @@ public class InviteUserView extends DGSActivity {
 				sb.append("&senderuser=");   // this could be senderid
 				sb.append(fromUserId);
 				sb.append("&message=");
-				sb.append(commonStuff.encodeIt(messageEdit.getText().toString().trim()));
+				sb.append(messageEdit.getText().toString().trim());
 				sb.append("&subject=Game+invitation&type=INVITATION");
 
 				sb.append("&ruleset=");
@@ -509,13 +508,8 @@ public class InviteUserView extends DGSActivity {
 		 }
 	 
 	 public boolean onOptionsItemSelected(MenuItem item) {
-		 
-		 switch (item.getItemId()) {
-		 case MENU_HELP:
-			 doHelp();   
-			break;
-		 default:
-				// nothing 
+		 if (item.getItemId() == MENU_HELP) {
+			 doHelp();
 		 }
 		 return false;
 	 }

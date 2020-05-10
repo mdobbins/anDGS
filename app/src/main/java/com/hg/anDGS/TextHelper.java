@@ -3,19 +3,19 @@ package com.hg.anDGS;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 class TextHelper {
 	String GetText(InputStream in) {
 		String text = "";
 		BufferedReader reader;
-		try {
-			reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-			reader = new BufferedReader(new InputStreamReader(in));
+		if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+			reader = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8));
+		} else {
+			reader = new BufferedReader(new InputStreamReader(in, Charset.forName("UTF-8")));
 		}
-		StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
 		String line;
 		try {
 			while ((line = reader.readLine()) != null) {

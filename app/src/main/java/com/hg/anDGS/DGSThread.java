@@ -44,7 +44,7 @@ class DGSThread extends Thread
 	static final int GAMES_OBSERVED = 2;
 	static final int GAMES_MULTIPLAYER= 3;
 	
-	private int doEvt = DO_LOGON;
+	private int doEvt;
 	private Map<String,String> HTTPparams1 = new HashMap<String, String>();
 	private Map<String,String> HTTPparams2 = new HashMap<String, String>();
 	private int HTTPparamsUse = 1;
@@ -478,7 +478,7 @@ class DGSThread extends Thread
 		HTTPparams1.put("cmd","set_handicap");
 		HTTPparams1.put("gid",gameId);
 		HTTPparams1.put("move_id",moveId);
-		HTTPparams1.put("msg",commonStuff.encodeIt(msg));
+		HTTPparams1.put("msg",msg);
 		HTTPparams1.put("move",h_movs);
 		doString1 = qdURL;
 		addNotes2Request(note);
@@ -495,7 +495,7 @@ class DGSThread extends Thread
 		if (note.contentEquals("")) {
 			HTTPparams1.put("notes","");
 		} else {
-			HTTPparams1.put("notes",commonStuff.encodeIt(note));
+			HTTPparams1.put("notes",note);
 		}
 		doString1 = qdURL;
 		HTTPparams2.clear();
@@ -514,7 +514,7 @@ class DGSThread extends Thread
 		HTTPparams1.put("gid",gameId);
 		HTTPparams1.put("move_id",moveId);
 		HTTPparams1.put("move",mov);
-		HTTPparams1.put("msg",commonStuff.encodeIt(msg));
+		HTTPparams1.put("msg",msg);
 		doString1 = qdURL;
 		addNotes2Request(note);
 		doEvt = DO_SEND_MOVE;
@@ -531,7 +531,7 @@ class DGSThread extends Thread
 		HTTPparams1.put("gid",gameId);
 		HTTPparams1.put("move_id",moveId);
 		HTTPparams1.put("move","pass");
-		HTTPparams1.put("msg",commonStuff.encodeIt(msg));
+		HTTPparams1.put("msg",msg);
 		doString1 = qdURL;
 		addNotes2Request(note);
 		doEvt = DO_SEND_PASS;
@@ -547,7 +547,7 @@ class DGSThread extends Thread
 		HTTPparams1.put("cmd","resign");
 		HTTPparams1.put("gid",gameId);
 		HTTPparams1.put("move_id",moveId);
-		HTTPparams1.put("msg",commonStuff.encodeIt(msg));
+		HTTPparams1.put("msg",msg);
 		doString1 = qdURL;
 		addNotes2Request(note);
 		doEvt = DO_SEND_RESIGN;
@@ -564,7 +564,7 @@ class DGSThread extends Thread
 		HTTPparams1.put("move_id",moveId);
 		HTTPparams1.put("toggle","uniq");
 		HTTPparams1.put("move",mov);
-		HTTPparams1.put("msg",commonStuff.encodeIt(msg));
+		HTTPparams1.put("msg",msg);
 		doString1 = qdURL;
 		HTTPparams2.clear();
 		doString2 = "";
@@ -582,7 +582,7 @@ class DGSThread extends Thread
 		HTTPparams1.put("move_id",moveId);
 		HTTPparams1.put("move","");
 		HTTPparams1.put("agree","1");
-		HTTPparams1.put("msg",commonStuff.encodeIt(msg));
+		HTTPparams1.put("msg",msg);
 		doString1 = qdURL;
 		HTTPparams2.clear();
 		doString2 = "";
@@ -598,7 +598,7 @@ class DGSThread extends Thread
 		HTTPparams1.put("cmd","delete");
 		HTTPparams1.put("gid",gameId);
 		HTTPparams1.put("move_id",moveId);
-		HTTPparams1.put("msg",commonStuff.encodeIt(msg));
+		HTTPparams1.put("msg",msg);
 		doString1 = qdURL;
 		HTTPparams2.clear();
 		doString2 = "";
@@ -610,7 +610,7 @@ class DGSThread extends Thread
 		HTTPparams1.clear();
 		HTTPparams1.put("obj","message");
 		HTTPparams1.put("cmd","send_msg");
-		HTTPparams1.put("msg",commonStuff.encodeIt(msg));
+		HTTPparams1.put("msg",msg);
 		doString1 = qdURL;
 		HTTPparams2.clear();
 		doString2 = "";
@@ -636,7 +636,7 @@ class DGSThread extends Thread
 		HTTPparams1.put("obj","message");
 		HTTPparams1.put("cmd","accept_inv");
 		HTTPparams1.put("mid",m_mid);
-		HTTPparams1.put("msg",commonStuff.encodeIt(msg));
+		HTTPparams1.put("msg",msg);
 		doString1 = qdURL;
 		HTTPparams2.clear();
 		doString2 = "";
@@ -650,7 +650,7 @@ class DGSThread extends Thread
 		HTTPparams1.put("obj","message");
 		HTTPparams1.put("cmd","decline_inv");
 		HTTPparams1.put("mid",m_mid);
-		HTTPparams1.put("msg",commonStuff.encodeIt(msg));
+		HTTPparams1.put("msg",msg);
 		doString1 = qdURL;
 		HTTPparams2.clear();
 		doString2 = "";
@@ -767,7 +767,7 @@ class DGSThread extends Thread
 			if (note.contentEquals("")) {
 				HTTPparams2.put("notes","");
 			} else {
-				HTTPparams2.put("notes",commonStuff.encodeIt(note));
+				HTTPparams2.put("notes",note);
 			}
 			doString2 = qdURL;
 		} else {

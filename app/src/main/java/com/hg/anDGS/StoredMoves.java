@@ -15,12 +15,12 @@ class StoredMoves {
     private final Boolean lockIt = true;
     private CommonFileStuff commonFileStuff = new CommonFileStuff();
     private ErrorHistory errHist = ErrorHistory.getInstance();
+
 	static StoredMoves getInstance() {
 		return instance;
 	}
 
-	private StoredMoves() {
-	}
+	private StoredMoves() { }
 
     private static String [] storedMovesData = new String [10];
     private static String [] storedMovesTimeStamp = new String [10];
@@ -153,12 +153,12 @@ class StoredMoves {
         try {
             File aFile = commonFileStuff.getFullFile(commonFileStuff.ANDGS_DIR, commonFileStuff.SMFILENAME);
             File dir = aFile.getParentFile();
-            if (!dir.isDirectory()) commonFileStuff.makeDirectory (dir);
+            if (dir != null && !dir.isDirectory()) commonFileStuff.makeDirectory(dir);
             FileOutputStream fos = new FileOutputStream(aFile);
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
             try {
-                for (int i=0; i < strmov.length; i++)  {
-                    bw.write(strmov[i]);
+                for (String s : strmov) {
+                    bw.write(s);
                     bw.newLine();
                 }
             } catch (IOException e) {
@@ -228,13 +228,17 @@ class StoredMoves {
 		int inx = -1;
 		int i = 0;
 		boolean foundIt = false;
-		while (i< storedMovesGid.length && !foundIt) {
-			if (storedMovesGid[i].contentEquals(gameId)) {
-				foundIt = true;
-				inx = i;
-			}
-			i++;
-		}
+        if (storedMovesGid.length>0) {
+            while (i < storedMovesGid.length && !foundIt) {
+                if (storedMovesGid[i] == null) {
+                    clearStoredMovesInx(i);
+                } else if (storedMovesGid[i].contentEquals(gameId)) {
+                    foundIt = true;
+                    inx = i;
+                }
+                i++;
+            }
+        }
 		return inx;
 	}
 
@@ -272,17 +276,19 @@ class StoredMoves {
 		return inx;
 	}
 
-	// clear for the gameId
+	// clear the entry
 	private void clearStoredMovesInx(int inx) {
-		if (inx>-1 && inx< storedMovesData.length) {
-            storedMovesChanged = true;
-			storedMovesGid[inx] = "";
-            storedMovesTimeStamp[inx] = "";
-			storedMovesData[inx] = "";
-		}
+        if (storedMovesGid.length>0) {
+            if (inx > -1 && inx < storedMovesGid.length) {
+                storedMovesChanged = true;
+                storedMovesGid[inx] = "";
+                storedMovesTimeStamp[inx] = "";
+                storedMovesData[inx] = "";
+            }
+        }
 	}
 
-	// verify  move exisits, but don't remove
+	// verify  move exists, but don't remove
 	private boolean checkStoredMoveInfo(int inx, String cMovID, String cClr, String cMov) {
 		String [] movInfo = getStoredMoveInfo(inx);
         if (movInfo != null) {
