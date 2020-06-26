@@ -357,9 +357,9 @@ public class BoardManager implements BoardClick{
 		boardState = FULL_BOARD;
 		movesMade = 0;
 		if (mSGF.contentEquals("")){
-			recoverFile(mFileName);
+			if (!recoverFile(mFileName)) return;
 		} else {
-			sgfToBoard(mSGF);
+			if (!sgfToBoard(mSGF)) return;
 		}
 		if (fullGridBrdSize < 5) return;
 		if (game_mode.contentEquals(GameBoardOptions.AUTOPLAY)) {
@@ -1344,7 +1344,7 @@ public class BoardManager implements BoardClick{
 		}
 	
 	
-	private void recoverFile(String fName) {
+	private boolean recoverFile(String fName) {
 		StringBuilder sb = new StringBuilder(50);
 		String s;
         File f = new File(fName);
@@ -1361,7 +1361,7 @@ public class BoardManager implements BoardClick{
 						try {
 							in.close();
 						} catch (IOException ignored) {	}
-						return;
+						return false;
 					}
 					if (i == '\n') break;
 					sb.append((char) i);
@@ -1392,13 +1392,14 @@ public class BoardManager implements BoardClick{
 			} catch (SgfError e) {
                 errHist.writeErrorHistory("BoardManager SgfError:" + e.toString());
 				Toast.makeText(ctw, "SgfError:" + e.getMessage(), Toast.LENGTH_LONG).show();
-				return;
+				return false;
 			}
-			setUpTree(reader);
+			return setUpTree(reader);
 		} catch (FileNotFoundException e1) {
             errHist.writeErrorHistory("BoardManager FileNotFoundException:" + e1.toString());
 			Toast.makeText(ctw, fName + ctw.getString(R.string.NotFound) + e1, Toast.LENGTH_LONG).show();
 		}
+		return false;
 	}
 	
 	private void saveRecovery() {
@@ -2356,7 +2357,7 @@ public class BoardManager implements BoardClick{
 		bUpdate.requestMark(mType,aType,p_label,mvColor);
 	}
 	
-	private void sgfToBoard(String sgf) {
+	private boolean sgfToBoard(String sgf) {
 		byte[] bytes;
 
 		if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
@@ -2372,12 +2373,17 @@ public class BoardManager implements BoardClick{
 		} catch (SgfError e) {
             errHist.writeErrorHistory("BoardManager SgfError:" + e.toString());
 			Toast.makeText(ctw, "SgfError:" + e.getMessage(), Toast.LENGTH_LONG).show();
-			return;
+			return false;
 		}
-		setUpTree(reader);
+		if (!setUpTree(reader)) {
+			errHist.writeErrorHistory("BoardManager SgfError: bad setup");
+			Toast.makeText(ctw, "SgfError: bad setup", Toast.LENGTH_LONG).show();
+			return false;
+		};
+		return true;
 	}	
 	
-	private void setUpTree(SgfReader reader) {
+	private boolean setUpTree(SgfReader reader) {
 		int maxMove = 999;
 		gogui_tree = reader.getTree();
 		// String m_warnings = reader.getWarnings();
@@ -2560,6 +2566,7 @@ public class BoardManager implements BoardClick{
 		} else {
 			gotoGameNode(lastNode);
 		}
+		return true;
 	}
 
     public void redisplayFullBoard() {
