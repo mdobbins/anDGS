@@ -226,7 +226,7 @@
 	<string name="observedGames">Наблюдаемые партии</string>
 	<string name="captured">захваченный</string>
 	<string name="KeepScreenOn">Держите экран</string>
-	<string name="DefaultDir">Каталог по умолчанию SGF</string>
+	<string name="SgfDir">Каталог по умолчанию SGF</string>
 	<string name="selectTheme">Выберите тему</string>
 	<string name="BlackOnWhite">Черный на белом</string>
 	<string name="WhiteOnBlack">Белое на черном</string>

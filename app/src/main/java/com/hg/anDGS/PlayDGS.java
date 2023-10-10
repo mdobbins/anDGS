@@ -81,7 +81,7 @@ public class PlayDGS extends DGSActivity implements BoardUpdate{
 	private int customBGvalue = MainDGS.BOARD_COLOR;
 	private String boardStoneTxt = PrefsDGS.STONE_CLAM;
 	private int numPrev = 0;
-	private String defaultDir = PrefsDGS.DEFAULT_DIR;
+	private String defaultDir = null;
 	private String timeLeft = "";
 	private String sgf = "";
 	private String gameId = "0";
@@ -99,6 +99,7 @@ public class PlayDGS extends DGSActivity implements BoardUpdate{
 	private String theme;
 	private ContextThemeWrapper ctw;
 	private CommonStuff commonStuff = new CommonStuff();
+	private CommonFileStuff commonFileStuff = new CommonFileStuff();
 	private StoredMoves storMov = StoredMoves.getInstance();
 
 	/** Called when the activity is first created. */
@@ -143,7 +144,7 @@ public class PlayDGS extends DGSActivity implements BoardUpdate{
 		customBGvalue = prefs.getInt("com.hg.anDGS.CustomBoardBackground", MainDGS.BOARD_COLOR);
 		boardStoneTxt = prefs.getString("com.hg.anDGS.BoardStone", PrefsDGS.STONE_CLAM);
 		numPrev = prefs.getInt("com.hg.anDGS.PlayNumPrev", 0);
-		defaultDir = prefs.getString("com.hg.anDGS.DefaultDir", PrefsDGS.DEFAULT_DIR);
+		defaultDir = commonFileStuff.getSgfDirName();
         boolean keepScreenOn = prefs.getBoolean("com.hg.anDGS.KeepScreenOn", false);
         boolean displayTopMenu = prefs.getBoolean("com.hg.anDGS.PlayDisplayTopMenu", true);
 		scaleLines = prefs.getFloat("com.hg.anDGS.ScaleLines", 1);

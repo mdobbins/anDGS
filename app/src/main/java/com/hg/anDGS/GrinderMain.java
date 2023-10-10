@@ -63,7 +63,6 @@ public class GrinderMain extends DGSActivity {
 	private String mSGF = "";
 	private String mFileName = "";
 	private String mTarget = "";
-	private String defaultDir = PrefsDGS.DEFAULT_DIR;
 	private long mAutoPlayInterval = GameBoardOptions.DEFAUTOPLAYINTERVAL;
 	private boolean mAutoPlayPause = true;
 	private boolean mAutoPlaySound = false;
@@ -85,7 +84,6 @@ public class GrinderMain extends DGSActivity {
         }
 
 		SharedPreferences prefs = getSharedPreferences("MainDGS", 0);
-		defaultDir = prefs.getString("com.hg.anDGS.DefaultDir", PrefsDGS.DEFAULT_DIR);
 		theme = prefs.getString("com.hg.anDGS.Theme", PrefsDGS.DEFAULT_THEME);
 		move_control = prefs.getString("com.hg.anDGS.MoveControl", PrefsDGS.ZOOM7X7);
 		mAutoPlayPause = prefs.getBoolean("com.hg.anDGS.AutoPlayPause", true);
@@ -126,7 +124,7 @@ public class GrinderMain extends DGSActivity {
             public void onClick(View v) {
                 Intent mIntent = new Intent(GrinderMain.this, SavedGames.class);
                 mTarget = target.getText().toString();
-                if (mTarget.contentEquals("")) mTarget = commonFileStuff.getFullDirName(defaultDir);
+                if (mTarget.contentEquals("")) mTarget = commonFileStuff.getSgfDirName();
                 mIntent.putExtra("STARTDIR", mTarget);
                 mIntent.putExtra("MODE", SavedGames.SELECT);
                 startActivityForResult(mIntent, BROWSE_VIEW);
@@ -208,7 +206,7 @@ public class GrinderMain extends DGSActivity {
         
         mode_spinner.setSelection(0);
 		autoPlayInterval.setText(Long.toString(mAutoPlayInterval));
-        target.setText(commonFileStuff.getFullDirName(defaultDir));
+        target.setText(commonFileStuff.getSgfDirName());
 		autoPlayPauseCB.setChecked(mAutoPlayPause);
 		autoPlaySoundCB.setChecked(mAutoPlaySound);
     }

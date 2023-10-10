@@ -65,10 +65,6 @@ public class DGSNotifier extends Service {
         boolean notifyAllDetails = prefs.getBoolean("com.hg.anDGS.NotifyFailure", false);
         CHAN_ID = getString(R.string.DGSClient);
 
-        if (MainDGS.dbgNotifier) {
-            errHist.writeErrorHistory("DGSNotifier.onCreate, Update Interval: " + update_interval);
-        }
-
         createNotificationChannel();
         // init the service here
         mThread = new DGSNotifierThread(this, serverURL, DGSUser, DGSPass, make_sound, notifierVibrate, notifyAllDetails, update_interval);
@@ -141,7 +137,8 @@ public class DGSNotifier extends Service {
         if (MainDGS.dbgNotifier) {
             errHist.writeErrorHistory("DGSNotifier.onStartCommand, Restart: " + restartIt
                     + ", Start: " + startIt
-                    + ", Reset: " + resetIt);
+                    + ", Reset: " + resetIt
+                    + ", Update Interval: " + update_interval);
         }
         if (startIt) {
             if (resetIt) {
@@ -173,9 +170,6 @@ public class DGSNotifier extends Service {
     public void onDestroy() {
         super.onDestroy();
         m_shutdownService();
-        if (MainDGS.dbgNotifier) {
-            errHist.writeErrorHistory("DGSNotifier.onDestroy, Restart: " + restartIt);
-        }
         if (restartIt) {
             Intent broadcastIntent = new Intent(this, DGSNotifierRestart.class);
             sendBroadcast(broadcastIntent);

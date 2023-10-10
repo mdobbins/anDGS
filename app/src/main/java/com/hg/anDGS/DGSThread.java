@@ -121,7 +121,9 @@ class DGSThread extends Thread
         			mHandler.returnLogonRslt("Ok");  // allow the client to activate the buttons
         		} else {
 	        		mHandler.returnDGSThreadStatus(""+MsgHandler.TS_LOGGING_ON);
-	    			logonToDGS(mUser, mPass);
+	    			if (!logonToDGS(mUser, mPass)) {
+						doEvt = DO_NOTHING;  // not able to logon, ignore action
+					}
         		}
 	        }
         	switch (doEvt) {
@@ -207,10 +209,11 @@ class DGSThread extends Thread
 				long prevStatusTime = MainDGS.lastStatusTime;
 				Date dt = new Date(prevStatusTime);
 				MainDGS.lastStatusTime = System.currentTimeMillis();
-				if (MainDGS.dbgStatus) {
+				if (MainDGS.dbgBasicActivity) {
 					String prevStatusDate = dt.toLocaleString();
-					errHist.writeErrorHistory("DGSThread, sent get status: "
-							+ "prevStatusTime: " + prevStatusDate
+					String [] entries = games.split("\n");
+					errHist.writeErrorHistory("DGSThread, get status, number entries: " + entries.length
+							+ ", prevStatusTime: " + prevStatusDate
 							+ ", interval: " + commonStuff.timeDiff(MainDGS.lastStatusTime,prevStatusTime));
 				}
         		//if (games.contains("'G',") || games.contains("'M',")){
@@ -352,7 +355,7 @@ class DGSThread extends Thread
 		return rsp;
 	}
 
-	private void logonToDGS(String DGSUser, String DGSPass) {
+	private boolean logonToDGS(String DGSUser, String DGSPass) {
 		String rslt = commonStuff.executeLogonToDGS(DGSUser, DGSPass);
 		if (rslt.contains("Ok")) {
 			mLoggedOn = true;
@@ -360,7 +363,9 @@ class DGSThread extends Thread
 		} else {
 			mHandler.returnLogonRslt(rslt);
 			mLoggedOn = false;
+			errHist.writeErrorHistory("DGSThread, login failed: " + rslt);
 		}
+		return mLoggedOn;
 	}
 
 	void getInfoMyUser() {

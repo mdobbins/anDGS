@@ -46,7 +46,6 @@ public class SavedGames extends DGSActivity implements OnClickListener {
 	private ListView statusListView;
 	
 	private String boardLayout;
-	private String defaultDir;
 	private long autoPlayInterval = GameBoardOptions.DEFAUTOPLAYINTERVAL;
 	private int mode = PLAY;
 	private boolean autoPlayPause = true;
@@ -70,7 +69,6 @@ public class SavedGames extends DGSActivity implements OnClickListener {
  		 }
  		SharedPreferences prefs = getSharedPreferences("MainDGS", 0);
 		theme = prefs.getString("com.hg.anDGS.Theme", PrefsDGS.DEFAULT_THEME);
-		defaultDir = prefs.getString("com.hg.anDGS.DefaultDir", PrefsDGS.DEFAULT_DIR);
 
  		if (boardLayout == null) {
 				boardLayout = PrefsDGS.PORTRAIT; 
@@ -133,7 +131,7 @@ public class SavedGames extends DGSActivity implements OnClickListener {
      * root-directory of the file-system.
      */
     private void browseToSGFRoot() {
-		String dName = commonFileStuff.getFullDirName(defaultDir);
+		String dName = commonFileStuff.getSgfDirName();
 		File path = new File(dName);
 		browseTo(path);
    }

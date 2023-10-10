@@ -129,9 +129,9 @@ class DGSNotifierThread extends Thread {
                         updateDelay();
                         break;
                     }
-                    if (MainDGS.dbgStatus) {
+                    if (MainDGS.dbgBasicActivity) {
                         if (s.contains("excessive_usage")) {
-                                errHist.writeErrorHistory(s);
+                                errHist.writeErrorHistory("DGSNotifierThread, rslt: " + s);
                         }
                     }
 
@@ -160,16 +160,14 @@ class DGSNotifierThread extends Thread {
                             showNotification(ctxt, nText, notify_responded, logmsg);
                         } else if (n_games != prev_games || n_msgs != prev_msgs) {
                             showNotification(ctxt, nText, notify_stuff_to_do, logmsg);
-                        } else if (MainDGS.dbgNotifier) {
-                            errHist.writeErrorHistory("DGSNotifierThread, Changed, no notification: "
-                                    + nText
-                                    + ", " + logmsg);
+                        } else if (MainDGS.dbgBasicActivity) {
+                            errHist.writeErrorHistory("DGSNotifierThread, Changed, no notification: " + nText +
+                                    ", " + logmsg);
                         }
                     } else {
-                        if (MainDGS.dbgNotifier) {
-                            errHist.writeErrorHistory("DGSNotifierThread, No Change, no notification: "
-                                    + nText
-                                    + ", " + logmsg);
+                        if (MainDGS.dbgBasicActivity) {
+                            errHist.writeErrorHistory("DGSNotifierThread, No Change, no notification, text: " + nText
+                                    + ", log: " + logmsg);
                         }
                     }
                     prev_games = n_games;
@@ -210,6 +208,9 @@ class DGSNotifierThread extends Thread {
         } else {
             showNotification(ctxt, ctxt.getString(R.string.LogonFailed), notify_failure, rslt);
             mLoggedOn = false;
+            if (!MainDGS.dbgBasicActivity) {
+                errHist.writeErrorHistory("DGSNotifierThread, login failed: " + rslt);
+            }
             updateDelay();
         }
         return mLoggedOn;
@@ -313,8 +314,9 @@ class DGSNotifierThread extends Thread {
                                 HTTPparams.put("move_id", nextMov[0]);
                                 HTTPparams.put("move", nextMov[2]);
                                 String rslt = doHTTPreq(qdURL);
-                                if (MainDGS.dbgStdMov) {
-                                    errHist.writeErrorHistory("DGSNotifierThread.respondToGames: " + rslt);
+                                if (MainDGS.dbgStdMov || MainDGS.dbgBasicActivity) {
+                                    errHist.writeErrorHistory("DGSNotifierThread.respondToGames, GID: " + gameId +
+                                            ", rslt:" + rslt);
                                 }
 
                                 String errString;
@@ -388,12 +390,11 @@ class DGSNotifierThread extends Thread {
     }
 
     Notification makeNotification(Context ctx, boolean forceIt, String notify_txt, int notify_type, String log_txt, String make_sound, boolean notifierVibrate) {
-        if (MainDGS.dbgNotifier) {
+        if (MainDGS.dbgBasicActivity) {
             errHist.writeErrorHistory("DGSNotifierThread.makeNotification: " + notify_txt
-                    + ", " + notify_type
-                    + ", " + log_txt);
+                    + ", Type: " + notify_type
+                    + ", Log: " + log_txt);
         }
-
         boolean showIt;
         if (notifyAllDetails) {  // see if we need to show the notification
             showIt = true;
@@ -430,7 +431,7 @@ class DGSNotifierThread extends Thread {
 
         // The PendingIntent to launch our activity if the user selects this notification
         PendingIntent contentIntent = PendingIntent.getActivity(ctx, 0,
-                myIntent, PendingIntent.FLAG_ONE_SHOT);   // TODO verify this setting
+                myIntent, PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_IMMUTABLE);   // TODO verify this setting
         NotificationCompat.Builder notifyBuilder = new NotificationCompat.Builder(ctx, ctx.getString(R.string.DGSClient));
         int smallIcon;
 

@@ -224,7 +224,7 @@ Möchten Sie einen Browser starten und dorthin gehen.</string>
   <string name="observedGames">Beobachtete Partien</string>
   <string name="captured">Gefangen</string>
   <string name="KeepScreenOn">Bildschirm anlassen</string>
-  <string name="DefaultDir">Standard SGF-Verzeichnis</string>
+  <string name="SgfDir">Standard SGF-Verzeichnis</string>
   <string name="selectTheme">Wählen Sie Theme</string>
   <string name="BlackOnWhite">Schwarz auf Weiß</string>
   <string name="WhiteOnBlack">Weiß auf Schwarz</string>

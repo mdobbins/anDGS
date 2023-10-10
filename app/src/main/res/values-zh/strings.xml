@@ -221,7 +221,7 @@
 	<string name="observedGames">观看中的棋局</string>
 	<string name="captured">被提子</string>
 	<string name="KeepScreenOn">保持屏幕常亮</string>
-	<string name="DefaultDir">默认SGF文件夹</string>
+	<string name="SgfDir">默认SGF文件夹</string>
 	<string name="selectTheme">程序界面风格</string>
 	<string name="BlackOnWhite">白底黑字</string>
 	<string name="WhiteOnBlack">黑底白字</string>

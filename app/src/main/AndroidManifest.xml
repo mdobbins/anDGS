@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.hg.anDGS"
     android:installLocation="auto"
     android:grantUriPermissions="true"
     tools:ignore="UnusedAttribute">
@@ -24,14 +23,15 @@
         android:icon="@drawable/dragon_icon"
         android:persistent="true"
         android:allowBackup="true"
-        android:fullBackupContent="@xml/backup_descriptor">
+        android:fullBackupContent="@xml/backup_descriptor"
+        android:requestLegacyExternalStorage="true">
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
         <activity
-            android:label="@string/app_name"
             android:name="MainDGS"
-            android:configChanges="orientation|locale">
+            android:configChanges="orientation|locale"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -130,8 +130,7 @@
             android:name="com.hg.anDGS.DGSNotifierRestart"
             android:enabled="true"
             android:exported="true"
-            android:label="RestartServiceWhenStopped"
-            android:permission="">
+            android:label="RestartServiceWhenStopped">
             <intent-filter>
                 <action android:name="com.hg.anDGS.DGSNotifierRestart" />
             </intent-filter>

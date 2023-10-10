@@ -91,7 +91,7 @@ public class GameBoard extends DGSActivity implements BoardUpdate {
 	private String boardStoneTxt = PrefsDGS.STONE_CLAM;
 	private int customBGvalue = MainDGS.BOARD_COLOR;
 	private int numPrev = 0;
-	private String defaultDir = PrefsDGS.DEFAULT_DIR;
+	private String defaultDir = null;
 	private String defaultEditMode = GameBoardOptions.BROWSE;
 	private String game_action = "0";
 	private String game_status = "UNKNOWN";
@@ -123,7 +123,7 @@ public class GameBoard extends DGSActivity implements BoardUpdate {
 		boardStoneTxt = prefs.getString("com.hg.anDGS.BoardStone", PrefsDGS.STONE_CLAM);
 		numMovesToSkip = prefs.getInt("com.hg.anDGS.SkipMoves", GameBoardOptions.DEFAULTSKIPMOVES); 
 		numPrev = prefs.getInt("com.hg.anDGS.EditNumPrev", 0);
-		defaultDir = prefs.getString("com.hg.anDGS.DefaultDir", PrefsDGS.DEFAULT_DIR);
+		defaultDir = commonFileStuff.getSgfDirName();
 		defaultEditMode = prefs.getString("com.hg.anDGS.DefaultEditMode", GameBoardOptions.EDIT);
 		autoPlayPause = prefs.getBoolean("com.hg.anDGS.AutoPlayPause", true);
 		autoPlaySound = prefs.getBoolean("com.hg.anDGS.AutoPlaySound", false);
@@ -889,7 +889,7 @@ public class GameBoard extends DGSActivity implements BoardUpdate {
 	private boolean isRecoveryFile() {
 		File dFile = commonFileStuff.getFullDirFile(commonFileStuff.ANDGS_DIR);
 		if (!dFile.isDirectory()) {
-			commonFileStuff.makeDirectory(dFile);
+			return false;
 		}
 		recovery = commonFileStuff.getFullFile(commonFileStuff.ANDGS_DIR, commonFileStuff.RECOVERYFILE);
 		return recovery.isFile();

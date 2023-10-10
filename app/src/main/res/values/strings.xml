@@ -226,7 +226,7 @@ Do you want to start a browser and go there.</string>
 	<string name="observedGames">Observed Games</string>
 	<string name="captured">Captured</string>
 	<string name="KeepScreenOn">Keep Screen On</string>
-	<string name="DefaultDir">Default SGF Directory</string>
+	<string name="SgfDir">SGF Directory</string>
 	<string name="selectTheme">Select Theme</string>
 	<string name="BlackOnWhite">Black on White</string>
 	<string name="WhiteOnBlack">White on Black</string>

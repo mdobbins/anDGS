@@ -941,7 +941,7 @@
 					android:layout_margin="1dp"
 					android:paddingLeft="4dp"
 					android:paddingRight="4dp"
-					android:text="@string/DefaultDir"
+					android:text="@string/SgfDir"
 					android:textSize="18sp"
 					android:textStyle="bold" />
 

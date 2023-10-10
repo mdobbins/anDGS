@@ -55,7 +55,6 @@ public class NewGame extends DGSActivity implements OnSeekBarChangeListener{
 	 private String timeLeft = "";
 	 private String boardLayout;
 	 private String theme;
-	 private String defaultDir;
 	 private long autoPlayInterval = GameBoardOptions.DEFAUTOPLAYINTERVAL;
 	 private boolean autoPlayPause = true;
 	 private ContextThemeWrapper ctw;
@@ -77,7 +76,6 @@ public class NewGame extends DGSActivity implements OnSeekBarChangeListener{
 		
  		SharedPreferences prefs = getSharedPreferences("MainDGS", 0);
 		theme = prefs.getString("com.hg.anDGS.Theme", PrefsDGS.DEFAULT_THEME);
-		defaultDir = prefs.getString("com.hg.anDGS.DefaultDir", PrefsDGS.DEFAULT_DIR);
 
 		if (boardLayout == null) {
 			boardLayout = PrefsDGS.PORTRAIT;
@@ -531,7 +529,7 @@ public class NewGame extends DGSActivity implements OnSeekBarChangeListener{
 	}
 
 	public void do_newGame() {
-    	m_sgf_full_path = commonFileStuff.getFullDirName(defaultDir) + File.separator + m_sgf_file + ".sgf";
+    	m_sgf_full_path = commonFileStuff.getSgfDirName() + File.separator + m_sgf_file + ".sgf";
 		File f = new File(m_sgf_full_path);
 		if (f.exists()) {
 			final TextView tv = new TextView(ctw);

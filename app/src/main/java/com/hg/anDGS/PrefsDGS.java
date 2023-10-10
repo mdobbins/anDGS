@@ -1,6 +1,7 @@
 package com.hg.anDGS;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -11,7 +12,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
@@ -52,7 +52,7 @@ public class PrefsDGS extends DGSActivity {
 	public static final String STONE_MONO = "MONO";
 	public static final String STONE_CLAM = "CLAM";
 	public static final String DGS_URL = "https://www.dragongoserver.net/";
-	public static final String DEFAULT_DIR = "sgfs";
+	// public static final String DEFAULT_DIR = "sgfs";
 	public static final String BLACKONWHITE = "BlackOnWhite";  // obsolete
 	public static final String WHITEONBLACK = "WhiteOnBlack";
 	public static final String WHITEONGREEN = "WhiteOnGreen";
@@ -184,7 +184,7 @@ public class PrefsDGS extends DGSActivity {
     private String user = "";
     private String passwd = "";
     private String serverURL = DGS_URL;
-    private String defaultDir = DEFAULT_DIR;
+    private String sgfDir = "/bad init";  // TO DO cleanup - remove
 	private String moveControl = ZOOM7X7;
 	private String boardCoordTxt = NO_COORD;
 	private String boardBGTxt = BG_WOOD;
@@ -203,6 +203,7 @@ public class PrefsDGS extends DGSActivity {
 	private int dbg = 0;
 	private ContextThemeWrapper ctw;
 	private CommonStuff commonStuff = new CommonStuff();
+	private CommonFileStuff commonFileStuff = new CommonFileStuff();
 	
     /** Called when the activity is first created. */
     @SuppressLint("SourceLockedOrientationActivity")
@@ -219,7 +220,7 @@ public class PrefsDGS extends DGSActivity {
 		user = prefs.getString("com.hg.anDGS.DGSUser", "");
 		passwd = prefs.getString("com.hg.anDGS.DGSPass", "");
 		if (passwd.length() > 16) passwd = passwd.substring(0, 16);
-		defaultDir = prefs.getString("com.hg.anDGS.DefaultDir", DEFAULT_DIR);
+		sgfDir = commonFileStuff.getSgfDirName(); //prefs.getString("com.hg.anDGS.DefaultDir", DEFAULT_DIR);
 		serverURL = prefs.getString("com.hg.anDGS.ServerURL", DGS_URL);
 		boardLayout = prefs.getString("com.hg.anDGS.BoardLayout", DYNAMIC);
 		theme = prefs.getString("com.hg.anDGS.Theme", DEFAULT_THEME);
@@ -402,7 +403,7 @@ public class PrefsDGS extends DGSActivity {
 				editor.putFloat("com.hg.anDGS.ScaleLines", scaleLines);
 				editor.putInt("com.hg.anDGS.Debug", dbg);
 				
-				editor.commit();
+				editor.apply();
              	
             	Bundle rslts = new Bundle();
 				rslts.putBoolean("NOTIFIERCHANGED", notifierChanged);
@@ -526,9 +527,7 @@ public class PrefsDGS extends DGSActivity {
         
         locale_items = getResources().getStringArray(R.array.my_locales_array);
         String [] l_i = getResources().getStringArray(R.array.my_languages_array);
-		for (String s : l_i) {
-			language_items.add(s);
-		}
+		language_items.addAll(Arrays.asList(l_i));
         language_items.add(getString(R.string.Cancel));
         prefs_locale_text = findViewById(R.id.prefsLocaleText);
         vLocaleFlash = findViewById(R.id.prefsLocaleFlash);
@@ -757,7 +756,7 @@ public class PrefsDGS extends DGSActivity {
         
         vUser.setText(user);
         vPasswrd.setText(starString(passwd));
-        vDefaultDir.setText(defaultDir);
+        vDefaultDir.setText(sgfDir);
         vServerURL.setText(serverURL);
         
         setLayout();
@@ -1569,23 +1568,16 @@ public class PrefsDGS extends DGSActivity {
     }
     
     private void doSetDefaultDir() { 
-    	final EditText input = new EditText(ctw);
-	    input.setText(vDefaultDir.getText());
+    	final TextView input = new TextView(ctw);
+	    input.setText(sgfDir);
 	    new AlertDialog.Builder(ctw)
 	    .setTitle(R.string.SetPreference)
-	    .setMessage(R.string.DefaultDir)
+	    .setMessage(R.string.SgfDir)
 	    .setView(input)
 	    .setPositiveButton(R.string.Ok, new DialogInterface.OnClickListener() {
 	    public void onClick(DialogInterface dialog, int whichButton) {
-	    	vDefaultDir.setText(input.getText());
+	    	// do nothing
 	    }})
-	    .setNegativeButton(R.string.deflt, new DialogInterface.OnClickListener() {
-	    public void onClick(DialogInterface dialog, int whichButton) {
-	    	vDefaultDir.setText(DEFAULT_DIR);
-	    }})
-		.setNeutralButton(R.string.Cancel, new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int whichButton) {
-			}})
 	    .show();
     }
     
@@ -1649,8 +1641,10 @@ public class PrefsDGS extends DGSActivity {
 						vDBG.setText(Integer.toString(dbg));
 					}})
 				.setNegativeButton(R.string.deflt, new DialogInterface.OnClickListener() {
+					@SuppressLint("SetTextI18n")
 					public void onClick(DialogInterface dialog, int whichButton) {
 						dbg = 0;
+						vDBG.setText(Integer.toString(dbg));
 					}})
 				.setNeutralButton(R.string.Cancel, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int whichButton) {
@@ -1664,11 +1658,13 @@ public class PrefsDGS extends DGSActivity {
     
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
+    	/* do nothing
     	switch(requestCode) {
     	case HELP_VIEW:
     	default:
     		break;
     	}
+    	 */
     }
 	
 	 public boolean onPrepareOptionsMenu(Menu menu) {
@@ -1679,13 +1675,8 @@ public class PrefsDGS extends DGSActivity {
 		 }
 	 
 	 public boolean onOptionsItemSelected(MenuItem item) {
-		 
-		 switch (item.getItemId()) {
-		 case MENU_HELP:
+		 if (item.getItemId() == MENU_HELP) {
 			 doHelp();
-			 break;
-		 default:
-				// nothing 
 		 }
 		 return false;
 	 }

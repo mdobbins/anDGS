@@ -214,7 +214,7 @@ public class BoardManager implements BoardClick{
 	private boolean boardCoord = false;
 	private int numPrev = 0;
 	private String boardCoordTxt = PrefsDGS.NO_COORD;
-	private String defaultDir = PrefsDGS.DEFAULT_DIR;
+	private String defaultDir = null;
 	private String defaultEditMode = GameBoardOptions.BROWSE;
 	private String timeLeft = "";
 	private String [] score_data = null;
@@ -1515,7 +1515,7 @@ public class BoardManager implements BoardClick{
 	public String getGameFileName() {
 		String filName = "";
 		try {
-			filName = commonFileStuff.getFullDirName(defaultDir) + File.separator + getGameName(gogui_game,rootNode) + ".sgf";
+			filName = commonFileStuff.getSgfDirName() + File.separator + getGameName(gogui_game,rootNode) + ".sgf";
         } catch (Exception e) {
             errHist.writeErrorHistory("BoardManager Exception:" + e.toString());
 			Toast.makeText(ctw, ctw.getString(R.string.SaveSGFFailed) + e, Toast.LENGTH_LONG).show();

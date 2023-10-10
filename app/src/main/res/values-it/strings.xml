@@ -221,7 +221,7 @@ Vuoi passare al browser?</string>
 	<string name="observedGames">Partite Osservate</string>
 	<string name="captured">Catturate</string>
 	<string name="KeepScreenOn">Mantieni lo schermo acceso</string>
-	<string name="DefaultDir">Directory SGF predefinita</string>
+	<string name="SgfDir">Directory SGF predefinita</string>
 	<string name="selectTheme">Seleziona il Tema</string>
 	<string name="BlackOnWhite">Nero su Bianco</string>
 	<string name="WhiteOnBlack">Bianco su Nero</string>
