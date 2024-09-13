@@ -228,6 +228,8 @@ public final class Board
     */
     public boolean isCaptureOrSuicide(GoColor c, GoPoint p)
     {
+        if (!c.isBlackWhite())
+            return false;
         if (getColor(p) != EMPTY)
             return false;
         play(c, p);
@@ -283,6 +285,8 @@ public final class Board
     */
     public boolean isSuicide(GoColor c, GoPoint p)
     {
+        if (!c.isBlackWhite())
+            return false;
         if (getColor(p) != EMPTY)
             return false;
         play(c, p);

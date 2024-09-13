@@ -12,6 +12,7 @@
         <TableRow>
 
             <TextView
+                android:id="@+id/finduserTMTitle"
                 style="?colorStyle"
                 android:layout_width="0dp"
                 android:layout_weight=".92"
@@ -19,7 +20,7 @@
                 android:maxLines="2"
                 android:padding="4dp"
                 android:text="@string/findUserTitle"
-                android:textSize="18sp" />
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/finduserTMHelp"
@@ -120,8 +121,9 @@
             android:paddingBottom="6dp"
             android:paddingTop="6dp"
             android:text="@string/send"
-            android:textSize="17sp"
-            android:textStyle="bold" />
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:focusable="true" />
     </LinearLayout>
 
 </RelativeLayout>

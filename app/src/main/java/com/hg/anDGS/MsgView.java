@@ -28,7 +28,7 @@ public class MsgView extends DGSActivity {
 	private String msgId = "0";
 	private String original_text = "";
 	private String [] buttonTexts = null;
-	private CommonStuff commonStuff = new CommonStuff();
+	private final CommonStuff commonStuff = new CommonStuff();
 	private int msgHelpType = commonStuff.HELP_HELP;
 	
 	public void onCreate(Bundle savedInstanceState) {
@@ -90,6 +90,15 @@ public class MsgView extends DGSActivity {
 		
 		msgTitleView = findViewById(R.id.msgViewTitle);
 		msgTitleView.setText(msgTitle);
+		msgTitleView.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Bundle rslts = new Bundle();
+				Intent mIntent = new Intent();
+				mIntent.putExtras(rslts);
+				setResult(RESULT_CANCELED, mIntent);
+				finish();
+			}
+		});
 		
 		msg_text_view = findViewById(R.id.msgTextView);
 		if (msgTitle.contentEquals("RESULT")) {

@@ -773,7 +773,7 @@ public class BoardManager implements BoardClick{
 	}
 
     // called from local
-	public GoColor playerColorToMove() {
+	public GoColor getPlayerColorToMove() {
 		return currNode.getToMove();
 	}
 
@@ -1785,7 +1785,7 @@ public class BoardManager implements BoardClick{
     	Move move = currNode.getMove();
     	GoColor colorOfMove = null;
     	if (move != null) {
-    		colorOfMove = playerColorToMove(); 
+    		colorOfMove = getPlayerColorToMove();
     	} else {
 	    	if (!currNode.hasFather()) {
 	    		colorOfMove = GoColor.BLACK;
@@ -2154,9 +2154,12 @@ public class BoardManager implements BoardClick{
                 }
             }
 			// make new move,  inClient we have no navigation to make branches, so adding at end is allways safe
-			if (!(goguiX == -1 && goguiY == -1)) { 
+			if (!(goguiX == -1 && goguiY == -1)) {
+				if (playerColorToMove == null) {  // TODO why is this null, maybe new game and no previous move.  New 2.09
+					playerColorToMove = BLACK;
+				}
 				if (!isValidMove(gogui_board, playerColorToMove, goguiX, goguiY)) {
-					Toast.makeText(ctw, ctw.getString(R.string.IllegalMove), Toast.LENGTH_LONG).show();
+					Toast.makeText(ctw, ctw.getString(R.string.IllegalMove) + ": " + playerColorToMove + ", " + goguiX + ". " + goguiY, Toast.LENGTH_LONG).show();
 					return;
 				}
 			}
@@ -2960,11 +2963,13 @@ public class BoardManager implements BoardClick{
 			return "      ";
 	}
 
-	private boolean isValidMove(Board brd, GoColor playerColorToMove, int x, int y) {
+	private boolean isValidMove(Board brd, GoColor pColorToMove, int x, int y) {
 		GoPoint p = GoPoint.get(x, y);
+		if (!pColorToMove.isBlackWhite())
+			return false;
 		if (brd.getColor(p) != GoColor.EMPTY)
 			return false;
-		if (brd.isSuicide(playerColorToMove, p))
+		if (brd.isSuicide(pColorToMove, p))
 			return false;
 		return !brd.isKo(p);
 	}

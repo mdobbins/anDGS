@@ -17,7 +17,8 @@
     style="?colorStyle"
     android:padding="4dp"
     android:gravity="left"
-    android:textSize="18sp"
+    android:textSize="22sp"
+	android:id="@+id/grinderTMTitle"
     android:text="@string/grinderTitle"
     />
 
@@ -58,7 +59,7 @@
 <TextView
     style="?colorStyle"
     android:textStyle="bold"
-    android:textSize="18sp"
+    android:textSize="33sp"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content"
     android:text="@string/selectDirOrFile"
@@ -85,7 +86,7 @@
 	android:layout_width="fill_parent"
 	android:gravity="center"
 	android:textStyle="bold"
-    android:textSize="17sp"
+    android:textSize="33sp"
     android:paddingTop="6dp"
 	android:paddingBottom="6dp"
 	android:layout_margin="1dp"
@@ -93,7 +94,7 @@
 	android:clickable="true"
 	android:text="@string/browseButton" 
 	android:id="@+id/grinderBrowseButton"
-	/>
+	android:focusable="true" />
 </LinearLayout>
 <LinearLayout 
 	style="?colorStyle"
@@ -103,21 +104,21 @@
     android:layout_margin="1dp">		
 <Spinner 
 	android:layout_width="wrap_content" 
-    android:layout_height="wrap_content"
+    android:layout_height="48dp"
     style="?colorStyle"
     android:prompt="@string/selectPlayMode"
     android:id="@+id/grinderModeSpinner"
-    android:layout_margin="5dp"
+    android:layout_margin="6dp"
     />
 <TextView
    	style="?colorStyle"
     android:textStyle="bold"
-    android:textSize="17sp"
+    android:textSize="33sp"
     android:layout_width="wrap_content" 
     android:layout_height="wrap_content"
     android:text="@string/selectPlayMode"
     android:id="@+id/grinderModeFlash"
-    android:layout_margin="5dp"
+    android:layout_margin="6dp"
     />	
 </LinearLayout>
 <LinearLayout 
@@ -129,7 +130,7 @@
 <TextView
     style="?colorStyle"
     android:textStyle="bold"
-    android:textSize="17sp"
+    android:textSize="33sp"
     android:layout_width="wrap_content" 
     android:layout_height="wrap_content"
     android:text="@string/autoPlayInterval"
@@ -139,12 +140,12 @@
     />	
 <TextView
     style="?colorStyle"
-    android:textSize="17sp"
+    android:textSize="33sp"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content"
     android:text="@string/blank5"
     android:id="@+id/grinderAutoPlayIntervalEdit"
-    android:layout_margin="5dp"
+    android:layout_margin="6dp"
     />
 </LinearLayout>
 <LinearLayout 
@@ -155,22 +156,19 @@
     android:layout_margin="1dp">
 <CheckBox
  	style="?colorStyle"
- 	android:textSize="17sp"
-    android:layout_width="wrap_content" 
-    android:layout_height="wrap_content"
-    android:text=""
+    android:layout_width="48dp"
+    android:layout_height="48dp"
     android:id="@+id/grinderAutoPlayPauseCheckBox"
-    android:layout_margin="5dp"
     />    	 
 <TextView
     style="?colorStyle"
     android:textStyle="bold"
-    android:textSize="17sp"
+    android:textSize="33sp"
     android:layout_width="wrap_content" 
     android:layout_height="wrap_content"
     android:text="@string/AutoPlayPause"
     android:id="@+id/grinderAutoPlayPauseFlash"
-    android:layout_margin="5dp"
+    android:layout_margin="6dp"
     /> 
 </LinearLayout>
 <LinearLayout 
@@ -181,22 +179,19 @@
     android:layout_margin="1dp">
 <CheckBox
  	style="?colorStyle"
- 	android:textSize="17sp"
-    android:layout_width="wrap_content" 
-    android:layout_height="wrap_content"
-    android:text=""
+    android:layout_width="48dp"
+    android:layout_height="48dp"
     android:id="@+id/grinderAutoPlaySoundCheckBox"
-    android:layout_margin="5dp"
     />    	 
 <TextView
     style="?colorStyle"
     android:textStyle="bold"
-    android:textSize="17sp"
+    android:textSize="33sp"
     android:layout_width="wrap_content" 
     android:layout_height="wrap_content"
     android:text="@string/AutoPlaySound"
     android:id="@+id/grinderAutoPlaySoundFlash"
-    android:layout_margin="5dp"
+    android:layout_margin="6dp"
     /> 
 </LinearLayout>
 </LinearLayout>    
@@ -220,7 +215,7 @@
 	android:layout_width="fill_parent"
 	android:gravity="center"
 	android:textStyle="bold"
-    android:textSize="17sp"
+    android:textSize="33sp"
 	android:layout_margin="1dp"
 	android:paddingTop="6dp"
 	android:paddingBottom="6dp"
@@ -228,7 +223,7 @@
 	android:clickable="true"
     android:text="@string/next"
     android:id="@+id/grinderNextButton"
-    />
+	android:focusable="true" />
 </LinearLayout>
 <LinearLayout 
 	android:layout_width="fill_parent"
@@ -241,7 +236,7 @@
 	android:layout_width="fill_parent"
 	android:gravity="center"
 	android:textStyle="bold"
-    android:textSize="17sp"
+    android:textSize="33sp"
 	android:layout_margin="1dp"
 	android:paddingTop="6dp"
 	android:paddingBottom="6dp"
@@ -249,7 +244,7 @@
 	android:clickable="true"
     android:text="@string/start"
     android:id="@+id/grinderGoButton"
-    />
+	android:focusable="true" />
 </LinearLayout>	          
 </LinearLayout>
 

@@ -210,6 +210,9 @@ public class MainDGS extends DGSActivity {
 	private String myLocale;
 	private boolean startedByNotifier = false;
 	private boolean autoStartNotifier = true;
+	private long notifierInterval = DGSNotifier.DEFNOTIFIERINTERVAL;
+	private boolean notifierVibrate = false;
+	private boolean notifyAllDetails = false;
 	private String inFileName = null;
 	private boolean localFile = true;
     private Uri fileData;
@@ -261,6 +264,9 @@ public class MainDGS extends DGSActivity {
 		myLocale = prefs.getString("com.hg.anDGS.Locale", "");
 		defaultDir = prefs.getString("com.hg.anDGS.DefaultDir", "");
 		autoStartNotifier = prefs.getBoolean("com.hg.anDGS.AutoStartNotifier", false);
+		notifierInterval = prefs.getLong("com.hg.anDGS.Interval", DGSNotifier.DEFNOTIFIERINTERVAL);
+		notifierVibrate = prefs.getBoolean("com.hg.anDGS.Vibrate", false);
+		notifyAllDetails = prefs.getBoolean("com.hg.anDGS.NotifyFailure", false);
 		dbg = prefs.getInt("com.hg.anDGS.Debug", 0);
 		//  displayTopMenu = prefs.getBoolean("com.hg.anDGS.DisplayTopMenu", true);
 		if (boardLayout == null) {
@@ -2946,38 +2952,43 @@ public class MainDGS extends DGSActivity {
         int inx = -1;
         switch (requestCode) {
             case GET_PREFS:
-                boolean notifierChanged = false;
                 SharedPreferences prefs = getSharedPreferences("MainDGS", 0); //getPreferences(0);
                 String du = prefs.getString("com.hg.anDGS.DGSUser", "");  // user and password need defined to start client
                 String dp = prefs.getString("com.hg.anDGS.DGSPass", "");
                 String bl = prefs.getString("com.hg.anDGS.BoardLayout", PrefsDGS.PORTRAIT);
                 String th = prefs.getString("com.hg.anDGS.Theme", PrefsDGS.DEFAULT_THEME);
                 String lcl = prefs.getString("com.hg.anDGS.Locale", "");
+				long notifierI = prefs.getLong("com.hg.anDGS.Interval", DGSNotifier.DEFNOTIFIERINTERVAL);
+				boolean notifierV = prefs.getBoolean("com.hg.anDGS.Vibrate", false);
+				boolean notifyAD = prefs.getBoolean("com.hg.anDGS.NotifyFailure", false);
                 int dbgNew = prefs.getInt("com.hg.anDGS.Debug", 0);
-                try {
-                    extras = data.getExtras();
-					if ( extras != null) {
-						notifierChanged = extras.getBoolean("NOTIFIERCHANGED");
-						if (notifierChanged) {
-							if (commonStuff.isNotifierRunning(am)) {
-								doToggleNotifier(); // will stop the notifier
-								try {
-									Thread.sleep(10);
-								} catch (InterruptedException ignore) {
-								}
-							}
+
+				boolean notifierChanged;
+				if (notifierInterval != notifierI
+						|| notifierVibrate != notifierV
+						|| notifyAllDetails != notifyAD) notifierChanged = true;
+				else notifierChanged = false;
+
+				if (notifierChanged) {
+					if (commonStuff.isNotifierRunning(am)) {
+						doToggleNotifier(); // will stop the notifier
+						try {
+							Thread.sleep(10);
+						} catch (InterruptedException ignore) {
 						}
 					}
-                } catch (Exception ignored) {
-                }
-                boolean restartit = !boardLayout.contentEquals(bl)
-                        || !theme.contentEquals(th)
-                        || !myLocale.contentEquals(lcl)
+				}
+
+                boolean restartit;
+				if (!boardLayout.contentEquals(bl)
+						|| !theme.contentEquals(th)
+						|| !myLocale.contentEquals(lcl)
 						|| !DGSUser.contentEquals(du)
 						|| !DGSPass.contentEquals(dp)
-                        || notifierChanged
-						|| dbgNew != dbg;
-                boardLayout = bl;
+						|| notifierChanged
+						|| dbgNew != dbg) restartit = true;
+				else restartit = false;
+				boardLayout = bl;
                 if (restartit) {
                     finish();
                     restartApp();

@@ -19,6 +19,7 @@
     android:layout_margin="1dp"
     android:gravity="left"
     android:textSize="18sp"
+	android:id="@+id/prefsTMTitle"
     android:text="@string/prefsTitle"
     />
 
@@ -1001,11 +1002,11 @@
 	android:layout_width="fill_parent"
 	android:gravity="center"
 	android:textStyle="bold"
-    android:textSize="17sp"
+    android:textSize="22sp"
 	android:layout_margin="1dp"
 	style="?colorStyle" 
 	android:clickable="true"
-	android:text="@string/Save"
+	android:text="@string/returnButton"
     android:id="@+id/prefsDoneButton"
     android:focusable="true" />
 </LinearLayout>

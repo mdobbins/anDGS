@@ -97,6 +97,16 @@ public class SavedGames extends DGSActivity implements OnClickListener {
 		});
 
 		statusTitleView = findViewById(R.id.statusTitle);
+		statusTitleView.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Bundle rslts = new Bundle();
+				Intent mIntent = new Intent();
+				mIntent.putExtras(rslts);
+				setResult(RESULT_CANCELED, mIntent);
+				finish();
+			}
+		});
+
 		statusListView = findViewById(R.id.statusList);
         statusListView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> av, View v, int position, long id) {

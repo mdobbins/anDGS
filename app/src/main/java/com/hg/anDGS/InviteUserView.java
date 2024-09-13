@@ -28,6 +28,7 @@ public class InviteUserView extends DGSActivity {
 	private final String DEFAULT_KOMI = "6.5";
 	
 	private TextView tmHelp;
+	private TextView tmTitle;
 
 	private LinearLayout rules_label;
 	private Spinner rules_spinner;
@@ -110,6 +111,17 @@ public class InviteUserView extends DGSActivity {
 						doHelp();
 					}
 				});
+			}
+		});
+
+		tmTitle = findViewById(R.id.inviteTMTitle);
+		tmTitle.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Bundle rslts = new Bundle();
+				Intent mIntent = new Intent();
+				mIntent.putExtras(rslts);
+				setResult(RESULT_CANCELED, mIntent);
+				finish();
 			}
 		});
 

@@ -130,16 +130,16 @@ class DGSThread extends Thread
 			case DO_NOTHING:
         		if (mLoggedOn) {
         			try {
-						yield();
-    	    			sleep(120000);  // 2 minutes
+						Thread.yield();
+						Thread.sleep(120000);  // 2 minutes
     	    		} catch (InterruptedException e) {
     	    			break; // some action
     	    		}
 					mLoggedOn = false;  // 2 minutes idle, need to logon again
         		} else {
         			try {
-						yield();
-    	    			sleep(600000);  // 10 minutes
+						Thread.yield();
+						Thread.sleep(600000);  // 10 minutes
     	    		} catch (InterruptedException e) {
     	    			break; // some action
     	    		}

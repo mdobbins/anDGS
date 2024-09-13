@@ -17,8 +17,9 @@
     style="?colorStyle"
     android:padding="4dp"
     android:gravity="left"
-    android:textSize="18sp"
+    android:textSize="22sp"
     android:text="@string/inviteTitle"
+	android:id="@+id/inviteTMTitle"
     />
 
 <TextView
@@ -79,7 +80,7 @@
 		android:layout_margin="1dp">
 		<Spinner
 			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
+			android:layout_height="48dp"
 			android:prompt="@string/selectBoardSize"
 			android:id="@+id/inviteRulesSpinner"
 			android:layout_margin="5dp"
@@ -102,7 +103,7 @@
     android:layout_margin="1dp">
  <Spinner
 	android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="48dp"
     android:prompt="@string/selectBoardSize"
     android:id="@+id/inviteBoardSizeSpinner"
     android:layout_margin="5dp"
@@ -126,7 +127,7 @@
     android:layout_margin="1dp">
  <Spinner 
 	android:layout_width="wrap_content" 
-    android:layout_height="wrap_content"
+    android:layout_height="48dp"
     android:prompt="@string/selectGameType"
     android:id="@+id/inviteGameTypeSpinner"
     android:layout_margin="5dp"
@@ -149,7 +150,7 @@
     android:layout_margin="1dp">
  <Spinner 
 	android:layout_width="wrap_content" 
-    android:layout_height="wrap_content"
+    android:layout_height="48dp"
     android:prompt="@string/selectYourColor"
     android:id="@+id/inviteColorSpinner"
     android:layout_margin="5dp"
@@ -172,7 +173,7 @@
     android:layout_margin="1dp">
  <Spinner 
 	android:layout_width="wrap_content" 
-    android:layout_height="wrap_content"
+    android:layout_height="48dp"
     android:prompt="@string/selectHandicap"
     android:id="@+id/inviteHandicapSpinner"
     android:layout_margin="5dp"
@@ -245,7 +246,7 @@
     android:layout_margin="1dp">
  <Spinner 
 	android:layout_width="wrap_content" 
-    android:layout_height="wrap_content"
+    android:layout_height="48dp"
     android:prompt="@string/selectMainTimeUnits"
     android:id="@+id/inviteMainTimeUnitsSpinner"
     android:layout_margin="5dp"
@@ -293,7 +294,7 @@
     android:layout_margin="1dp">
  <Spinner 
 	android:layout_width="wrap_content" 
-    android:layout_height="wrap_content"
+    android:layout_height="48dp"
     android:prompt="@string/selectFisherTimeUnits"
     android:id="@+id/inviteFisherTimeUnitsSpinner"
     android:layout_margin="5dp"
@@ -400,7 +401,7 @@
 	android:layout_width="fill_parent"
 	android:gravity="center"
 	android:textStyle="bold"
-    android:textSize="17sp"
+    android:textSize="28sp"
 	android:layout_margin="1dp"
 	android:paddingTop="6dp"
 	android:paddingBottom="6dp"
@@ -408,7 +409,7 @@
 	android:clickable="true"
 	android:text="@string/submit"
     android:id="@+id/inviteSubmitButton"
-	/>
+	android:focusable="true" />
 </LinearLayout>
 	          
 </RelativeLayout>

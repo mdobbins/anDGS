@@ -27,6 +27,7 @@ public class NewGame extends DGSActivity implements OnSeekBarChangeListener{
 	 private static final int MAX_GAME_SIZE = 25;
 	 
 	 private TextView tmHelp;
+	 private TextView tmTitle;
 	
 	 private SeekBar size_bar;
 	 private SeekBar handicap_bar;
@@ -100,6 +101,17 @@ public class NewGame extends DGSActivity implements OnSeekBarChangeListener{
 						doHelp();
 					}
 				});
+			}
+		});
+
+		tmTitle = findViewById(R.id.newGameTMTitle);
+		tmTitle.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Bundle rslts = new Bundle();
+				Intent mIntent = new Intent();
+				mIntent.putExtras(rslts);
+				setResult(RESULT_CANCELED, mIntent);
+				finish();
 			}
 		});
 		

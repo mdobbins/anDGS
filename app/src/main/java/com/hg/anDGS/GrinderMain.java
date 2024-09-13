@@ -36,6 +36,7 @@ public class GrinderMain extends DGSActivity {
 	protected static final int GREEN_COLOR = 0xff88ff88;
 	
 	private TextView tmHelp;
+	private TextView tmTitle;
 	
 	private TextView grinder_browse_button;
 	private TextView grinder_go_button;
@@ -116,6 +117,17 @@ public class GrinderMain extends DGSActivity {
 						doHelp();
 					}
 				});
+			}
+		});
+
+		tmTitle = findViewById(R.id.grinderTMTitle);
+		tmTitle.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Bundle rslts = new Bundle();
+				Intent mIntent = new Intent();
+				mIntent.putExtras(rslts);
+				setResult(RESULT_CANCELED, mIntent);
+				finish();
 			}
 		});
 

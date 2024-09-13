@@ -27,6 +27,7 @@ public class MarkUpView extends DGSActivity {
 	private EditText labelText;
 	
 	private TextView tmHelp;
+	private TextView tmTitle;
 
 	private TextView markNoneT; //M_NONE = 0;
 	//not user visible M_MOVE = 1;
@@ -111,6 +112,17 @@ public class MarkUpView extends DGSActivity {
 						doHelp();
 					}
 				});
+			}
+		});
+
+		tmTitle = findViewById(R.id.markUpTMTitle);
+		tmTitle.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Bundle rslts = new Bundle();
+				Intent mIntent = new Intent();
+				mIntent.putExtras(rslts);
+				setResult(RESULT_CANCELED, mIntent);
+				finish();
 			}
 		});
                 

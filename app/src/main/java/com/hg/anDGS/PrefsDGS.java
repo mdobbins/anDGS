@@ -63,8 +63,10 @@ public class PrefsDGS extends DGSActivity {
     public static final String METALLICGREYINVERSE = "MetallicGreyInverse";
 	public static final String DEFAULT_THEME = METALLICGREY;
 	public final String DEFAULT_LINE_WIDTH = "1.0";
+	public final float DEFAULT_LINE_WIDTH_F = 1;
 
 	private TextView tmHelp;
+	private TextView tmTitle;
 
 	private TextView vUser;
 	private TextView vUserFlash;
@@ -193,7 +195,8 @@ public class PrefsDGS extends DGSActivity {
 	private String gameOrder = MainDGS.GO_NOORDER;
 	private String makeSound = NOSOUND;
 	private long notifierInterval = DGSNotifier.DEFNOTIFIERINTERVAL;
-	private boolean notifierChanged = false;
+	private boolean notifierVibrate = false;
+	private boolean notifyAllDetails = false;
 	private int skipMoves = GameBoardOptions.DEFAULTSKIPMOVES;
 	private int customBGvalue = MainDGS.LIGHT_GREY_COLOR;
 	private int editNumPrev = GameBoardOptions.DEFAULTNUMPREVEDIT;
@@ -202,8 +205,8 @@ public class PrefsDGS extends DGSActivity {
 	private float scaleLines = 1;
 	private int dbg = 0;
 	private ContextThemeWrapper ctw;
-	private CommonStuff commonStuff = new CommonStuff();
-	private CommonFileStuff commonFileStuff = new CommonFileStuff();
+	private final CommonStuff commonStuff = new CommonStuff();
+	private final CommonFileStuff commonFileStuff = new CommonFileStuff();
 	
     /** Called when the activity is first created. */
     @SuppressLint("SourceLockedOrientationActivity")
@@ -236,12 +239,12 @@ public class PrefsDGS extends DGSActivity {
 		boolean autoPlayPause = prefs.getBoolean("com.hg.anDGS.AutoPlayPause", true);
 		boolean autoPlaySound = prefs.getBoolean("com.hg.anDGS.AutoPlaySound", false);
 		notifierInterval = prefs.getLong("com.hg.anDGS.Interval", DGSNotifier.DEFNOTIFIERINTERVAL);
+		notifierVibrate = prefs.getBoolean("com.hg.anDGS.Vibrate", false);
+		notifyAllDetails = prefs.getBoolean("com.hg.anDGS.NotifyFailure", false);
 		makeSound = prefs.getString("com.hg.anDGS.Sound", STONESOUND);
 		editMode = prefs.getString("com.hg.anDGS.DefaultEditMode", GameBoardOptions.EDIT);
 		gameOrder = prefs.getString("com.hg.anDGS.GameOrder", MainDGS.GO_NOORDER);
-		boolean notifierVibrate = prefs.getBoolean("com.hg.anDGS.Vibrate", false);
-		boolean notifyAllDetails = prefs.getBoolean("com.hg.anDGS.NotifyFailure", false);
-		boolean notifyPermanent = prefs.getBoolean("com.hg.anDGS.NotifyPermanent", false);
+		//boolean notifyPermanent = prefs.getBoolean("com.hg.anDGS.NotifyPermanent", false);
 		autoPlayInterval = prefs.getLong("com.hg.anDGS.AutoPlayInterval", GameBoardOptions.DEFAUTOPLAYINTERVAL);
 		skipMoves = prefs.getInt("com.hg.anDGS.SkipMoves", GameBoardOptions.DEFAULTSKIPMOVES);
 		editNumPrev = prefs.getInt("com.hg.anDGS.EditNumPrev", GameBoardOptions.DEFAULTNUMPREVEDIT);
@@ -251,6 +254,11 @@ public class PrefsDGS extends DGSActivity {
 		boolean playGameNotes = prefs.getBoolean("com.hg.anDGS.GameNotes", false);
 		scaleLines = prefs.getFloat("com.hg.anDGS.ScaleLines", 1);
 		dbg = prefs.getInt("com.hg.anDGS.Debug", 0);
+// old not used or settable preferences
+//				editor.putString("com.hg.anDGS.DefaultDir", vDefaultDir.getText().toString().trim());
+//				editor.putBoolean("com.hg.anDGS.AdsEnabled", false);
+//
+
 
         if (myLocale == null) {
         	Configuration config = getBaseContext().getResources().getConfiguration();
@@ -310,103 +318,22 @@ public class PrefsDGS extends DGSActivity {
 				});
 			}
 		});
+
+		tmTitle = findViewById(R.id.prefsTMTitle);
+		tmTitle.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Bundle rslts = new Bundle();
+				Intent mIntent = new Intent();
+				mIntent.putExtras(rslts);
+				setResult(RESULT_OK, mIntent);
+				finish();
+			}
+		});
         
         prefs_done_button = findViewById(R.id.prefsDoneButton);
         prefs_done_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
-				editor.putString("com.hg.anDGS.DGSUser", vUser.getText().toString().trim());
-				editor.putString("com.hg.anDGS.DGSPass", passwd.trim());
-				editor.putString("com.hg.anDGS.DefaultDir", vDefaultDir.getText().toString().trim());
-				editor.putString("com.hg.anDGS.ServerURL", vServerURL.getText().toString().trim());
-
-				editor.putString("com.hg.anDGS.BoardLayout", boardLayout);
-				
-				editor.putString("com.hg.anDGS.Theme", theme);
-				
-				editor.putString("com.hg.anDGS.Locale", locale_items[locale_index]);
-				
-				editor.putString("com.hg.anDGS.MoveControl", moveControl);
-				
-				editor.putString("com.hg.anDGS.BoardCoord", boardCoordTxt);
-				
-				editor.putString("com.hg.anDGS.BoardBackground", boardBGTxt);
-				editor.putInt("com.hg.anDGS.CustomBoardBackground", customBGvalue);
-				
-				editor.putString("com.hg.anDGS.BoardStone", boardStoneTxt);
-				
-            	editor.putBoolean("com.hg.anDGS.KeepScreenOn", keepScreenOnCB.isChecked());
-				editor.putBoolean("com.hg.anDGS.AutoPlay", autoClientCB.isChecked());
-				editor.putBoolean("com.hg.anDGS.AutoStartNotifier", autoStartNotifierCB.isChecked());
-				editor.putBoolean("com.hg.anDGS.AdsEnabled", false); 
-				editor.putBoolean("com.hg.anDGS.AutoPlayPause", autoPlayPauseCB.isChecked());
-				editor.putBoolean("com.hg.anDGS.AutoPlaySound", autoPlaySoundCB.isChecked());
-				editor.putBoolean("com.hg.anDGS.EditDisplayTopMenu", editDisplayTopMenuCB.isChecked());
-				editor.putBoolean("com.hg.anDGS.PlayDisplayTopMenu", playDisplayTopMenuCB.isChecked());
-				editor.putBoolean("com.hg.anDGS.GameNotes", playGameNotesCB.isChecked());
-
-				try {
-            		skipMoves = Integer.decode(vSkipMoves.getText().toString().trim());
-            	} catch (Exception e) {
-            		skipMoves = GameBoardOptions.DEFAULTSKIPMOVES;
-            	}
-            	if (skipMoves < GameBoardOptions.DEFAULTMINSKIPMOVES) skipMoves = GameBoardOptions.DEFAULTMINSKIPMOVES;
-				editor.putInt("com.hg.anDGS.SkipMoves", skipMoves);
-				
-				try {
-            		editNumPrev = Integer.decode(vEditNumPrev.getText().toString().trim());
-            	} catch (Exception e) {
-            		editNumPrev = GameBoardOptions.DEFAULTNUMPREVEDIT;
-            	}
-            	if (editNumPrev < GameBoardOptions.DEFAULTMINNUMPREV) editNumPrev = GameBoardOptions.DEFAULTMINNUMPREV;
-            	if (editNumPrev > GameBoardOptions.DEFAULTMAXNUMPREV) editNumPrev = GameBoardOptions.DEFAULTMAXNUMPREV;
-				editor.putInt("com.hg.anDGS.EditNumPrev", editNumPrev);
-				
-				try {
-            		playNumPrev = Integer.decode(vPlayNumPrev.getText().toString().trim());
-            	} catch (Exception e) {
-            		playNumPrev = GameBoardOptions.DEFAULTNUMPREVPLAY;
-            	}
-            	if (playNumPrev < GameBoardOptions.DEFAULTMINNUMPREV) playNumPrev = GameBoardOptions.DEFAULTMINNUMPREV;
-            	if (playNumPrev > GameBoardOptions.DEFAULTMAXNUMPREV) playNumPrev = GameBoardOptions.DEFAULTMAXNUMPREV;
-				editor.putInt("com.hg.anDGS.PlayNumPrev", playNumPrev);
-
-				try {
-            		notifierInterval = Long.decode(vNotifierInterval.getText().toString().trim());
-            	} catch (Exception e) {
-            		notifierInterval = DGSNotifier.DEFNOTIFIERINTERVAL;
-            	}
-            	if (notifierInterval < DGSNotifier.MINNOTIFIERINTERVAL) notifierInterval = DGSNotifier.MINNOTIFIERINTERVAL;
-				editor.putLong("com.hg.anDGS.Interval", notifierInterval);
-				
-				editor.putString("com.hg.anDGS.DefaultEditMode", editMode);
-				
-				editor.putString("com.hg.anDGS.GameOrder", gameOrder);
-				
-				editor.putString("com.hg.anDGS.Sound", makeSound);
-				
-				editor.putBoolean("com.hg.anDGS.Vibrate", notifierVibrateCB.isChecked());
-				editor.putBoolean("com.hg.anDGS.NotifyFailure", notifyAllDetailsCB.isChecked());
-				
-				try {
-            		autoPlayInterval = Long.decode(vAutoPlayInterval.getText().toString().trim());
-            	} catch (Exception e) {
-            		autoPlayInterval = GameBoardOptions.DEFAUTOPLAYINTERVAL;
-            	}
-				editor.putLong("com.hg.anDGS.AutoPlayInterval", autoPlayInterval);
-				
-				try {
-					scaleLines = Float.parseFloat(vScaleLines.getText().toString().trim());
-            	} catch (Exception e) {
-            		scaleLines = 1;
-            	}
-				editor.putFloat("com.hg.anDGS.ScaleLines", scaleLines);
-				editor.putInt("com.hg.anDGS.Debug", dbg);
-				
-				editor.apply();
-             	
             	Bundle rslts = new Bundle();
-				rslts.putBoolean("NOTIFIERCHANGED", notifierChanged);
             	Intent mIntent = new Intent();
                 mIntent.putExtras(rslts);
                 setResult(RESULT_OK, mIntent);
@@ -778,7 +705,6 @@ public class PrefsDGS extends DGSActivity {
 		autoStartNotifierCB.setChecked(autoStartNotifier);
         autoPlayPauseCB.setChecked(autoPlayPause);
         autoPlaySoundCB.setChecked(autoPlaySound);
-        notifierVibrateCB.setChecked(notifierVibrate);
         editDisplayTopMenuCB.setChecked(editDisplayTopMenu) ;
 		playDisplayTopMenuCB.setChecked(playDisplayTopMenu);
 		playGameNotesCB.setChecked(playGameNotes);
@@ -786,6 +712,7 @@ public class PrefsDGS extends DGSActivity {
         vEditNumPrev.setText(Integer.toString(editNumPrev));
         vPlayNumPrev.setText(Integer.toString(playNumPrev));
         vNotifierInterval.setText(Long.toString(notifierInterval));
+		notifierVibrateCB.setChecked(notifierVibrate);
         notifyAllDetailsCB.setChecked(notifyAllDetails);
         vAutoPlayInterval.setText(Long.toString(autoPlayInterval));
         vScaleLines.setText(Float.toString(scaleLines));
@@ -827,6 +754,9 @@ public class PrefsDGS extends DGSActivity {
 	    .setPositiveButton(R.string.Ok, new DialogInterface.OnClickListener() {
 	    public void onClick(DialogInterface dialog, int whichButton) {
 	    	vUser.setText(input.getText());
+			SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+			editor.putString("com.hg.anDGS.DGSUser", vUser.getText().toString().trim());
+			editor.apply();
 	    }})
 		.setNegativeButton(R.string.Cancel, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
@@ -847,6 +777,9 @@ public class PrefsDGS extends DGSActivity {
 	    	passwd = input.getText().toString().trim();
 			if (passwd.length() > 16) passwd = passwd.substring(0, 16);
 	    	vPasswrd.setText(starString(passwd));
+			SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+			editor.putString("com.hg.anDGS.DGSPass", passwd.trim());
+			editor.apply();
 	    }})
 		.setNegativeButton(R.string.Cancel, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
@@ -855,85 +788,75 @@ public class PrefsDGS extends DGSActivity {
     }
     
     private void doSetAutoClient() {
-    	if (autoClientCB.isChecked()) {
-    		autoClientCB.setChecked(false);
-    	} else {
-    		autoClientCB.setChecked(true);
-    	}
+		autoClientCB.setChecked(!autoClientCB.isChecked());
+		SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+		editor.putBoolean("com.hg.anDGS.AutoPlay", autoClientCB.isChecked());
+		editor.apply();
     }
 
 	private void doSetAutoStartNotifier() {
-		if (autoStartNotifierCB.isChecked()) {
-			autoStartNotifierCB.setChecked(false);
-		} else {
-			autoStartNotifierCB.setChecked(true);
-		}
+		autoStartNotifierCB.setChecked(!autoStartNotifierCB.isChecked());
+		SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+		editor.putBoolean("com.hg.anDGS.AutoStartNotifier", autoStartNotifierCB.isChecked());
+		editor.apply();
 	}
  
     private void doSetKeepScreenOn() {
-    	if (keepScreenOnCB.isChecked()) {
-    		keepScreenOnCB.setChecked(false);
-    	} else {
-    		keepScreenOnCB.setChecked(true);
-    	}
+		keepScreenOnCB.setChecked(!keepScreenOnCB.isChecked());
+		SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+		editor.putBoolean("com.hg.anDGS.KeepScreenOn", keepScreenOnCB.isChecked());
+		editor.apply();
     }
 
     private void doSetAutoPlayPause() {
-    	if (autoPlayPauseCB.isChecked()) {
-    		autoPlayPauseCB.setChecked(false);
-    	} else {
-    		autoPlayPauseCB.setChecked(true);
-    	}
+		autoPlayPauseCB.setChecked(!autoPlayPauseCB.isChecked());
+		SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+		editor.putBoolean("com.hg.anDGS.AutoPlayPause", autoPlayPauseCB.isChecked());
+		editor.apply();
     }
     
     private void doSetAutoPlaySound() {
-    	if (autoPlaySoundCB.isChecked()) {
-    		autoPlaySoundCB.setChecked(false);
-    	} else {
-    		autoPlaySoundCB.setChecked(true);
-    	}
+		autoPlaySoundCB.setChecked(!autoPlaySoundCB.isChecked());
+		SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+		editor.putBoolean("com.hg.anDGS.AutoPlaySound", autoPlaySoundCB.isChecked());
+		editor.apply();
     }
     
     private void doSetNotifierVibrate() {
-    	if (notifierVibrateCB.isChecked()) {
-    		notifierVibrateCB.setChecked(false);
-    	} else {
-    		notifierVibrateCB.setChecked(true);
-    	}
-		notifierChanged = true;
+		notifierVibrate = !notifierVibrateCB.isChecked();
+		notifierVibrateCB.setChecked(notifierVibrate);
+		SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+		editor.putBoolean("com.hg.anDGS.Vibrate", notifierVibrate);
+		editor.apply();
     }
     
     private void doSetNotifyAllDetails() {
-    	if (notifyAllDetailsCB.isChecked()) {
-    		notifyAllDetailsCB.setChecked(false);
-    	} else {
-    		notifyAllDetailsCB.setChecked(true);
-    	}
-		notifierChanged = true;
+		notifyAllDetails = !notifyAllDetailsCB.isChecked();
+		notifyAllDetailsCB.setChecked(notifyAllDetails);
+		SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+		editor.putBoolean("com.hg.anDGS.NotifyFailure", notifyAllDetails);
+		editor.apply();
     }
 
     private void doSetEditDisplayTopMenu() {
-    	if (editDisplayTopMenuCB.isChecked()) {
-    		editDisplayTopMenuCB.setChecked(false);
-    	} else {
-    		editDisplayTopMenuCB.setChecked(true);
-    	}
+		editDisplayTopMenuCB.setChecked(!editDisplayTopMenuCB.isChecked());
+		SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+		editor.putBoolean("com.hg.anDGS.EditDisplayTopMenu", editDisplayTopMenuCB.isChecked());
+		editor.apply();
     }
     
     private void doSetPlayDisplayTopMenu() {
-    	if (playDisplayTopMenuCB.isChecked()) {
-    		playDisplayTopMenuCB.setChecked(false);
-    	} else {
-    		playDisplayTopMenuCB.setChecked(true);
-    	}
+		playDisplayTopMenuCB.setChecked(!playDisplayTopMenuCB.isChecked());
+		SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+		editor.putBoolean("com.hg.anDGS.PlayDisplayTopMenu", playDisplayTopMenuCB.isChecked());
+		editor.apply();
     }
     
     private void doSetPlayGameNotes() {
-    	if (playGameNotesCB.isChecked()) {
-    		playGameNotesCB.setChecked(false);
-    	} else {
-    		playGameNotesCB.setChecked(true);
-    	}
+		playGameNotesCB.setChecked(!playGameNotesCB.isChecked());
+		SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+		editor.putBoolean("com.hg.anDGS.GameNotes", playGameNotesCB.isChecked());
+		editor.apply();
     }
       
     private void doSetBoardCoord() {
@@ -947,22 +870,22 @@ public class PrefsDGS extends DGSActivity {
 				switch (item) {
             	case 0: 
             		boardCoordTxt = NO_COORD;
-            		setBoardCoord();
             		break;
             	case 1: 
             		boardCoordTxt = EDIT_COORD;
-            		setBoardCoord();
             		break;
             	case 2: 
             		boardCoordTxt = PLAY_COORD;
-            		setBoardCoord();
             		break;
             	case 3: 
             		boardCoordTxt = ALL_COORD;
-            		setBoardCoord();
             		break;
             	default: 
             	}
+				SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+				editor.putString("com.hg.anDGS.BoardCoord", boardCoordTxt);
+				editor.apply();
+				setBoardCoord();
 			}
 		});
 		AlertDialog alert = builder.create();
@@ -989,37 +912,43 @@ public class PrefsDGS extends DGSActivity {
 		sel_adapter.setDropDownViewResource(R.layout.select_row);
 		builder.setAdapter(sel_adapter, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int item) {
+				boolean getCustom = false;
 				switch (item) {
 	        	case 0: 
 	        		boardBGTxt = BG_WHITE;
-	        		setBoardBGvalue();
 	        		break;
 	        	case 1: 
 	        		boardBGTxt = BG_PLAIN;
-	        		setBoardBGvalue();
 	        		break;
 	        	case 2: 
 	        		boardBGTxt = BG_WOOD;
-	        		setBoardBGvalue();
 	        		break;  
 	        	case 3: 
 	        		boardBGTxt = BG_CUSTOM;
-	        		setBoardBGvalue();
-	            	new AmbilWarnaDialog(ctw, customBGvalue, new AmbilWarnaDialog.OnAmbilWarnaListener() {
-	        			public void onOk(AmbilWarnaDialog dialog, int color) {
-	        				// if (!callChangeListener(color)) return; // They don't want the value to be set
-	        				customBGvalue = color;
-	        				setBoardBGvalue();
-	        			}
-	
-	        			public void onCancel(AmbilWarnaDialog dialog) {
-	        				// nothing to do
-	        			}
-	
-	        		}).show();
+					getCustom = true;
 	        		break;
 	        	default: 
 	        	}
+				SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+				editor.putString("com.hg.anDGS.BoardBackground", boardBGTxt);
+				editor.apply();
+				setBoardBGvalue();
+				if (getCustom) {
+					new AmbilWarnaDialog(ctw, customBGvalue, new AmbilWarnaDialog.OnAmbilWarnaListener() {
+						public void onOk(AmbilWarnaDialog dialog, int color) {
+							customBGvalue = color;
+							SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+							editor.putInt("com.hg.anDGS.CustomBoardBackground", customBGvalue);
+							editor.apply();
+							setBoardBGvalue();
+						}
+
+						public void onCancel(AmbilWarnaDialog dialog) {
+							// nothing to do
+						}
+
+					}).show();
+				}
 			}
 		});
 		AlertDialog alert = builder.create();
@@ -1063,14 +992,17 @@ public class PrefsDGS extends DGSActivity {
 				switch (item) {
             	case 0: 
             		boardStoneTxt = STONE_MONO;
-            		setBoardStonevalue();
             		break;
             	case 1: 
             		boardStoneTxt = STONE_CLAM;
-            		setBoardStonevalue();
             		break;
             	default: 
             	}
+				SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+				editor.putString("com.hg.anDGS.BoardStone", boardStoneTxt);
+				editor.apply();
+				setBoardStonevalue();
+
 			}
 		});
 		AlertDialog alert = builder.create();
@@ -1100,18 +1032,19 @@ public class PrefsDGS extends DGSActivity {
 				switch (item) {
             	case 0: 
             		boardLayout = PORTRAIT;
-            		setLayout();
             		break;
             	case 1: 
             		boardLayout = LANDSCAPE;
-            		setLayout();
             		break;
             	case 2:
             		boardLayout = DYNAMIC;
-            		setLayout();
             		break;
             	default: 
             	}
+				SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+				editor.putString("com.hg.anDGS.BoardLayout", boardLayout);
+				editor.apply();
+				setLayout();
 			}
 		});
 		AlertDialog alert = builder.create();
@@ -1140,6 +1073,9 @@ public class PrefsDGS extends DGSActivity {
 				if (item >= 0 && item < locale_items.length) {
 					locale_index = item;
 					prefs_locale_text.setText(language_items.get(item));
+					SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+					editor.putString("com.hg.anDGS.Locale", locale_items[locale_index]);
+					editor.apply();
 				}
 			}
 		});
@@ -1193,6 +1129,9 @@ public class PrefsDGS extends DGSActivity {
             	default:
                     theme = DEFAULT_THEME;
             	}
+				SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+				editor.putString("com.hg.anDGS.Theme", theme);
+				editor.apply();
                 setTheme();
 			}
 		});
@@ -1233,34 +1172,31 @@ public class PrefsDGS extends DGSActivity {
 				switch (item) {
             	case 0: 
             		moveControl = ZOOM7X7;
-            		setMoveControl();
             		break;
             	case 1: 
             		moveControl = ZOOM9X9;
-            		setMoveControl();
             		break;
             	case 2: 
             		moveControl = ZOOM11X11;
-            		setMoveControl();
             		break;
             	case 3: 
             		moveControl = ZOOM13X13;
-            		setMoveControl();
             		break;
             	case 4: 
             		moveControl = DPADCONTROL;
-            		setMoveControl();
             		break;
             	case 5: 
             		moveControl = ONETOUCH;
-            		setMoveControl();
             		break;
             	case 6: 
             		moveControl = SLIDE;
-            		setMoveControl();
             		break;
             	default: 
             	}
+				SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+				editor.putString("com.hg.anDGS.MoveControl", moveControl);
+				editor.apply();
+				setMoveControl();
 			}
 		});
 		AlertDialog alert = builder.create();
@@ -1332,8 +1268,12 @@ public class PrefsDGS extends DGSActivity {
         } else if (editMode.contentEquals(GameBoardOptions.BROWSE)) {
         	prefs_editMode_text.setText(editMode_items[1]);
         } else {
+			editMode = GameBoardOptions.AUTOPLAY;
         	prefs_editMode_text.setText(editMode_items[0]);
         }
+		SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+		editor.putString("com.hg.anDGS.DefaultEditMode", editMode);
+		editor.apply();
     }
     
     private void doSetGameOrder() {
@@ -1390,7 +1330,11 @@ public class PrefsDGS extends DGSActivity {
         	prefs_gameOrder_text.setText(gameOrder_items[1]);
         } else {
         	prefs_gameOrder_text.setText(gameOrder_items[0]);
+			gameOrder = MainDGS.GO_DEFAULT;
         }
+		SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+		editor.putString("com.hg.anDGS.GameOrder", gameOrder);
+		editor.apply();
     }
     
     private void doSetSound() {
@@ -1404,18 +1348,19 @@ public class PrefsDGS extends DGSActivity {
 				switch (item) {
             	case 0: 
             		makeSound = NOSOUND;
-            		setMakeSound();
             		break;
             	case 1: 
             		makeSound = DEFAULTSOUND;
-            		setMakeSound();
             		break;
             	case 2: 
             		makeSound = STONESOUND;
-            		setMakeSound();
             		break;
             	default: 
             	}
+				SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+				editor.putString("com.hg.anDGS.Sound", makeSound);
+				editor.apply();
+				setMakeSound();
 			}
 		});
 		AlertDialog alert = builder.create();
@@ -1430,6 +1375,7 @@ public class PrefsDGS extends DGSActivity {
         } else {
         	prefs_sound_text.setText(sound_items[0]);
         }
+
     }
     
     private void doSkipMoves() {
@@ -1448,11 +1394,17 @@ public class PrefsDGS extends DGSActivity {
 					skipMoves = GameBoardOptions.DEFAULTSKIPMOVES;
 				}
 				if (skipMoves < GameBoardOptions.DEFAULTMINSKIPMOVES) skipMoves = GameBoardOptions.DEFAULTMINSKIPMOVES;
-					vSkipMoves.setText(Integer.toString(skipMoves));
+				vSkipMoves.setText(Integer.toString(skipMoves));
+				SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+				editor.putInt("com.hg.anDGS.SkipMoves", skipMoves);
+				editor.apply();
 	    	}})
 		.setNegativeButton(R.string.deflt, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 				vSkipMoves.setText(Integer.toString(GameBoardOptions.DEFAULTMINSKIPMOVES));
+				SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+				editor.putInt("com.hg.anDGS.SkipMoves", skipMoves);
+				editor.apply();
 			}})
 		.setNeutralButton(R.string.Cancel, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
@@ -1478,10 +1430,16 @@ public class PrefsDGS extends DGSActivity {
 	    	if (editNumPrev < GameBoardOptions.DEFAULTMINNUMPREV) editNumPrev = GameBoardOptions.DEFAULTMINNUMPREV;
 	    	if (editNumPrev > GameBoardOptions.DEFAULTMAXNUMPREV) editNumPrev = GameBoardOptions.DEFAULTMAXNUMPREV;
 	    	vEditNumPrev.setText(Integer.toString(editNumPrev));
+			SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+			editor.putInt("com.hg.anDGS.EditNumPrev", editNumPrev);
+			editor.apply();
 	    }})
 		.setNegativeButton(R.string.deflt, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 				editNumPrev = GameBoardOptions.DEFAULTNUMPREVEDIT;
+				SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+				editor.putInt("com.hg.anDGS.EditNumPrev", editNumPrev);
+				editor.apply();
 			}})
 		.setNeutralButton(R.string.Cancel, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
@@ -1507,10 +1465,16 @@ public class PrefsDGS extends DGSActivity {
 				if (playNumPrev < GameBoardOptions.DEFAULTMINNUMPREV) playNumPrev = GameBoardOptions.DEFAULTMINNUMPREV;
 				if (playNumPrev > GameBoardOptions.DEFAULTMAXNUMPREV) playNumPrev = GameBoardOptions.DEFAULTMAXNUMPREV;
 				vPlayNumPrev.setText(Integer.toString(playNumPrev));
+				SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+				editor.putInt("com.hg.anDGS.PlayNumPrev", playNumPrev);
+				editor.apply();
 	    	}})
 		.setNegativeButton(R.string.deflt, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
-				editNumPrev = GameBoardOptions.DEFAULTNUMPREVEDIT;
+				playNumPrev = GameBoardOptions.DEFAULTNUMPREVEDIT;
+				SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+				editor.putInt("com.hg.anDGS.PlayNumPrev", playNumPrev);
+				editor.apply();
 			}})
 		.setNeutralButton(R.string.Cancel, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
@@ -1532,17 +1496,24 @@ public class PrefsDGS extends DGSActivity {
 				if (interval < DGSNotifier.MINNOTIFIERINTERVAL) {
 					interval = DGSNotifier.MINNOTIFIERINTERVAL;
 				}
+				notifierInterval = interval;
 				vNotifierInterval.setText(Long.toString(interval));
+				SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+				editor.putLong("com.hg.anDGS.Interval", notifierInterval);
+				editor.apply();
 		}})
 		.setNegativeButton(R.string.deflt, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
+				notifierInterval = DGSNotifier.DEFNOTIFIERINTERVAL;
 				vNotifierInterval.setText(Long.toString(DGSNotifier.DEFNOTIFIERINTERVAL));
+				SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+				editor.putLong("com.hg.anDGS.Interval", notifierInterval);
+				editor.apply();
 			}})
 		.setNeutralButton(R.string.Cancel, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 			}})
 	    .show();
-		notifierChanged = true;
     }
     
     private void doSetAutoPlayInterval() { 
@@ -1555,11 +1526,24 @@ public class PrefsDGS extends DGSActivity {
 	    .setView(input)
 	    .setPositiveButton(R.string.Ok, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
-				vAutoPlayInterval.setText(input.getText());
+
+				try {
+					autoPlayInterval = Long.decode(input.getText().toString().trim());
+				} catch (Exception e) {
+					autoPlayInterval = GameBoardOptions.DEFAUTOPLAYINTERVAL;
+				}
+				vAutoPlayInterval.setText(Long.toString(autoPlayInterval));
+				SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+				editor.putLong("com.hg.anDGS.AutoPlayInterval", autoPlayInterval);
+				editor.apply();
 			}})
 		.setNegativeButton(R.string.deflt, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
-				vAutoPlayInterval.setText("1");
+				autoPlayInterval = GameBoardOptions.DEFAUTOPLAYINTERVAL;
+				vAutoPlayInterval.setText(Long.toString(autoPlayInterval));
+				SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+				editor.putLong("com.hg.anDGS.AutoPlayInterval", autoPlayInterval);
+				editor.apply();
 			}})
 		.setNeutralButton(R.string.Cancel, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
@@ -1591,6 +1575,9 @@ public class PrefsDGS extends DGSActivity {
 	    .setPositiveButton(R.string.Ok, new DialogInterface.OnClickListener() {
 	    public void onClick(DialogInterface dialog, int whichButton) {
 	    	vServerURL.setText(input.getText());
+			SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+			editor.putString("com.hg.anDGS.ServerURL", vServerURL.getText().toString().trim());
+			editor.apply();
 	    }})
 	    .setNegativeButton(R.string.deflt, new DialogInterface.OnClickListener() {
 	    public void onClick(DialogInterface dialog, int whichButton) {
@@ -1611,11 +1598,23 @@ public class PrefsDGS extends DGSActivity {
 	    .setView(input)
 	    .setPositiveButton(R.string.Ok, new DialogInterface.OnClickListener() {
 	    public void onClick(DialogInterface dialog, int whichButton) {
-	    	vScaleLines.setText(input.getText());
+			try {
+				scaleLines = Float.parseFloat(input.getText().toString().trim());
+			} catch (Exception e) {
+				scaleLines = DEFAULT_LINE_WIDTH_F;
+			}
+	    	vScaleLines.setText(Float.toString(scaleLines));
+			SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+			editor.putFloat("com.hg.anDGS.ScaleLines", scaleLines);
+			editor.apply();
 	    }})
 	    .setNegativeButton(R.string.deflt, new DialogInterface.OnClickListener() {
 	    public void onClick(DialogInterface dialog, int whichButton) {
-	    	vScaleLines.setText(DEFAULT_LINE_WIDTH);
+			scaleLines = DEFAULT_LINE_WIDTH_F;
+			vScaleLines.setText(DEFAULT_LINE_WIDTH);
+			SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+			editor.putFloat("com.hg.anDGS.ScaleLines", scaleLines);
+			editor.apply();
 	    }})
 		.setNeutralButton(R.string.Cancel, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
@@ -1638,12 +1637,18 @@ public class PrefsDGS extends DGSActivity {
 						} catch (Exception e) {
 							dbg = 0;
 						}
+						SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+						editor.putInt("com.hg.anDGS.Debug", dbg);
+						editor.apply();
 						vDBG.setText(Integer.toString(dbg));
 					}})
 				.setNegativeButton(R.string.deflt, new DialogInterface.OnClickListener() {
 					@SuppressLint("SetTextI18n")
 					public void onClick(DialogInterface dialog, int whichButton) {
 						dbg = 0;
+						SharedPreferences.Editor editor = getSharedPreferences("MainDGS", 0).edit();
+						editor.putInt("com.hg.anDGS.Debug", dbg);
+						editor.apply();
 						vDBG.setText(Integer.toString(dbg));
 					}})
 				.setNeutralButton(R.string.Cancel, new DialogInterface.OnClickListener() {

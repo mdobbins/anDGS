@@ -131,7 +131,11 @@ public class CommonStuff {
 		notifIntent.putExtra("Reset", resetCounters);
 		if (start) {
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !resetCounters) {
-				context.startForegroundService(notifIntent);
+				try {
+					context.startForegroundService(notifIntent);
+				} catch (Exception e) {
+					context.startService(notifIntent);
+				}
 			} else {
 				context.startService(notifIntent);
 			}

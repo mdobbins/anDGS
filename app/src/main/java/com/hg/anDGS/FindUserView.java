@@ -20,7 +20,7 @@ public class FindUserView extends DGSActivity {
     private static final int MENU_HELP = 0;
 
     private TextView tmHelp;
-
+    private TextView tmTitle;
     private LinearLayout toUserIdLabel;
     private TextView toUserIdEdit;
     private LinearLayout toUserNameLabel;
@@ -66,6 +66,17 @@ public class FindUserView extends DGSActivity {
                         doHelp();
                     }
                 });
+            }
+        });
+
+        tmTitle = findViewById(R.id.finduserTMTitle);
+        tmTitle.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Bundle rslts = new Bundle();
+                Intent mIntent = new Intent();
+                mIntent.putExtras(rslts);
+                setResult(RESULT_CANCELED, mIntent);
+                finish();
             }
         });
 

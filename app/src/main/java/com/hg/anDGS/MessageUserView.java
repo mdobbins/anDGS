@@ -21,6 +21,7 @@ public class MessageUserView extends DGSActivity {
 	private static final int MENU_HELP = 0;
 	
 	private TextView tmHelp;
+	private TextView tmTitle;
 
 	private LinearLayout toLabel;
 	private TextView toEdit;
@@ -38,7 +39,7 @@ public class MessageUserView extends DGSActivity {
 	private String toUserId = "";
 	private String toUid = "";
 	private ContextThemeWrapper ctw;
-	private CommonStuff commonStuff = new CommonStuff();
+	private final CommonStuff commonStuff = new CommonStuff();
 
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +91,17 @@ public class MessageUserView extends DGSActivity {
 						doHelp();
 					}
 				});
+			}
+		});
+
+		tmTitle = findViewById(R.id.messageTMTitle);
+		tmTitle.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Bundle rslts = new Bundle();
+				Intent mIntent = new Intent();
+				mIntent.putExtras(rslts);
+				setResult(RESULT_CANCELED, mIntent);
+				finish();
 			}
 		});
 

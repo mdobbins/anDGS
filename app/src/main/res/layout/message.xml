@@ -17,7 +17,8 @@
     style="?colorStyle"
     android:padding="4dp"
     android:gravity="left"
-    android:textSize="18sp"
+    android:textSize="22sp"
+	android:id="@+id/messageTMTitle"
     android:text="@string/messageTitle"
     />
 
@@ -147,7 +148,7 @@
 	android:clickable="true"
 	android:text="@string/send"
     android:id="@+id/messageSendButton"
-	/>
+	android:focusable="true" />
 </LinearLayout>
         
 </RelativeLayout>

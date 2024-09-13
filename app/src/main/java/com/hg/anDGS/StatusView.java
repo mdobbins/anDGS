@@ -76,6 +76,15 @@ public class StatusView extends DGSActivity implements OnClickListener {
 
 		TextView statusTitleView = findViewById(R.id.statusTitle);
 		statusTitleView.setText(statusTitle);
+		statusTitleView.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Bundle rslts = new Bundle();
+				Intent mIntent = new Intent();
+				mIntent.putExtras(rslts);
+				setResult(RESULT_CANCELED, mIntent);
+				finish();
+			}
+		});
 
 		ListView statusListView = findViewById(R.id.statusList);
  		listEntries.clear();     

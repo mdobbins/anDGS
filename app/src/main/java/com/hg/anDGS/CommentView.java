@@ -15,7 +15,7 @@ public class CommentView extends DGSActivity {
 	private String theme;
 	private EditText comment_text_view;
 	private String original_text = "";
-	private CommonStuff commonStuff = new CommonStuff();
+	private final CommonStuff commonStuff = new CommonStuff();
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -46,23 +46,27 @@ public class CommentView extends DGSActivity {
 		comment_save_button = findViewById(R.id.commentSaveButton);
 		comment_save_button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Bundle rslts = new Bundle();
-				String s = comment_text_view.getText().toString();
-				if (!s.contentEquals(original_text)) {
-	            	rslts.putString("CommentText",s); 
-	                Intent mIntent = new Intent();
-	                mIntent.putExtras(rslts);
-	                setResult(RESULT_OK, mIntent);
-				} else {
-					Intent mIntent = new Intent();
-	                mIntent.putExtras(rslts);
-	                setResult(RESULT_CANCELED, mIntent);
-				}
-                finish();
+				exitActions();
 			}
 		});
 		
 		comment_text_view.setText(original_text);
+	}
+
+	private void exitActions() {
+		Bundle rslts = new Bundle();
+		String s = comment_text_view.getText().toString();
+		if (!s.contentEquals(original_text)) {
+			rslts.putString("CommentText",s);
+			Intent mIntent = new Intent();
+			mIntent.putExtras(rslts);
+			setResult(RESULT_OK, mIntent);
+		} else {
+			Intent mIntent = new Intent();
+			mIntent.putExtras(rslts);
+			setResult(RESULT_CANCELED, mIntent);
+		}
+		finish();
 	}
 }
 

@@ -516,8 +516,9 @@ public final class Node
         if (player != null)
             return player;
         if (m_move != null)
-            return m_move.getColor().otherColor();
-        return null;
+            if (m_move.getColor() != EMPTY)
+                return m_move.getColor().otherColor();
+        return BLACK;
     }
 
     /** Return a value for the node.
