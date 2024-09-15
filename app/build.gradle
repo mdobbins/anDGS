@@ -9,8 +9,8 @@ android {
         applicationId "com.hg.anDGS"
         minSdkVersion 14
         targetSdkVersion 34
-        versionCode 209
-        versionName "2.09"
+        versionCode 211
+        versionName "2.11"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 

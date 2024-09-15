@@ -19,7 +19,7 @@ public class DGSNotifier extends Service {
     public static final long DEFNOTIFIERINTERVAL = 63;  // seconds
     public static final long MINNOTIFIERINTERVAL = 33;  // seconds
     private final long second = 1000;
-    private final long DELAY_INTERVAL = 0;  // seconds
+    private final long DELAY_INTERVAL = 1;  // seconds
     private final long DELAY_INTERVAL_MILLI = DELAY_INTERVAL*second;
     private final int JOINWAIT = 5;  // milliseconds
     public static String CHAN_ID;
@@ -70,6 +70,7 @@ public class DGSNotifier extends Service {
         mThread = new DGSNotifierThread(this, serverURL, DGSUser, DGSPass, make_sound, notifierVibrate, notifyAllDetails, update_interval);
         String nText = mThread.notificationText(-1, -1, -1);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+           // mThread.updateDelay();
             Notification notification = mThread.makeNotification(this, true, nText, mThread.notify_waiting, "startForeground", make_sound, false);
             if (notification == null) {
                 errHist.writeErrorHistory("DGSNotifier.onCreate, failed to make notification ");
@@ -85,7 +86,7 @@ public class DGSNotifier extends Service {
     }
 
     private void m_startService() {
-        final long c_UPDATE_INTERVAL = update_interval*second;
+        final long c_UPDATE_INTERVAL = update_interval*second+DELAY_INTERVAL_MILLI;
         final long c_DELAY_INTERVAL = DELAY_INTERVAL_MILLI;
         timer.schedule(
                 new TimerTask() {

@@ -78,7 +78,8 @@ class DGSNotifierThread extends Thread {
         make_sound = m_sound;
         notifierVibrate = m_vibrate;
         notifyAllDetails = m_notifyAllDetails;
-        current_interval = update_interval = m_update_interval; // in seconds
+        current_interval = 0;
+        update_interval = m_update_interval; // in seconds
         skipped_status_count = 0;
         targetTime = System.currentTimeMillis();  // Don't wait, let notifier tell
         //mNM = ctxt.getSystemService(NotificationManager.class);
@@ -126,7 +127,6 @@ class DGSNotifierThread extends Thread {
                     if (s.startsWith("#Failed")) {
                         showNotification(ctxt, "#Failed", notify_failure, s);
                         mLoggedOn = false;
-                        updateDelay();
                         break;
                     }
                     if (MainDGS.dbgBasicActivity) {
@@ -172,7 +172,6 @@ class DGSNotifierThread extends Thread {
                     }
                     prev_games = n_games;
                     prev_msgs = n_msgs;
-                    updateDelay();
                     if (current_interval > idle_limit) {
                         mLoggedOn = false;
                     }
@@ -211,46 +210,19 @@ class DGSNotifierThread extends Thread {
             if (!MainDGS.dbgBasicActivity) {
                 errHist.writeErrorHistory("DGSNotifierThread, login failed: " + rslt);
             }
-            updateDelay();
         }
         return mLoggedOn;
     }
 
     void getStatus() {
         long nowTime = System.currentTimeMillis();
-        if (notifierBusy || nowTime < targetTime
-                || nowTime < MainDGS.lastStatusTime + (update_interval * second)) {
+        if (notifierBusy || nowTime < targetTime) { // || nowTime < MainDGS.lastStatusTime + (update_interval * second)
             skipped_status_count++;
         } else {
             notifierBusy = true;
             doEvt = DO_GET_STATUS;
             this.interrupt();
         }
-    }
-
-    void resetStatus() {
-        current_interval = update_interval;
-        targetTime = System.currentTimeMillis() + current_interval * second;
-        skipped_status_count = 0;
-        prev_games = -1;
-        prev_msgs = -1;
-        showNotification(ctxt, notificationText(-1, -1, -1), notify_waiting, "Reset Status");
-    }
-
-    private void updateDelay() {
-        if (current_interval < slow_poll) { // limit for back off
-            //current_interval += update_interval; // linear
-            current_interval += current_interval; // binary
-            if (current_interval > slow_poll) {
-                current_interval = slow_poll;
-            }
-        }
-        skipped_status_count = 0;
-        targetTime = System.currentTimeMillis() + current_interval*second;
-    }
-
-    void removeNotification() {
-        mNM.cancel(DGSNotifier.NOTIFIER_ID);
     }
 
     void stopThread() {
@@ -373,14 +345,39 @@ class DGSNotifierThread extends Thread {
         if (n_games == 0 && n_msgs == 0) {
             rslt = rslt + ctxt.getString(R.string.Nothing) + " ";
         }
-        if (!notifyAllDetails && n_games < 0 && n_msgs < 0) {  // not all details combine waiting and nothing waiting
-            rslt = rslt + ctxt.getString(R.string.Nothing) + " ";
-        }
         rslt = rslt + ctxt.getString(R.string.Waiting);
         return rslt;
     }
 
+    void resetStatus() {
+        current_interval = 0; // showNotification will use updateDelay
+        prev_games = -1;
+        prev_msgs = -1;
+        showNotification(ctxt, notificationText(-1, -1, -1), notify_waiting, "Reset Status");
+    }
+
+    void updateDelay() {
+        if (current_interval < slow_poll) { // limit for back off
+            if (current_interval <= 0) {
+                current_interval = update_interval;
+            } else {
+                //current_interval += update_interval; // linear
+                current_interval += current_interval; // binary
+            }
+            if (current_interval > slow_poll) {
+                current_interval = slow_poll;
+            }
+        }
+        skipped_status_count = 0;
+        targetTime = System.currentTimeMillis() + current_interval*second;
+    }
+
+    void removeNotification() {
+        mNM.cancel(DGSNotifier.NOTIFIER_ID);
+    }
+
     void showNotification(Context ctx, String notify_txt, int notify_type, String log_txt) {
+        updateDelay();
         Notification notification = makeNotification(ctx, false, notify_txt, notify_type, log_txt, make_sound, notifierVibrate);
         // Send the notification.
         // We use a unique number.  We use it later to cancel.
@@ -390,20 +387,23 @@ class DGSNotifierThread extends Thread {
     }
 
     Notification makeNotification(Context ctx, boolean forceIt, String notify_txt, int notify_type, String log_txt, String make_sound, boolean notifierVibrate) {
+        String nt = notify_txt + ": " + current_interval + "s";
         if (MainDGS.dbgBasicActivity) {
-            errHist.writeErrorHistory("DGSNotifierThread.makeNotification: " + notify_txt
+            errHist.writeErrorHistory("DGSNotifierThread.makeNotification: " + nt
                     + ", Type: " + notify_type
                     + ", Log: " + log_txt);
         }
         boolean showIt;
         if (notifyAllDetails) {  // see if we need to show the notification
             showIt = true;
+            notify_txt = nt;
         } else {
             switch (notify_type) {
                 case notify_waiting:
+                    showIt = !(last_notify == notify_waiting);
+                    break;
                 case notify_nothing_waiting:
-                    showIt = !(last_notify == notify_waiting || last_notify == notify_nothing_waiting);
-                    notify_type = notify_nothing_waiting;   // combine these 2 states
+                    showIt = !(last_notify == notify_nothing_waiting);
                     break;
                 case notify_responded:
                 case notify_stuff_to_do:
@@ -493,7 +493,7 @@ class DGSNotifierThread extends Thread {
                 .setContentIntent(contentIntent)
                 .setWhen(System.currentTimeMillis())
                 .setOngoing(true)
-                .setPriority(NotificationCompat.PRIORITY_LOW)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
         ;
         notifyBuilder.setChannelId(DGSNotifier.CHAN_ID);
         // build notification
